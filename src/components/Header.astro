@@ -1,0 +1,70 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { label: 'Avaleht', href: '/' },
+  { label: 'Ajalugu', href: '/ajalugu' },
+  { label: 'Peod', href: '/peod' },
+  { label: 'Seminarid', href: '/seminarid' },
+];
+---
+
+<header class="sticky top-0 z-10 bg-warm-white border-b border-black/5">
+  <nav class="px-6 py-3 flex items-center justify-between max-w-7xl mx-auto">
+    <a href="/" class="shrink-0">
+      <img src="/images/logo-proposal.png" alt="Laitse Loss" class="h-[76px] w-auto" />
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-8">
+      {navLinks.map(({ label, href }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'font-ui uppercase tracking-wide text-sm transition-colors duration-200',
+              currentPath === href || (href !== '/' && currentPath.startsWith(href))
+                ? 'text-burgundy'
+                : 'text-warm-dark hover:text-burgundy',
+            ]}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile hamburger (CSS-only using details/summary) -->
+    <details class="md:hidden relative">
+      <summary class="list-none cursor-pointer p-2 -mr-2">
+        <span class="sr-only">Menüü</span>
+        <svg class="w-6 h-6 text-warm-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </summary>
+      <ul class="absolute right-0 top-full mt-2 bg-warm-white border border-black/10 rounded shadow-lg py-2 min-w-[180px]">
+        {navLinks.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'block px-5 py-2.5 font-ui uppercase tracking-wide text-sm transition-colors duration-200',
+                currentPath === href || (href !== '/' && currentPath.startsWith(href))
+                  ? 'text-burgundy'
+                  : 'text-warm-dark hover:text-burgundy hover:bg-black/5',
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  </nav>
+</header>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
