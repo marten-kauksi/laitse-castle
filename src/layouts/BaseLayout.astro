@@ -1,13 +1,71 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  pageSchema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title = 'Laitse Loss', description = 'Laitse Loss — elegantne sündmuskoht Harjumaal' } = Astro.props;
+const {
+  title = 'Laitse Loss',
+  description = 'Laitse Loss — elegantne sündmuskoht Harjumaal',
+  ogImage = '/images/Fassaad.jpg',
+  canonicalUrl,
+  pageSchema,
+} = Astro.props;
+
+const siteUrl = 'https://laitseloss.ee';
+const canonical = canonicalUrl ?? `${siteUrl}${Astro.url.pathname}`;
+const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://laitseloss.ee/#organization",
+  "name": "Laitse Loss OÜ",
+  "alternateName": "Laitse Loss",
+  "url": "https://laitseloss.ee",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://laitseloss.ee/images/Fassaad.jpg",
+    "width": 1440,
+    "height": 900
+  },
+  "telephone": "+37258356509",
+  "email": "info@laitseloss.ee",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+37258356509",
+    "email": "info@laitseloss.ee",
+    "contactType": "customer service",
+    "availableLanguage": ["Estonian", "English"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lossi tee 9",
+    "addressLocality": "Laitse",
+    "postalCode": "76302",
+    "addressRegion": "Harjumaa",
+    "addressCountry": "EE"
+  }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://laitseloss.ee/#website",
+  "name": "Laitse Loss",
+  "url": "https://laitseloss.ee",
+  "publisher": {
+    "@id": "https://laitseloss.ee/#organization"
+  },
+  "inLanguage": "et"
+};
 ---
 
 <!doctype html>
@@ -16,13 +74,45 @@ const { title = 'Laitse Loss', description = 'Laitse Loss — elegantne sündmus
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:image:width" content="1440" />
+    <meta property="og:image:height" content="900" />
+    <meta property="og:locale" content="et_EE" />
+    <meta property="og:site_name" content="Laitse Loss" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Lato:wght@300;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Lato:wght@300;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <title>{title}</title>
+    <SchemaOrg schema={organizationSchema} />
+    <SchemaOrg schema={websiteSchema} />
+    {pageSchema && <SchemaOrg schema={pageSchema} />}
   </head>
   <body class="bg-warm-white text-warm-dark font-body antialiased">
     <Header />
@@ -32,3 +122,14 @@ const { title = 'Laitse Loss', description = 'Laitse Loss — elegantne sündmus
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  /* Center rules and flourishes when inside text-center or centered flex containers */
+  .text-center .gold-rule,
+  .text-center .burgundy-rule,
+  .text-center svg[aria-hidden="true"],
+  .items-center svg[aria-hidden="true"] {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

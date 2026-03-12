@@ -5,33 +5,284 @@ import GoldRule from '../components/GoldRule.astro';
 import BurgundyRule from '../components/BurgundyRule.astro';
 import TopStripe from '../components/TopStripe.astro';
 import Button from '../components/Button.astro';
+
+const eventVenueSchema = {
+  "@context": "https://schema.org",
+  "@type": ["EventVenue", "LocalBusiness"],
+  "@id": "https://laitseloss.ee/#venue",
+  "name": "Laitse Loss",
+  "alternateName": "Laitse Castle",
+  "description": "Ajalooline neogooti loss Harjumaal — ideaalne koht pulmadeks, pidudeks, seminarideks ja konverentsideks. Vaid 30 minutit Tallinnast.",
+  "url": "https://laitseloss.ee",
+  "telephone": "+37258356509",
+  "email": "info@laitseloss.ee",
+  "image": [
+    "https://laitseloss.ee/images/Fassaad.jpg",
+    "https://laitseloss.ee/images/Pulmad.jpg",
+    "https://laitseloss.ee/images/Suur_saal_galerii.jpg"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lossi tee 9",
+    "addressLocality": "Laitse",
+    "postalCode": "76302",
+    "addressRegion": "Harjumaa",
+    "addressCountry": "EE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 59.1966,
+    "longitude": 24.3846
+  },
+  "hasMap": "https://maps.google.com/?q=59.1966,24.3846",
+  "maximumAttendeeCapacity": 150,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Tasuta parkimine", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "WiFi", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Projektor ja ekraan", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Terrass", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Aed", "value": true }
+  ],
+  "containsPlace": [
+    {
+      "@type": "MeetingRoom",
+      "@id": "https://laitseloss.ee/#suur-saal",
+      "name": "Suur saal",
+      "description": "Lossi suurim ruum kõrgete võlvlagedega. Sobib suursugusteks banketipidudeks, kontsertideks ja konverentsideks.",
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 110,
+        "unitCode": "MTK"
+      },
+      "maximumAttendeeCapacity": 150
+    },
+    {
+      "@type": "MeetingRoom",
+      "@id": "https://laitseloss.ee/#salong",
+      "name": "Salong",
+      "description": "Intiimne esimese korruse salong suure aknaga lossi aeda. Sobib väiksematele tähistamistele ja seminaridele.",
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 56,
+        "unitCode": "MTK"
+      },
+      "maximumAttendeeCapacity": 64
+    }
+  ],
+  "parentOrganization": {
+    "@id": "https://laitseloss.ee/#organization"
+  }
+};
 ---
 
-<BaseLayout title="Laitse Loss">
-  <main class="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 gap-8">
+<BaseLayout
+  title="Laitse Loss — Ajalooline sündmuste paik Harjumaal"
+  description="Neogooti loss Harjumaal — elegantne sündmuskoht pulmadeks, pidudeks ja seminarideks. Vaid 30 minutit Tallinnast. Tutvu ruumide ja võimalustega."
+  pageSchema={eventVenueSchema}
+>
+
+  <!-- ═══════════════════════════════════════════
+       1. HERO
+       ═══════════════════════════════════════════ -->
+  <section class="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden">
     <TopStripe />
 
-    <h1 class="font-display text-hero text-warm-dark mb-2">Laitse Loss</h1>
-    <p class="font-subtitle text-subtitle text-stone mb-4">Elegantne sündmuskoht Harjumaal</p>
+    <!-- Background image -->
+    <img
+      src="/images/Fassaad.jpg"
+      alt="Laitse lossi fassaad"
+      class="absolute inset-0 w-full h-full object-cover"
+      fetchpriority="high"
+      decoding="async"
+      width="1440"
+      height="900"
+    />
+    <div class="absolute inset-0 bg-warm-dark/70"></div>
 
-    <!-- Flourish variants -->
-    <Flourish type="vintage" size="lg" fill="gold" />
-    <Flourish type="simple" size="md" fill="gold" />
-    <Flourish type="vintage" size="sm" fill="burgundy" />
-    <Flourish type="simple" size="sm" fill="gold-faded" />
+    <div class="relative z-10 flex flex-col items-center text-center gap-5 max-w-2xl px-6 py-24">
+      <Flourish type="simple" size="md" fill="gold" />
 
-    <!-- Decorative rules -->
-    <GoldRule width="120px" />
-    <BurgundyRule width="80px" />
+      <h1 class="font-display text-hero text-warm-white mt-4 drop-shadow-lg">Laitse Loss</h1>
 
-    <!-- Buttons -->
-    <div class="flex gap-6 flex-wrap justify-center">
-      <Button variant="filled" href="#" label="Broneeri sündmus" />
-      <Button variant="outline" href="#" label="Loe lähemalt" />
+      <GoldRule width="80px" />
+
+      <p class="font-subtitle italic text-subtitle text-warm-white/90 drop-shadow-md">
+        Ajalooline sündmuste paik Harjumaal
+      </p>
+
+      <p class="font-ui text-label-sm uppercase text-warm-white/80 tracking-wider drop-shadow-sm">
+        Pulmad &middot; Vastuvõtud &middot; Seminarid
+      </p>
+
+      <p class="font-body text-body-lg text-warm-white/90 max-w-lg mt-2 drop-shadow-sm">
+        Neogooti loss keset Harjumaa loodust — pulmadeks, pidustusteks ja seminarideks. Vaid 30 minutit Tallinnast.
+      </p>
+
+      <div class="flex flex-wrap gap-5 justify-center mt-6">
+        <Button variant="filled" href="mailto:info@laitseloss.ee" label="Küsi pakkumist" />
+        <Button variant="outline" href="/peod" label="Avasta ruume" />
+      </div>
+
+      <div class="mt-10 opacity-20">
+        <Flourish type="vintage" size="sm" fill="gold" />
+      </div>
     </div>
+  </section>
 
-    <p class="font-body text-body-lg text-stone max-w-lg text-center mt-4">
-      Veebileht on valmimisel. Varsti näete siin midagi ilusat.
-    </p>
-  </main>
+  <!-- ═══════════════════════════════════════════
+       2. TEENUSTE ÜLEVAADE (Services Overview)
+       ═══════════════════════════════════════════ -->
+  <section class="py-20 md:py-28 px-6 bg-warm-light">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+
+        <!-- Peod ja tähtpäevad -->
+        <div class="group flex flex-col">
+          <div class="overflow-hidden rounded-sm">
+            <img
+              src="/images/Pulmad.jpg"
+              alt="Pulmatseremoonia Laitse lossis"
+              class="w-full h-[320px] object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+          <h2 class="font-subtitle text-section text-warm-dark mt-8 mb-4">
+            Peod ja tähtpäevad
+          </h2>
+          <p class="font-body text-body-lg text-warm-dark/70 mb-8">
+            Pulmad, sünnipäevad, firmapeod ja galaõhtud — lossi elegantne atmosfäär teeb iga tähistamise eriliseks.
+          </p>
+          <div class="mt-auto">
+            <Button variant="outline" href="/peod" label="Loe lähemalt" />
+          </div>
+        </div>
+
+        <!-- Seminarid ja konverentsid -->
+        <div class="group flex flex-col">
+          <div class="overflow-hidden rounded-sm">
+            <img
+              src="/images/Suur_saal_tuhi.jpg"
+              alt="Seminariruumid Laitse lossis"
+              class="w-full h-[320px] object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+          <h2 class="font-subtitle text-section text-warm-dark mt-8 mb-4">
+            Seminarid ja konverentsid
+          </h2>
+          <p class="font-body text-body-lg text-warm-dark/70 mb-8">
+            Inspireeriv keskkond ja paindlikud ruumid teie seminaridele, konverentsidele ja meeskonnaüritustele.
+          </p>
+          <div class="mt-auto">
+            <Button variant="outline" href="/seminarid" label="Loe lähemalt" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       3. MIKS LAITSE LOSS (Value Props)
+       ═══════════════════════════════════════════ -->
+  <section class="py-20 md:py-28 px-6 bg-warm-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="font-display text-section text-warm-dark mb-4">Miks Laitse Loss</h2>
+        <GoldRule width="80px" />
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
+
+        <!-- 130+ aastat ajalugu -->
+        <div class="border border-stone/15 rounded p-8 text-center">
+          <p class="font-display text-[clamp(36px,4vw,48px)] text-burgundy leading-none mb-1">130+</p>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-stone mb-4">aastat ajalugu</p>
+          <GoldRule width="40px" />
+          <p class="font-body text-body text-stone mt-4">
+            Neogooti arhitektuuriga ajalooline loss, mis on võlunud külalisi üle sajandi.
+          </p>
+        </div>
+
+        <!-- 30 min Tallinnast -->
+        <div class="border border-stone/15 rounded p-8 text-center">
+          <p class="font-display text-[clamp(36px,4vw,48px)] text-burgundy leading-none mb-1">30 min</p>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-stone mb-4">Tallinnast</p>
+          <GoldRule width="40px" />
+          <p class="font-body text-body text-stone mt-4">
+            Hõlpsasti ligipääsetav asukoht Tallinna lähedal, tasuta parkimisega.
+          </p>
+        </div>
+
+        <!-- Kuni 150 külalist -->
+        <div class="border border-stone/15 rounded p-8 text-center">
+          <p class="font-display text-[clamp(36px,4vw,48px)] text-burgundy leading-none mb-1">150</p>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-stone mb-4">külalist</p>
+          <GoldRule width="40px" />
+          <p class="font-body text-body text-stone mt-4">
+            Paindlikud ruumid — intiimsetest koosviibimistest suurte pidudeni.
+          </p>
+        </div>
+
+        <!-- Personaalne teenindus -->
+        <div class="border border-stone/15 rounded p-8 text-center">
+          <p class="font-display text-[clamp(36px,4vw,48px)] text-burgundy leading-none mb-1">1:1</p>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-stone mb-4">personaalne teenindus</p>
+          <GoldRule width="40px" />
+          <p class="font-body text-body text-stone mt-4">
+            Pühendunud meeskond, kes hoolitseb teie ürituse iga detaili eest.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       4. LOSSI LUGU (History Teaser)
+       ═══════════════════════════════════════════ -->
+  <section class="relative py-20 md:py-28 px-6 bg-warm-dark text-warm-white overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+        <!-- Image -->
+        <div class="overflow-hidden rounded-sm">
+          <img
+            src="/images/Lossi-tornid.jpg"
+            alt="Laitse lossi tornid"
+            class="w-full h-[360px] md:h-[440px] object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Text -->
+        <div>
+          <h2 class="font-display text-section text-warm-white mb-6">Lossi lugu</h2>
+          <GoldRule width="60px" />
+          <p class="font-body text-body-lg text-warm-white/85 mt-6 mb-8 leading-relaxed">
+            Laitse lossi ajalugu ulatub aastasse 1219, mil seda mainiti esmakordselt Henriku Liivimaa kroonikas.
+            Tutvuge lossi põneva minevikuga ja selle ehitaja Woldemar von Uexkülli looga.
+          </p>
+          <Button variant="outline" href="/ajalugu" label="Loe ajalugu" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
+
+<style>
+  /* Outline button on dark bg needs light border/text */
+  section.bg-warm-dark :global(a.border-burgundy),
+  section:first-of-type :global(a.border-burgundy) {
+    border-color: rgba(250, 247, 242, 0.5);
+    color: #FAF7F2;
+  }
+  section.bg-warm-dark :global(a.border-burgundy:hover),
+  section:first-of-type :global(a.border-burgundy:hover) {
+    background-color: rgba(250, 247, 242, 0.12);
+    border-color: #FAF7F2;
+    color: #FAF7F2;
+  }
+</style>

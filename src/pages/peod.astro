@@ -1,0 +1,306 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Flourish from '../components/Flourish.astro';
+import GoldRule from '../components/GoldRule.astro';
+import BurgundyRule from '../components/BurgundyRule.astro';
+import TopStripe from '../components/TopStripe.astro';
+import Button from '../components/Button.astro';
+
+const peodSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "@id": "https://laitseloss.ee/#venue",
+    "name": "Laitse Loss",
+    "url": "https://laitseloss.ee/peod",
+    "telephone": "+37258356509",
+    "email": "info@laitseloss.ee",
+    "image": "https://laitseloss.ee/images/Pulmad.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lossi tee 9",
+      "addressLocality": "Laitse",
+      "postalCode": "76302",
+      "addressRegion": "Harjumaa",
+      "addressCountry": "EE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 59.1966,
+      "longitude": 24.3846
+    },
+    "maximumAttendeeCapacity": 150
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://laitseloss.ee/peod#pulmad",
+    "name": "Pulmad Laitse Lossis",
+    "description": "Ajaloolise lossi romantiline õhkkond loob unustamatu tausta teie kõige olulisemale päevale. Elegantne saal, kaunis aed ja eriline atmosfäär.",
+    "serviceType": "Wedding Venue",
+    "provider": { "@id": "https://laitseloss.ee/#organization" },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Estonia"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://laitseloss.ee/peod#firmapeod",
+    "name": "Firmapeod ja galaõhtud",
+    "description": "Muljetavaldav keskkond ettevõtte üritustele ja galaõhtutele. Lossi ajaloolised saalid annavad igale sündmusele erilise kaalu ja väärikuse.",
+    "serviceType": "Corporate Event Venue",
+    "provider": { "@id": "https://laitseloss.ee/#organization" }
+  }
+];
+---
+
+<BaseLayout
+  title="Peod ja tähtpäevad — Laitse Loss"
+  description="Pulmad, sünnipäevad ja firmapeod ajaloolises Laitse Lossis. Elegantne keskkond Harjumaal, mis muudab iga sündmuse eriliseks."
+  ogImage="/images/Pulmad.jpg"
+  pageSchema={peodSchema}
+>
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/images/01-pulm.webp"
+      alt="Pidulikult kaunistatud saal Laitse Lossis"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-warm-dark/70"></div>
+    <div class="relative z-10 text-center px-6 py-24 max-w-3xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white mb-6 drop-shadow-lg">
+        Tähistage oma erilist päeva ajaloolises lossis
+      </h1>
+      <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 drop-shadow-md">
+        Pulmad, sünnipäevad ja pidustused ajaloolises lossis
+      </p>
+      <Flourish type="vintage" size="md" fill="gold" />
+    </div>
+  </section>
+
+  <!-- Celebration Types -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-section text-warm-dark mb-4">Teie sündmus lossis</h2>
+        <BurgundyRule width="60px" />
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Pulmad -->
+        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="/images/Pulmad.jpg"
+              alt="Pulmapaar Laitse Lossi ees"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="p-6 lg:p-8">
+            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Pulmad</h3>
+            <GoldRule width="40px" />
+            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
+              Ajaloolise lossi romantiline õhkkond loob unustamatu tausta teie kõige olulisemale päevale.
+              Elegantne saal, kaunis aed ja eriline atmosfäär — kõik, et teie pulm oleks
+              just selline, nagu ette kujutasite.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sünnipäevad -->
+        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="/images/Peolaud-Kuldses-saalis.jpg"
+              alt="Pidulikult kaetud laud kuldses saalis"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="p-6 lg:p-8">
+            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Sünnipäevad ja tähtpäevad</h3>
+            <GoldRule width="40px" />
+            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
+              Tähistage oma erilist päeva lossi ainulaadses miljöös. Intiimsetest koosviibimistest
+              suuremate pidustusteni — Laitse Loss pakub raamistiku, mis teeb iga tähtpäeva meeldejäävaks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Firmapeod -->
+        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="/images/main_gastro.jpg"
+              alt="Elegantne lauakatmine firmapeo jaoks"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="p-6 lg:p-8">
+            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Firmapeod ja galaõhtud</h3>
+            <GoldRule width="40px" />
+            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
+              Muljetavaldav keskkond ettevõtte üritustele ja galaõhtutele, mis jäävad meelde.
+              Lossi ajaloolised saalid annavad igale sündmusele erilise kaalu ja väärikuse.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ruumid ja alad -->
+  <section class="bg-warm-dark/[0.03] px-6 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-3">Ruumid ja alad</p>
+        <h2 class="font-display text-section text-warm-dark mb-4">Meie ruumid</h2>
+        <GoldRule width="60px" />
+      </div>
+
+      <!-- Suur saal -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28">
+        <div class="overflow-hidden rounded">
+          <img
+            src="/images/Suur_saal_galerii.jpg"
+            alt="Suur saal Laitse Lossis galeriiga"
+            class="w-full h-80 lg:h-96 object-cover"
+          />
+        </div>
+        <div>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Suur saal</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Soklikorrus · 110 m²</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Lossi suurim ja võimsaim ruum, kus kõrged võlvlaed ja ajaloolised detailid loovad erakordse
+            atmosfääri. Suur saal sobib nii suursugusteks banketipidudeks kui ka kontsertideks ja
+            ettekanneteks.
+          </p>
+          <p class="font-body text-body-lg text-stone mt-3 leading-relaxed">
+            Kuni 150 külalist teatristiilis, 100 piduliku banketi jaoks. Ruum, mis jätab mulje
+            juba uksest sisse astudes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Salong (reversed) -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28">
+        <div class="md:order-2 overflow-hidden rounded">
+          <img
+            src="/images/Peolaud-Kuldses-saalis.jpg"
+            alt="Salong Laitse Lossis"
+            class="w-full h-80 lg:h-96 object-cover"
+          />
+        </div>
+        <div class="md:order-1">
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Salong</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">I korrus · 56 m²</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Esimese korruse salong on intiimne ja soe ruum, mille suured aknad avanevad lossi
+            aeda ja ümbritsevale maastikule. Ideaalne väiksematele tähistamistele, kus iga külaline
+            tunneb end erilisena.
+          </p>
+          <p class="font-body text-body-lg text-stone mt-3 leading-relaxed">
+            Kuni 64 külalist, intiimne õhkkond. Salongi hubane atmosfäär sobib eriti hästi
+            sünnipäevadeks, juubeliteks ja pere koosviibimisteks.
+          </p>
+        </div>
+      </div>
+
+      <!-- Terrass ja aed -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="overflow-hidden rounded">
+          <img
+            src="/images/Terrass.jpg"
+            alt="Laitse Lossi terrass ja aed"
+            class="w-full h-80 lg:h-96 object-cover"
+          />
+        </div>
+        <div>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Terrass ja aed</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Välialad</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Esimese korruse terrass pakub ideaalset kohta vabaõhu kokteilideks ja einetamiseks
+            lossi aia vaatega. Suveperioodil on kogu aed ürituste käsutuses.
+          </p>
+          <p class="font-body text-body-lg text-stone mt-3 leading-relaxed">
+            Suur aed sobib suurepäraselt suveüritusteks ja tseremooniateks. Pulmatseremoonia lossi
+            aias, vastuvõtt terrassil — looduse ja ajaloo kooskõla, mida mujalt ei leia.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mida pakume -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <GoldRule width="100px" />
+        <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida pakume</h2>
+        <p class="font-subtitle text-subtitle italic text-stone">
+          Teie sündmuse õnnestumiseks hoolitseme kõige eest
+        </p>
+      </div>
+
+      <ul class="space-y-6">
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Toitlustus</p>
+            <p class="font-body text-body-lg text-stone">Aitame leida teie sündmusele sobiva toitlustuslahenduse.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Kaunistused ja dekoreerimine</p>
+            <p class="font-body text-body-lg text-stone">Aitame luua teie nägemuse kohase kaunistuse, mis sobib lossi ajaloolise interjööriga.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Muusika ja meelelahutus</p>
+            <p class="font-body text-body-lg text-stone">Akustika ja atmosfäär, mis toetavad nii elavat muusikat kui ka DJ-programme.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Suveperioodil aed ja terrass</p>
+            <p class="font-body text-body-lg text-stone">Lossi aed ja terrass avavad suvel täiendavad võimalused tseremooniateks ja vastuvõttudeks.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="bg-warm-dark/[0.04] px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center">
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">Räägime teie sündmusest</h2>
+      <p class="font-body text-body-lg text-stone mb-8">
+        Iga sündmus on erinev. Rääkige meile oma soovidest
+        ja leiame koos parima lahenduse.
+      </p>
+
+      <div class="mb-10">
+        <a href="tel:+37258356509" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors inline-flex items-center gap-2 min-h-[44px]">
+          <span class="text-stone">Tel:</span> +372 58 356 509
+        </a>
+        <a href="mailto:info@laitseloss.ee" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors flex items-center gap-2 min-h-[44px]">
+          <span class="text-stone">E-post:</span> info@laitseloss.ee
+        </a>
+      </div>
+
+      <Button variant="filled" href="mailto:info@laitseloss.ee" label="Küsi pakkumist" />
+    </div>
+  </section>
+</BaseLayout>

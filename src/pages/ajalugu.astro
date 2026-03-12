@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Flourish from '../components/Flourish.astro';
+import GoldRule from '../components/GoldRule.astro';
+import Button from '../components/Button.astro';
+
+const ajaluguSchema = {
+  "@context": "https://schema.org",
+  "@type": "LandmarksOrHistoricalBuildings",
+  "@id": "https://laitseloss.ee/#castle",
+  "name": "Laitse Loss",
+  "alternateName": ["Laitse Castle", "Laitse mõis"],
+  "description": "Neogooti stiilis ajalooline lossihoone Harjumaal, Eestis. Ehitati umbes 1890. aastal Woldemar von Uexkülli poolt. Lossi asukoht on mainitud juba Henriku Liivimaa kroonikas aastast 1219.",
+  "url": "https://laitseloss.ee/ajalugu",
+  "image": [
+    "https://laitseloss.ee/images/Lossi-tornid.jpg",
+    "https://laitseloss.ee/images/Fassaad.jpg"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lossi tee 9",
+    "addressLocality": "Laitse",
+    "postalCode": "76302",
+    "addressRegion": "Harjumaa",
+    "addressCountry": "EE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 59.1966,
+    "longitude": 24.3846
+  },
+  "foundingDate": "1890",
+  "historicOccupant": [
+    {
+      "@type": "Person",
+      "name": "Woldemar von Uexküll",
+      "birthDate": "1860-08-28",
+      "deathDate": "1945",
+      "description": "Baltisaksa aadlik, Laitse lossihoone ehitaja. Sõjaväelane, kirjanik ja usutegelane."
+    }
+  ],
+  "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Harjumaa",
+    "addressCountry": "EE"
+  }
+};
+---
+
+<BaseLayout
+  title="Laitse lossi ajalugu — Neogooti loss alates 1219"
+  description="Laitse lossi ajalugu alates 1219. aastast kuni neogooti lossihoone valmimiseni 1890. aastal. Tutvu ehitaja Woldemar von Uexkülli looga."
+  ogImage="/images/Lossi-tornid.jpg"
+  pageSchema={ajaluguSchema}
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section
+    class="relative flex items-center justify-center min-h-[60vh] md:min-h-[70vh] bg-warm-dark overflow-hidden"
+  >
+    <img
+      src="/images/Lossi-tornid.jpg"
+      alt="Laitse lossi tornid"
+      class="absolute inset-0 w-full h-full object-cover opacity-40"
+      loading="eager"
+    />
+    <div class="relative z-10 text-center px-6 py-24 md:py-32">
+      <h1 class="font-display text-hero text-warm-white mb-4 drop-shadow-lg">
+        Laitse lossi ajalugu
+      </h1>
+      <div class="flex justify-center">
+        <GoldRule width="120px" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CASTLE HISTORY NARRATIVE ═══ -->
+  <section class="py-20 md:py-28 px-6">
+    <div class="max-w-prose mx-auto">
+
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+        Laitse nimi ilmub ajaloo lehekülgedele esmakordselt juba XIII sajandi alguses. Taani
+        ristisõdijad, kes 1219. aasta talvel Eestimaa põhjaosa vallutusretkedel liikusid, jõudsid
+        veebruarikuu lõikava külmaga vaikusesse mähkunud külakesse, mida Henriku Liivimaa kroonikas
+        tähistatakse nimega <em>Ladise</em>. Sõdamehed pidasid seal öömaja ja jätsid siis edasi, kuid
+        kohanimi jäi kroonikasse igaveseks.
+      </p>
+
+      <!-- Pull-quote: 1219 -->
+      <blockquote class="my-14 md:my-18 text-center px-4">
+        <div class="flex justify-center mb-6">
+          <GoldRule width="60px" />
+        </div>
+        <p class="font-subtitle italic text-burgundy text-[clamp(22px,2.8vw,32px)] leading-snug max-w-xl mx-auto">
+          &laquo;1219. aasta veebruaris jõudsid ristisõdijad Ladise-nimele külasse
+          ja jäid sinna öömajale.&raquo;
+        </p>
+        <footer class="mt-4 font-ui text-label-sm text-stone uppercase">
+          Henriku Liivimaa kroonika
+        </footer>
+        <div class="flex justify-center mt-6">
+          <GoldRule width="60px" />
+        </div>
+      </blockquote>
+
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+        Sajandeid kuulus see paik Ruila ordumõisale. Olud muutusid XVII sajandi alguses, kui
+        Rootsi võimude kingitusena anti kogu Ruila valdus 1622. aastal Riia bürgermeistrile
+        Johan Ulrichile. Tema soost kujuneski Laitse mõisaks: vanimad kindlad teated iseseisva
+        mõisana pärinevad aastast 1637. Ulrichite perekond hoidis maad enda käes ligi kakssada
+        aastat, kuni 1814. aastani, mil valdus päranes Mohrenschildtide suguvõsale.
+      </p>
+
+      <div class="flex justify-center my-14">
+        <GoldRule width="100px" />
+      </div>
+
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+        XIX sajandi teisel poolel vahetusid omanikud sagedasti. Mohrenschildtide järelt läks mõis
+        Tallinna pastorite toetusfondile, siis suurtöösturile Alexander Eggersile ning pärastpoole
+        Paul Heinrich von Dehni käsutusse. Muutus saabus 1883. aastal, kui Kose-Uuemõisalt pärit
+        Natalie von Uexküll ostis Laitse oma pojale Woldemarile. Just see ost muutis kõike:
+        Woldemar von Uexküll, noor ja kujutlusvõimeline aadlik, hakkas kavandama midagi,
+        mida senini Laitse küplev maastik polnud näinud.
+      </p>
+
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+        Umbes 1890. aastal valmis Woldemari nägemusest inspireeritud neogooti lossihoone &mdash;
+        tornikeste, viilkatuse ja kunstipäraste detailidega ehitis, mis paistab juba kaugelt.
+        See on romantiline loss, mida ehitas romantiline hing. Pärast sõjaväelist karjääri pööris
+        Woldemar kirjanduse ja usulise müstika poole, ning tema sisemine maailm peegeldub
+        hoone ülevas, unistavas ilmes. Kodu, mis sai lossiks; mõis, mis sai muinaslooliseks.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ═══ WOLDEMAR VON UEXKULL SECTION ═══ -->
+  <section class="bg-warm-dark/[0.04] py-20 md:py-28 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+
+        <!-- Image -->
+        <div class="order-2 md:order-1">
+          <img
+            src="/images/ajaluguUexkyll.jpg"
+            alt="Woldemar von Uexküll"
+            class="w-full rounded shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Text -->
+        <div class="order-1 md:order-2">
+          <h2 class="font-display text-section text-warm-dark mb-6">
+            Woldemar von Uexküll
+          </h2>
+          <div class="mb-6">
+            <GoldRule width="80px" />
+          </div>
+
+          <div class="space-y-6 font-body text-body-lg text-warm-dark leading-relaxed">
+            <p>
+              Parun Woldemar Reinhold Karl Alexander von Uexküll sündis 28. augustil 1860
+              Kose-Uuemõisas, vana baltisaksa aadliperekonna järglasena. Ta omandas hariduse
+              Tallinna Toomkoolis ja hiljem Kuressaare gümnaasiumis, ning astus seejärel
+              vabatahtlikuna Vene keisririigi ratsaväkke. Kaks aastat teenis ta Novorossiiskis,
+              Põhja-Kaukaasia sõjas piirkonnas, enne kui otsustas sõjaväelise elu seljataha jätta.
+            </p>
+
+            <p>
+              Eestisse naastes ostis Woldemar Laitse mõisa ja abiellus 1883. aastal Prantsuse
+              suursaadiku tütre Olga Marquis de Tallenay'ga. Kuid just isikliku elu keerulisus
+              suunas noort parunit vaimsete otsingute teele. Abielu lahutati 1890ndatel
+              aastatel, uus abielu 1899. aastal Martha von Ditmariga &mdash; need
+              sõlmpunktid märkisid pööret, mille käigus Woldemar pöördus üha enam usu
+              ja kirjanduse poole.
+            </p>
+
+            <p>
+              Laitse-perioodil ehitas ta praeguse neogooti lossihoone, arendas põllumajandust
+              ja pidas Nissi vallas kohtuniku ametit. Samuti tugevdas ta sidemeid rahvusvahelise
+              evangeelse liikumisega: 1905. aastal esindas ta Baptistliku Maailmaliidu Londoni
+              konverentsil Vene Baptistlikku Liitu ja valiti üheks asepresidendiks. Talle oli
+              oluline ka kohalik kogukond: Laitsesse loodi tema toetusel pühapäevakool ja algkool.
+            </p>
+
+            <p>
+              Üks tema lähedasemaid kaaslasi oli arhitektuurihuviline Nõmme asutaja Nicolai von
+              Glehn. Pole võimalik välistada, et Glehn avaldas mõju ka Laitse lossihoone kujunemisele
+              &mdash; mõlemad mehed jagasid vaimustust gooti vormide ja romantiliste ideaalide vastu.
+            </p>
+
+            <p>
+              1909. aastal müüs Woldemar Laitse mõisa: ainsale pojale, kes oli rüütelkonnast
+              välja heidetud, ta seda pärandada ei saanud, tütar aga elas välismaal. Mõis
+              läks Bremenite perekonna valdusse. Woldemar ise elas oma eluõhtul Austrias ja
+              Šveitsis, kus ta jätkas vaimset otsingut ja kirjanduslikku loometööd. Ta suri
+              1945. aastal Baselis.
+            </p>
+          </div>
+
+          <div class="mt-10 flex justify-center md:justify-start">
+            <Flourish type="vintage" size="sm" fill="gold" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER CTA ═══ -->
+  <section class="py-20 md:py-24 px-6 text-center">
+    <h2 class="font-display text-section text-warm-dark mb-4">
+      Avasta lossi ruume
+    </h2>
+    <p class="font-subtitle text-subtitle text-stone mb-8 max-w-md mx-auto">
+      Laitse Loss pakub ainulaadseid ruume nii pidudeks kui seminarideks.
+    </p>
+    <div class="flex gap-6 flex-wrap justify-center">
+      <Button variant="filled" href="/peod" label="Peod ja tähtpäevad" />
+      <Button variant="outline" href="/seminarid" label="Seminarid" />
+    </div>
+  </section>
+
+</BaseLayout>

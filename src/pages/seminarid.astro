@@ -1,0 +1,396 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Flourish from '../components/Flourish.astro';
+import GoldRule from '../components/GoldRule.astro';
+import BurgundyRule from '../components/BurgundyRule.astro';
+import TopStripe from '../components/TopStripe.astro';
+import Button from '../components/Button.astro';
+
+const seminaridSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MeetingRoom",
+    "@id": "https://laitseloss.ee/#salong",
+    "name": "Salong",
+    "description": "Klassikalise interjööriga ruum lossi esimesel korrusel. Loomulik valgus ja hubane õhkkond sobivad ideaalselt nii väiksema seminari kui ka töötoa läbiviimiseks.",
+    "url": "https://laitseloss.ee/seminarid",
+    "telephone": "+37258356509",
+    "email": "info@laitseloss.ee",
+    "image": "https://laitseloss.ee/images/Salong_.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lossi tee 9",
+      "addressLocality": "Laitse",
+      "postalCode": "76302",
+      "addressRegion": "Harjumaa",
+      "addressCountry": "EE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 59.1966,
+      "longitude": 24.3846
+    },
+    "floorSize": {
+      "@type": "QuantitativeValue",
+      "value": 56,
+      "unitCode": "MTK"
+    },
+    "maximumAttendeeCapacity": 64,
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "WiFi", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Projektor ja ekraan", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Tahvel / flipchart", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Loomulik valgus", "value": true }
+    ],
+    "containedInPlace": { "@id": "https://laitseloss.ee/#venue" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MeetingRoom",
+    "@id": "https://laitseloss.ee/#suur-saal",
+    "name": "Suur saal",
+    "description": "Lossi suurim ruum — avar ja kõrgete lagedega. Sobib suurematele konverentsidele, kus vajate mahtu ja vabadust paigutust kohandada.",
+    "url": "https://laitseloss.ee/seminarid",
+    "telephone": "+37258356509",
+    "email": "info@laitseloss.ee",
+    "image": "https://laitseloss.ee/images/Suur_saal_tuhi.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lossi tee 9",
+      "addressLocality": "Laitse",
+      "postalCode": "76302",
+      "addressRegion": "Harjumaa",
+      "addressCountry": "EE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 59.1966,
+      "longitude": 24.3846
+    },
+    "floorSize": {
+      "@type": "QuantitativeValue",
+      "value": 110,
+      "unitCode": "MTK"
+    },
+    "maximumAttendeeCapacity": 150,
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "WiFi", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Projektor ja ekraan", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Tahvel / flipchart", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Kõrged võlvlaed", "value": true }
+    ],
+    "containedInPlace": { "@id": "https://laitseloss.ee/#venue" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://laitseloss.ee/seminarid#seminarid",
+    "name": "Seminarid ja konverentsid Laitse Lossis",
+    "description": "Inspireeriv ajalooline keskkond seminaridele, konverentsidele ja meeskonnaüritustele. Paindlikud ruumid, tehnika ja parkimine.",
+    "serviceType": "Conference and Seminar Venue",
+    "provider": { "@id": "https://laitseloss.ee/#organization" },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Estonia"
+    }
+  }
+];
+---
+
+<BaseLayout
+  title="Seminarid ja konverentsid — Laitse Loss"
+  description="Korraldage seminar või konverents ajaloolises Laitse lossis. Inspireeriv keskkond, paindlikud ruumid ja mugav asukoht vaid 30 min Tallinnast."
+  ogImage="/images/Suur_saal_tuhi.jpg"
+  pageSchema={seminaridSchema}
+>
+
+  <!-- ═══════════════════════════════════════════
+       1. HERO
+       ═══════════════════════════════════════════ -->
+  <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <TopStripe />
+
+    <img
+      src="/images/Suur_saal_galerii.jpg"
+      alt="Suur saal galeriiga — konverentsiruum Laitse lossis"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-warm-dark/70"></div>
+
+    <div class="relative z-10 text-center px-6 py-24 max-w-3xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white mb-6 drop-shadow-lg">
+        Seminarid ja konverentsid ajaloolises lossis
+      </h1>
+      <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 drop-shadow-md">
+        Inspireeriv keskkond, kus ideed sünnivad kergemini
+      </p>
+      <Flourish type="vintage" size="md" fill="gold" />
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       2. MIKS LAITSE LOSS (Value props — 3 cards)
+       ═══════════════════════════════════════════ -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-section text-warm-dark mb-4">Miks korraldada seminar lossis</h2>
+        <BurgundyRule width="60px" />
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="/images/Salong_.jpg"
+              alt="Salong — hubane seminariruum"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6 lg:p-8">
+            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Inspireeriv miljöö</h3>
+            <GoldRule width="40px" />
+            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
+              Ajalooline loss loob keskkonna, mis eristub tavapärasest kontorist. Kõrged laed, loomulik
+              valgus ja eriline atmosfäär aitavad mõtetel vabamalt liikuda.
+            </p>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="/images/Suur_saal_tuhi.jpg"
+              alt="Suur saal — paindlik konverentsiruum"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6 lg:p-8">
+            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Paindlikud ruumid</h3>
+            <GoldRule width="40px" />
+            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
+              Kaks eriilmelist ruumi — intiimne Salong ja avar Suur saal. Mõlemad kohandatavad
+              vastavalt teie ürituse formaadile, 24-st kuni 150 osalejani.
+            </p>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+          <div class="overflow-hidden">
+            <img
+              src="/images/Terrass.jpg"
+              alt="Lossi terrass kohvipauside jaoks"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6 lg:p-8">
+            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Mugav asukoht</h3>
+            <GoldRule width="40px" />
+            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
+              Vaid 30 minutit Tallinnast, tasuta parkimine territooriumil. Terrass ja aed
+              pakuvad mõnusat vaheldust kohvipausideks ja meeskonnategevusteks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       3. RUUMID (Rooms — Detailed)
+       ═══════════════════════════════════════════ -->
+  <section class="bg-warm-dark/[0.03] px-6 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-3">Ruumid ja alad</p>
+        <h2 class="font-display text-section text-warm-dark mb-4">Meie ruumid</h2>
+        <GoldRule width="60px" />
+      </div>
+
+      <!-- Salong -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28">
+        <div class="overflow-hidden rounded">
+          <img
+            src="/images/Salong_.jpg"
+            alt="Salong — seminariruum Laitse lossi esimesel korrusel"
+            class="w-full h-80 lg:h-96 object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Salong</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">I korrus &middot; 56 m²</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Klassikalise interjööriga ruum lossi esimesel korrusel. Loomulik valgus ja hubane
+            õhkkond sobivad ideaalselt nii väiksema seminari kui ka töötoa läbiviimiseks.
+          </p>
+
+          <table class="w-full font-ui text-[15px] text-warm-dark mt-6">
+            <thead>
+              <tr class="border-b border-stone/20">
+                <th class="text-left py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Paigutus</th>
+                <th class="text-right py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Mahutavus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stone/10">
+                <td class="py-2.5">U-laud</td>
+                <td class="text-right py-2.5">24</td>
+              </tr>
+              <tr class="border-b border-stone/10">
+                <td class="py-2.5">Diplomaadistiilis</td>
+                <td class="text-right py-2.5">32</td>
+              </tr>
+              <tr class="border-b border-stone/10">
+                <td class="py-2.5">Klassiruum</td>
+                <td class="text-right py-2.5">40</td>
+              </tr>
+              <tr>
+                <td class="py-2.5">Teatristiilis</td>
+                <td class="text-right py-2.5">64</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Suur saal (reversed) -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28">
+        <div class="md:order-2 overflow-hidden rounded">
+          <img
+            src="/images/Suur_saal_tuhi.jpg"
+            alt="Suur saal — lossi suurim konverentsiruum"
+            class="w-full h-80 lg:h-96 object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="md:order-1">
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Suur saal</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Soklikorrus &middot; 110 m²</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Lossi suurim ruum — avar ja kõrgete lagedega. Sobib suurematele konverentsidele,
+            kus vajate mahtu ja vabadust paigutust kohandada.
+          </p>
+
+          <table class="w-full font-ui text-[15px] text-warm-dark mt-6">
+            <thead>
+              <tr class="border-b border-stone/20">
+                <th class="text-left py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Paigutus</th>
+                <th class="text-right py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Mahutavus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stone/10">
+                <td class="py-2.5">Teatristiilis</td>
+                <td class="text-right py-2.5">150</td>
+              </tr>
+              <tr>
+                <td class="py-2.5">Banketi ümarlauad</td>
+                <td class="text-right py-2.5">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Terrass ja aed -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="overflow-hidden rounded">
+          <img
+            src="/images/Terrass.jpg"
+            alt="Laitse lossi terrass ja aed"
+            class="w-full h-80 lg:h-96 object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Terrass ja aed</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Välialad</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Kohvipausid värskes õhus esimese korruse terrassil. Suur aed suveürituste ja
+            meeskonnategevuste jaoks — mõnus vaheldus konverentsiruumile.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       4. MIDA PAKUME (What we offer)
+       ═══════════════════════════════════════════ -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <GoldRule width="100px" />
+        <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida pakume</h2>
+        <p class="font-subtitle text-subtitle italic text-stone">
+          Kõik vajalik eduka seminari korraldamiseks
+        </p>
+      </div>
+
+      <ul class="space-y-6">
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Esitlustehnika</p>
+            <p class="font-body text-body-lg text-stone">Projektor ja ekraan, WiFi, tahvel/flipchart. Täpsem varustus kokkuleppel.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Toitlustus</p>
+            <p class="font-body text-body-lg text-stone">Aitame leida teie seminarile sobiva toitlustuslahenduse — kohvipausidest lõunani.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Paindlik ruumipaigutus</p>
+            <p class="font-body text-body-lg text-stone">U-laud, klassiruum, teatristiil — kohandame ruumi vastavalt teie formaadile.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Tasuta parkimine</p>
+            <p class="font-body text-body-lg text-stone">Mugav parkimine lossi territooriumil, vaid 30 minutit Tallinna kesklinnast.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       5. KONTAKT CTA
+       ═══════════════════════════════════════════ -->
+  <section class="bg-warm-dark/[0.04] px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center">
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">Planeerime teie seminari</h2>
+      <p class="font-body text-body-lg text-stone mb-8">
+        Iga seminar on erinev. Rääkige meile oma soovidest
+        ja leiame koos parima lahenduse.
+      </p>
+
+      <div class="mb-10">
+        <a href="tel:+37258356509" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors inline-flex items-center gap-2 min-h-[44px]">
+          <span class="text-stone">Tel:</span> +372 58 356 509
+        </a>
+        <a href="mailto:info@laitseloss.ee" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors flex items-center justify-center gap-2 min-h-[44px]">
+          <span class="text-stone">E-post:</span> info@laitseloss.ee
+        </a>
+      </div>
+
+      <Button variant="filled" href="mailto:info@laitseloss.ee" label="Küsi pakkumist" />
+    </div>
+  </section>
+
+</BaseLayout>
+

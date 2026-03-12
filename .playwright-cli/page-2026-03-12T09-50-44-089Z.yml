@@ -1,0 +1,109 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Laitse Loss" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Laitse Loss" [ref=e5]
+      - group [ref=e6]:
+        - generic "Menüü" [active] [ref=e7] [cursor=pointer]:
+          - generic [ref=e8]: Menüü
+          - img [ref=e9]
+        - list [ref=e132]:
+          - listitem [ref=e133]:
+            - link "Avaleht" [ref=e134] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e135]:
+            - link "Ajalugu" [ref=e136] [cursor=pointer]:
+              - /url: /ajalugu
+          - listitem [ref=e137]:
+            - link "Peod" [ref=e138] [cursor=pointer]:
+              - /url: /peod
+          - listitem [ref=e139]:
+            - link "Seminarid" [ref=e140] [cursor=pointer]:
+              - /url: /seminarid
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - img "Laitse lossi fassaad" [ref=e16]
+      - generic [ref=e18]:
+        - img [ref=e19]
+        - heading "Laitse Loss" [level=1] [ref=e21]
+        - paragraph [ref=e23]: Ajalooline sündmuste paik Harjumaal
+        - paragraph [ref=e24]: Pulmad · Vastuvõtud · Seminarid
+        - paragraph [ref=e25]: Neogooti loss keset Harjumaa loodust — pulmadeks, pidustusteks ja seminarideks. Vaid 30 minutit Tallinnast.
+        - generic [ref=e26]:
+          - link "Küsi pakkumist" [ref=e27] [cursor=pointer]:
+            - /url: mailto:info@laitseloss.ee
+          - link "Avasta ruume" [ref=e28] [cursor=pointer]:
+            - /url: /peod
+        - img [ref=e30]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - img "Pulmatseremoonia Laitse lossis" [ref=e37]
+        - heading "Peod ja tähtpäevad" [level=2] [ref=e38]
+        - paragraph [ref=e39]: Pulmad, sünnipäevad, firmapeod ja galaõhtud — lossi elegantne atmosfäär teeb iga tähistamise eriliseks.
+        - link "Loe lähemalt" [ref=e41] [cursor=pointer]:
+          - /url: /peod
+      - generic [ref=e42]:
+        - img "Seminariruumid Laitse lossis" [ref=e44]
+        - heading "Seminarid ja konverentsid" [level=2] [ref=e45]
+        - paragraph [ref=e46]: Inspireeriv keskkond ja paindlikud ruumid teie seminaridele, konverentsidele ja meeskonnaüritustele.
+        - link "Loe lähemalt" [ref=e48] [cursor=pointer]:
+          - /url: /seminarid
+    - generic [ref=e50]:
+      - heading "Miks Laitse Loss" [level=2] [ref=e52]
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - paragraph [ref=e56]: 130+
+          - paragraph [ref=e57]: aastat ajalugu
+          - paragraph [ref=e59]: Neogooti arhitektuuriga ajalooline loss, mis on võlunud külalisi üle sajandi.
+        - generic [ref=e60]:
+          - paragraph [ref=e61]: 30 min
+          - paragraph [ref=e62]: Tallinnast
+          - paragraph [ref=e64]: Hõlpsasti ligipääsetav asukoht Tallinna lähedal, tasuta parkimisega.
+        - generic [ref=e65]:
+          - paragraph [ref=e66]: "150"
+          - paragraph [ref=e67]: külalist
+          - paragraph [ref=e69]: Paindlikud ruumid — intiimsetest koosviibimistest suurte pidudeni.
+        - generic [ref=e70]:
+          - paragraph [ref=e71]: 1:1
+          - paragraph [ref=e72]: personaalne teenindus
+          - paragraph [ref=e74]: Pühendunud meeskond, kes hoolitseb teie ürituse iga detaili eest.
+    - generic [ref=e77]:
+      - img "Laitse lossi tornid" [ref=e79]
+      - generic [ref=e80]:
+        - heading "Lossi lugu" [level=2] [ref=e81]
+        - paragraph [ref=e83]: Laitse lossi ajalugu ulatub aastasse 1219, mil seda mainiti esmakordselt Henriku Liivimaa kroonikas. Tutvuge lossi põneva minevikuga ja selle ehitaja Woldemar von Uexkülli looga.
+        - link "Loe ajalugu" [ref=e84] [cursor=pointer]:
+          - /url: /ajalugu
+  - contentinfo [ref=e85]:
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - heading "Laitse Loss" [level=3] [ref=e91]
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "+372 58 356 509" [ref=e94] [cursor=pointer]:
+              - /url: tel:+37258356509
+          - listitem [ref=e95]:
+            - link "info@laitseloss.ee" [ref=e96] [cursor=pointer]:
+              - /url: mailto:info@laitseloss.ee
+          - listitem [ref=e97]: Lossi tee 9, 76302 Laitse, Harjumaa
+      - iframe [ref=e100]
+      - generic [ref=e101]:
+        - paragraph [ref=e103]: © 2026 Laitse Loss OÜ
+        - link "Privaatsuspoliitika" [ref=e105] [cursor=pointer]:
+          - /url: "#"
+  - generic [ref=e108]:
+    - button "Menu" [ref=e109]:
+      - img [ref=e111]
+      - generic: Menu
+    - button "Inspect" [ref=e115]:
+      - img [ref=e117]
+      - generic: Inspect
+    - button "Audit" [ref=e119]:
+      - generic [ref=e120]:
+        - img [ref=e121]
+        - img [ref=e130]
+      - generic: Audit
+    - button "Settings" [ref=e124]:
+      - img [ref=e126]
+      - generic: Settings

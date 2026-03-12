@@ -1,0 +1,139 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Laitse Loss" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Laitse Loss" [ref=e5]
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link "Avaleht" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e9]:
+          - link "Ajalugu" [ref=e10] [cursor=pointer]:
+            - /url: /ajalugu
+        - listitem [ref=e11]:
+          - link "Peod" [ref=e12] [cursor=pointer]:
+            - /url: /peod
+        - listitem [ref=e13]:
+          - link "Seminarid" [ref=e14] [cursor=pointer]:
+            - /url: /seminarid
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - img "Pidulikult kaunistatud saal Laitse Lossis" [ref=e20]
+      - generic [ref=e22]:
+        - heading "Tähistage oma erilist päeva ajaloolises lossis" [level=1] [ref=e23]
+        - paragraph [ref=e24]: Pulmad, sünnipäevad ja pidustused ajaloolises lossis
+        - img [ref=e25]
+    - generic [ref=e28]:
+      - heading "Teie sündmus lossis" [level=2] [ref=e30]
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - img "Pulmapaar Laitse Lossi ees" [ref=e35]
+          - generic [ref=e36]:
+            - heading "Pulmad" [level=3] [ref=e37]
+            - paragraph [ref=e39]: Ajaloolise lossi romantiline õhkkond loob unustamatu tausta teie kõige olulisemale päevale. Elegantne saal, kaunis aed ja eriline atmosfäär — kõik, et teie pulm oleks just selline, nagu ette kujutasite.
+        - generic [ref=e40]:
+          - img "Pidulikult kaetud laud kuldses saalis" [ref=e42]
+          - generic [ref=e43]:
+            - heading "Sünnipäevad ja tähtpäevad" [level=3] [ref=e44]
+            - paragraph [ref=e46]: Tähistage oma erilist päeva lossi ainulaadses miljöös. Intiimsetest koosviibimistest suuremate pidustusteni — Laitse Loss pakub raamistiku, mis teeb iga tähtpäeva meeldejäävaks.
+        - generic [ref=e47]:
+          - img "Elegantne lauakatmine firmapeo jaoks" [ref=e49]
+          - generic [ref=e50]:
+            - heading "Firmapeod ja galaõhtud" [level=3] [ref=e51]
+            - paragraph [ref=e53]: Muljetavaldav keskkond ettevõtte üritustele ja galaõhtutele, mis jäävad meelde. Lossi ajaloolised saalid annavad igale sündmusele erilise kaalu ja väärikuse.
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - paragraph [ref=e57]: Ruumid ja alad
+        - heading "Meie ruumid" [level=2] [ref=e58]
+      - generic [ref=e60]:
+        - img "Suur saal Laitse Lossis galeriiga" [ref=e62]
+        - generic [ref=e63]:
+          - heading "Suur saal" [level=3] [ref=e64]
+          - paragraph [ref=e65]: Soklikorrus · 110 m²
+          - paragraph [ref=e67]: Lossi suurim ja võimsaim ruum, kus kõrged võlvlaed ja ajaloolised detailid loovad erakordse atmosfääri. Suur saal sobib nii suursugusteks banketipidudeks kui ka kontsertideks ja ettekanneteks.
+          - paragraph [ref=e68]: Kuni 150 külalist teatristiilis, 100 piduliku banketi jaoks. Ruum, mis jätab mulje juba uksest sisse astudes.
+      - generic [ref=e69]:
+        - img "Salong Laitse Lossis" [ref=e71]
+        - generic [ref=e72]:
+          - heading "Salong" [level=3] [ref=e73]
+          - paragraph [ref=e74]: I korrus · 56 m²
+          - paragraph [ref=e76]: Esimese korruse salong on intiimne ja soe ruum, mille suured aknad avanevad lossi aeda ja ümbritsevale maastikule. Ideaalne väiksematele tähistamistele, kus iga külaline tunneb end erilisena.
+          - paragraph [ref=e77]: Kuni 64 külalist, intiimne õhkkond. Salongi hubane atmosfäär sobib eriti hästi sünnipäevadeks, juubeliteks ja pere koosviibimisteks.
+      - generic [ref=e78]:
+        - img "Laitse Lossi terrass ja aed" [ref=e80]
+        - generic [ref=e81]:
+          - heading "Terrass ja aed" [level=3] [ref=e82]
+          - paragraph [ref=e83]: Välialad
+          - paragraph [ref=e85]: Esimese korruse terrass pakub ideaalset kohta vabaõhu kokteilideks ja einetamiseks lossi aia vaatega. Suveperioodil on kogu aed ürituste käsutuses.
+          - paragraph [ref=e86]: Suur aed sobib suurepäraselt suveüritusteks ja tseremooniateks. Pulmatseremoonia lossi aias, vastuvõtt terrassil — looduse ja ajaloo kooskõla, mida mujalt ei leia.
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - heading "Mida pakume" [level=2] [ref=e91]
+        - paragraph [ref=e92]: Teie sündmuse õnnestumiseks hoolitseme kõige eest
+      - list [ref=e93]:
+        - listitem [ref=e94]:
+          - generic [ref=e95]: ♦
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: Toitlustus
+            - paragraph [ref=e98]: Aitame leida teie sündmusele sobiva toitlustuslahenduse.
+        - listitem [ref=e99]:
+          - generic [ref=e100]: ♦
+          - generic [ref=e101]:
+            - paragraph [ref=e102]: Kaunistused ja dekoreerimine
+            - paragraph [ref=e103]: Aitame luua teie nägemuse kohase kaunistuse, mis sobib lossi ajaloolise interjööriga.
+        - listitem [ref=e104]:
+          - generic [ref=e105]: ♦
+          - generic [ref=e106]:
+            - paragraph [ref=e107]: Muusika ja meelelahutus
+            - paragraph [ref=e108]: Akustika ja atmosfäär, mis toetavad nii elavat muusikat kui ka DJ-programme.
+        - listitem [ref=e109]:
+          - generic [ref=e110]: ♦
+          - generic [ref=e111]:
+            - paragraph [ref=e112]: Suveperioodil aed ja terrass
+            - paragraph [ref=e113]: Lossi aed ja terrass avavad suvel täiendavad võimalused tseremooniateks ja vastuvõttudeks.
+    - generic [ref=e115]:
+      - img [ref=e116]
+      - heading "Räägime teie sündmusest" [level=2] [ref=e118]
+      - paragraph [ref=e119]: Iga sündmus on erinev. Rääkige meile oma soovidest ja leiame koos parima lahenduse.
+      - generic [ref=e120]:
+        - paragraph [ref=e121]:
+          - text: "Tel:"
+          - link "+372 58 356 509" [ref=e122] [cursor=pointer]:
+            - /url: tel:+37258356509
+        - paragraph [ref=e123]:
+          - text: "E-post:"
+          - link "info@laitseloss.ee" [ref=e124] [cursor=pointer]:
+            - /url: mailto:info@laitseloss.ee
+      - link "Küsi pakkumist" [ref=e125] [cursor=pointer]:
+        - /url: mailto:info@laitseloss.ee
+  - contentinfo [ref=e126]:
+    - generic [ref=e130]:
+      - generic [ref=e131]:
+        - heading "Laitse Loss" [level=3] [ref=e132]
+        - list [ref=e133]:
+          - listitem [ref=e134]:
+            - link "+372 58 356 509" [ref=e135] [cursor=pointer]:
+              - /url: tel:+37258356509
+          - listitem [ref=e136]:
+            - link "info@laitseloss.ee" [ref=e137] [cursor=pointer]:
+              - /url: mailto:info@laitseloss.ee
+          - listitem [ref=e138]: Lossi tee 9, 76302 Laitse, Harjumaa
+      - iframe [ref=e141]
+      - generic [ref=e142]:
+        - paragraph [ref=e144]: © 2026 Laitse Loss OÜ
+        - link "Privaatsuspoliitika" [ref=e146] [cursor=pointer]:
+          - /url: "#"
+  - generic [ref=e149]:
+    - button "Menu" [ref=e150]:
+      - img [ref=e152]
+      - generic: Menu
+    - button "Inspect" [ref=e156]:
+      - img [ref=e158]
+      - generic: Inspect
+    - button "Audit" [ref=e160]:
+      - img [ref=e162]
+      - generic: Audit
+    - button "Settings" [ref=e165]:
+      - img [ref=e167]
+      - generic: Settings

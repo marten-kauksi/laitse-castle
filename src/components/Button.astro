@@ -7,7 +7,7 @@ interface Props {
 
 const { variant = 'filled', href, label } = Astro.props;
 
-const baseClasses = 'font-ui uppercase tracking-wider text-[15px] inline-block transition-colors duration-300 no-underline px-10 py-4';
+const baseClasses = 'font-ui uppercase tracking-wider text-[15px] inline-flex items-center justify-center transition-colors duration-300 no-underline px-10 py-4 min-h-[44px]';
 
 const variantClasses = variant === 'filled'
   ? 'bg-burgundy text-warm-white hover:bg-burgundy-hover'

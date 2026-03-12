@@ -9,10 +9,10 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-10 bg-warm-white border-b border-black/5">
-  <nav class="px-6 py-3 flex items-center justify-between max-w-7xl mx-auto">
+<header class="sticky top-0 z-50 bg-warm-white border-b border-black/5">
+  <nav class="px-4 py-2 md:px-6 md:py-3 flex items-center justify-between max-w-7xl mx-auto">
     <a href="/" class="shrink-0">
-      <img src="/images/logo-proposal.png" alt="Laitse Loss" class="h-[76px] w-auto" />
+      <img src="/images/logo-200.png" alt="Laitse Loss" class="h-[48px] md:h-[68px] w-auto" />
     </a>
 
     <!-- Desktop nav -->
@@ -35,8 +35,8 @@ const navLinks = [
     </ul>
 
     <!-- Mobile hamburger (CSS-only using details/summary) -->
-    <details class="md:hidden relative">
-      <summary class="list-none cursor-pointer p-2 -mr-2">
+    <details class="md:hidden relative" id="mobile-nav">
+      <summary class="list-none cursor-pointer p-3 -mr-3 min-w-[44px] min-h-[44px] flex items-center justify-center">
         <span class="sr-only">Menüü</span>
         <svg class="w-6 h-6 text-warm-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -48,7 +48,7 @@ const navLinks = [
             <a
               href={href}
               class:list={[
-                'block px-5 py-2.5 font-ui uppercase tracking-wide text-sm transition-colors duration-200',
+                'block px-5 py-3 font-ui uppercase tracking-wide text-sm transition-colors duration-200 min-h-[44px] flex items-center',
                 currentPath === href || (href !== '/' && currentPath.startsWith(href))
                   ? 'text-burgundy'
                   : 'text-warm-dark hover:text-burgundy hover:bg-black/5',
@@ -68,3 +68,15 @@ const navLinks = [
     display: none;
   }
 </style>
+
+<script>
+  // Close mobile nav when a link is clicked
+  const nav = document.getElementById('mobile-nav');
+  if (nav) {
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        (nav as HTMLDetailsElement).open = false;
+      });
+    });
+  }
+</script>
