@@ -2,9 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Flourish from '../components/Flourish.astro';
 import GoldRule from '../components/GoldRule.astro';
-import BurgundyRule from '../components/BurgundyRule.astro';
 import TopStripe from '../components/TopStripe.astro';
-import Button from '../components/Button.astro';
 
 const seminaridSchema = [
   {
@@ -124,7 +122,9 @@ const seminaridSchema = [
       <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 text-overlay hero-enter" style="--delay: 150ms">
         Inspireeriv keskkond konverentsideks ja koolitusteks
       </p>
-      <Flourish type="vintage" size="md" fill="gold" class="hero-enter" style="--delay: 300ms" />
+      <div class="hero-enter" style="--delay: 300ms">
+        <Flourish type="vintage" size="md" fill="gold" />
+      </div>
     </div>
   </section>
 
