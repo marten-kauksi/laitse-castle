@@ -123,29 +123,14 @@ const eventVenueSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════
-       2. STATS STRIP — Compact, elegant
-       ═══════════════════════════════════════════ -->
-  <section class="border-b border-stone/10">
-    <div class="max-w-5xl mx-auto grid grid-cols-3 divide-x divide-stone/10">
-      <div class="py-8 md:py-10 text-center">
-        <p class="font-display text-[clamp(28px,3.5vw,40px)] text-burgundy leading-none">130+</p>
-        <p class="font-ui text-[11px] md:text-label-sm uppercase tracking-wider text-stone mt-1">aastat ajalugu</p>
-      </div>
-      <div class="py-8 md:py-10 text-center">
-        <p class="font-display text-[clamp(28px,3.5vw,40px)] text-burgundy leading-none"><span class="text-[0.55em] font-ui tracking-normal align-baseline">kuni&nbsp;</span>150</p>
-        <p class="font-ui text-[11px] md:text-label-sm uppercase tracking-wider text-stone mt-1">külalist</p>
-      </div>
-      <div class="py-8 md:py-10 text-center">
-        <p class="font-display text-[clamp(28px,3.5vw,40px)] text-burgundy leading-none">30<span class="text-[0.6em]"> min</span></p>
-        <p class="font-ui text-[11px] md:text-label-sm uppercase tracking-wider text-stone mt-1">Tallinnast</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       3. TEENUSED — Asymmetric, visual
+       2. TEENUSED — Asymmetric, visual
        ═══════════════════════════════════════════ -->
   <section class="py-20 md:py-28 px-6">
+    <div class="max-w-2xl mx-auto text-center mb-14">
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida soovite tähistada?</h2>
+      <GoldRule width="60px" />
+    </div>
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
 
@@ -209,6 +194,26 @@ const eventVenueSchema = {
           </div>
 
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       3. STATS STRIP
+       ═══════════════════════════════════════════ -->
+  <section class="border-y border-stone/10">
+    <div class="max-w-5xl mx-auto grid grid-cols-3 divide-x divide-stone/10">
+      <div class="py-8 md:py-10 text-center">
+        <p class="font-display text-[clamp(28px,3.5vw,40px)] text-burgundy leading-none">130+</p>
+        <p class="font-ui text-[11px] md:text-label-sm uppercase tracking-wider text-stone mt-1">aastat ajalugu</p>
+      </div>
+      <div class="py-8 md:py-10 text-center">
+        <p class="font-display text-[clamp(28px,3.5vw,40px)] text-burgundy leading-none"><span class="text-[0.55em] font-ui tracking-normal align-baseline">kuni&nbsp;</span>150</p>
+        <p class="font-ui text-[11px] md:text-label-sm uppercase tracking-wider text-stone mt-1">külalist</p>
+      </div>
+      <div class="py-8 md:py-10 text-center">
+        <p class="font-display text-[clamp(28px,3.5vw,40px)] text-burgundy leading-none">30<span class="text-[0.6em]"> min</span></p>
+        <p class="font-ui text-[11px] md:text-label-sm uppercase tracking-wider text-stone mt-1">Tallinnast</p>
       </div>
     </div>
   </section>
