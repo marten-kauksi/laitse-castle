@@ -7,13 +7,19 @@ interface Props {
 
 const { variant = 'filled', href, label } = Astro.props;
 
-const baseClasses = 'font-ui uppercase tracking-wider text-[15px] inline-flex items-center justify-center transition-colors duration-300 no-underline px-10 py-4 min-h-[44px]';
+const baseClasses = 'font-ui uppercase tracking-wider text-[14px] inline-flex items-center justify-center no-underline px-10 py-4 min-h-[44px] rounded-sm transition-all duration-300';
 
 const variantClasses = variant === 'filled'
-  ? 'bg-burgundy text-warm-white hover:bg-burgundy-hover'
-  : 'border border-burgundy text-burgundy hover:bg-burgundy hover:text-warm-white';
+  ? 'btn-filled bg-burgundy text-warm-white shadow-md hover:shadow-lg hover:brightness-110 hover:-translate-y-[1px]'
+  : 'border border-burgundy text-burgundy hover:bg-burgundy hover:text-warm-white hover:-translate-y-[1px]';
 ---
 
 <a href={href} class={`${baseClasses} ${variantClasses}`}>
   {label}
 </a>
+
+<style>
+  .btn-filled {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent 50%, rgba(0,0,0,0.1));
+  }
+</style>

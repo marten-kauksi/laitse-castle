@@ -74,10 +74,15 @@ const navLinks = [
 
   /* Transparent state — over hero */
   .header-transparent {
-    background: transparent;
+    background: rgba(44, 40, 36, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .header-transparent .nav-link.text-burgundy {
+    color: #FAF7F2;
   }
   .header-transparent .nav-link:not(.text-burgundy) {
-    color: rgba(250, 247, 242, 0.85);
+    color: rgba(250, 247, 242, 0.65);
   }
   .header-transparent .nav-link:not(.text-burgundy):hover {
     color: #FAF7F2;
