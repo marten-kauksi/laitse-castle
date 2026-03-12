@@ -61,24 +61,25 @@ const ajaluguSchema = {
     <img
       src="/images/Lossi-tornid.jpg"
       alt="Laitse lossi tornid"
-      class="absolute inset-0 w-full h-full object-cover opacity-40"
+      class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
     />
-    <div class="relative z-10 text-center px-6 py-24 md:py-32">
-      <h1 class="font-display text-hero text-warm-white mb-4 drop-shadow-lg">
+    <div class="absolute inset-0 bg-warm-dark/65"></div>
+    <div class="relative z-10 text-center text-overlay px-6 py-24 md:py-32">
+      <h1 class="font-display text-hero text-warm-white mb-4 drop-shadow-lg hero-enter" style="--delay:0ms">
         Laitse lossi ajalugu
       </h1>
-      <div class="flex justify-center">
+      <div class="flex justify-center hero-enter" style="--delay:150ms">
         <GoldRule width="120px" />
       </div>
     </div>
   </section>
 
   <!-- ═══ CASTLE HISTORY NARRATIVE ═══ -->
-  <section class="py-20 md:py-28 px-6">
+  <section class="section-fade-from-dark py-20 md:py-28 px-6">
     <div class="max-w-prose mx-auto">
 
-      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8" data-animate>
         Laitse nimi ilmub ajaloo lehekülgedele esmakordselt juba XIII sajandi alguses. Taani
         ristisõdijad, kes 1219. aasta talvel Eestimaa põhjaosa vallutusretkedel liikusid, jõudsid
         veebruarikuu lõikava külmaga vaikusesse mähkunud külakesse, mida Henriku Liivimaa kroonikas
@@ -87,7 +88,7 @@ const ajaluguSchema = {
       </p>
 
       <!-- Pull-quote: 1219 -->
-      <blockquote class="my-14 md:my-18 text-center px-4">
+      <blockquote class="my-14 md:my-18 text-center px-4" data-animate>
         <div class="flex justify-center mb-6">
           <GoldRule width="60px" />
         </div>
@@ -103,7 +104,7 @@ const ajaluguSchema = {
         </div>
       </blockquote>
 
-      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8" data-animate>
         Sajandeid kuulus see paik Ruila ordumõisale. Olud muutusid XVII sajandi alguses, kui
         Rootsi võimude kingitusena anti kogu Ruila valdus 1622. aastal Riia bürgermeistrile
         Johan Ulrichile. Tema soost kujuneski Laitse mõisaks: vanimad kindlad teated iseseisva
@@ -115,7 +116,7 @@ const ajaluguSchema = {
         <GoldRule width="100px" />
       </div>
 
-      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8" data-animate>
         XIX sajandi teisel poolel vahetusid omanikud sagedasti. Mohrenschildtide järelt läks mõis
         Tallinna pastorite toetusfondile, siis suurtöösturile Alexander Eggersile ning pärastpoole
         Paul Heinrich von Dehni käsutusse. Muutus saabus 1883. aastal, kui Kose-Uuemõisalt pärit
@@ -124,7 +125,7 @@ const ajaluguSchema = {
         mida senini Laitse küplev maastik polnud näinud.
       </p>
 
-      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8" data-animate>
         Umbes 1890. aastal valmis Woldemari nägemusest inspireeritud neogooti lossihoone &mdash;
         tornikeste, viilkatuse ja kunstipäraste detailidega ehitis, mis paistab juba kaugelt.
         See on romantiline loss, mida ehitas romantiline hing. Pärast sõjaväelist karjääri pööris
@@ -141,7 +142,7 @@ const ajaluguSchema = {
       <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
 
         <!-- Image -->
-        <div class="order-2 md:order-1">
+        <div class="order-2 md:order-1" data-animate>
           <img
             src="/images/ajaluguUexkyll.jpg"
             alt="Woldemar von Uexküll"
@@ -152,10 +153,10 @@ const ajaluguSchema = {
 
         <!-- Text -->
         <div class="order-1 md:order-2">
-          <h2 class="font-display text-section text-warm-dark mb-6">
+          <h2 class="font-display text-section text-warm-dark mb-6" data-animate>
             Woldemar von Uexküll
           </h2>
-          <div class="mb-6">
+          <div class="mb-6" data-animate>
             <GoldRule width="80px" />
           </div>
 
@@ -211,15 +212,17 @@ const ajaluguSchema = {
 
   <!-- ═══ FOOTER CTA ═══ -->
   <section class="py-20 md:py-24 px-6 text-center">
-    <h2 class="font-display text-section text-warm-dark mb-4">
-      Avasta lossi ruume
-    </h2>
-    <p class="font-subtitle text-subtitle text-stone mb-8 max-w-md mx-auto">
-      Laitse Loss pakub ainulaadseid ruume nii pidudeks kui seminarideks.
-    </p>
-    <div class="flex gap-6 flex-wrap justify-center">
-      <Button variant="filled" href="/peod" label="Peod ja tähtpäevad" />
-      <Button variant="outline" href="/seminarid" label="Seminarid" />
+    <div data-animate>
+      <h2 class="font-display text-section text-warm-dark mb-4">
+        Avasta lossi ruume
+      </h2>
+      <p class="font-subtitle text-subtitle text-stone mb-8 max-w-md mx-auto">
+        Laitse Loss pakub ainulaadseid ruume nii pidudeks kui seminarideks.
+      </p>
+      <div class="flex gap-6 flex-wrap justify-center">
+        <Button variant="filled" href="/peod" label="Peod ja tähtpäevad" />
+        <Button variant="outline" href="/seminarid" label="Seminarid" />
+      </div>
     </div>
   </section>
 

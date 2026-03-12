@@ -72,32 +72,34 @@ const peodSchema = [
     />
     <div class="absolute inset-0 bg-warm-dark/70"></div>
     <div class="relative z-10 text-center px-6 py-24 max-w-3xl mx-auto">
-      <h1 class="font-display text-hero text-warm-white mb-6 drop-shadow-lg">
+      <h1 class="font-display text-hero text-warm-white mb-6 text-overlay hero-enter" style="--delay: 0ms">
         Tähistage oma erilist päeva ajaloolises lossis
       </h1>
-      <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 drop-shadow-md">
+      <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 text-overlay hero-enter" style="--delay: 150ms">
         Pulmad, sünnipäevad ja pidustused ajaloolises lossis
       </p>
-      <Flourish type="vintage" size="md" fill="gold" />
+      <div class="hero-enter" style="--delay: 300ms">
+        <Flourish type="vintage" size="md" fill="gold" />
+      </div>
     </div>
   </section>
 
   <!-- Celebration Types -->
-  <section class="px-6 py-20 md:py-28">
+  <section class="section-fade-from-dark px-6 py-20 md:py-28">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
+      <div class="text-center mb-16" data-animate>
         <h2 class="font-display text-section text-warm-dark mb-4">Teie sündmus lossis</h2>
         <BurgundyRule width="60px" />
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
         <!-- Pulmad -->
-        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+        <div class="group service-card overflow-hidden" data-animate style="--delay: 0ms">
           <div class="overflow-hidden">
             <img
               src="/images/Pulmad.jpg"
               alt="Pulmapaar Laitse Lossi ees"
-              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
           <div class="p-6 lg:p-8">
@@ -112,12 +114,12 @@ const peodSchema = [
         </div>
 
         <!-- Sünnipäevad -->
-        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+        <div class="group service-card overflow-hidden" data-animate style="--delay: 150ms">
           <div class="overflow-hidden">
             <img
               src="/images/Peolaud-Kuldses-saalis.jpg"
               alt="Pidulikult kaetud laud kuldses saalis"
-              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
           <div class="p-6 lg:p-8">
@@ -131,12 +133,12 @@ const peodSchema = [
         </div>
 
         <!-- Firmapeod -->
-        <div class="group bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+        <div class="group service-card overflow-hidden" data-animate style="--delay: 300ms">
           <div class="overflow-hidden">
             <img
               src="/images/main_gastro.jpg"
               alt="Elegantne lauakatmine firmapeo jaoks"
-              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
             />
           </div>
           <div class="p-6 lg:p-8">
@@ -155,14 +157,14 @@ const peodSchema = [
   <!-- Ruumid ja alad -->
   <section class="bg-warm-dark/[0.03] px-6 py-20 md:py-28">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
+      <div class="text-center mb-16" data-animate>
         <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-3">Ruumid ja alad</p>
         <h2 class="font-display text-section text-warm-dark mb-4">Meie ruumid</h2>
         <GoldRule width="60px" />
       </div>
 
       <!-- Suur saal -->
-      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28">
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
         <div class="overflow-hidden rounded">
           <img
             src="/images/Suur_saal_galerii.jpg"
@@ -187,7 +189,7 @@ const peodSchema = [
       </div>
 
       <!-- Salong (reversed) -->
-      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28">
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
         <div class="md:order-2 overflow-hidden rounded">
           <img
             src="/images/Peolaud-Kuldses-saalis.jpg"
@@ -212,7 +214,7 @@ const peodSchema = [
       </div>
 
       <!-- Terrass ja aed -->
-      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center" data-animate>
         <div class="overflow-hidden rounded">
           <img
             src="/images/Terrass.jpg"
@@ -240,7 +242,7 @@ const peodSchema = [
   <!-- Mida pakume -->
   <section class="px-6 py-20 md:py-28">
     <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12" data-animate>
         <GoldRule width="100px" />
         <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida pakume</h2>
         <p class="font-subtitle text-subtitle italic text-stone">
@@ -283,7 +285,7 @@ const peodSchema = [
 
   <!-- Contact CTA -->
   <section class="bg-warm-dark/[0.04] px-6 py-20 md:py-28">
-    <div class="max-w-2xl mx-auto text-center">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">Räägime teie sündmusest</h2>
       <p class="font-body text-body-lg text-stone mb-8">
