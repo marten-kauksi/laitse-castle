@@ -99,21 +99,25 @@ const eventVenueSchema = {
     <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/90 via-warm-dark/65 to-warm-dark/40"></div>
 
     <div class="relative z-10 flex flex-col items-center text-center gap-5 max-w-2xl px-6 py-24">
-      <Flourish type="simple" size="sm" fill="gold" />
+      <div class="hero-enter" style="--delay: 0ms">
+        <Flourish type="simple" size="sm" fill="gold" />
+      </div>
 
-      <h1 class="font-display text-[clamp(44px,7vw,80px)] text-warm-white mt-4 drop-shadow-lg leading-[1.05]">Laitse Loss</h1>
+      <h1 class="hero-enter font-display text-[clamp(44px,7vw,80px)] text-warm-white mt-4 drop-shadow-lg leading-[1.05]" style="--delay: 150ms">Laitse Loss</h1>
 
-      <GoldRule width="80px" />
+      <div class="hero-enter" style="--delay: 300ms">
+        <GoldRule width="80px" />
+      </div>
 
-      <p class="font-subtitle italic text-subtitle text-warm-white drop-shadow-md">
+      <p class="hero-enter font-subtitle italic text-subtitle text-warm-white drop-shadow-md" style="--delay: 450ms">
         Ajalooline sündmuste paik Harjumaal
       </p>
 
-      <p class="font-body text-body-lg text-warm-white/90 max-w-lg mt-2 drop-shadow-sm leading-relaxed">
+      <p class="hero-enter font-body text-body-lg text-warm-white/90 max-w-lg mt-2 drop-shadow-sm leading-relaxed" style="--delay: 600ms">
         Neogooti loss keset Harjumaa loodust — pulmadeks, pidustusteks ja seminarideks. Vaid 30 minutit Tallinnast.
       </p>
 
-      <div class="flex flex-wrap items-center gap-8 justify-center mt-6">
+      <div class="hero-enter flex flex-wrap items-center gap-8 justify-center mt-6" style="--delay: 750ms">
         <Button variant="filled" href="mailto:info@laitseloss.ee" label="Küsi pakkumist" />
         <a href="/peod" class="font-ui text-[15px] uppercase tracking-wider text-warm-white border-b border-warm-white/40 pb-1 hover:border-warm-white transition-colors">
           Avasta ruume &rarr;
@@ -125,8 +129,8 @@ const eventVenueSchema = {
   <!-- ═══════════════════════════════════════════
        2. TEENUSED — Asymmetric, visual
        ═══════════════════════════════════════════ -->
-  <section class="py-20 md:py-28 px-6">
-    <div class="max-w-2xl mx-auto text-center mb-14">
+  <section class="section-fade-from-dark py-20 md:py-28 px-6">
+    <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida soovite tähistada?</h2>
       <GoldRule width="60px" />
@@ -135,7 +139,7 @@ const eventVenueSchema = {
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
 
         <!-- Peod — large featured card -->
-        <a href="/peod" class="md:col-span-7 group relative overflow-hidden rounded block hover:-translate-y-1 hover:shadow-2xl transition-all duration-500">
+        <a href="/peod" class="md:col-span-7 group relative overflow-hidden rounded block hover:-translate-y-1 hover:shadow-2xl transition-all duration-500" data-animate data-animate-delay="100">
           <img
             src="/images/Pulmad.jpg"
             alt="Pulmatseremoonia Laitse lossis"
@@ -162,7 +166,7 @@ const eventVenueSchema = {
         <div class="md:col-span-5 flex flex-col gap-6 md:gap-8">
 
           <!-- Seminarid card -->
-          <a href="/seminarid" class="group relative overflow-hidden rounded flex-1 block hover:-translate-y-1 hover:shadow-2xl transition-all duration-500">
+          <a href="/seminarid" class="group relative overflow-hidden rounded flex-1 block hover:-translate-y-1 hover:shadow-2xl transition-all duration-500" data-animate data-animate-delay="250">
             <img
               src="/images/Suur_saal_galerii.jpg"
               alt="Seminariruumid Laitse lossis"
@@ -183,7 +187,7 @@ const eventVenueSchema = {
           </a>
 
           <!-- Location mini-card -->
-          <div class="bg-warm-light rounded p-6 md:p-8">
+          <div class="bg-warm-light rounded p-6 md:p-8" data-animate data-animate-delay="400">
             <p class="font-ui text-label-sm uppercase tracking-wider text-burgundy mb-3">Asukoht</p>
             <p class="font-body text-body-lg text-warm-dark leading-relaxed">
               Lossi tee 9, Laitse, Harjumaa
@@ -221,16 +225,17 @@ const eventVenueSchema = {
   <!-- ═══════════════════════════════════════════
        4. LOSSI LUGU — Full-bleed immersive
        ═══════════════════════════════════════════ -->
-  <section class="relative min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden">
+  <section class="section-into-dark relative min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden py-12 md:py-20">
     <img
       src="/images/Lossi-tornid.jpg"
       alt="Laitse lossi tornid"
-      class="absolute inset-0 w-full h-full object-cover"
+      class="absolute inset-0 w-full h-[120%] object-cover will-change-transform"
       loading="lazy"
+      data-parallax
     />
     <div class="absolute inset-0 bg-warm-dark/75"></div>
 
-    <div class="relative z-10 max-w-2xl mx-auto px-6 py-20 md:py-28 text-center text-overlay">
+    <div class="relative z-10 max-w-2xl mx-auto px-6 py-20 md:py-28 text-center text-overlay" data-animate>
       <p class="font-ui text-label-sm uppercase tracking-[0.2em] text-gold-light mb-5">Alates 1219</p>
       <h2 class="font-display text-[clamp(28px,4vw,44px)] text-warm-white mb-8 leading-tight">
         Lossi lugu
@@ -253,8 +258,8 @@ const eventVenueSchema = {
   <!-- ═══════════════════════════════════════════
        5. CTA
        ═══════════════════════════════════════════ -->
-  <section class="py-20 md:py-28 px-6">
-    <div class="max-w-2xl mx-auto text-center">
+  <section class="section-fade-from-dark py-20 md:py-28 px-6">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">Räägime teie sündmusest</h2>
       <p class="font-body text-body-lg text-stone mb-8 leading-relaxed">
@@ -286,5 +291,143 @@ const eventVenueSchema = {
     border-color: #FAF7F2;
     color: #FAF7F2;
   }
+
+  /* Hero entrance — staggered fade-in from below */
+  .hero-enter {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  @keyframes heroFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scroll-triggered fade-in */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Section transitions — pseudo-elements that bleed into the previous section */
+  .section-fade-from-dark {
+    position: relative;
+  }
+  .section-fade-from-dark::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #FAF7F2);
+    mask-image: linear-gradient(to bottom, transparent, black);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .section-into-dark {
+    position: relative;
+  }
+  .section-into-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, #FAF7F2, transparent);
+    mask-image: linear-gradient(to bottom, black, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+    pointer-events: none;
+    z-index: 10;
+  }
+  .section-into-dark::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top, #FAF7F2, transparent);
+    mask-image: linear-gradient(to top, black, transparent);
+    -webkit-mask-image: linear-gradient(to top, black, transparent);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-enter {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    [data-animate] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
 </style>
+
+<script>
+  // Scroll-triggered fade-in animations
+  const animateEls = document.querySelectorAll('[data-animate]');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = (entry.target as HTMLElement).dataset.animateDelay;
+          if (delay) {
+            setTimeout(() => entry.target.classList.add('is-visible'), parseInt(delay));
+          } else {
+            entry.target.classList.add('is-visible');
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+  );
+  animateEls.forEach((el) => observer.observe(el));
+
+  // Parallax on history section image
+  const parallaxImg = document.querySelector('[data-parallax]') as HTMLElement | null;
+  if (parallaxImg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const section = parallaxImg.closest('section')!;
+    let ticking = false;
+
+    function updateParallax() {
+      const rect = section.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      // Only animate when section is in view
+      if (rect.bottom > 0 && rect.top < viewH) {
+        const progress = (viewH - rect.top) / (viewH + rect.height);
+        const offset = (progress - 0.5) * 80; // -40px to +40px
+        parallaxImg!.style.transform = `translateY(${offset}px)`;
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+</script>
 

@@ -3,16 +3,23 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer>
-  <!-- Gold accent line at top -->
-  <div class="bg-gold-gradient-h h-[1px]"></div>
+  <!-- Decorative top border -->
+  <div class="flex items-center justify-center gap-3 py-6">
+    <div class="h-[1px] w-20 bg-gradient-to-r from-transparent to-gold/40"></div>
+    <span class="text-gold/50 text-[10px]">&#9830;</span>
+    <div class="h-[1px] w-20 bg-gradient-to-l from-transparent to-gold/40"></div>
+  </div>
 
-  <div class="bg-burgundy text-warm-white">
-    <div class="max-w-7xl mx-auto px-6 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-        <!-- Contact info -->
-        <div>
-          <h3 class="font-display text-xl mb-4">Laitse Loss</h3>
-          <ul class="font-ui text-sm text-warm-white/85">
+  <div class="bg-warm-dark text-warm-white/90">
+    <div class="max-w-6xl mx-auto px-6 pt-14 pb-10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
+
+        <!-- Brand + contact -->
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl text-warm-white mb-1">Laitse Loss</h3>
+          <p class="font-subtitle italic text-sm text-gold-light/70 mb-6">Ajalooline sündmuste paik</p>
+
+          <ul class="space-y-1 font-body text-sm text-warm-white/75">
             <li>
               <a href="tel:+37258356509" class="inline-flex items-center min-h-[44px] hover:text-gold-light transition-colors">
                 +372 58 356 509
@@ -23,36 +30,39 @@ const currentYear = new Date().getFullYear();
                 info@laitseloss.ee
               </a>
             </li>
-            <li>
+            <li class="pt-1 text-warm-white/50">
               Lossi tee 9, 76302 Laitse, Harjumaa
             </li>
           </ul>
-          <div class="mt-6 md:mt-8">
-            <p class="font-ui text-sm text-warm-white/80">
-              &copy; {currentYear} Laitse Loss O&Uuml;
-            </p>
-            <a href="#" class="font-ui text-sm text-warm-white/80 hover:text-gold-light transition-colors underline underline-offset-4 mt-1 inline-block">
-              Privaatsuspoliitika
-            </a>
-          </div>
         </div>
 
-        <!-- Google Maps — spans 2 cols on desktop -->
-        <div class="md:col-span-2 order-last md:order-none">
-          <div class="w-full rounded overflow-hidden">
+        <!-- Map -->
+        <div class="md:col-span-8">
+          <div class="w-full rounded-lg overflow-hidden shadow-lg">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2399.652899443389!2d24.38460711302241!3d59.19656527444412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4692b74ee626aadd%3A0x2f7cebea9b79a006!2sLaitse%20loss%2C%20Laitse%2C%2076302%20Harju%20maakond%2C%20Estonia!5e1!3m2!1sen!2sus!4v1773305950212!5m2!1sen!2sus"
               width="100%"
-              height="200"
+              height="220"
               style="border:0;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               title="Laitse Loss kaardil"
-              class="h-[200px] md:h-[250px] w-full"
+              class="h-[200px] md:h-[260px] w-full"
             ></iframe>
           </div>
         </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-12 pt-6 border-t border-warm-white/10 flex flex-wrap items-center justify-between gap-4">
+        <p class="font-ui text-xs text-warm-white/40">
+          &copy; {currentYear} Laitse Loss O&Uuml;
+        </p>
+        <a href="#" class="font-ui text-xs text-warm-white/40 hover:text-gold-light transition-colors">
+          Privaatsuspoliitika
+        </a>
       </div>
     </div>
   </div>
