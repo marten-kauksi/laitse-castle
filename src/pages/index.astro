@@ -131,24 +131,23 @@ const eventVenueSchema = {
        ═══════════════════════════════════════════ -->
   <section class="section-fade-from-dark pt-12 md:pt-16 pb-20 md:pb-28 px-6">
     <div class="max-w-2xl mx-auto text-center mb-12" data-animate>
+      <h2 class="font-display text-section text-warm-dark mb-5">Mida soovite tähistada?</h2>
       <Flourish type="vintage" size="sm" fill="burgundy" />
-      <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida soovite tähistada?</h2>
-      <GoldRule width="60px" />
     </div>
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
 
         <!-- Peod — large featured card -->
-        <a href="/peod" class="md:col-span-7 group relative overflow-hidden rounded block hover:-translate-y-1 hover:shadow-2xl transition-all duration-500" data-animate data-animate-delay="100">
+        <a href="/peod" class="service-card md:col-span-7 group relative overflow-hidden rounded block transition-transform duration-500" data-animate data-animate-delay="100">
           <img
             src="/images/Pulmad.jpg"
             alt="Pulmatseremoonia Laitse lossis"
-            class="w-full h-[400px] md:h-[520px] object-cover group-hover:scale-105 transition-transform duration-700"
+            class="w-full h-[400px] md:h-[520px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
           <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-overlay">
-            <div class="w-12 h-[2px] bg-gold-gradient-h mb-5"></div>
+            <div class="w-12 group-hover:w-14 h-[2px] bg-gold-gradient-h mb-5 transition-all duration-500"></div>
             <p class="font-ui text-[13px] uppercase tracking-wider text-gold-light mb-2 font-normal">Peod ja tähtpäevad</p>
             <h2 class="font-display text-[clamp(26px,3vw,36px)] text-warm-white mb-3 leading-tight">
               Pulmad, sünnipäevad ja pidustused
@@ -156,7 +155,7 @@ const eventVenueSchema = {
             <p class="font-body text-body text-warm-white/90 mb-6 max-w-md">
               Lossi elegantne atmosfäär teeb iga tähistamise eriliseks.
             </p>
-            <span class="font-ui text-[14px] uppercase tracking-wider text-warm-white border-b border-warm-white/40 pb-1 group-hover:border-warm-white transition-colors">
+            <span class="font-ui text-[14px] uppercase tracking-wider text-warm-white border-b border-warm-white/40 pb-1 group-hover:border-warm-white group-hover:pl-1 transition-all duration-300">
               Avasta &rarr;
             </span>
           </div>
@@ -166,21 +165,21 @@ const eventVenueSchema = {
         <div class="md:col-span-5 flex flex-col gap-6 md:gap-8">
 
           <!-- Seminarid card -->
-          <a href="/seminarid" class="group relative overflow-hidden rounded flex-1 block hover:-translate-y-1 hover:shadow-2xl transition-all duration-500" data-animate data-animate-delay="250">
+          <a href="/seminarid" class="service-card group relative overflow-hidden rounded flex-1 block transition-transform duration-500" data-animate data-animate-delay="250">
             <img
               src="/images/Suur_saal_galerii.jpg"
               alt="Seminariruumid Laitse lossis"
-              class="w-full h-[240px] md:h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              class="w-full h-[240px] md:h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
             <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
-              <div class="w-10 h-[2px] bg-gold-gradient-h mb-4"></div>
+              <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
               <p class="font-ui text-[13px] uppercase tracking-wider text-gold-light mb-2 font-normal">Seminarid</p>
               <h2 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-3 leading-tight">
                 Konverentsid ja koolitused
               </h2>
-              <span class="font-ui text-[14px] uppercase tracking-wider text-warm-white border-b border-warm-white/40 pb-1 group-hover:border-warm-white transition-colors">
+              <span class="font-ui text-[14px] uppercase tracking-wider text-warm-white border-b border-warm-white/40 pb-1 group-hover:border-warm-white group-hover:pl-1 transition-all duration-300">
                 Avasta &rarr;
               </span>
             </div>
