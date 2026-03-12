@@ -117,81 +117,75 @@ const seminaridSchema = [
     />
     <div class="absolute inset-0 bg-warm-dark/70"></div>
 
-    <div class="relative z-10 text-center px-6 py-24 max-w-3xl mx-auto">
+    <div class="relative z-10 text-center px-6 py-24 max-w-2xl mx-auto">
       <h1 class="font-display text-hero text-warm-white mb-6 text-overlay hero-enter" style="--delay: 0ms">
-        Seminarid ja konverentsid ajaloolises lossis
+        Seminarid ajaloolises lossis
       </h1>
       <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 text-overlay hero-enter" style="--delay: 150ms">
-        Inspireeriv keskkond, kus ideed sünnivad kergemini
+        Inspireeriv keskkond konverentsideks ja koolitusteks
       </p>
       <Flourish type="vintage" size="md" fill="gold" class="hero-enter" style="--delay: 300ms" />
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════
-       2. MIKS LAITSE LOSS (Value props — 3 cards)
+       2. MIKS LAITSE LOSS (Value props — overlay cards)
        ═══════════════════════════════════════════ -->
-  <section class="section-fade-from-dark px-6 py-20 md:py-28">
+  <section class="section-fade-from-dark pt-12 md:pt-16 pb-20 md:pb-28 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16" data-animate>
-        <h2 class="font-display text-section text-warm-dark mb-4">Miks korraldada seminar lossis</h2>
-        <BurgundyRule width="60px" />
+      <div class="text-center mb-12" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-5">Miks korraldada seminar lossis</h2>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-        <div class="group bg-white rounded shadow-sm transition-shadow duration-300 overflow-hidden" data-animate style="--delay: 0ms">
-          <div class="overflow-hidden">
-            <img
-              src="/images/Salong_.jpg"
-              alt="Salong — hubane seminariruum"
-              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              loading="lazy"
-            />
-          </div>
-          <div class="p-6 lg:p-8">
-            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Inspireeriv miljöö</h3>
-            <GoldRule width="40px" />
-            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
-              Ajalooline loss loob keskkonna, mis eristub tavapärasest kontorist. Kõrged laed, loomulik
-              valgus ja eriline atmosfäär aitavad mõtetel vabamalt liikuda.
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="100">
+          <img
+            src="/images/Salong_.jpg"
+            alt="Salong — hubane seminariruum"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-3 leading-tight">Inspireeriv miljöö</h3>
+            <p class="font-body text-body text-warm-white/85 leading-relaxed">
+              Ajalooline loss loob keskkonna, mis eristub tavapärasest kontorist. Kõrged laed ja eriline atmosfäär aitavad mõtetel vabamalt liikuda.
             </p>
           </div>
         </div>
 
-        <div class="group bg-white rounded shadow-sm transition-shadow duration-300 overflow-hidden" data-animate style="--delay: 150ms">
-          <div class="overflow-hidden">
-            <img
-              src="/images/Suur_saal_tuhi.jpg"
-              alt="Suur saal — paindlik konverentsiruum"
-              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              loading="lazy"
-            />
-          </div>
-          <div class="p-6 lg:p-8">
-            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Paindlikud ruumid</h3>
-            <GoldRule width="40px" />
-            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
-              Kaks eriilmelist ruumi — intiimne Salong ja avar Suur saal. Mõlemad kohandatavad
-              vastavalt teie ürituse formaadile, 24-st kuni 150 osalejani.
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="250">
+          <img
+            src="/images/Suur_saal_tuhi.jpg"
+            alt="Suur saal — paindlik konverentsiruum"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-3 leading-tight">Paindlikud ruumid</h3>
+            <p class="font-body text-body text-warm-white/85 leading-relaxed">
+              Kaks eriilmelist ruumi — intiimne Salong ja avar Suur saal. Kohandatavad vastavalt teie formaadile, 24-st kuni 150 osalejani.
             </p>
           </div>
         </div>
 
-        <div class="group bg-white rounded shadow-sm transition-shadow duration-300 overflow-hidden" data-animate style="--delay: 300ms">
-          <div class="overflow-hidden">
-            <img
-              src="/images/Terrass.jpg"
-              alt="Lossi terrass kohvipauside jaoks"
-              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              loading="lazy"
-            />
-          </div>
-          <div class="p-6 lg:p-8">
-            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Mugav asukoht</h3>
-            <GoldRule width="40px" />
-            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
-              Vaid 30 minutit Tallinnast, tasuta parkimine territooriumil. Terrass ja aed
-              pakuvad mõnusat vaheldust kohvipausideks ja meeskonnategevusteks.
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="400">
+          <img
+            src="/images/Terrass.jpg"
+            alt="Lossi terrass kohvipauside jaoks"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-3 leading-tight">Mugav asukoht</h3>
+            <p class="font-body text-body text-warm-white/85 leading-relaxed">
+              Vaid 30 minutit Tallinnast, tasuta parkimine. Terrass ja aed pakuvad mõnusat vaheldust kohvipausideks.
             </p>
           </div>
         </div>
@@ -200,52 +194,52 @@ const seminaridSchema = [
   </section>
 
   <!-- ═══════════════════════════════════════════
-       3. RUUMID (Rooms — Detailed)
+       3. RUUMID (Rooms — Dark section)
        ═══════════════════════════════════════════ -->
-  <section class="bg-warm-dark/[0.03] px-6 py-20 md:py-28">
-    <div class="max-w-6xl mx-auto">
+  <section class="section-into-dark relative bg-warm-dark px-6 py-16 md:py-28 overflow-hidden">
+    <div class="max-w-6xl mx-auto relative z-10">
       <div class="text-center mb-16" data-animate>
-        <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-3">Ruumid ja alad</p>
-        <h2 class="font-display text-section text-warm-dark mb-4">Meie ruumid</h2>
+        <p class="font-ui text-label-sm uppercase tracking-[0.2em] text-gold-light mb-4">Ruumid ja alad</p>
+        <h2 class="font-display text-section text-warm-white mb-5">Meie ruumid</h2>
         <GoldRule width="60px" />
       </div>
 
       <!-- Salong -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
-        <div class="overflow-hidden rounded">
+        <div class="group overflow-hidden rounded">
           <img
             src="/images/Salong_.jpg"
             alt="Salong — seminariruum Laitse lossi esimesel korrusel"
-            class="w-full h-80 lg:h-96 object-cover"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
             loading="lazy"
           />
         </div>
         <div>
-          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Salong</h3>
-          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">I korrus &middot; 56 m²</p>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-white mb-2">Salong</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold-light mb-4">I korrus &middot; 56 m²</p>
           <GoldRule width="50px" />
-          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+          <p class="font-body text-body-lg text-warm-white/80 mt-5 leading-relaxed">
             Klassikalise interjööriga ruum lossi esimesel korrusel. Loomulik valgus ja hubane
             õhkkond sobivad ideaalselt nii väiksema seminari kui ka töötoa läbiviimiseks.
           </p>
 
-          <table class="w-full font-ui text-[15px] text-warm-dark mt-6">
+          <table class="w-full font-ui text-[15px] text-warm-white mt-6">
             <thead>
-              <tr class="border-b border-stone/20">
-                <th class="text-left py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Paigutus</th>
-                <th class="text-right py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Mahutavus</th>
+              <tr class="border-b border-warm-white/20">
+                <th class="text-left py-2 font-normal text-warm-white/60 uppercase text-label-sm tracking-wider">Paigutus</th>
+                <th class="text-right py-2 font-normal text-warm-white/60 uppercase text-label-sm tracking-wider">Mahutavus</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-stone/10">
+              <tr class="border-b border-warm-white/10">
                 <td class="py-2.5">U-laud</td>
                 <td class="text-right py-2.5">24</td>
               </tr>
-              <tr class="border-b border-stone/10">
+              <tr class="border-b border-warm-white/10">
                 <td class="py-2.5">Diplomaadistiilis</td>
                 <td class="text-right py-2.5">32</td>
               </tr>
-              <tr class="border-b border-stone/10">
+              <tr class="border-b border-warm-white/10">
                 <td class="py-2.5">Klassiruum</td>
                 <td class="text-right py-2.5">40</td>
               </tr>
@@ -260,32 +254,32 @@ const seminaridSchema = [
 
       <!-- Suur saal (reversed) -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
-        <div class="md:order-2 overflow-hidden rounded">
+        <div class="md:order-2 group overflow-hidden rounded">
           <img
             src="/images/Suur_saal_tuhi.jpg"
             alt="Suur saal — lossi suurim konverentsiruum"
-            class="w-full h-80 lg:h-96 object-cover"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
             loading="lazy"
           />
         </div>
         <div class="md:order-1">
-          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Suur saal</h3>
-          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Soklikorrus &middot; 110 m²</p>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-white mb-2">Suur saal</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold-light mb-4">Soklikorrus &middot; 110 m²</p>
           <GoldRule width="50px" />
-          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+          <p class="font-body text-body-lg text-warm-white/80 mt-5 leading-relaxed">
             Lossi suurim ruum — avar ja kõrgete lagedega. Sobib suurematele konverentsidele,
             kus vajate mahtu ja vabadust paigutust kohandada.
           </p>
 
-          <table class="w-full font-ui text-[15px] text-warm-dark mt-6">
+          <table class="w-full font-ui text-[15px] text-warm-white mt-6">
             <thead>
-              <tr class="border-b border-stone/20">
-                <th class="text-left py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Paigutus</th>
-                <th class="text-right py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Mahutavus</th>
+              <tr class="border-b border-warm-white/20">
+                <th class="text-left py-2 font-normal text-warm-white/60 uppercase text-label-sm tracking-wider">Paigutus</th>
+                <th class="text-right py-2 font-normal text-warm-white/60 uppercase text-label-sm tracking-wider">Mahutavus</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-stone/10">
+              <tr class="border-b border-warm-white/10">
                 <td class="py-2.5">Teatristiilis</td>
                 <td class="text-right py-2.5">150</td>
               </tr>
@@ -300,19 +294,19 @@ const seminaridSchema = [
 
       <!-- Terrass ja aed -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center" data-animate>
-        <div class="overflow-hidden rounded">
+        <div class="group overflow-hidden rounded">
           <img
             src="/images/Terrass.jpg"
             alt="Laitse lossi terrass ja aed"
-            class="w-full h-80 lg:h-96 object-cover"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
             loading="lazy"
           />
         </div>
         <div>
-          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Terrass ja aed</h3>
-          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Välialad</p>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-white mb-2">Terrass ja aed</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold-light mb-4">Välialad</p>
           <GoldRule width="50px" />
-          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+          <p class="font-body text-body-lg text-warm-white/80 mt-5 leading-relaxed">
             Kohvipausid värskes õhus esimese korruse terrassil. Suur aed suveürituste ja
             meeskonnategevuste jaoks — mõnus vaheldus konverentsiruumile.
           </p>
@@ -324,10 +318,10 @@ const seminaridSchema = [
   <!-- ═══════════════════════════════════════════
        4. MIDA PAKUME (What we offer)
        ═══════════════════════════════════════════ -->
-  <section class="px-6 py-20 md:py-28">
+  <section class="section-fade-from-dark px-6 py-20 md:py-28">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12" data-animate>
-        <GoldRule width="100px" />
+        <Flourish type="vintage" size="sm" fill="burgundy" />
         <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida pakume</h2>
         <p class="font-subtitle text-subtitle italic text-stone">
           Kõik vajalik eduka seminari korraldamiseks
@@ -370,11 +364,11 @@ const seminaridSchema = [
   <!-- ═══════════════════════════════════════════
        5. KONTAKT CTA
        ═══════════════════════════════════════════ -->
-  <section class="bg-warm-dark/[0.04] px-6 py-20 md:py-28">
+  <section class="px-6 py-20 md:py-28">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">Planeerime teie seminari</h2>
-      <p class="font-body text-body-lg text-stone mb-8">
+      <p class="font-body text-body-lg text-stone mb-8 leading-relaxed">
         Iga seminar on erinev. Rääkige meile oma soovidest
         ja leiame koos parima lahenduse.
       </p>
@@ -387,8 +381,6 @@ const seminaridSchema = [
           <span class="text-stone">E-post:</span> info@laitseloss.ee
         </a>
       </div>
-
-      <Button variant="filled" href="mailto:info@laitseloss.ee" label="Küsi pakkumist" />
     </div>
   </section>
 

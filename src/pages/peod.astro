@@ -84,69 +84,62 @@ const peodSchema = [
     </div>
   </section>
 
-  <!-- Celebration Types -->
-  <section class="section-fade-from-dark px-6 py-20 md:py-28">
+  <!-- Celebration Types — overlay cards -->
+  <section class="section-fade-from-dark pt-12 md:pt-16 pb-20 md:pb-28 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16" data-animate>
-        <h2 class="font-display text-section text-warm-dark mb-4">Teie sündmus lossis</h2>
-        <BurgundyRule width="60px" />
+      <div class="text-center mb-12" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-5">Teie sündmus lossis</h2>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
         <!-- Pulmad -->
-        <div class="group service-card overflow-hidden" data-animate style="--delay: 0ms">
-          <div class="overflow-hidden">
-            <img
-              src="/images/Pulmad.jpg"
-              alt="Pulmapaar Laitse Lossi ees"
-              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
-            />
-          </div>
-          <div class="p-6 lg:p-8">
-            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Pulmad</h3>
-            <GoldRule width="40px" />
-            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
-              Ajaloolise lossi romantiline õhkkond loob unustamatu tausta teie kõige olulisemale päevale.
-              Elegantne saal, kaunis aed ja eriline atmosfäär — kõik, et teie pulm oleks
-              just selline, nagu ette kujutasite.
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="100">
+          <img
+            src="/images/Pulmad.jpg"
+            alt="Pulmapaar Laitse Lossi ees"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-3 leading-tight">Pulmad</h3>
+            <p class="font-body text-body text-warm-white/85 leading-relaxed">
+              Romantiline õhkkond loob unustamatu tausta teie kõige olulisemale päevale. Elegantne saal, kaunis aed ja eriline atmosfäär.
             </p>
           </div>
         </div>
 
         <!-- Sünnipäevad -->
-        <div class="group service-card overflow-hidden" data-animate style="--delay: 150ms">
-          <div class="overflow-hidden">
-            <img
-              src="/images/Peolaud-Kuldses-saalis.jpg"
-              alt="Pidulikult kaetud laud kuldses saalis"
-              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
-            />
-          </div>
-          <div class="p-6 lg:p-8">
-            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Sünnipäevad ja tähtpäevad</h3>
-            <GoldRule width="40px" />
-            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
-              Tähistage oma erilist päeva lossi ainulaadses miljöös. Intiimsetest koosviibimistest
-              suuremate pidustusteni — Laitse Loss pakub raamistiku, mis teeb iga tähtpäeva meeldejäävaks.
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="250">
+          <img
+            src="/images/Peolaud-Kuldses-saalis.jpg"
+            alt="Pidulikult kaetud laud kuldses saalis"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-3 leading-tight">Sünnipäevad ja tähtpäevad</h3>
+            <p class="font-body text-body text-warm-white/85 leading-relaxed">
+              Lossi ainulaadne miljöö teeb iga tähtpäeva meeldejäävaks — intiimsetest koosviibimistest suuremate pidustusteni.
             </p>
           </div>
         </div>
 
         <!-- Firmapeod -->
-        <div class="group service-card overflow-hidden" data-animate style="--delay: 300ms">
-          <div class="overflow-hidden">
-            <img
-              src="/images/main_gastro.jpg"
-              alt="Elegantne lauakatmine firmapeo jaoks"
-              class="w-full h-64 object-cover group-hover:scale-[1.03] transition-transform duration-500"
-            />
-          </div>
-          <div class="p-6 lg:p-8">
-            <h3 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mb-3">Firmapeod ja galaõhtud</h3>
-            <GoldRule width="40px" />
-            <p class="font-body text-body-lg text-stone mt-4 leading-relaxed">
-              Muljetavaldav keskkond ettevõtte üritustele ja galaõhtutele, mis jäävad meelde.
-              Lossi ajaloolised saalid annavad igale sündmusele erilise kaalu ja väärikuse.
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="400">
+          <img
+            src="/images/main_gastro.jpg"
+            alt="Elegantne lauakatmine firmapeo jaoks"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-3 leading-tight">Firmapeod ja galaõhtud</h3>
+            <p class="font-body text-body text-warm-white/85 leading-relaxed">
+              Muljetavaldav keskkond ettevõtte üritustele. Ajaloolised saalid annavad igale sündmusele erilise kaalu.
             </p>
           </div>
         </div>
@@ -155,26 +148,26 @@ const peodSchema = [
   </section>
 
   <!-- Ruumid ja alad -->
-  <section class="bg-warm-dark/[0.03] px-6 py-20 md:py-28">
+  <section class="bg-warm-light px-6 py-20 md:py-28">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16" data-animate>
-        <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-3">Ruumid ja alad</p>
-        <h2 class="font-display text-section text-warm-dark mb-4">Meie ruumid</h2>
-        <GoldRule width="60px" />
+        <p class="font-ui text-label-sm uppercase tracking-[0.2em] text-gold mb-4">Ruumid ja alad</p>
+        <h2 class="font-display text-section text-warm-dark mb-5">Meie ruumid</h2>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
       </div>
 
       <!-- Suur saal -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
-        <div class="overflow-hidden rounded">
+        <div class="group overflow-hidden rounded">
           <img
             src="/images/Suur_saal_galerii.jpg"
             alt="Suur saal Laitse Lossis galeriiga"
-            class="w-full h-80 lg:h-96 object-cover"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
           />
         </div>
         <div>
           <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Suur saal</h3>
-          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Soklikorrus · 110 m²</p>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Soklikorrus &middot; 110 m²</p>
           <GoldRule width="50px" />
           <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
             Lossi suurim ja võimsaim ruum, kus kõrged võlvlaed ja ajaloolised detailid loovad erakordse
@@ -190,16 +183,16 @@ const peodSchema = [
 
       <!-- Salong (reversed) -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
-        <div class="md:order-2 overflow-hidden rounded">
+        <div class="md:order-2 group overflow-hidden rounded">
           <img
             src="/images/Peolaud-Kuldses-saalis.jpg"
             alt="Salong Laitse Lossis"
-            class="w-full h-80 lg:h-96 object-cover"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
           />
         </div>
         <div class="md:order-1">
           <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Salong</h3>
-          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">I korrus · 56 m²</p>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">I korrus &middot; 56 m²</p>
           <GoldRule width="50px" />
           <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
             Esimese korruse salong on intiimne ja soe ruum, mille suured aknad avanevad lossi
@@ -215,11 +208,11 @@ const peodSchema = [
 
       <!-- Terrass ja aed -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center" data-animate>
-        <div class="overflow-hidden rounded">
+        <div class="group overflow-hidden rounded">
           <img
             src="/images/Terrass.jpg"
             alt="Laitse Lossi terrass ja aed"
-            class="w-full h-80 lg:h-96 object-cover"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
           />
         </div>
         <div>
@@ -243,7 +236,7 @@ const peodSchema = [
   <section class="px-6 py-20 md:py-28">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12" data-animate>
-        <GoldRule width="100px" />
+        <Flourish type="vintage" size="sm" fill="burgundy" />
         <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida pakume</h2>
         <p class="font-subtitle text-subtitle italic text-stone">
           Teie sündmuse õnnestumiseks hoolitseme kõige eest
@@ -284,11 +277,11 @@ const peodSchema = [
   </section>
 
   <!-- Contact CTA -->
-  <section class="bg-warm-dark/[0.04] px-6 py-20 md:py-28">
+  <section class="px-6 py-20 md:py-28 bg-warm-light">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">Räägime teie sündmusest</h2>
-      <p class="font-body text-body-lg text-stone mb-8">
+      <p class="font-body text-body-lg text-stone mb-8 leading-relaxed">
         Iga sündmus on erinev. Rääkige meile oma soovidest
         ja leiame koos parima lahenduse.
       </p>
@@ -297,12 +290,10 @@ const peodSchema = [
         <a href="tel:+37258356509" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors inline-flex items-center gap-2 min-h-[44px]">
           <span class="text-stone">Tel:</span> +372 58 356 509
         </a>
-        <a href="mailto:info@laitseloss.ee" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors flex items-center gap-2 min-h-[44px]">
+        <a href="mailto:info@laitseloss.ee" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors flex items-center justify-center gap-2 min-h-[44px]">
           <span class="text-stone">E-post:</span> info@laitseloss.ee
         </a>
       </div>
-
-      <Button variant="filled" href="mailto:info@laitseloss.ee" label="Küsi pakkumist" />
     </div>
   </section>
 </BaseLayout>
