@@ -17,3 +17,5 @@ dist/
 # Research & scraped data (not part of site)
 _research/
 scraped/
+.playwright-cli/
+qa-screenshots/
