@@ -1,14 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Flourish from '../components/Flourish.astro';
+import GoldRule from '../components/GoldRule.astro';
+import BurgundyRule from '../components/BurgundyRule.astro';
+import TopStripe from '../components/TopStripe.astro';
+import Button from '../components/Button.astro';
 ---
 
 <BaseLayout title="Laitse Loss">
-  <div class="min-h-screen flex flex-col items-center justify-center px-6">
-    <h1 class="font-display text-hero text-warm-dark mb-6">Laitse Loss</h1>
-    <p class="font-subtitle text-subtitle text-stone mb-8">Elegantne sündmuskoht Harjumaal</p>
-    <div class="h-1 w-24 bg-gold-gradient-h rounded-full mb-8"></div>
-    <p class="font-body text-body-lg text-stone max-w-lg text-center">
+  <main class="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 gap-8">
+    <TopStripe />
+
+    <h1 class="font-display text-hero text-warm-dark mb-2">Laitse Loss</h1>
+    <p class="font-subtitle text-subtitle text-stone mb-4">Elegantne sündmuskoht Harjumaal</p>
+
+    <!-- Flourish variants -->
+    <Flourish type="vintage" size="lg" fill="gold" />
+    <Flourish type="simple" size="md" fill="gold" />
+    <Flourish type="vintage" size="sm" fill="burgundy" />
+    <Flourish type="simple" size="sm" fill="gold-faded" />
+
+    <!-- Decorative rules -->
+    <GoldRule width="120px" />
+    <BurgundyRule width="80px" />
+
+    <!-- Buttons -->
+    <div class="flex gap-6 flex-wrap justify-center">
+      <Button variant="filled" href="#" label="Broneeri sündmus" />
+      <Button variant="outline" href="#" label="Loe lähemalt" />
+    </div>
+
+    <p class="font-body text-body-lg text-stone max-w-lg text-center mt-4">
       Veebileht on valmimisel. Varsti näete siin midagi ilusat.
     </p>
-  </div>
+  </main>
 </BaseLayout>

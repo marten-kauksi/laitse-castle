@@ -1,0 +1,19 @@
+---
+interface Props {
+  variant?: 'filled' | 'outline';
+  href: string;
+  label: string;
+}
+
+const { variant = 'filled', href, label } = Astro.props;
+
+const baseClasses = 'font-ui uppercase tracking-wider text-[15px] inline-block transition-colors duration-300 no-underline px-10 py-4';
+
+const variantClasses = variant === 'filled'
+  ? 'bg-burgundy text-warm-white hover:bg-burgundy-hover'
+  : 'border border-burgundy text-burgundy hover:bg-burgundy hover:text-warm-white';
+---
+
+<a href={href} class={`${baseClasses} ${variantClasses}`}>
+  {label}
+</a>
