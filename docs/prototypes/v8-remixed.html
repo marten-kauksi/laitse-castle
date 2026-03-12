@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laitse Loss — v8 Remixed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:wght@300;400&family=Cormorant+SC:wght@300;400&family=Cormorant+Upright:wght@300;400&family=Cormorant:wght@300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Outfit:wght@300;400;500&family=EB+Garamond:wght@400&family=Noto+Serif+Display:wght@200;300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --warm-white: #FAF7F2;
+      --burgundy: #8B1A1A;
+      --burgundy-hover: #6B1414;
+      --gold: #B8860B;
+      --warm-dark: #2C2420;
+      --stone: #7A6F64;
+      --gold-gradient-h: linear-gradient(90deg, #d19e1d 0%, #ffd86e 50%, #e3a812 100%);
+      --gold-gradient-v: linear-gradient(180deg, #d19e1d 0%, #ffd86e 50%, #e3a812 100%);
+    }
+
+    body { background: #1a1a1a; }
+
+    .variant-label {
+      text-align: center; color: #999;
+      font-family: 'Lato', sans-serif; font-size: 14px;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 48px 0 24px;
+    }
+
+    /* Shared flourish sizing classes */
+    .fl { height: auto; display: block; margin: 0 auto; }
+    .fl-sm { width: 160px; }
+    .fl-md { width: 220px; }
+    .fl-lg { width: 280px; }
+    .fl-xl { width: 360px; }
+
+    /* Shared layout for all hero sections */
+    .hero {
+      background: var(--warm-white);
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 80px 24px;
+      position: relative;
+    }
+
+    /* Shared decorative elements */
+    .top-stripe {
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--burgundy);
+    }
+    .top-stripe::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 1px;
+      background: var(--gold-gradient-h);
+    }
+    .gold-rule { height: 1px; background: var(--gold-gradient-h); margin: 0 auto; }
+    .burgundy-rule { height: 2px; background: var(--burgundy); margin: 0 auto; }
+    .gold-accent { width: 40px; height: 2px; background: var(--gold-gradient-h); margin: 40px auto 0; }
+    .side-line {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 1px; height: 180px; background: var(--gold-gradient-v);
+    }
+    .side-line.left { left: 48px; }
+    .side-line.right { right: 48px; }
+    .crest-mark {
+      font-family: 'Cinzel', serif; font-weight: 600; font-size: 18px;
+      letter-spacing: 0.3em;
+      background: var(--gold-gradient-v);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Shared typography */
+    .h-cormorant { font-family: 'Cormorant Infant', serif; }
+    .h-libre { font-family: 'Libre Baskerville', serif; }
+    .h-cinzel { font-family: 'Cinzel', serif; }
+    .f-outfit { font-family: 'Outfit', sans-serif; }
+    .f-lato { font-family: 'Lato', sans-serif; }
+
+    /* Shared CTA styles */
+    .cta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .cta-filled {
+      display: inline-block; font-weight: 500; font-size: 15px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--warm-white); background: var(--burgundy);
+      padding: 16px 40px; text-decoration: none; transition: background 0.3s;
+    }
+    .cta-filled:hover { background: var(--burgundy-hover); }
+    .cta-outline {
+      display: inline-block; font-weight: 500; font-size: 15px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--burgundy); border: 1.5px solid var(--burgundy);
+      padding: 15px 40px; text-decoration: none; transition: all 0.3s;
+    }
+    .cta-outline:hover { background: var(--burgundy); color: var(--warm-white); }
+    .cta-cinzel { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.2em; }
+    .cta-cormorant { font-family: 'Cormorant Infant', serif; }
+
+    /* Spacing helpers */
+    .mb-12 { margin-bottom: 12px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-20 { margin-bottom: 20px; }
+    .mb-28 { margin-bottom: 28px; }
+    .mb-36 { margin-bottom: 36px; }
+    .mb-40 { margin-bottom: 40px; }
+    .mb-48 { margin-bottom: 48px; }
+    .mb-56 { margin-bottom: 56px; }
+    .mt-48 { margin-top: 48px; }
+    .mt-56 { margin-top: 56px; }
+    .op-15 { opacity: 0.15; }
+    .op-20 { opacity: 0.2; }
+    .op-25 { opacity: 0.25; }
+
+    /* Per-variant heading styles (the stuff that actually changes) */
+    .hero h1 { line-height: 1.05; }
+
+    .hero .subtitle-italic {
+      font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 400;
+      color: var(--burgundy);
+    }
+    .hero .subtitle-cinzel {
+      font-family: 'Cinzel', serif; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--burgundy);
+    }
+    .hero .subtitle-cormorant-italic {
+      font-family: 'Cormorant Infant', serif; font-style: italic; font-weight: 300;
+      color: var(--burgundy);
+    }
+    .hero .subtitle-outfit {
+      font-family: 'Outfit', sans-serif; font-weight: 300;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone);
+    }
+    .hero .tagline {
+      font-family: 'Lato', sans-serif; font-weight: 300; font-size: 14px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone);
+    }
+    .hero .accent-italic {
+      font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 400;
+      color: var(--burgundy);
+    }
+    .hero .body {
+      font-weight: 300; font-size: 17px; line-height: 1.8;
+      color: var(--stone); max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  INLINE SVG SPRITE — symbols reused via <use>       ║
+  ║  Fill color controlled per-instance via CSS class    ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <linearGradient id="gold-h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d19e1d"/><stop offset="50%" stop-color="#ffd86e"/><stop offset="100%" stop-color="#e3a812"/>
+    </linearGradient>
+    <linearGradient id="gold-h-faded" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d19e1d" stop-opacity="0.3"/><stop offset="50%" stop-color="#ffd86e" stop-opacity="0.3"/><stop offset="100%" stop-color="#e3a812" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+
+  <symbol id="fl-vintage" viewBox="0 0 2654 190">
+    <path d="M684.809,45.133c34.229-7.489,106.37,0.096,158.835-2.184c25.117-1.092,50.189-4.697,75.329-0.704c62.716,9.962,76.678,35.174,99.705,37.477c8.291-42.721,21.754-36.894,37.88-36.553c18.415,0.802,26.35,23.585,22.617,39.124c-18.983,11.997-5.337-7.578-20.654-23.723c-33.763-1.743-23.725,28.405-17.834,34.396c23.365,23.764,86.471,40.525,99.346-4.258c-7.355,0.802-14.793,4.037-22.203,2.378c-52.151-35.806,51.183-86.14,50.018,6.442c-0.142,11.298,84.307-94.179,150.445-44.998c23.977,17.83,25.482-25.406,84.278-8.365c45.567,13.207,66.264,45.508,86.427,50.349c2.238-19.024,0.832-39.235,26.82-48.553c41.669-8.455,59.624,58.376-0.166,40.258c-1.828,30.916,45.73,46.817,82.009,23.253c8.212-5.364,18.691-9.511,22.341-19.438c5.253-10.949,1.576-27.733-10.977-31.604c-9.65-1.051-10.507,11.779-16.424,16.894c-4.507,0.221-10.922,0.636-12.94-4.452c-0.513-20.284,22.726-33.084,40.534-25.615c24.106,10.111,13.593,31.15,20.627,40.103c1.597,2.033,45.918-21.374,50.912-23.341c95.042-37.432,259.042-18.215,355.842,16.65c17.585,8.018,37.023,12.608,56.433,12.028c11.982,0.964,1.955-23.56-18.608-21.622c-7.825,0.636-15.511,2.184-23.281,2.903c0.636-3.373,1.493-6.691,2.544-9.954c11.834-6.995,26.848-4.396,39.511-1.134c12.691,3.622,16.977,16.728,23.309,26.737c33.823,7.087,28.068-29.343,58.914-11.894c33.701,19.063,413.358,6.431,416.124,7.398c8.439,2.95,2.808,13.223,2.443,19.371c0.166-2.795-328.312-3.692-373.353-3.041c-35.114,0.507-35.708,7.006-49.084,15.197c-23.203,14.208-42.216-28.904-60.63-8.809c-32.227,35.167-94.755,24.781-136.942,2.131c-16.733-8.984-34.837-18.681-54.338-19.412c0.951,16.785,8.42,35.522-8.56,47.336c-27.132,18.877-50.946-18.338-28.865-42.053c3.959-4.252,11.435-6.225,11.268-12.997c-35.034-38.529-99.037-11.592-110.074,5.642c54.964-4.548,60.085,61.85,7.503,55.016c-15.423-2.005-13.546-15.589-1.532-14.174c3.668,0.432,7.249,1.926,10.926,1.583c8.475-0.791,13.101-11.919,9.48-19.621c-17.901-38.079-88.205,31.727-217.46,39.911c-47.052,2.979-40.857-1.284-71.255-11.204c-54.106-16.415-121.085-110.669-177.898-78.525c-3.871,2.35-3.899,7.355-5.253,11.198c1.128-3.199,35.137,23.534,37.708,26.698c10.361,12.75,19.79,23.726,38.172,22.567c-12.285-34.566,11.74-37.162,21.155-32.684c30.451,14.483,8.814,87.828-79.837,42.755c-31.997,11.61-19.55,23.71-66.359-0.664c-82.402,48.732-107.611-20.542-81.354-39.249c9.629-6.86,29.092-4.207,28.394,15.308c-0.114,3.182-3.619,9.924-2.837,12.569c1.776,5.979,18.783,9.939,38.069-21.585c8.812-14.404,16.96-21.457,34.013-23.449c-0.604-4.935,1.872-10.318-25.998-16.57c-34.786-7.803-60.6,11.688-83.494,29.814c-88.05,77.738-132.147,75.104-249.351,38.215c-27.898-8.781-54.848-21.556-83.662-27.045c-28.594-4.24-40.137,20.004-35.085,27.438c7.941,11.683,28.846-10.661,32.54,2.706c2.849,10.31-21.554,26.645-41.476,12.121c-14.946-10.897-14.471-32.045,3.48-43.619c15.965-10.293,33.583-6.145,32.275-14.158c-0.377-2.31-2.878-3.53-5.061-4.377c-23.393-9.071-56.678-27.929-95.862,9.245c-1.134,6.138,4.452,10.645,6.581,15.926c15.346,31.766-15.686,49.136-31.023,39.622c-15.816-12.525-15.871-37.576-2.323-51.843c-36.003-8.272-39.607,6.125-95.45,26.278c-96.493,34.823-104.698-8.109-111.121-15.55c-14.35-1.327-29.253,3.512-39.954,13.189c-4.894,3.76-10.286,10.286-17.198,7.217c-5.641-5.751-9.014-14.986-18.111-16.009c-34.547-3.885-401.605,1.454-406.631-3.665c-33.817-34.494,381-8.128,411.58-17.736C471.9,80.621,473.093,54.981,493,74.012c8.655,8.275,19.091,9.631,30.142,13.314c1.184,0.395,14.711-16.97,16.723-19.012c31.804-32.272,46.162-7.309,33.991,1.043c-3.15,2.162-7.062,2.79-10.768,3.722c-8.027,2.018-8.79,4.979-10.417,12.201C594.622,83.699,614.527,59.212,684.809,45.133z"/>
+  </symbol>
+
+  <symbol id="fl-simple" viewBox="0 0 2620 571">
+    <path d="M1107.642,424.629c-96.775-50.076-121.274-68.52-236.516-130.439c-1.833,11.153-1.495,27.66,3.044,38.573c11.181,26.76,36.975,14.002,64.713,32.482c12.594,8.4,7.722,26.901-12.942,26.901c-12.077,0-41.028-9.739-57.608-45.171c-4.901-10.485-7.359-22.84-7.359-37.052c0-9.07,2.03-11.246,2.03-20.301c-48.363-24.181-66.743-33.358-94.912-45.68c-66.939,18.141-135.097,84.495-77.908,155.818C770.981,500.522,996.886,536.011,1107.642,424.629z M1951.62,343.929c0-38.059-38.813-83.546-99.479-99.987c-28.173,12.324-46.558,21.503-94.912,45.68c0,3.386,0.334,6.771,1.016,10.149c6.406,32.245-12.808,73.577-45.173,87.553c-35.45,15.329-47.659-11.45-31.722-22.079c24.063-16.032,44.545-8.769,57.608-21.824c6.294-6.294,9.428-14.835,10.405-23.601c0.963-8.671,1.145-17.109-0.255-25.631c-114.731,61.644-139.872,80.431-236.516,130.439c4.354,4.378,6.555,5.562,11.166,10.151C1677.187,563.384,1951.62,457.177,1951.62,343.929z M883.306,246.48c-33.683-8.412-63.704-12.313-98.971-6.091c27.579,12.782,54.439,25.865,81.207,39.589C868.928,268.813,874.853,257.645,883.306,246.48z M1754.692,279.978c26.721-13.7,53.577-26.784,81.207-39.589c-35.071-6.188-64.701-2.467-98.971,6.091C1745.381,257.645,1751.306,268.813,1754.692,279.978z M1115.256,417.524c6.331-6.331,12.145-12.512,17.256-18.272c-1.688-1.688-3.163-2.768-6.598-5.075c-65.055-51.561-146.974-118.4-234.488-145.667c-8.794,12.182-14.719,24.03-17.763,35.529C986.733,343.731,1011.267,363.324,1115.256,417.524z M1746.571,284.039c-3.044-11.499-8.969-23.347-17.763-35.529c-85.967,26.785-165.678,91.13-234.488,145.667c-3.593,2.413-4.986,3.462-6.598,5.075c5.109,5.757,10.921,11.937,17.256,18.272C1608.934,363.341,1633.523,343.719,1746.571,284.039z M898.025,240.389c88.832,28.697,168.523,96.643,241.086,150.744c107.991-133.484-18.51-233.494-150.488-201.498C950.992,198.757,918.642,217.899,898.025,240.389z M1481.124,391.133c72.643-54.16,152.214-122.034,241.086-150.744c-11.167-12.182-25.378-23.006-42.634-32.482C1539.954,133.446,1357.885,238.801,1481.124,391.133z M1122.87,421.078c51.904,26.921,84.32,40.357,110.138,49.739c-28.429-15.393-44.059-27.742-94.405-66.995C1133.529,409.91,1128.286,415.669,1122.87,421.078z M1481.631,403.821c-48.972,38.183-65.545,51.37-94.405,66.995c25.849-9.393,58.244-22.823,110.138-49.739C1491.948,415.669,1486.705,409.91,1481.631,403.821z M1310.117,504.073c-67.893-13.004-133.795-39.259-194.861-75.89c-140.799,125.325-325.647,119.468-412.13,69.281c-36.576-21.223-62.234-53.678-62.936-98.212c0-70.509,50.361-137.947,116.228-160.384c-69.772-28.996-141.889-53.323-216.722-62.683C225.499,136.975-56.35,365.516,69.706,507.869c15.567,13.878,32.736,23.601,51.516,29.184c111.752,33.216,160.658-36.824,232.711-95.674c9.818-8.121,18.867-13.956,27.154-17.51c7.835-3.357,18.891-6.867,27.154-4.821l0.507-0.509c0.755,0.38,6.432,3.217,7.105,3.553l-1.014,1.016c5.662,6.775,0.995,18.94-3.553,26.899c-12.285,21.502-61.396,60.075-122.573,81.716c-60.733,21.525-141.929,33.069-197.69,3.553c-1.919-1.275-28.931-15.079-28.931-20.81c-37.436-43.284-40.919-95.516-15.989-146.174c35.588-72.278,137.606-159.727,309.099-193.884c146.607-29.166,280.399,0.451,415.934,60.399c39.535-10.476,80.002-7.845,118.766,3.552c58.578-68.3,190.111-88.169,260.882-27.661c60.499,51.738,44.312,123.47-5.584,185.51c46.106,36.661,93.799,73.143,149.727,90.851c-106.375-63.823-114.014-230.946-42.127-335.491c17.887-44.342,15.05-91.544-7.105-133.485c28.12,20.963,50.845,46.718,59.89,81.209c1.476-0.908,2.986-1.783,4.53-2.625c1.543,0.842,3.053,1.717,4.53,2.625c9.01-34.358,31.621-60.135,59.89-81.209c-22.151,41.932-24.995,89.135-7.105,133.485c71.843,104.482,64.223,271.683-42.127,335.491c55.906-17.701,103.596-54.171,149.727-90.851c-77.154-95.933-46.895-180.714,41.873-211.901c74.601-26.213,168.646,1.843,213.425,54.053c38.757-11.395,79.225-14.029,118.766-3.552c97.656-43.194,195.75-71.565,299.452-71.565c298.356,0,528.446,213.804,409.593,351.224c0,4.514-18.592,15.156-22.586,17.256c-5.372,2.831-19.028,11.759-44.664,17.003c-32.9,6.743-68.66,5.027-101.51-1.27c-102.552-19.6-167.374-74.593-180.433-97.449c-4.548-7.959-9.195-20.148-3.553-26.899l-1.014-1.016c0.673-0.336,6.35-3.173,7.105-3.553l0.507,0.509c1.348-0.334,3.378-0.509,6.091-0.509c16.484,0,35.493,12.315,48.218,22.84c72.24,59.004,120.902,128.907,232.711,95.674c18.78-5.584,35.948-15.306,51.515-29.184c113.235-127.874-104.917-335.998-399.948-335.998c-101.584,0-192.369,27.768-286.763,66.997c92.113,31.378,146.172,148.778,98.716,217.483c-59.46,86.091-225.683,90.49-334.474,47.71c-45.171-17.763-86.204-43.055-123.08-75.879C1444.322,464.568,1378.445,490.986,1310.117,504.073z M1310.117,194.869c-81.932,84.21-93.721,228.735,0,285.64C1404.454,423.23,1391.387,278.4,1310.117,194.869z"/>
+  </symbol>
+</svg>
+
+<!-- ═══════════════ VARIANTS ═══════════════ -->
+
+<!-- A: Cormorant Garamond 300 — the more formal sibling of Infant -->
+<div class="variant-label">A — Cormorant Garamond 300 + Simple Flourish (gold) + gold side lines</div>
+<section class="hero">
+  <div class="side-line left"></div>
+  <div class="side-line right"></div>
+  <svg class="fl fl-md mb-48"><use href="#fl-simple" fill="url(#gold-h)"/></svg>
+  <h1 class="mb-16" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(44px,6.5vw,80px);color:var(--warm-dark);letter-spacing:0.04em">Laitse Loss</h1>
+  <div class="burgundy-rule mb-16" style="width:60px"></div>
+  <p class="subtitle-cormorant-italic mb-48" style="font-size:clamp(18px,2vw,24px)">Kus ajalugu kohtub elegantse tänapäevaga</p>
+  <p class="body f-outfit mb-48">19. sajandi arhitektuurne pärl Harjumaal — ajatu elegants iga erilise hetke jaoks.</p>
+  <div class="cta-row">
+    <a href="#" class="cta-filled cta-cormorant">Planeeri Sündmus</a>
+    <a href="#" class="cta-outline cta-cormorant">Avasta Lossi</a>
+  </div>
+  <svg class="fl fl-sm mt-56 op-25"><use href="#fl-vintage" fill="var(--burgundy)"/></svg>
+</section>
+
+<!-- B: Cormorant SC 300 — small caps, castle entrance signage feel -->
+<div class="variant-label">B — Cormorant SC 300 (small caps) + Vintage Divider (gold) + stripe</div>
+<section class="hero">
+  <div class="top-stripe"></div>
+  <svg class="fl fl-lg mb-36"><use href="#fl-vintage" fill="url(#gold-h)"/></svg>
+  <h1 class="mb-12" style="font-family:'Cormorant SC',serif;font-weight:300;font-size:clamp(38px,5.5vw,68px);color:var(--warm-dark);letter-spacing:0.12em">Laitse Loss</h1>
+  <p class="subtitle-italic mb-48" style="font-size:clamp(16px,1.8vw,21px)">Elegants. Ajatu. Teie oma.</p>
+  <p class="body f-outfit mb-48">Ajaloolise Laitse lossi elegantne atmosfäär loob täiusliku tausta teie kõige olulisematele hetkedele.</p>
+  <a href="#" class="cta-filled cta-cormorant">Avasta Võimalusi</a>
+  <div class="gold-accent"></div>
+</section>
+
+<!-- C: Cormorant Upright 300 — calligraphic italic standing upright, unique -->
+<div class="variant-label">C — Cormorant Upright 300 + Simple Flourish (gold) + tagline</div>
+<section class="hero">
+  <svg class="fl fl-md mb-48"><use href="#fl-simple" fill="url(#gold-h)"/></svg>
+  <h1 class="mb-20" style="font-family:'Cormorant Upright',serif;font-weight:300;font-size:clamp(42px,6vw,76px);color:var(--warm-dark);letter-spacing:0.04em">Laitse Loss</h1>
+  <div class="gold-rule mb-20" style="width:80px"></div>
+  <p class="subtitle-cormorant-italic mb-16" style="font-size:clamp(14px,1.4vw,18px)">Sündmuste paik ajaloolises lossis</p>
+  <p class="tagline mb-56">Pulmad &middot; Vastuvõtud &middot; Galaõhtud</p>
+  <p class="body f-lato mb-48">Keset Eesti kauneimat loodust seisab ajatu loss, kus ajalugu kohtub elegantse tänapäevaga.</p>
+  <a href="#" class="cta-outline cta-cormorant">Võtke Ühendust</a>
+  <svg class="fl fl-md mt-56 op-20"><use href="#fl-vintage" fill="url(#gold-h-faded)"/></svg>
+</section>
+
+<!-- D: EB Garamond 400 — the historically authentic Garamond -->
+<div class="variant-label">D — EB Garamond 400 + Vintage Divider (gold) + Libre italic subtitle + stripe</div>
+<section class="hero">
+  <div class="top-stripe"></div>
+  <svg class="fl fl-lg mb-40"><use href="#fl-vintage" fill="url(#gold-h)"/></svg>
+  <h1 class="mb-16" style="font-family:'EB Garamond',serif;font-weight:400;font-size:clamp(42px,6vw,76px);color:var(--warm-dark);letter-spacing:0.03em">Laitse Loss</h1>
+  <p class="subtitle-italic mb-36" style="font-size:clamp(16px,1.8vw,21px)">Elegants. Ajatu. Teie oma.</p>
+  <div class="gold-rule mb-48" style="width:60px"></div>
+  <p class="body f-lato mb-48">Ajaloolise Laitse lossi elegantne atmosfäär loob täiusliku tausta teie kõige olulisematele hetkedele. Pulmad, vastuvõtud, galaõhtud — iga sündmus väärib erakordset kohta.</p>
+  <a href="#" class="cta-filled cta-cormorant">Planeeri Sündmus</a>
+  <svg class="fl fl-sm mt-56 op-15"><use href="#fl-simple" fill="var(--stone)"/></svg>
+</section>
+
+<!-- E: Cormorant SC 300 — small caps with side lines -->
+<div class="variant-label">E — Cormorant SC 300 (small caps) + Vintage Divider (gold) + Outfit subtitle + side lines</div>
+<section class="hero">
+  <div class="side-line left"></div>
+  <div class="side-line right"></div>
+  <svg class="fl fl-md mb-48"><use href="#fl-vintage" fill="url(#gold-h)"/></svg>
+  <h1 class="mb-20" style="font-family:'Cormorant SC',serif;font-weight:300;font-size:clamp(38px,5.5vw,68px);color:var(--warm-dark);letter-spacing:0.12em">Laitse Loss</h1>
+  <div class="gold-rule mb-20" style="width:80px"></div>
+  <p class="subtitle-outfit mb-16" style="font-size:clamp(13px,1.3vw,16px)">Sündmuste paik ajaloolises lossis</p>
+  <p class="accent-italic mb-56" style="font-size:clamp(16px,1.6vw,20px)">Kus iga hetk muutub eriliseks</p>
+  <p class="body f-lato mb-48">Keset Eesti kauneimat loodust seisab ajatu loss, kus ajalugu kohtub elegantse tänapäevaga. Ideaalne paik pulmadeks, vastuvõttudeks ja erakordseteks sündmusteks.</p>
+  <div class="cta-row">
+    <a href="#" class="cta-filled cta-cormorant">Avasta Võimalusi</a>
+    <a href="#" class="cta-outline cta-cormorant">Võtke Ühendust</a>
+  </div>
+</section>
+
+<!-- F: Cormorant SC 300 + C's style — small caps with simple flourish, tagline, outline CTA -->
+<div class="variant-label">F — Cormorant SC 300 (small caps) + Simple Flourish (gold) + tagline + outline CTA</div>
+<section class="hero">
+  <svg class="fl fl-md mb-48"><use href="#fl-simple" fill="url(#gold-h)"/></svg>
+  <h1 class="mb-20" style="font-family:'Cormorant SC',serif;font-weight:300;font-size:clamp(38px,5.5vw,68px);color:var(--warm-dark);letter-spacing:0.12em">Laitse Loss</h1>
+  <div class="gold-rule mb-20" style="width:80px"></div>
+  <p class="subtitle-cormorant-italic mb-16" style="font-size:clamp(14px,1.4vw,18px)">Sündmuste paik ajaloolises lossis</p>
+  <p class="tagline mb-56">Pulmad &middot; Vastuvõtud &middot; Galaõhtud</p>
+  <p class="body f-lato mb-48">Keset Eesti kauneimat loodust seisab ajatu loss, kus ajalugu kohtub elegantse tänapäevaga.</p>
+  <a href="#" class="cta-outline cta-cormorant">Võtke Ühendust</a>
+  <svg class="fl fl-md mt-56 op-20"><use href="#fl-vintage" fill="url(#gold-h-faded)"/></svg>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laitse Loss — v4 Finalistid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: system-ui, sans-serif; color: #1a1a1a; background: #e8e4de; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center; gap: 2px; padding: 12px 20px;
+      background: rgba(44, 36, 32, 0.94); backdrop-filter: blur(12px);
+    }
+    .nav a {
+      color: #e8ddd0; text-decoration: none; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase; padding: 8px 18px;
+      border-radius: 4px; transition: background 0.2s;
+    }
+    .nav a:hover { background: rgba(255,255,255,0.1); }
+
+    /* INTRO */
+    .intro { max-width: 680px; margin: 0 auto; padding: 100px 24px 48px; text-align: center; }
+    .intro h1 { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8a7e72; margin-bottom: 14px; }
+    .intro p { font-size: 15px; line-height: 1.7; color: #6b6058; }
+    .intro p strong { color: #2C2420; }
+
+    /* LABELS */
+    .variant-label { text-align: center; padding: 48px 24px 0; background: #e8e4de; }
+    .variant-label h2 { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8a7e72; margin-bottom: 4px; }
+    .variant-label p { font-size: 14px; color: #7a6f64; max-width: 520px; margin: 0 auto; }
+    .variant-section { scroll-margin-top: 52px; }
+
+    /* HERO BASE */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 100px 24px 80px; position: relative; overflow: hidden;
+    }
+
+    /* PANELS */
+    .panel { max-width: 920px; margin: 0 auto; padding: 48px 24px; }
+    .panel h3 { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #a09488; margin-bottom: 20px; }
+    .palette { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+    .swatch { flex: 1; min-width: 100px; }
+    .swatch-color { height: 64px; border-radius: 6px; margin-bottom: 6px; }
+    .swatch-label { font-size: 11px; font-weight: 500; color: #5a4f44; }
+    .swatch-hex { font-size: 10px; font-family: ui-monospace, monospace; color: #a09488; }
+    .type-row { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .type-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .type-meta { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #b0a498; margin-bottom: 8px; }
+    .section-divider { height: 1px; background: #d5cec5; }
+
+    /* ========================================
+       1 — ORIGINAL V3 (Libre Baskerville + Lato)
+       The warm & inviting one from v1, now in Estonian
+       with stronger red/gold presence
+       ======================================== */
+    .hero-1 { background: #FAF7F2; }
+
+    .hero-1::before {
+      content: ''; position: absolute;
+      top: 10%; left: 50%; transform: translateX(-50%);
+      width: 200px; height: 200px;
+      border: 1px solid rgba(184, 134, 11, 0.15);
+      border-radius: 50%;
+    }
+
+    .hero-1 .crest {
+      width: 48px; height: 2px; background: #B8860B;
+      margin-bottom: 20px; position: relative;
+    }
+    .hero-1 .crest::before, .hero-1 .crest::after {
+      content: ''; position: absolute; top: 50%;
+      width: 8px; height: 8px; border: 1px solid #B8860B;
+      border-radius: 50%; transform: translateY(-50%);
+    }
+    .hero-1 .crest::before { left: -16px; }
+    .hero-1 .crest::after { right: -16px; }
+
+    .hero-1 .overline {
+      font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #B8860B; margin-bottom: 20px;
+    }
+
+    .hero-1 h1 {
+      font-family: 'Libre Baskerville', serif; font-weight: 700;
+      font-size: clamp(44px, 7vw, 84px); color: #2C2420;
+      line-height: 1.1; margin-bottom: 12px;
+    }
+
+    .hero-1 .red-rule {
+      width: 60px; height: 2px; background: #8B1A1A;
+      margin: 0 auto 16px;
+    }
+
+    .hero-1 .sub {
+      font-family: 'Lato', sans-serif; font-weight: 300; font-size: 18px;
+      color: #7A6F64; max-width: 480px; line-height: 1.65;
+      margin-bottom: 40px;
+    }
+
+    .hero-1 .cta {
+      display: inline-block; font-family: 'Lato', sans-serif; font-size: 13px;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #FAF7F2; text-decoration: none; padding: 16px 40px;
+      background: #8B1A1A; border-radius: 2px; transition: all 0.3s;
+    }
+    .hero-1 .cta:hover { background: #6B1414; }
+
+    .hero-1 .trust {
+      margin-top: 48px; font-family: 'Lato', sans-serif;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.05em; color: #B8A899;
+    }
+    .hero-1 .trust strong { color: #8B1A1A; font-weight: 400; }
+
+    .panel-1 { background: #F5F0E8; }
+
+    /* ========================================
+       2 — REGAL STRIPE (Cormorant Infant + Outfit)
+       From v3 variant A — bold red/gold
+       ======================================== */
+    .hero-2 { background: #FAF7F2; }
+
+    .hero-2 .red-stripe {
+      width: 3px; height: 80px; background: #8B1A1A; margin-bottom: 24px;
+    }
+
+    .hero-2 .gold-dots {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 28px;
+    }
+    .hero-2 .gold-dots .dot {
+      width: 4px; height: 4px; border-radius: 50%; background: #C5963B;
+    }
+    .hero-2 .gold-dots .line {
+      width: 32px; height: 1px; background: #C5963B;
+    }
+
+    .hero-2 .overline {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: #C5963B; margin-bottom: 20px;
+    }
+
+    .hero-2 h1 {
+      font-family: 'Cormorant Infant', serif; font-weight: 300;
+      font-size: clamp(52px, 8vw, 96px); color: #2C2420;
+      line-height: 1.0; letter-spacing: 0.02em; margin-bottom: 16px;
+    }
+
+    .hero-2 .red-rule {
+      width: 80px; height: 3px; background: #8B1A1A;
+      margin: 0 auto 16px; position: relative;
+    }
+    .hero-2 .red-rule::before, .hero-2 .red-rule::after {
+      content: ''; position: absolute; top: 50%; width: 6px; height: 6px;
+      border: 1px solid #C5963B; border-radius: 50%; transform: translateY(-50%);
+    }
+    .hero-2 .red-rule::before { left: -14px; }
+    .hero-2 .red-rule::after { right: -14px; }
+
+    .hero-2 .subtitle {
+      font-family: 'Cormorant Infant', serif; font-weight: 500; font-style: italic;
+      font-size: 22px; color: #8B1A1A; margin-bottom: 28px; letter-spacing: 0.01em;
+    }
+
+    .hero-2 .body {
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 16px;
+      line-height: 1.7; color: #7A6F64; max-width: 440px; margin-bottom: 40px;
+    }
+
+    .hero-2 .cta {
+      display: inline-block; font-family: 'Outfit', sans-serif; font-size: 12px;
+      font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #fff; text-decoration: none; padding: 16px 40px;
+      background: #8B1A1A; transition: all 0.3s;
+    }
+    .hero-2 .cta:hover { background: #6B1414; box-shadow: 0 4px 20px rgba(139,26,26,0.25); }
+
+    .hero-2 .trust {
+      margin-top: 36px; display: flex; align-items: center; gap: 20px;
+    }
+    .hero-2 .trust span {
+      font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #C5963B;
+    }
+    .hero-2 .trust .sep { width: 1px; height: 12px; background: #C5963B; opacity: 0.4; }
+
+    .panel-2 { background: #F5F0E8; }
+
+    /* ========================================
+       3 — HYBRID (Cormorant Infant heading +
+       Lato body, crest from #1, red/gold from #2)
+       ======================================== */
+    .hero-3 { background: #FAF7F2; }
+
+    .hero-3::before {
+      content: ''; position: absolute;
+      top: 12%; left: 50%; transform: translateX(-50%);
+      width: 180px; height: 180px;
+      border: 1px solid rgba(184, 134, 11, 0.12);
+      border-radius: 50%;
+    }
+
+    .hero-3 .red-stripe {
+      width: 2px; height: 56px; background: #8B1A1A; margin-bottom: 16px;
+    }
+
+    .hero-3 .crest {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    }
+    .hero-3 .crest .gold-line { width: 28px; height: 1px; background: #C5963B; }
+    .hero-3 .crest .red-dot {
+      width: 7px; height: 7px; background: #8B1A1A; border-radius: 50%;
+    }
+    .hero-3 .crest .gold-ring {
+      width: 11px; height: 11px; border: 1px solid #C5963B;
+      border-radius: 50%;
+    }
+
+    .hero-3 .overline {
+      font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #C5963B; margin-bottom: 20px;
+    }
+
+    .hero-3 h1 {
+      font-family: 'Cormorant Infant', serif; font-weight: 400;
+      font-size: clamp(50px, 8vw, 92px); color: #2C2420;
+      line-height: 1.0; letter-spacing: 0.02em; margin-bottom: 12px;
+    }
+
+    .hero-3 .red-rule {
+      width: 64px; height: 2px; background: #8B1A1A;
+      margin: 0 auto 16px;
+    }
+
+    .hero-3 .subtitle {
+      font-family: 'Libre Baskerville', serif; font-weight: 400; font-style: italic;
+      font-size: 19px; color: #8B1A1A; margin-bottom: 28px;
+    }
+
+    .hero-3 .body {
+      font-family: 'Lato', sans-serif; font-weight: 300; font-size: 17px;
+      line-height: 1.7; color: #7A6F64; max-width: 460px; margin-bottom: 40px;
+    }
+
+    .hero-3 .cta {
+      display: inline-block; font-family: 'Lato', sans-serif; font-size: 13px;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #FAF7F2; text-decoration: none; padding: 16px 40px;
+      background: #8B1A1A; border-radius: 2px; transition: all 0.3s;
+    }
+    .hero-3 .cta:hover { background: #6B1414; }
+
+    .hero-3 .trust {
+      margin-top: 44px; display: flex; align-items: center; gap: 18px;
+    }
+    .hero-3 .trust span {
+      font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 400;
+      letter-spacing: 0.06em; text-transform: uppercase; color: #B8860B;
+    }
+    .hero-3 .trust .sep {
+      width: 4px; height: 4px; background: #8B1A1A; border-radius: 50%;
+    }
+
+    .panel-3 { background: #F5F0E8; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .palette { gap: 6px; }
+      .swatch { min-width: 72px; }
+      .swatch-color { height: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="#v1">1 — Originaal</a>
+    <a href="#v2">2 — Regal Stripe</a>
+    <a href="#v3">3 — Hübriid</a>
+  </nav>
+
+  <section class="intro">
+    <h1>v4 &mdash; Finalistid</h1>
+    <p>
+      Kolm varianti k&otilde;rvuti: <strong>originaalne soe suund</strong>,
+      <strong>Regal Stripe</strong> ja uus <strong>h&uuml;briid</strong>,
+      mis &uuml;hendab m&otilde;lema parimad elemendid.
+    </p>
+  </section>
+
+  <!-- =============================================
+       1 — ORIGINAL V3 (Libre Baskerville + Lato)
+       ============================================= -->
+  <section class="variant-section" id="v1">
+    <div class="variant-label">
+      <h2>1 &mdash; Originaal</h2>
+      <p>Libre Baskerville + Lato &mdash; soe ja kutsuv, kuldne vapp, tugev serif</p>
+    </div>
+
+    <div class="hero hero-1">
+      <div class="crest"></div>
+      <div class="overline">Laitse, Harjumaa</div>
+      <h1>Laitse Loss</h1>
+      <div class="red-rule"></div>
+      <p class="sub">
+        Ajatu elegants teie elu kõige tähtsamate hetkede
+        tähistamiseks. Ajalooline lossikoht pulmadeks,
+        pidustusteks ja eraüritusteks.
+      </p>
+      <a href="#" class="cta">Planeerige sündmus</a>
+      <p class="trust">
+        <strong>Pulmad</strong> &middot; Firmaüritused &middot;
+        Eraüritused &middot; Fotosessioonid
+      </p>
+    </div>
+
+    <div class="panel panel-1">
+      <h3>Värvipalett</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FAF7F2;"></div>
+          <div class="swatch-label">Soe valge</div>
+          <div class="swatch-hex">#FAF7F2</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2C2420;"></div>
+          <div class="swatch-label">Soe tume</div>
+          <div class="swatch-hex">#2C2420</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B1A1A;"></div>
+          <div class="swatch-label">Sügav burgundia</div>
+          <div class="swatch-hex">#8B1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #B8860B;"></div>
+          <div class="swatch-label">Antiikkuld</div>
+          <div class="swatch-hex">#B8860B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #7A6F64;"></div>
+          <div class="swatch-label">Kivihall</div>
+          <div class="swatch-hex">#7A6F64</div>
+        </div>
+      </div>
+
+      <h3>Tüpograafia</h3>
+      <div class="type-row">
+        <div class="type-meta">Pealkiri &mdash; Libre Baskerville Bold 700</div>
+        <div style="font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 44px; color: #2C2420; line-height: 1.15;">
+          Teie tähistamine, meie pärand
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Alapealkiri &mdash; Libre Baskerville Italic 400</div>
+        <div style="font-family: 'Libre Baskerville', serif; font-weight: 400; font-style: italic; font-size: 20px; color: #8B1A1A; line-height: 1.4;">
+          Iga kivi räägib oma lugu
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Põhitekst &mdash; Lato Light 300</div>
+        <div style="font-family: 'Lato', sans-serif; font-weight: 300; font-size: 17px; color: #7A6F64; line-height: 1.75; max-width: 520px;">
+          Laitse Loss on tervitanud külalisi põlvkondi. Selle müürid hoiavad
+          lugusid ja saalid ootavad uusi. Olenemata sellest, kas unistate
+          intiimsest pulmapeost või suurejoonelisest galaõhtust — siin see algab.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- =============================================
+       2 — REGAL STRIPE (Cormorant Infant + Outfit)
+       ============================================= -->
+  <section class="variant-section" id="v2">
+    <div class="variant-label">
+      <h2>2 &mdash; Regal Stripe</h2>
+      <p>Cormorant Infant + Outfit &mdash; õhuline serif, punane triip, kuldne ornament</p>
+    </div>
+
+    <div class="hero hero-2">
+      <div class="red-stripe"></div>
+      <div class="gold-dots">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="overline">Ajalooline loss Harjumaal</div>
+      <h1>Laitse Loss</h1>
+      <div class="red-rule"></div>
+      <div class="subtitle">Elegants. Ajatu. Erakordne.</div>
+      <p class="body">
+        Laitse Loss pakub ainulaadset keskkonda teie elu kõige
+        olulisemate hetkede tähistamiseks. Pulmadest galaõhtuteni —
+        loss kohandub teie visiooniga.
+      </p>
+      <a href="#" class="cta">Planeerige oma sündmus</a>
+      <div class="trust">
+        <span>Pulmad</span><div class="sep"></div>
+        <span>Galaõhtud</span><div class="sep"></div>
+        <span>Firmaüritused</span>
+      </div>
+    </div>
+
+    <div class="panel panel-2">
+      <h3>Värvipalett</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FAF7F2;"></div>
+          <div class="swatch-label">Soe valge</div>
+          <div class="swatch-hex">#FAF7F2</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2C2420;"></div>
+          <div class="swatch-label">Soe tume</div>
+          <div class="swatch-hex">#2C2420</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B1A1A;"></div>
+          <div class="swatch-label">Sügav burgundia</div>
+          <div class="swatch-hex">#8B1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C5963B;"></div>
+          <div class="swatch-label">Rikas kuld</div>
+          <div class="swatch-hex">#C5963B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #7A6F64;"></div>
+          <div class="swatch-label">Kivihall</div>
+          <div class="swatch-hex">#7A6F64</div>
+        </div>
+      </div>
+
+      <h3>Tüpograafia</h3>
+      <div class="type-row">
+        <div class="type-meta">Pealkiri &mdash; Cormorant Infant 300</div>
+        <div style="font-family: 'Cormorant Infant', serif; font-weight: 300; font-size: 48px; color: #2C2420; line-height: 1.1;">
+          Kus ajalugu saab teie taustaks
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Alapealkiri &mdash; Cormorant Infant Italic 500</div>
+        <div style="font-family: 'Cormorant Infant', serif; font-weight: 500; font-style: italic; font-size: 22px; color: #8B1A1A; line-height: 1.3;">
+          Iga tähistamine väärib erakordset keskkonda
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Põhitekst &mdash; Outfit 300</div>
+        <div style="font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 16px; color: #7A6F64; line-height: 1.7; max-width: 520px;">
+          Laitse Loss on seisnud Eesti maastikul põlvkondi. Selle müürid hoiavad lugusid
+          ja saalid tervitavad uusi. Olenemata sellest, kas unistate intiimsest pulmapeost
+          või suurejoonelisest galaõhtust — siin see algab.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- =============================================
+       3 — HYBRID
+       Cormorant Infant heading + Libre Baskerville
+       italic subtitle + Lato body
+       Crest from #1, red stripe from #2, combined ornaments
+       ============================================= -->
+  <section class="variant-section" id="v3">
+    <div class="variant-label">
+      <h2>3 &mdash; Hübriid</h2>
+      <p>Cormorant Infant pealkiri + Libre Baskerville kursiiv + Lato kehatekst &mdash;
+         vapp originaalist, punane triip ja kuldornament Regal Stripe'ist</p>
+    </div>
+
+    <div class="hero hero-3">
+      <div class="red-stripe"></div>
+      <div class="crest">
+        <div class="gold-line"></div>
+        <div class="red-dot"></div>
+        <div class="gold-ring"></div>
+        <div class="red-dot"></div>
+        <div class="gold-line"></div>
+      </div>
+      <div class="overline">Laitse, Harjumaa</div>
+      <h1>Laitse Loss</h1>
+      <div class="red-rule"></div>
+      <div class="subtitle">Kus iga hetk saab eriliseks</div>
+      <p class="body">
+        Sajandite pikkuse ajalooga loss Eesti südames, kus
+        autentne pärand ja kaasaegne elegants loovad
+        ainulaadse keskkonna igaks tähistamiseks.
+      </p>
+      <a href="#" class="cta">Planeerige sündmus</a>
+      <div class="trust">
+        <span>Pulmad</span>
+        <div class="sep"></div>
+        <span>Galaõhtud</span>
+        <div class="sep"></div>
+        <span>Firmaüritused</span>
+        <div class="sep"></div>
+        <span>Eraüritused</span>
+      </div>
+    </div>
+
+    <div class="panel panel-3">
+      <h3>Värvipalett</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FAF7F2;"></div>
+          <div class="swatch-label">Soe valge</div>
+          <div class="swatch-hex">#FAF7F2</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2C2420;"></div>
+          <div class="swatch-label">Soe tume</div>
+          <div class="swatch-hex">#2C2420</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B1A1A;"></div>
+          <div class="swatch-label">Sügav burgundia</div>
+          <div class="swatch-hex">#8B1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #B8860B;"></div>
+          <div class="swatch-label">Antiikkuld</div>
+          <div class="swatch-hex">#B8860B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C5963B;"></div>
+          <div class="swatch-label">Rikas kuld</div>
+          <div class="swatch-hex">#C5963B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #7A6F64;"></div>
+          <div class="swatch-label">Kivihall</div>
+          <div class="swatch-hex">#7A6F64</div>
+        </div>
+      </div>
+
+      <h3>Tüpograafia — kolme fondi kooslus</h3>
+      <div class="type-row">
+        <div class="type-meta">Pealkiri &mdash; Cormorant Infant 400</div>
+        <div style="font-family: 'Cormorant Infant', serif; font-weight: 400; font-size: 48px; color: #2C2420; line-height: 1.05; letter-spacing: 0.02em;">
+          Kus ajalugu kohtub tähistamisega
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Aktsent &mdash; Libre Baskerville Italic 400</div>
+        <div style="font-family: 'Libre Baskerville', serif; font-weight: 400; font-style: italic; font-size: 19px; color: #8B1A1A; line-height: 1.4;">
+          Ajalooline loss, mis tervitab uusi lugusid
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Põhitekst &mdash; Lato Light 300</div>
+        <div style="font-family: 'Lato', sans-serif; font-weight: 300; font-size: 17px; color: #7A6F64; line-height: 1.75; max-width: 520px;">
+          Laitse Loss on tervitanud külalisi põlvkondi. Kivimüürid, valgus läbi
+          kõrgete akende, park mis ulatub Eesti maastikku — kõik see loob
+          erakordse atmosfääri. Teie sündmus peab ainult kohale tulema.
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">CTA &mdash; Lato Bold 700 &mdash; Suurtähed</div>
+        <div style="display: inline-block; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #FAF7F2; background: #8B1A1A; padding: 14px 36px; border-radius: 2px;">
+          Võtke ühendust
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="text-align: center; padding: 60px 24px; background: #e8e4de;">
+    <p style="font-size: 12px; color: #8a7e72; letter-spacing: 0.05em;">
+      Laitse Loss &mdash; v4 Finalistid &mdash; Sisekasutuseks
+    </p>
+  </div>
+
+</body>
+</html>

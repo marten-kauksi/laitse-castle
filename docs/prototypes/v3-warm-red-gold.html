@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laitse Loss — Soe suund, punane &amp; kuld</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Bodoni+Moda:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: system-ui, sans-serif; color: #1a1a1a; background: #e8e4de; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center; gap: 2px; padding: 12px 20px;
+      background: rgba(44, 36, 32, 0.94); backdrop-filter: blur(12px);
+    }
+    .nav a {
+      color: #e8ddd0; text-decoration: none; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase; padding: 8px 16px;
+      border-radius: 4px; transition: background 0.2s;
+    }
+    .nav a:hover { background: rgba(255,255,255,0.1); }
+
+    /* INTRO */
+    .intro { max-width: 680px; margin: 0 auto; padding: 100px 24px 48px; text-align: center; }
+    .intro h1 { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8a7e72; margin-bottom: 14px; }
+    .intro p { font-size: 15px; line-height: 1.7; color: #6b6058; }
+    .intro p strong { color: #2C2420; }
+
+    /* LABELS */
+    .variant-label { text-align: center; padding: 48px 24px 0; background: #e8e4de; }
+    .variant-label h2 { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8a7e72; margin-bottom: 4px; }
+    .variant-label p { font-size: 14px; color: #7a6f64; max-width: 500px; margin: 0 auto; }
+    .variant-section { scroll-margin-top: 52px; }
+
+    /* HERO BASE */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 100px 24px 80px; position: relative; overflow: hidden;
+    }
+
+    /* PANELS */
+    .panel { max-width: 920px; margin: 0 auto; padding: 48px 24px; }
+    .panel h3 { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #a09488; margin-bottom: 20px; }
+    .palette { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+    .swatch { flex: 1; min-width: 100px; }
+    .swatch-color { height: 64px; border-radius: 6px; margin-bottom: 6px; }
+    .swatch-label { font-size: 11px; font-weight: 500; color: #5a4f44; }
+    .swatch-hex { font-size: 10px; font-family: ui-monospace, monospace; color: #a09488; }
+    .type-row { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .type-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .type-meta { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #b0a498; margin-bottom: 8px; }
+    .section-divider { height: 1px; background: #d5cec5; }
+
+    /* ========================================
+       A — "REGAL STRIPE"
+       Cormorant Infant + Outfit
+       Prominent red stripe + gold ornaments
+       ======================================== */
+    .hero-a { background: #FAF7F2; }
+
+    .hero-a .red-stripe {
+      width: 3px; height: 80px; background: #8B1A1A; margin-bottom: 24px;
+    }
+
+    .hero-a .gold-dots {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 28px;
+    }
+    .hero-a .gold-dots .dot {
+      width: 4px; height: 4px; border-radius: 50%; background: #C5963B;
+    }
+    .hero-a .gold-dots .line {
+      width: 32px; height: 1px; background: #C5963B;
+    }
+
+    .hero-a .overline {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase; color: #C5963B; margin-bottom: 20px;
+    }
+
+    .hero-a h1 {
+      font-family: 'Cormorant Infant', serif; font-weight: 300;
+      font-size: clamp(52px, 8vw, 96px); color: #2C2420;
+      line-height: 1.0; letter-spacing: 0.02em; margin-bottom: 16px;
+    }
+
+    .hero-a .red-rule {
+      width: 80px; height: 3px; background: #8B1A1A;
+      margin: 0 auto 16px; position: relative;
+    }
+    .hero-a .red-rule::before, .hero-a .red-rule::after {
+      content: ''; position: absolute; top: 50%; width: 6px; height: 6px;
+      border: 1px solid #C5963B; border-radius: 50%; transform: translateY(-50%);
+    }
+    .hero-a .red-rule::before { left: -14px; }
+    .hero-a .red-rule::after { right: -14px; }
+
+    .hero-a .subtitle {
+      font-family: 'Cormorant Infant', serif; font-weight: 500; font-style: italic;
+      font-size: 22px; color: #8B1A1A; margin-bottom: 28px; letter-spacing: 0.01em;
+    }
+
+    .hero-a .body {
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 16px;
+      line-height: 1.7; color: #7A6F64; max-width: 440px; margin-bottom: 40px;
+    }
+
+    .hero-a .cta {
+      display: inline-block; font-family: 'Outfit', sans-serif; font-size: 12px;
+      font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #fff; text-decoration: none; padding: 16px 40px;
+      background: #8B1A1A; transition: all 0.3s;
+    }
+    .hero-a .cta:hover { background: #6B1414; box-shadow: 0 4px 20px rgba(185,28,28,0.25); }
+
+    .hero-a .trust {
+      margin-top: 36px; display: flex; align-items: center; gap: 20px;
+    }
+    .hero-a .trust span {
+      font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #C5963B;
+    }
+    .hero-a .trust .sep { width: 1px; height: 12px; background: #C5963B; opacity: 0.4; }
+
+    .panel-a { background: #F5F0E8; }
+
+    /* ========================================
+       B — "RED & GOLD FRAME"
+       DM Serif Display + DM Sans
+       Red+gold double border frame
+       ======================================== */
+    .hero-b { background: #F8F4EE; }
+
+    .hero-b .frame-outer {
+      position: absolute; top: 8%; left: 50%; transform: translateX(-50%);
+      width: min(520px, 72vw); height: min(520px, 72vh);
+      border: 2px solid #8B1A1A;
+    }
+    .hero-b .frame-inner {
+      position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+      width: min(480px, 64vw); height: min(480px, 64vh);
+      border: 1px solid #C5963B;
+    }
+
+    .hero-b .corner-accent {
+      position: absolute; width: 20px; height: 20px;
+    }
+    .hero-b .corner-accent::before, .hero-b .corner-accent::after {
+      content: ''; position: absolute; background: #C5963B;
+    }
+    .hero-b .corner-accent::before { width: 20px; height: 1px; top: 0; left: 0; }
+    .hero-b .corner-accent::after { width: 1px; height: 20px; top: 0; left: 0; }
+    .hero-b .ca-tl { top: calc(8% - 10px); left: calc(50% - min(260px, 36vw) - 10px); }
+    .hero-b .ca-tr { top: calc(8% - 10px); right: calc(50% - min(260px, 36vw) - 10px); transform: scaleX(-1); }
+    .hero-b .ca-bl { bottom: calc(8% + min(520px, 72vh) - min(520px, 72vh) + 8% - 10px); left: calc(50% - min(260px, 36vw) - 10px); transform: scaleY(-1); }
+
+    .hero-b .overline {
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase; color: #C5963B;
+      margin-bottom: 16px; position: relative; z-index: 1;
+    }
+
+    .hero-b h1 {
+      font-family: 'DM Serif Display', serif; font-weight: 400;
+      font-size: clamp(48px, 7.5vw, 88px); color: #2A211C;
+      line-height: 1.05; margin-bottom: 20px; position: relative; z-index: 1;
+    }
+
+    .hero-b .divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin-bottom: 8px; position: relative; z-index: 1;
+    }
+    .hero-b .divider .gold-line { width: 36px; height: 1px; background: #C5963B; }
+    .hero-b .divider .red-diamond {
+      width: 8px; height: 8px; background: #8B1A1A; transform: rotate(45deg);
+    }
+
+    .hero-b .accent-text {
+      font-family: 'DM Serif Display', serif; font-weight: 400; font-style: italic;
+      font-size: 20px; color: #8B1A1A; margin-bottom: 24px;
+      position: relative; z-index: 1;
+    }
+
+    .hero-b .body {
+      font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px;
+      line-height: 1.7; color: #7A6F64; max-width: 420px; margin-bottom: 40px;
+      position: relative; z-index: 1;
+    }
+
+    .hero-b .cta-wrap { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 0; }
+    .hero-b .cta {
+      display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 13px;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #fff; text-decoration: none; padding: 16px 36px;
+      background: #8B1A1A; transition: all 0.3s;
+    }
+    .hero-b .cta:hover { background: #6B1414; }
+    .hero-b .cta-accent {
+      width: 4px; height: 48px; background: #C5963B;
+    }
+
+    .panel-b { background: #F0EBE3; }
+
+    /* ========================================
+       C — "CRIMSON & GOLD ORNATE"
+       Bodoni Moda + Montserrat
+       Red heading, gold ornaments
+       ======================================== */
+    .hero-c { background: #FBF8F3; }
+
+    .hero-c .corner {
+      position: absolute; opacity: 0.25;
+    }
+    .hero-c .corner-tl { top: 6%; left: 6%; }
+    .hero-c .corner-tr { top: 6%; right: 6%; transform: scaleX(-1); }
+    .hero-c .corner-bl { bottom: 6%; left: 6%; transform: scaleY(-1); }
+    .hero-c .corner-br { bottom: 6%; right: 6%; transform: scale(-1,-1); }
+
+    .hero-c .crest {
+      display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 28px;
+    }
+    .hero-c .crest-line { width: 1px; height: 40px; background: #C5963B; }
+    .hero-c .crest-diamond { width: 10px; height: 10px; border: 1.5px solid #8B1A1A; transform: rotate(45deg); }
+
+    .hero-c .overline {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase; color: #C5963B; margin-bottom: 20px;
+    }
+
+    .hero-c h1 {
+      font-family: 'Bodoni Moda', serif; font-weight: 400;
+      font-size: clamp(56px, 9vw, 110px); color: #8B1A1A;
+      line-height: 0.92; letter-spacing: 0.04em; margin-bottom: 16px;
+    }
+
+    .hero-c .flourish { margin: 12px auto 24px; }
+
+    .hero-c .subtitle {
+      font-family: 'Bodoni Moda', serif; font-weight: 400; font-style: italic;
+      font-size: 20px; color: #C5963B; letter-spacing: 0.02em; margin-bottom: 28px;
+    }
+
+    .hero-c .body {
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 15px;
+      line-height: 1.75; color: #7A6F64; max-width: 420px; margin-bottom: 44px;
+    }
+
+    .hero-c .cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: #8B1A1A;
+      text-decoration: none; padding: 14px 32px;
+      border: 1.5px solid #8B1A1A; position: relative; transition: all 0.3s;
+    }
+    .hero-c .cta::after {
+      content: ''; position: absolute; inset: -5px;
+      border: 1px solid #C5963B; pointer-events: none;
+    }
+    .hero-c .cta:hover { background: #8B1A1A; color: #FBF8F3; }
+    .hero-c .cta svg { width: 14px; height: 14px; }
+
+    .panel-c { background: #F3EEE6; }
+
+    /* ========================================
+       D — "NORDIC CREST"
+       Fraunces + Work Sans
+       Red+gold crest badge, organic motifs in red
+       ======================================== */
+    .hero-d { background: #F9F6F0; }
+
+    .hero-d .botanical { position: absolute; opacity: 0.1; }
+    .hero-d .botanical-left { left: 3%; top: 15%; }
+    .hero-d .botanical-right { right: 3%; bottom: 15%; transform: rotate(180deg); }
+
+    .hero-d .badge {
+      display: flex; align-items: center; justify-content: center;
+      width: 80px; height: 80px; border: 2px solid #8B1A1A;
+      border-radius: 50%; margin-bottom: 24px; position: relative;
+    }
+    .hero-d .badge::after {
+      content: ''; position: absolute; inset: 5px;
+      border: 1px solid #C5963B; border-radius: 50%;
+    }
+    .hero-d .badge-inner {
+      font-family: 'Fraunces', serif; font-weight: 400; font-style: italic;
+      font-size: 28px; color: #8B1A1A; position: relative; z-index: 1;
+    }
+
+    .hero-d .overline {
+      font-family: 'Work Sans', sans-serif; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: #C5963B; margin-bottom: 16px;
+    }
+
+    .hero-d h1 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(44px, 7vw, 78px); color: #302822;
+      line-height: 1.08; margin-bottom: 16px;
+    }
+
+    .hero-d .red-gold-divider {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 24px;
+    }
+    .hero-d .red-gold-divider .r-line { width: 28px; height: 2px; background: #8B1A1A; }
+    .hero-d .red-gold-divider .g-dot { width: 6px; height: 6px; background: #C5963B; border-radius: 50%; }
+    .hero-d .red-gold-divider .r-dot { width: 4px; height: 4px; background: #8B1A1A; border-radius: 50%; }
+
+    .hero-d .body {
+      font-family: 'Work Sans', sans-serif; font-weight: 300; font-size: 16px;
+      line-height: 1.75; color: #80756A; max-width: 440px; margin-bottom: 40px;
+    }
+
+    .hero-d .cta {
+      display: inline-block; font-family: 'Work Sans', sans-serif; font-size: 13px;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #fff; text-decoration: none; padding: 16px 40px;
+      background: #8B1A1A; border-radius: 40px; transition: all 0.3s;
+    }
+    .hero-d .cta:hover { background: #6B1414; box-shadow: 0 6px 24px rgba(185,28,28,0.2); }
+
+    .hero-d .tags {
+      display: flex; gap: 12px; margin-top: 44px; flex-wrap: wrap; justify-content: center;
+    }
+    .hero-d .tags span {
+      font-family: 'Work Sans', sans-serif; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.06em; text-transform: uppercase; color: #8B1A1A;
+      padding: 6px 16px; border: 1px solid rgba(185,28,28,0.25); border-radius: 20px;
+    }
+
+    .panel-d { background: #F0ECE5; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .hero-c .corner { display: none; }
+      .hero-d .botanical { display: none; }
+      .palette { gap: 6px; }
+      .swatch { min-width: 72px; }
+      .swatch-color { height: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="#a">A — Regal Stripe</a>
+    <a href="#b">B — Red &amp; Gold Frame</a>
+    <a href="#c">C — Crimson Ornate</a>
+    <a href="#d">D — Nordic Crest</a>
+  </nav>
+
+  <section class="intro">
+    <h1>Soe suund &mdash; Punane &amp; kuld fookuses</h1>
+    <p>
+      Neli varianti <strong>sooja ja kutsuvaga</strong> suunaga, kus <strong>punane ja kuld</strong>
+      on selgelt esiplaanil brändi eristajatena. Kogu tekst eesti keeles.
+    </p>
+  </section>
+
+  <!-- =============================================
+       A — REGAL STRIPE
+       ============================================= -->
+  <section class="variant-section" id="a">
+    <div class="variant-label">
+      <h2>Variant A &mdash; Regal Stripe</h2>
+      <p>Cormorant Infant + Outfit &mdash; punane vertikaaljoon, kuldne ornament, julge CTA</p>
+    </div>
+
+    <div class="hero hero-a">
+      <div class="red-stripe"></div>
+      <div class="gold-dots">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="overline">Ajalooline loss Harjumaal</div>
+      <h1>Laitse Loss</h1>
+      <div class="red-rule"></div>
+      <div class="subtitle">Elegants. Ajatu. Erakordne.</div>
+      <p class="body">
+        Laitse Loss pakub ainulaadset keskkonda teie elu kõige
+        olulisemate hetkede tähistamiseks. Pulmadest galaõhtuteni —
+        loss kohandub teie visiooniga.
+      </p>
+      <a href="#" class="cta">Planeerige oma sündmus</a>
+      <div class="trust">
+        <span>Pulmad</span><div class="sep"></div>
+        <span>Galaõhtud</span><div class="sep"></div>
+        <span>Firmaüritused</span>
+      </div>
+    </div>
+
+    <div class="panel panel-a">
+      <h3>Värvipalett</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FAF7F2;"></div>
+          <div class="swatch-label">Soe valge</div>
+          <div class="swatch-hex">#FAF7F2</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2C2420;"></div>
+          <div class="swatch-label">Soe tume</div>
+          <div class="swatch-hex">#2C2420</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B1A1A;"></div>
+          <div class="swatch-label">Punane</div>
+          <div class="swatch-hex">#8B1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C5963B;"></div>
+          <div class="swatch-label">Kuld</div>
+          <div class="swatch-hex">#C5963B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #7A6F64;"></div>
+          <div class="swatch-label">Kivihall</div>
+          <div class="swatch-hex">#7A6F64</div>
+        </div>
+      </div>
+
+      <h3>Tüpograafia</h3>
+      <div class="type-row">
+        <div class="type-meta">Pealkiri &mdash; Cormorant Infant 300</div>
+        <div style="font-family: 'Cormorant Infant', serif; font-weight: 300; font-size: 48px; color: #2C2420; line-height: 1.1;">
+          Kus ajalugu saab teie taustaks
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Alapealkiri &mdash; Cormorant Infant Italic 500</div>
+        <div style="font-family: 'Cormorant Infant', serif; font-weight: 500; font-style: italic; font-size: 22px; color: #8B1A1A; line-height: 1.3;">
+          Iga tähistamine väärib erakordset keskkonda
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Põhitekst &mdash; Outfit 300</div>
+        <div style="font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 16px; color: #7A6F64; line-height: 1.7; max-width: 520px;">
+          Laitse Loss on seisnud Eesti maastikul põlvkondi. Selle müürid hoiavad lugusid
+          ja saalid tervitavad uusi. Olenemata sellest, kas unistate intiimsest pulmapeost
+          või suurejoonelisest galaõhtust — siin see algab.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- =============================================
+       B — RED & GOLD FRAME
+       ============================================= -->
+  <section class="variant-section" id="b">
+    <div class="variant-label">
+      <h2>Variant B &mdash; Red &amp; Gold Frame</h2>
+      <p>DM Serif Display + DM Sans &mdash; punane raam, kuldne siseraam, punane aktsent-tekst</p>
+    </div>
+
+    <div class="hero hero-b">
+      <div class="frame-outer"></div>
+      <div class="frame-inner"></div>
+
+      <div class="overline">Laitse Loss</div>
+      <h1>Teie sündmus,<br>meie pärand</h1>
+      <div class="divider">
+        <div class="gold-line"></div>
+        <div class="red-diamond"></div>
+        <div class="gold-line"></div>
+      </div>
+      <div class="accent-text">Sajandite pikkune ajalugu, ainulaadne atmosfäär</div>
+      <p class="body">
+        Ajalooline Eesti loss, kus sajandite ajalugu ja
+        kaasaegne elegants loovad erakordse atmosfääri
+        igaks tähistamiseks.
+      </p>
+      <div class="cta-wrap">
+        <div class="cta-accent"></div>
+        <a href="#" class="cta">Avastage lossi</a>
+      </div>
+    </div>
+
+    <div class="panel panel-b">
+      <h3>Värvipalett</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F8F4EE;"></div>
+          <div class="swatch-label">Linane</div>
+          <div class="swatch-hex">#F8F4EE</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2A211C;"></div>
+          <div class="swatch-label">Espresso</div>
+          <div class="swatch-hex">#2A211C</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B1A1A;"></div>
+          <div class="swatch-label">Punane</div>
+          <div class="swatch-hex">#8B1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C5963B;"></div>
+          <div class="swatch-label">Kuld</div>
+          <div class="swatch-hex">#C5963B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #D4C4A8;"></div>
+          <div class="swatch-label">Nisu</div>
+          <div class="swatch-hex">#D4C4A8</div>
+        </div>
+      </div>
+
+      <h3>Tüpograafia</h3>
+      <div class="type-row">
+        <div class="type-meta">Pealkiri &mdash; DM Serif Display 400</div>
+        <div style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 48px; color: #2A211C; line-height: 1.08;">
+          Tähistage sajandite keskel
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Aktsent &mdash; DM Serif Display Italic</div>
+        <div style="font-family: 'DM Serif Display', serif; font-weight: 400; font-style: italic; font-size: 24px; color: #8B1A1A; line-height: 1.3;">
+          Ajalugu kohtub külalislahkusega
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Põhitekst &mdash; DM Sans 400</div>
+        <div style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; color: #7A6F64; line-height: 1.7; max-width: 520px;">
+          Kivimüüridest restaureeritud interjöörideni pakub Laitse Loss võrreldamatut
+          ürituspaika kogu Eestis. Loss ühendab autentse pärandi läbimõeldud
+          külalislahkusega, andes igale sündmusele väärilise raskuskaalu.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- =============================================
+       C — CRIMSON & GOLD ORNATE
+       ============================================= -->
+  <section class="variant-section" id="c">
+    <div class="variant-label">
+      <h2>Variant C &mdash; Crimson &amp; Gold Ornate</h2>
+      <p>Bodoni Moda + Montserrat &mdash; punane pealkiri, kuldornament, topeltpiir CTA</p>
+    </div>
+
+    <div class="hero hero-c">
+      <svg class="corner corner-tl" width="90" height="90" viewBox="0 0 90 90" fill="none">
+        <path d="M2 88 L2 2 L88 2" stroke="#C5963B" stroke-width="1"/>
+        <path d="M2 68 Q22 68 22 48 Q22 28 42 28" stroke="#C5963B" stroke-width="0.75" fill="none"/>
+        <circle cx="10" cy="10" r="4" stroke="#8B1A1A" stroke-width="1.5" fill="none"/>
+      </svg>
+      <svg class="corner corner-tr" width="90" height="90" viewBox="0 0 90 90" fill="none">
+        <path d="M2 88 L2 2 L88 2" stroke="#C5963B" stroke-width="1"/>
+        <path d="M2 68 Q22 68 22 48 Q22 28 42 28" stroke="#C5963B" stroke-width="0.75" fill="none"/>
+        <circle cx="10" cy="10" r="4" stroke="#8B1A1A" stroke-width="1.5" fill="none"/>
+      </svg>
+      <svg class="corner corner-bl" width="90" height="90" viewBox="0 0 90 90" fill="none">
+        <path d="M2 88 L2 2 L88 2" stroke="#C5963B" stroke-width="1"/>
+        <path d="M2 68 Q22 68 22 48 Q22 28 42 28" stroke="#C5963B" stroke-width="0.75" fill="none"/>
+        <circle cx="10" cy="10" r="4" stroke="#8B1A1A" stroke-width="1.5" fill="none"/>
+      </svg>
+      <svg class="corner corner-br" width="90" height="90" viewBox="0 0 90 90" fill="none">
+        <path d="M2 88 L2 2 L88 2" stroke="#C5963B" stroke-width="1"/>
+        <path d="M2 68 Q22 68 22 48 Q22 28 42 28" stroke="#C5963B" stroke-width="0.75" fill="none"/>
+        <circle cx="10" cy="10" r="4" stroke="#8B1A1A" stroke-width="1.5" fill="none"/>
+      </svg>
+
+      <div class="crest">
+        <div class="crest-line"></div>
+        <div class="crest-diamond"></div>
+      </div>
+
+      <div class="overline">Laitse, Harjumaa</div>
+      <h1>Laitse<br>Loss</h1>
+
+      <svg class="flourish" width="140" height="20" viewBox="0 0 140 20" fill="none">
+        <line x1="0" y1="10" x2="52" y2="10" stroke="#C5963B" stroke-width="0.75"/>
+        <path d="M58 10 Q63 3 70 10 Q77 17 82 10" stroke="#C5963B" stroke-width="0.75" fill="none"/>
+        <line x1="88" y1="10" x2="140" y2="10" stroke="#C5963B" stroke-width="0.75"/>
+        <circle cx="70" cy="10" r="3" fill="#8B1A1A"/>
+      </svg>
+
+      <div class="subtitle">Kus iga hetk saab eriliseks</div>
+      <p class="body">
+        Neogooti mõisahoone Eesti südames. Pulmad, galaõhtud
+        ja eraüritused seinte vahel, mis on inspireerinud põlvkondi.
+      </p>
+      <a href="#" class="cta">
+        Broneeri külastus
+        <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="panel panel-c">
+      <h3>Värvipalett</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FBF8F3;"></div>
+          <div class="swatch-label">Elevandiluu</div>
+          <div class="swatch-hex">#FBF8F3</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #251A15;"></div>
+          <div class="swatch-label">Pähkel</div>
+          <div class="swatch-hex">#251A15</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B1A1A;"></div>
+          <div class="swatch-label">Karmiinpunane</div>
+          <div class="swatch-hex">#8B1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C5963B;"></div>
+          <div class="swatch-label">Rikas kuld</div>
+          <div class="swatch-hex">#C5963B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #E8DECE;"></div>
+          <div class="swatch-label">Šampanja</div>
+          <div class="swatch-hex">#E8DECE</div>
+        </div>
+      </div>
+
+      <h3>Tüpograafia</h3>
+      <div class="type-row">
+        <div class="type-meta">Pealkiri &mdash; Bodoni Moda 400</div>
+        <div style="font-family: 'Bodoni Moda', serif; font-weight: 400; font-size: 52px; color: #8B1A1A; line-height: 1.0; letter-spacing: 0.03em;">
+          Ajatu grandioossus
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Alapealkiri &mdash; Bodoni Moda Italic 400</div>
+        <div style="font-family: 'Bodoni Moda', serif; font-weight: 400; font-style: italic; font-size: 24px; color: #C5963B; line-height: 1.3;">
+          Kus iga detail räägib elegantsist
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Põhitekst &mdash; Montserrat 300</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 15px; color: #7A6F64; line-height: 1.75; max-width: 520px;">
+          Laitse Loss on üks Eesti silmapaistvamaid mõisaid. Selle arhitektuur,
+          aed ja interjöörid pakuvad võrreldamatut lava igale sündmusele — alates
+          intiimsetest õhtusöökidest kuni suurejooneliste pidustusteni.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- =============================================
+       D — NORDIC CREST
+       ============================================= -->
+  <section class="variant-section" id="d">
+    <div class="variant-label">
+      <h2>Variant D &mdash; Nordic Crest</h2>
+      <p>Fraunces + Work Sans &mdash; punane-kuldne vapp, orgaanilised motiivid, ümarad elemendid</p>
+    </div>
+
+    <div class="hero hero-d">
+      <svg class="botanical botanical-left" width="140" height="360" viewBox="0 0 140 360" fill="none">
+        <path d="M70 360 C70 270 55 250 38 215 C18 175 28 140 45 122 C62 104 52 70 70 35 C88 0 70 -15 70 -15" stroke="#8B1A1A" stroke-width="1.5" fill="none"/>
+        <path d="M70 300 C52 292 28 300 18 284" stroke="#8B1A1A" stroke-width="1" fill="none"/>
+        <path d="M70 245 C88 237 112 245 122 228" stroke="#8B1A1A" stroke-width="1" fill="none"/>
+        <path d="M48 175 C30 167 8 175 4 158" stroke="#8B1A1A" stroke-width="1" fill="none"/>
+        <path d="M56 122 C74 114 98 122 106 105" stroke="#8B1A1A" stroke-width="1" fill="none"/>
+        <ellipse cx="18" cy="282" rx="10" ry="16" stroke="#C5963B" stroke-width="0.75" fill="none" transform="rotate(-20, 18, 282)"/>
+        <ellipse cx="122" cy="226" rx="10" ry="16" stroke="#C5963B" stroke-width="0.75" fill="none" transform="rotate(20, 122, 226)"/>
+        <ellipse cx="4" cy="156" rx="8" ry="14" stroke="#C5963B" stroke-width="0.75" fill="none" transform="rotate(-15, 4, 156)"/>
+        <ellipse cx="106" cy="103" rx="8" ry="14" stroke="#C5963B" stroke-width="0.75" fill="none" transform="rotate(15, 106, 103)"/>
+      </svg>
+      <svg class="botanical botanical-right" width="140" height="360" viewBox="0 0 140 360" fill="none">
+        <path d="M70 360 C70 270 55 250 38 215 C18 175 28 140 45 122 C62 104 52 70 70 35 C88 0 70 -15 70 -15" stroke="#8B1A1A" stroke-width="1.5" fill="none"/>
+        <path d="M70 300 C52 292 28 300 18 284" stroke="#8B1A1A" stroke-width="1" fill="none"/>
+        <path d="M70 245 C88 237 112 245 122 228" stroke="#8B1A1A" stroke-width="1" fill="none"/>
+        <path d="M48 175 C30 167 8 175 4 158" stroke="#8B1A1A" stroke-width="1" fill="none"/>
+        <path d="M56 122 C74 114 98 122 106 105" stroke="#8B1A1A" stroke-width="1" fill="none"/>
+        <ellipse cx="18" cy="282" rx="10" ry="16" stroke="#C5963B" stroke-width="0.75" fill="none" transform="rotate(-20, 18, 282)"/>
+        <ellipse cx="122" cy="226" rx="10" ry="16" stroke="#C5963B" stroke-width="0.75" fill="none" transform="rotate(20, 122, 226)"/>
+        <ellipse cx="4" cy="156" rx="8" ry="14" stroke="#C5963B" stroke-width="0.75" fill="none" transform="rotate(-15, 4, 156)"/>
+        <ellipse cx="106" cy="103" rx="8" ry="14" stroke="#C5963B" stroke-width="0.75" fill="none" transform="rotate(15, 106, 103)"/>
+      </svg>
+
+      <div class="badge">
+        <span class="badge-inner">L</span>
+      </div>
+      <div class="overline">Laitse Loss</div>
+      <h1>Loss,<br>kus lugu jätkub</h1>
+      <div class="red-gold-divider">
+        <div class="r-line"></div>
+        <div class="r-dot"></div>
+        <div class="g-dot"></div>
+        <div class="r-dot"></div>
+        <div class="r-line"></div>
+      </div>
+      <p class="body">
+        Mitte ainult ürituspaik — koht, kus soojus, iseloom
+        ja ajalugu muudavad iga kokkusaamise meeldejäävaks.
+      </p>
+      <a href="#" class="cta">Tutvu lähemalt</a>
+      <div class="tags">
+        <span>Pulmad</span>
+        <span>Firmaüritused</span>
+        <span>Eraüritused</span>
+        <span>Fotosessioonid</span>
+      </div>
+    </div>
+
+    <div class="panel panel-d">
+      <h3>Värvipalett</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F9F6F0;"></div>
+          <div class="swatch-label">Kaer</div>
+          <div class="swatch-hex">#F9F6F0</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #302822;"></div>
+          <div class="swatch-label">Koor</div>
+          <div class="swatch-hex">#302822</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B1A1A;"></div>
+          <div class="swatch-label">Soe punane</div>
+          <div class="swatch-hex">#8B1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C5963B;"></div>
+          <div class="swatch-label">Pehme kuld</div>
+          <div class="swatch-hex">#C5963B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #E5DDD1;"></div>
+          <div class="swatch-label">Liiv</div>
+          <div class="swatch-hex">#E5DDD1</div>
+        </div>
+      </div>
+
+      <h3>Tüpograafia</h3>
+      <div class="type-row">
+        <div class="type-meta">Pealkiri &mdash; Fraunces 600</div>
+        <div style="font-family: 'Fraunces', serif; font-weight: 600; font-size: 44px; color: #302822; line-height: 1.1;">
+          Kus lood leiavad oma lava
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Pealkiri kursiiv &mdash; Fraunces Italic 300</div>
+        <div style="font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: 26px; color: #8B1A1A; line-height: 1.3;">
+          Ajalugu, mida saab tunda, mitte ainult näha
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Põhitekst &mdash; Work Sans 300</div>
+        <div style="font-family: 'Work Sans', sans-serif; font-weight: 300; font-size: 16px; color: #80756A; line-height: 1.75; max-width: 520px;">
+          Laitse Loss on selline koht, mis ei ürita üle pingutada. Kivimüürid,
+          valgus läbi kõrgete akende, park mis ulatub Eesti maastikku —
+          kõik see teeb töö teie eest. Teie sündmus peab ainult kohale tulema.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="text-align: center; padding: 60px 24px; background: #e8e4de;">
+    <p style="font-size: 12px; color: #8a7e72; letter-spacing: 0.05em;">
+      Laitse Loss &mdash; Soe suund v3 &mdash; Punane &amp; kuld fookuses
+    </p>
+  </div>
+
+</body>
+</html>

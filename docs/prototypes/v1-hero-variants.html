@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laitse Loss — Brand Visual Prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: #1a1a1a;
+      background: #f0f0f0;
+    }
+
+    /* ========================================
+       NAVIGATION
+       ======================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 2px;
+      padding: 12px 20px;
+      background: rgba(26, 26, 26, 0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .nav a.active {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* ========================================
+       INTRO
+       ======================================== */
+    .intro {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 100px 24px 60px;
+      text-align: center;
+    }
+
+    .intro h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 16px;
+    }
+
+    .intro p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .intro p strong {
+      color: #1a1a1a;
+    }
+
+    /* ========================================
+       SHARED SECTION STYLES
+       ======================================== */
+    .variant-section {
+      scroll-margin-top: 52px;
+    }
+
+    .variant-label {
+      text-align: center;
+      padding: 40px 24px 0;
+      background: #f0f0f0;
+    }
+
+    .variant-label h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 4px;
+    }
+
+    .variant-label p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* ========================================
+       HERO SECTIONS
+       ======================================== */
+
+    /* --- VARIANT 1: MINIMAL & AIRY --- */
+    .hero-v1 {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #FFFFFF;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .hero-v1::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1px;
+      height: 120px;
+      background: #C9A96E;
+      opacity: 0.3;
+      top: 15%;
+    }
+
+    .hero-v1 .hero-overline {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #C9A96E;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-v1 h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: #1a1a1a;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero-v1 .hero-rule {
+      width: 60px;
+      height: 1px;
+      background: #C41E3A;
+      margin: 0 auto 24px;
+    }
+
+    .hero-v1 .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #777;
+      max-width: 420px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .hero-v1 .hero-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #C41E3A;
+      text-decoration: none;
+      padding: 14px 36px;
+      border: 1px solid #C41E3A;
+      transition: all 0.3s ease;
+    }
+
+    .hero-v1 .hero-cta:hover {
+      background: #C41E3A;
+      color: #fff;
+    }
+
+    /* --- VARIANT 2: BOLD & DRAMATIC --- */
+    .hero-v2 {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(180, 80, 50, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(140, 60, 40, 0.1) 0%, transparent 50%),
+        linear-gradient(175deg, #1a1410 0%, #0d0b09 40%, #151210 70%, #1a1410 100%);
+    }
+
+    .hero-v2::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(212, 168, 83, 0.02) 2px,
+          rgba(212, 168, 83, 0.02) 4px
+        );
+      pointer-events: none;
+    }
+
+    .hero-v2::after {
+      content: '';
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      border: 1px solid rgba(212, 168, 83, 0.25);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .hero-v2 .hero-overline {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #D4A853;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-v2 h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 9vw, 110px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #FFFFFF;
+      line-height: 1.0;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-v2 .hero-accent-line {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px auto 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-v2 .hero-accent-line span {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: #D4A853;
+    }
+
+    .hero-v2 .hero-accent-line .diamond {
+      width: 6px;
+      height: 6px;
+      background: #DC2626;
+      transform: rotate(45deg);
+    }
+
+    .hero-v2 .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 460px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-v2 .hero-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 40px;
+      background: #DC2626;
+      border: none;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-v2 .hero-cta:hover {
+      background: #B91C1C;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
+    }
+
+    /* --- VARIANT 3: WARM & INVITING --- */
+    .hero-v3 {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #FAF7F2;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .hero-v3::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgba(184, 134, 11, 0.12);
+      border-radius: 50%;
+    }
+
+    .hero-v3 .hero-crest {
+      width: 48px;
+      height: 2px;
+      background: #B8860B;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .hero-v3 .hero-crest::before,
+    .hero-v3 .hero-crest::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border: 1px solid #B8860B;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .hero-v3 .hero-crest::before { left: -16px; }
+    .hero-v3 .hero-crest::after { right: -16px; }
+
+    .hero-v3 .hero-overline {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #B8860B;
+      margin-bottom: 20px;
+    }
+
+    .hero-v3 h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(44px, 7vw, 84px);
+      font-weight: 700;
+      color: #2C2420;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-v3 .hero-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: #7A6F64;
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+
+    .hero-v3 .hero-cta {
+      display: inline-block;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #FAF7F2;
+      text-decoration: none;
+      padding: 16px 40px;
+      background: #8B1A1A;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hero-v3 .hero-cta:hover {
+      background: #6B1414;
+    }
+
+    .hero-v3 .hero-trust {
+      margin-top: 48px;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: #B8A899;
+    }
+
+    /* ========================================
+       PALETTE & TYPOGRAPHY PANELS
+       ======================================== */
+    .panel {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .panel-bg-white { background: #fff; }
+    .panel-bg-dark { background: #151210; color: #fff; }
+    .panel-bg-warm { background: #F5F0E8; }
+
+    .panel h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 24px;
+    }
+
+    .panel-bg-dark h3 {
+      color: #666;
+    }
+
+    /* Color Palette */
+    .palette {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .swatch {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .swatch-color {
+      height: 80px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .swatch-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 2px;
+    }
+
+    .swatch-hex {
+      font-size: 11px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: #999;
+    }
+
+    .panel-bg-dark .swatch-label { color: #bbb; }
+    .panel-bg-dark .swatch-hex { color: #666; }
+    .panel-bg-warm .swatch-label { color: #5A4F44; }
+    .panel-bg-warm .swatch-hex { color: #998E82; }
+
+    /* Typography Specimen */
+    .type-specimen {
+      margin-top: 36px;
+    }
+
+    .type-row {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .panel-bg-dark .type-row {
+      border-bottom-color: rgba(255,255,255,0.06);
+    }
+
+    .panel-bg-warm .type-row {
+      border-bottom-color: rgba(0,0,0,0.06);
+    }
+
+    .type-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .type-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 8px;
+    }
+
+    .panel-bg-dark .type-meta { color: #555; }
+
+    /* Divider between sections */
+    .section-divider {
+      height: 1px;
+      background: #e5e5e5;
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 640px) {
+      .palette {
+        gap: 8px;
+      }
+      .swatch {
+        min-width: 80px;
+      }
+      .swatch-color {
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#v1">Variant 1 — Minimal</a>
+    <a href="#v2">Variant 2 — Dramatic</a>
+    <a href="#v3">Variant 3 — Warm</a>
+  </nav>
+
+  <!-- Intro -->
+  <section class="intro">
+    <h1>Laitse Loss &mdash; Visual Prototypes</h1>
+    <p>
+      Three interpretations of <strong>luxurious, clean, and elegant</strong> using a
+      <strong>white + red + gold</strong> palette. Each variant explores a different mood
+      while staying true to the brand direction. Scroll to compare, then pick a direction to refine.
+    </p>
+  </section>
+
+  <!-- =============================================
+       VARIANT 1: MINIMAL & AIRY
+       ============================================= -->
+  <section class="variant-section" id="v1">
+    <div class="variant-label">
+      <h2>Variant 1</h2>
+      <p>Minimal &amp; Airy &mdash; restrained elegance, generous white space</p>
+    </div>
+
+    <div class="hero-v1">
+      <div class="hero-overline">Est. Harjumaa, Estonia</div>
+      <h1>Laitse Loss</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">
+        Timeless elegance for your most celebrated moments.
+        A historic castle venue for weddings, galas, and private occasions.
+      </p>
+      <a href="#" class="hero-cta">Inquire Now</a>
+    </div>
+
+    <!-- V1 Palette -->
+    <div class="panel panel-bg-white">
+      <h3>Color Palette</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FFFFFF; border: 1px solid #eee;"></div>
+          <div class="swatch-label">White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F7F7F5;"></div>
+          <div class="swatch-label">Off White</div>
+          <div class="swatch-hex">#F7F7F5</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1A1A1A;"></div>
+          <div class="swatch-label">Near Black</div>
+          <div class="swatch-hex">#1A1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C41E3A;"></div>
+          <div class="swatch-label">Cherry Crimson</div>
+          <div class="swatch-hex">#C41E3A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C9A96E;"></div>
+          <div class="swatch-label">Muted Gold</div>
+          <div class="swatch-hex">#C9A96E</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #777777;"></div>
+          <div class="swatch-label">Mid Gray</div>
+          <div class="swatch-hex">#777777</div>
+        </div>
+      </div>
+
+      <h3>Typography</h3>
+      <div class="type-specimen">
+        <div class="type-row">
+          <div class="type-meta">Heading &mdash; Cormorant Garamond Light, 300</div>
+          <div style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 48px; letter-spacing: 0.04em; line-height: 1.1; color: #1a1a1a;">
+            Where History Meets Celebration
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">Heading &mdash; Cormorant Garamond Regular, 400</div>
+          <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 32px; letter-spacing: 0.02em; line-height: 1.2; color: #1a1a1a;">
+            An Extraordinary Setting for Extraordinary Events
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">Body &mdash; Inter Light, 300</div>
+          <div style="font-family: 'Inter', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7; color: #555; max-width: 560px;">
+            Nestled in the Estonian countryside, Laitse Loss offers a unique blend of
+            centuries-old architecture and modern sophistication. Whether you envision an
+            intimate gathering or a grand celebration, our castle provides the perfect canvas.
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">Accent &mdash; Inter Medium, 500 &mdash; Uppercase</div>
+          <div style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C41E3A;">
+            Discover Our Spaces &nbsp;&rarr;
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- =============================================
+       VARIANT 2: BOLD & DRAMATIC
+       ============================================= -->
+  <section class="variant-section" id="v2">
+    <div class="variant-label">
+      <h2>Variant 2</h2>
+      <p>Bold &amp; Dramatic &mdash; commanding presence, rich atmosphere</p>
+    </div>
+
+    <div class="hero-v2">
+      <div class="hero-overline">A Historic Estonian Castle</div>
+      <h1>LAITSE LOSS</h1>
+      <div class="hero-accent-line">
+        <span></span>
+        <div class="diamond"></div>
+        <span></span>
+      </div>
+      <p class="hero-sub">
+        Where centuries of grandeur become the backdrop for
+        your most unforgettable celebrations.
+      </p>
+      <a href="#" class="hero-cta">Book Your Event</a>
+    </div>
+
+    <!-- V2 Palette -->
+    <div class="panel panel-bg-dark">
+      <h3>Color Palette</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0D0B09; border: 1px solid #333;"></div>
+          <div class="swatch-label">Rich Black</div>
+          <div class="swatch-hex">#0D0B09</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1A1410;"></div>
+          <div class="swatch-label">Dark Umber</div>
+          <div class="swatch-hex">#1A1410</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FFFFFF;"></div>
+          <div class="swatch-label">White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #DC2626;"></div>
+          <div class="swatch-label">Vibrant Red</div>
+          <div class="swatch-hex">#DC2626</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #D4A853;"></div>
+          <div class="swatch-label">Warm Gold</div>
+          <div class="swatch-hex">#D4A853</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: rgba(255,255,255,0.65);"></div>
+          <div class="swatch-label">Soft White</div>
+          <div class="swatch-hex">rgba(255,255,255,0.65)</div>
+        </div>
+      </div>
+
+      <h3>Typography</h3>
+      <div class="type-specimen">
+        <div class="type-row">
+          <div class="type-meta">Heading &mdash; Playfair Display Bold, 700</div>
+          <div style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 52px; letter-spacing: 0.03em; line-height: 1.05; color: #fff;">
+            Grand Events Deserve a Grand Setting
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">Heading &mdash; Playfair Display Italic, 400</div>
+          <div style="font-family: 'Playfair Display', serif; font-weight: 400; font-style: italic; font-size: 28px; line-height: 1.3; color: #D4A853;">
+            A Castle Steeped in Heritage
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">Body &mdash; Inter Regular, 400</div>
+          <div style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.65); max-width: 560px;">
+            From lavish wedding banquets to intimate corporate retreats, Laitse Loss
+            transforms every occasion into something extraordinary. Step inside and let
+            the castle's storied walls set the stage.
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">CTA &mdash; Inter SemiBold, 600 &mdash; Uppercase</div>
+          <div style="display: inline-block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; background: #DC2626; padding: 12px 32px;">
+            Plan Your Celebration
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- =============================================
+       VARIANT 3: WARM & INVITING
+       ============================================= -->
+  <section class="variant-section" id="v3">
+    <div class="variant-label">
+      <h2>Variant 3</h2>
+      <p>Warm &amp; Inviting &mdash; heritage feel, approachable luxury</p>
+    </div>
+
+    <div class="hero-v3">
+      <div class="hero-crest"></div>
+      <div class="hero-overline">Laitse, Harjumaa</div>
+      <h1>Laitse Loss</h1>
+      <p class="hero-sub">
+        A storied castle where old-world charm meets your
+        vision. Weddings, galas, and gatherings — each made
+        unforgettable by centuries of heritage.
+      </p>
+      <a href="#" class="hero-cta">Start Planning</a>
+      <p class="hero-trust">Weddings &middot; Corporate Events &middot; Private Celebrations</p>
+    </div>
+
+    <!-- V3 Palette -->
+    <div class="panel panel-bg-warm">
+      <h3>Color Palette</h3>
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FAF7F2;"></div>
+          <div class="swatch-label">Warm White</div>
+          <div class="swatch-hex">#FAF7F2</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F5F0E8;"></div>
+          <div class="swatch-label">Parchment</div>
+          <div class="swatch-hex">#F5F0E8</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2C2420;"></div>
+          <div class="swatch-label">Warm Dark</div>
+          <div class="swatch-hex">#2C2420</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B1A1A;"></div>
+          <div class="swatch-label">Deep Burgundy</div>
+          <div class="swatch-hex">#8B1A1A</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #B8860B;"></div>
+          <div class="swatch-label">Antique Gold</div>
+          <div class="swatch-hex">#B8860B</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #7A6F64;"></div>
+          <div class="swatch-label">Warm Gray</div>
+          <div class="swatch-hex">#7A6F64</div>
+        </div>
+      </div>
+
+      <h3>Typography</h3>
+      <div class="type-specimen">
+        <div class="type-row">
+          <div class="type-meta">Heading &mdash; Libre Baskerville Bold, 700</div>
+          <div style="font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 44px; line-height: 1.15; color: #2C2420;">
+            Your Celebration, Our Heritage
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">Heading &mdash; Libre Baskerville Italic, 400</div>
+          <div style="font-family: 'Libre Baskerville', serif; font-weight: 400; font-style: italic; font-size: 24px; line-height: 1.4; color: #B8860B;">
+            Every Stone Tells a Story
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">Body &mdash; Lato Light, 300</div>
+          <div style="font-family: 'Lato', sans-serif; font-weight: 300; font-size: 17px; line-height: 1.75; color: #5A4F44; max-width: 560px;">
+            Laitse Loss has welcomed guests for generations. Today, the castle opens its
+            doors for those seeking a venue that is equal parts history and inspiration —
+            a place where your event becomes part of a larger story.
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">CTA &mdash; Lato Bold, 700 &mdash; Uppercase</div>
+          <div style="display: inline-block; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #FAF7F2; background: #8B1A1A; padding: 14px 36px; border-radius: 2px;">
+            Explore the Castle
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div style="text-align: center; padding: 60px 24px; background: #f0f0f0;">
+    <p style="font-size: 12px; color: #999; letter-spacing: 0.05em;">
+      Laitse Loss &mdash; Brand Visual Prototype v1 &mdash; For internal review only
+    </p>
+  </div>
+
+</body>
+</html>
