@@ -1,0 +1,363 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Flourish from '../components/Flourish.astro';
+import GoldRule from '../components/GoldRule.astro';
+import TopStripe from '../components/TopStripe.astro';
+import Button from '../components/Button.astro';
+
+const pageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "@id": "https://laitsecastle.ee/#venue",
+    "name": "Laitse loss",
+    "url": "https://laitsecastle.ee/peod-ja-seminarid",
+    "telephone": "+37253300206",
+    "email": "info@laitsecastle.ee",
+    "image": "https://laitsecastle.ee/images/loss-öösel.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lossi tee 9",
+      "addressLocality": "Laitse",
+      "postalCode": "76302",
+      "addressRegion": "Harjumaa",
+      "addressCountry": "EE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 59.1966,
+      "longitude": 24.3846
+    },
+    "maximumAttendeeCapacity": 100
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://laitsecastle.ee/peod-ja-seminarid#pulmad",
+    "name": "Pulmad Laitse lossis",
+    "description": "Ajaloolise lossi romantiline õhkkond loob unustamatu tausta teie kõige olulisemale päevale.",
+    "serviceType": "Wedding Venue",
+    "provider": { "@id": "https://laitsecastle.ee/#organization" },
+    "areaServed": { "@type": "Country", "name": "Estonia" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://laitsecastle.ee/peod-ja-seminarid#seminarid",
+    "name": "Seminarid ja konverentsid Laitse lossis",
+    "description": "Inspireeriv ajalooline keskkond seminaridele, konverentsidele ja meeskonnaüritustele.",
+    "serviceType": "Conference and Seminar Venue",
+    "provider": { "@id": "https://laitsecastle.ee/#organization" }
+  }
+];
+---
+
+<BaseLayout
+  title="Peod ja seminarid — Laitse loss"
+  description="Pulmad, sünnipäevad, firmapeod ja seminarid ajaloolises Laitse lossis. Elegantne keskkond Harjumaal, ~40 min Tallinnast."
+  ogImage="/images/loss-öösel.jpg"
+  pageSchema={pageSchema}
+>
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/images/aia-poolt-vaade.jpg"
+      alt="Laitse loss aia poolt"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-warm-dark/70"></div>
+    <div class="relative z-10 text-center px-6 py-24 max-w-2xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white mb-6 text-overlay hero-enter" style="--delay: 0ms">
+        Peod ja seminarid
+      </h1>
+      <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 text-overlay hero-enter" style="--delay: 150ms">
+        Ajalooline loss teie sündmuse teenistuses
+      </p>
+      <div class="hero-enter" style="--delay: 300ms">
+        <Flourish type="vintage" size="md" fill="gold" />
+      </div>
+      <div class="hero-enter mt-6" style="--delay: 450ms">
+        <Button variant="filled" href="#kontakt" label="Võta ühendust" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TEIE SÜNDMUS LOSSIS — service types
+       ═══════════════════════════════════════════ -->
+  <section class="section-fade-from-dark pt-12 md:pt-16 pb-20 md:pb-28 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-5">Teie sündmus lossis</h2>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        <!-- Sünnipäevad ja tähtpäevad -->
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="100">
+          <img
+            src="/images/loss-öösel.jpg"
+            alt="Laitse loss öösel"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-2 leading-tight">Sünnipäevad ja tähtpäevad</h3>
+            <p class="font-body text-body text-warm-white/80 leading-relaxed">Intiimsetest koosviibimistest suuremate pidustusteni.</p>
+          </div>
+        </div>
+
+        <!-- Pulmad -->
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="250">
+          <img
+            src="/images/drooni-vaade.jpg"
+            alt="Laitse lossi droonivaade"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-2 leading-tight">Pulmad</h3>
+            <p class="font-body text-body text-warm-white/80 leading-relaxed">Unustamatu päev ajaloolises lossis.</p>
+          </div>
+        </div>
+
+        <!-- Firmaüritused ja seminarid -->
+        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="400">
+          <img
+            src="/copied-images/Suur_saal_galerii.jpg"
+            alt="Seminariruum Laitse lossis"
+            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
+            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
+            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-2 leading-tight">Firmaüritused ja seminarid</h3>
+            <p class="font-body text-body text-warm-white/80 leading-relaxed">Inspireeriv keskkond, mis jätab mulje.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       MEIE RUUMID
+       ═══════════════════════════════════════════ -->
+  <section class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16" data-animate>
+        <p class="font-ui text-label-sm uppercase tracking-[0.2em] text-gold mb-4">Ruumid ja alad</p>
+        <h2 class="font-display text-section text-warm-dark mb-5">Meie ruumid</h2>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+      </div>
+
+      <!-- Klaverisalong -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
+        <div class="group overflow-hidden rounded">
+          <img
+            src="/images/salong-klaveriga.jpg"
+            alt="Klaverisalong Laitse lossis"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Klaverisalong</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">I korrus</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Klassikalise interjööriga salong lossi esimesel korrusel. Loomulik valgus, klaver ja hubane
+            õhkkond sobivad ideaalselt nii väiksematele tähistamistele kui ka töötubadele.
+          </p>
+
+          <table class="w-full font-ui text-[15px] text-warm-dark mt-6">
+            <thead>
+              <tr class="border-b border-stone/20">
+                <th class="text-left py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Paigutus</th>
+                <th class="text-right py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Mahutavus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stone/10">
+                <td class="py-2.5">U-laud</td>
+                <td class="text-right py-2.5">24</td>
+              </tr>
+              <tr class="border-b border-stone/10">
+                <td class="py-2.5">Diplomaadistiilis</td>
+                <td class="text-right py-2.5">32</td>
+              </tr>
+              <tr class="border-b border-stone/10">
+                <td class="py-2.5">Klassiruum</td>
+                <td class="text-right py-2.5">40</td>
+              </tr>
+              <tr>
+                <td class="py-2.5">Teatristiilis</td>
+                <td class="text-right py-2.5">64</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Peasaal (reversed) -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
+        <div class="md:order-2 group overflow-hidden rounded">
+          <img
+            src="/images/saal.jpg"
+            alt="Peasaal Laitse lossis"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            loading="lazy"
+          />
+        </div>
+        <div class="md:order-1">
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Peasaal</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Peamine saal</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Lossi peasaal — elegantne ruum banketipidudeks ja vastuvõttudeks.
+            Ajaloolised detailid ja soe atmosfäär loovad meeldejääva keskkonna.
+          </p>
+
+          <table class="w-full font-ui text-[15px] text-warm-dark mt-6">
+            <thead>
+              <tr class="border-b border-stone/20">
+                <th class="text-left py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Paigutus</th>
+                <th class="text-right py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Mahutavus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stone/10">
+                <td class="py-2.5">Bankett</td>
+                <td class="text-right py-2.5">60</td>
+              </tr>
+              <tr>
+                <td class="py-2.5">Vastuvõtt</td>
+                <td class="text-right py-2.5">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Terrass ja aed -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
+        <div class="group overflow-hidden rounded">
+          <img
+            src="/images/terrass.jpg"
+            alt="Laitse lossi terrass ja aed"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Terrass ja aed</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Välialad</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Terrass pakub ideaalset kohta vabaõhu kokteilideks ja einetamiseks.
+            Suur aed sobib suveüritusteks ja tseremooniateks — looduse ja ajaloo kooskõla.
+          </p>
+        </div>
+      </div>
+
+      <!-- Suur saal (reversed) -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center" data-animate>
+        <div class="md:order-2 group overflow-hidden rounded">
+          <img
+            src="/copied-images/Suur_saal_tuhi.jpg"
+            alt="Suur saal Laitse lossis"
+            class="w-full h-80 lg:h-96 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+            loading="lazy"
+          />
+        </div>
+        <div class="md:order-1">
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">Suur saal</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">Soklikorrus</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            Lossi suurim ruum kõrgete võlvlagedega. Sobib suurematele konverentsidele,
+            seminaridele ja üritustele, kus vajate avarust ja vabadust.
+          </p>
+
+          <table class="w-full font-ui text-[15px] text-warm-dark mt-6">
+            <thead>
+              <tr class="border-b border-stone/20">
+                <th class="text-left py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Paigutus</th>
+                <th class="text-right py-2 font-normal text-stone uppercase text-label-sm tracking-wider">Mahutavus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-2.5">Teatristiilis</td>
+                <td class="text-right py-2.5">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       MIDA PAKUME
+       ═══════════════════════════════════════════ -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12" data-animate>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+        <h2 class="font-display text-section text-warm-dark mt-6 mb-4">Mida pakume</h2>
+        <p class="font-subtitle text-subtitle italic text-stone">
+          Teie sündmuse õnnestumiseks hoolitseme kõige eest
+        </p>
+      </div>
+
+      <ul class="space-y-6" data-animate>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Ruumide rent</p>
+            <p class="font-body text-body-lg text-stone">Paindlikud ruumilahendused vastavalt teie ürituse formaadile ja suurusele.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Kaunistused ja dekoreerimine</p>
+            <p class="font-body text-body-lg text-stone">Aitame luua teie nägemuse kohase kaunistuse, mis sobib lossi ajaloolise interjööriga.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-gold text-xl mt-0.5" aria-hidden="true">&#9830;</span>
+          <div>
+            <p class="font-body text-body-lg text-warm-dark font-bold">Toitlustus</p>
+            <p class="font-body text-body-lg text-stone">Aitame leida teie sündmusele sobiva toitlustuslahenduse — kohvipausidest piduliku õhtusöögini.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CTA
+       ═══════════════════════════════════════════ -->
+  <section id="kontakt" class="px-6 py-20 md:py-28 bg-warm-light">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">Broneeri oma sündmus</h2>
+      <p class="font-body text-body-lg text-stone mb-8 leading-relaxed">
+        Rääkige meile oma soovidest ja leiame koos parima lahenduse.
+      </p>
+
+      <div class="mb-10">
+        <a href="tel:+37253300206" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors inline-flex items-center gap-2 min-h-[44px]">
+          <span class="text-stone">Tel:</span> +372 5330 0206
+        </a>
+        <a href="mailto:info@laitsecastle.ee" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors flex items-center justify-center gap-2 min-h-[44px]">
+          <span class="text-stone">E-post:</span> info@laitsecastle.ee
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

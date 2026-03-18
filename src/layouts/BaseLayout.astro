@@ -19,29 +19,29 @@ const {
   pageSchema,
 } = Astro.props;
 
-const siteUrl = 'https://laitseloss.ee';
+const siteUrl = 'https://laitsecastle.ee';
 const canonical = canonicalUrl ?? `${siteUrl}${Astro.url.pathname}`;
 const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://laitseloss.ee/#organization",
+  "@id": "https://laitsecastle.ee/#organization",
   "name": "Laitse Loss OÜ",
-  "alternateName": "Laitse Loss",
-  "url": "https://laitseloss.ee",
+  "alternateName": "Laitse loss",
+  "url": "https://laitsecastle.ee",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://laitseloss.ee/images/Fassaad.jpg",
+    "url": "https://laitsecastle.ee/images/hero-main-image.jpg",
     "width": 1440,
     "height": 900
   },
-  "telephone": "+37258356509",
-  "email": "info@laitseloss.ee",
+  "telephone": "+37253300206",
+  "email": "info@laitsecastle.ee",
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+37258356509",
-    "email": "info@laitseloss.ee",
+    "telephone": "+37253300206",
+    "email": "info@laitsecastle.ee",
     "contactType": "customer service",
     "availableLanguage": ["Estonian", "English"]
   },
@@ -58,11 +58,11 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://laitseloss.ee/#website",
+  "@id": "https://laitsecastle.ee/#website",
   "name": "Laitse Loss",
-  "url": "https://laitseloss.ee",
+  "url": "https://laitsecastle.ee",
   "publisher": {
-    "@id": "https://laitseloss.ee/#organization"
+    "@id": "https://laitsecastle.ee/#organization"
   },
   "inLanguage": "et"
 };

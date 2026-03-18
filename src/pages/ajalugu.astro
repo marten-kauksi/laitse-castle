@@ -2,19 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Flourish from '../components/Flourish.astro';
 import GoldRule from '../components/GoldRule.astro';
-import Button from '../components/Button.astro';
 
 const ajaluguSchema = {
   "@context": "https://schema.org",
   "@type": "LandmarksOrHistoricalBuildings",
-  "@id": "https://laitseloss.ee/#castle",
+  "@id": "https://laitsecastle.ee/#castle",
   "name": "Laitse Loss",
   "alternateName": ["Laitse Castle", "Laitse mõis"],
   "description": "Neogooti stiilis ajalooline lossihoone Harjumaal, Eestis. Ehitati umbes 1890. aastal Woldemar von Uexkülli poolt. Lossi asukoht on mainitud juba Henriku Liivimaa kroonikas aastast 1219.",
-  "url": "https://laitseloss.ee/ajalugu",
+  "url": "https://laitsecastle.ee/ajalugu",
   "image": [
-    "https://laitseloss.ee/images/Lossi-tornid.jpg",
-    "https://laitseloss.ee/images/Fassaad.jpg"
+    "https://laitsecastle.ee/images/lossi-torn-ajalugu.jpg"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -50,7 +48,7 @@ const ajaluguSchema = {
 <BaseLayout
   title="Laitse lossi ajalugu — Neogooti loss alates 1219"
   description="Laitse lossi ajalugu alates 1219. aastast kuni neogooti lossihoone valmimiseni 1890. aastal. Tutvu ehitaja Woldemar von Uexkülli looga."
-  ogImage="/images/Lossi-tornid.jpg"
+  ogImage="/images/lossi-torn-ajalugu.jpg"
   pageSchema={ajaluguSchema}
 >
 
@@ -59,8 +57,8 @@ const ajaluguSchema = {
     class="relative flex items-center justify-center min-h-[60vh] md:min-h-[70vh] bg-warm-dark overflow-hidden"
   >
     <img
-      src="/images/Lossi-tornid.jpg"
-      alt="Laitse lossi tornid"
+      src="/images/lossi-torn-ajalugu.jpg"
+      alt="Laitse lossi torn"
       class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
     />
@@ -144,7 +142,7 @@ const ajaluguSchema = {
         <!-- Image -->
         <div class="order-2 md:order-1" data-animate>
           <img
-            src="/images/ajaluguUexkyll.jpg"
+            src="/copied-images/ajaluguUexkyll.jpg"
             alt="Woldemar von Uexküll"
             class="w-full rounded shadow-lg"
             loading="lazy"
@@ -211,17 +209,21 @@ const ajaluguSchema = {
   </section>
 
   <!-- ═══ FOOTER CTA ═══ -->
-  <section class="py-20 md:py-24 px-6 text-center">
-    <div data-animate>
-      <h2 class="font-display text-section text-warm-dark mb-4">
-        Avasta lossi ruume
-      </h2>
-      <p class="font-subtitle text-subtitle text-stone mb-8 max-w-md mx-auto">
-        Laitse Loss pakub ainulaadseid ruume nii pidudeks kui seminarideks.
+  <section class="py-20 md:py-28 px-6">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">Broneeri oma sündmus</h2>
+      <p class="font-body text-body-lg text-stone mb-8 leading-relaxed">
+        Rääkige meile oma soovidest ja leiame koos parima lahenduse.
       </p>
-      <div class="flex gap-6 flex-wrap justify-center">
-        <Button variant="filled" href="/peod" label="Peod ja tähtpäevad" />
-        <Button variant="outline" href="/seminarid" label="Seminarid" />
+
+      <div class="mb-10">
+        <a href="tel:+37253300206" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors inline-flex items-center gap-2 min-h-[44px]">
+          <span class="text-stone">Tel:</span> +372 5330 0206
+        </a>
+        <a href="mailto:info@laitsecastle.ee" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors flex items-center justify-center gap-2 min-h-[44px]">
+          <span class="text-stone">E-post:</span> info@laitsecastle.ee
+        </a>
       </div>
     </div>
   </section>

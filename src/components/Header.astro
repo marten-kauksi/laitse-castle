@@ -3,16 +3,18 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { label: 'Avaleht', href: '/' },
+  { label: 'Peod ja seminarid', href: '/peod-ja-seminarid' },
   { label: 'Ajalugu', href: '/ajalugu' },
-  { label: 'Peod', href: '/peod' },
-  { label: 'Seminarid', href: '/seminarid' },
 ];
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 header-transparent transition-all duration-500" id="site-header">
+  <div class="announcement-banner bg-burgundy text-warm-white text-center px-6 py-2.5 font-body text-[13px] leading-snug" id="announcement-banner">
+    <strong>Laitse loss on uue omaniku käes.</strong> See on ametlik veebileht — õiged kontaktandmed ja info leiate siit.
+  </div>
   <nav class="pl-0 pr-4 py-2 md:pr-6 md:py-2.5 flex items-center justify-between max-w-7xl mx-auto">
     <a href="/" class="shrink-0">
-      <img src="/images/logo-200.png" alt="Laitse Loss" class="h-[40px] md:h-[56px] w-auto transition-all duration-500" />
+      <img src="/copied-images/logo-200.png" alt="Laitse loss" class="h-[40px] md:h-[56px] w-auto transition-all duration-500" />
     </a>
 
     <!-- Desktop nav -->
@@ -90,6 +92,12 @@ const navLinks = [
   .header-transparent .hamburger-icon {
     color: rgba(250, 247, 242, 0.9);
   }
+  .header-transparent .announcement-banner {
+    max-height: 60px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+  }
   .header-transparent .header-rule {
     background: linear-gradient(90deg, transparent, rgba(196, 164, 105, 0.3), transparent);
     opacity: 0;
@@ -110,6 +118,14 @@ const navLinks = [
   }
   .header-solid .hamburger-icon {
     color: #2C2824;
+  }
+  .header-solid .announcement-banner {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: max-height 0.4s ease, opacity 0.2s ease, padding 0.4s ease;
   }
   .header-solid .header-rule {
     background: linear-gradient(90deg, transparent, rgba(196, 164, 105, 0.4), transparent);
