@@ -1,19 +1,20 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Flourish from '../components/Flourish.astro';
-import GoldRule from '../components/GoldRule.astro';
-import { t } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
 
-const locale = 'et' as const;
+const locale = 'en' as const;
 
-const ajaluguSchema = {
+const historySchema = {
   "@context": "https://schema.org",
   "@type": "LandmarksOrHistoricalBuildings",
   "@id": "https://laitsecastle.ee/#castle",
-  "name": "Laitse Loss",
-  "alternateName": ["Laitse Castle", "Laitse mõis"],
-  "description": "Neogooti stiilis ajalooline lossihoone Harjumaal, Eestis. Ehitati umbes 1890. aastal Woldemar von Uexkülli poolt. Lossi asukoht on mainitud juba Henriku Liivimaa kroonikas aastast 1219.",
-  "url": "https://laitsecastle.ee/ajalugu",
+  "name": "Laitse Castle",
+  "alternateName": ["Laitse loss", "Laitse Manor"],
+  "description": "A neo-Gothic historic castle in Harju County, Estonia. Built around 1892 by Woldemar von Uexküll. The location of the castle is mentioned as early as 1637 as an independent manor.",
+  "url": "https://laitsecastle.ee/en/history",
   "image": [
     "https://laitsecastle.ee/signed-images/lossi-torn-ajalugu.webp"
   ],
@@ -30,30 +31,30 @@ const ajaluguSchema = {
     "latitude": 59.1966,
     "longitude": 24.3846
   },
-  "foundingDate": "1890",
+  "foundingDate": "1892",
   "historicOccupant": [
     {
       "@type": "Person",
       "name": "Woldemar von Uexküll",
       "birthDate": "1860-08-28",
       "deathDate": "1945",
-      "description": "Baltisaksa aadlik, Laitse lossihoone ehitaja. Sõjaväelane, kirjanik ja usutegelane."
+      "description": "Baltic German nobleman, builder of Laitse Castle. Military officer, writer and religious figure."
     }
   ],
   "containedInPlace": {
     "@type": "AdministrativeArea",
-    "name": "Harjumaa",
+    "name": "Harju County",
     "addressCountry": "EE"
   }
 };
 ---
 
 <BaseLayout
+  locale="en"
   title={t(locale, 'history.meta.title')}
   description={t(locale, 'history.meta.description')}
-  locale="et"
   ogImage="/signed-images/lossi-torn-ajalugu.webp"
-  pageSchema={ajaluguSchema}
+  pageSchema={historySchema}
 >
 
   <!-- ═══ HERO ═══ -->
@@ -77,7 +78,7 @@ const ajaluguSchema = {
     </div>
   </section>
 
-  <!-- ═══ CASTLE HISTORY NARRATIVE ═══ -->
+  <!-- ═══ HISTORY NARRATIVE ═══ -->
   <section class="section-fade-from-dark py-20 md:py-28 px-6">
     <div class="max-w-prose mx-auto">
 

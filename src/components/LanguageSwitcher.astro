@@ -1,0 +1,52 @@
+---
+import { getAlternatePath } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const etPath = getAlternatePath(currentPath, 'et');
+const enPath = getAlternatePath(currentPath, 'en');
+---
+
+<div class="flex items-center gap-1">
+  <a
+    href={etPath}
+    class:list={[
+      'lang-link flex items-center gap-1 px-1.5 py-1 rounded text-xs font-ui uppercase tracking-wide transition-all duration-300 min-h-[44px]',
+      locale === 'et' ? 'opacity-100' : 'opacity-50 hover:opacity-80',
+    ]}
+    aria-label="Eesti keeles"
+    aria-current={locale === 'et' ? 'true' : undefined}
+  >
+    <svg width="20" height="14" viewBox="0 0 20 14" class="rounded-[2px] shadow-sm" aria-hidden="true">
+      <rect width="20" height="4.67" fill="#0072CE"/>
+      <rect y="4.67" width="20" height="4.67" fill="#000000"/>
+      <rect y="9.33" width="20" height="4.67" fill="#FFFFFF" stroke="#e5e5e5" stroke-width="0.3"/>
+    </svg>
+    <span>ET</span>
+  </a>
+  <a
+    href={enPath}
+    class:list={[
+      'lang-link flex items-center gap-1 px-1.5 py-1 rounded text-xs font-ui uppercase tracking-wide transition-all duration-300 min-h-[44px]',
+      locale === 'en' ? 'opacity-100' : 'opacity-50 hover:opacity-80',
+    ]}
+    aria-label="In English"
+    aria-current={locale === 'en' ? 'true' : undefined}
+  >
+    <svg width="20" height="14" viewBox="0 0 20 14" class="rounded-[2px] shadow-sm" aria-hidden="true">
+      <rect width="20" height="14" fill="#012169"/>
+      <path d="M0,0 L20,14 M20,0 L0,14" stroke="#FFFFFF" stroke-width="2.5"/>
+      <path d="M0,0 L20,14 M20,0 L0,14" stroke="#C8102E" stroke-width="1.5"/>
+      <rect x="8.5" width="3" height="14" fill="#FFFFFF"/>
+      <rect y="5" width="20" height="4" fill="#FFFFFF"/>
+      <rect x="9" width="2" height="14" fill="#C8102E"/>
+      <rect y="5.5" width="20" height="3" fill="#C8102E"/>
+    </svg>
+    <span>EN</span>
+  </a>
+</div>

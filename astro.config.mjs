@@ -4,11 +4,15 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://laitseloss.ee',
+  i18n: {
+    defaultLocale: 'et',
+    locales: ['et', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     tailwind(),
-    sitemap({
-      // Exclude any pages that shouldn't be indexed
-      // All current pages are public-facing, so no exclusions needed
-    }),
+    sitemap(),
   ],
 });

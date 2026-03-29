@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
+import { getAlternatePath, type Locale } from '../i18n/utils';
 
 interface Props {
   title?: string;
@@ -9,6 +10,7 @@ interface Props {
   ogImage?: string;
   canonicalUrl?: string;
   pageSchema?: Record<string, unknown> | Record<string, unknown>[];
+  locale?: 'et' | 'en';
 }
 
 const {
@@ -17,6 +19,7 @@ const {
   ogImage = '/images/Fassaad.jpg',
   canonicalUrl,
   pageSchema,
+  locale = 'et',
 } = Astro.props;
 
 const siteUrl = 'https://laitsecastle.ee';
@@ -27,7 +30,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://laitsecastle.ee/#organization",
-  "name": "Laitse Loss OÜ",
+  "name": "Nevaliste OÜ",
   "alternateName": "Laitse loss",
   "url": "https://laitsecastle.ee",
   "logo": {
@@ -64,19 +67,27 @@ const websiteSchema = {
   "publisher": {
     "@id": "https://laitsecastle.ee/#organization"
   },
-  "inLanguage": "et"
+  "inLanguage": locale
 };
 ---
 
 <!doctype html>
-<html lang="et">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="/images/laitse-lossi-favicon.webp" />
+
     <!-- Canonical URL -->
     <link rel="canonical" href={canonical} />
+
+    <!-- Hreflang alternates -->
+    <link rel="alternate" hreflang="et" href={`${siteUrl}${getAlternatePath(Astro.url.pathname, 'et')}`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${getAlternatePath(Astro.url.pathname, 'en')}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${getAlternatePath(Astro.url.pathname, 'et')}`} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -86,7 +97,7 @@ const websiteSchema = {
     <meta property="og:image" content={ogImageAbsolute} />
     <meta property="og:image:width" content="1440" />
     <meta property="og:image:height" content="900" />
-    <meta property="og:locale" content="et_EE" />
+    <meta property="og:locale" content={locale === 'en' ? 'en_GB' : 'et_EE'} />
     <meta property="og:site_name" content="Laitse Loss" />
 
     <!-- Twitter Card -->
@@ -98,14 +109,14 @@ const websiteSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Lato:wght@300;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Lato:wght@300;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet"
       />
     </noscript>
@@ -115,11 +126,11 @@ const websiteSchema = {
     {pageSchema && <SchemaOrg schema={pageSchema} />}
   </head>
   <body class="bg-warm-white text-warm-dark font-body antialiased">
-    <Header />
+    <Header locale={locale} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
   </body>
 </html>
 

@@ -1,0 +1,116 @@
+{
+  "nav.home": "Avaleht",
+  "nav.events": "Peod ja seminarid",
+  "nav.history": "Ajalugu",
+
+  "header.announcement": "Laitse lossi peoruumidel on uus omanik. Ametlik veebileht on <strong>laitsecastle.ee</strong> ja õiged kontaktandmed leiate siit. Veebileht laitseloss.ee sisaldab valeinfot, kutsudes üles broneerima lossi ruume.",
+  "header.menu": "Menüü",
+  "header.logoAlt": "Laitse loss",
+
+  "footer.brand": "Laitse loss",
+  "footer.address": "Lossi tee 9, 76302 Laitse, Harjumaa",
+  "footer.mapTitle": "Laitse Loss kaardil",
+
+  "contact.tel": "Tel:",
+  "contact.email": "E-post:",
+
+  "cta.contact": "Võta ühendust",
+  "cta.readMore": "Loe edasi →",
+  "cta.bookEvent": "Broneerige sündmus",
+  "cta.bookEventDesc": "Jagage oma visiooni – aitame selle parimal kujul ellu viia.",
+
+  "home.meta.title": "Laitse loss — Ajalooline sündmuste paik Harjumaal",
+  "home.meta.description": "Neogooti stiilis loss Harjumaal — elegantne sündmuskoht pulmadeks, pidudeks ja seminarideks. ~40 minutit Tallinnast. Tutvu ruumide ja võimalustega.",
+
+  "home.hero.title": "Laitse loss",
+  "home.hero.subtitle": "Teie sündmus väärib lossi!",
+  "home.hero.body": "Neogooti stiilis loss keset Harjumaa loodust – pulmadeks, pidustusteks ja seminarideks. Kõigest 40 minutit Tallinnast.",
+  "home.hero.imageAlt": "Laitse loss",
+
+  "home.services.heading": "Millist sündmust soovite korraldada?",
+  "home.services.card1.title": "Sünnipäevad, pidustused ja pulmad",
+  "home.services.card1.imageAlt": "Laitse loss öösel",
+  "home.services.card2.title": "Firmaüritused ja seminarid",
+  "home.services.card2.imageAlt": "Seminariruum Laitse lossis",
+
+  "home.location.label": "Asukoht",
+  "home.location.address": "Lossi tee 9, Laitse, Harjumaa",
+  "home.location.details": "~40 min Tallinnast · kuni 100 külalist",
+
+  "home.story.eyebrow": "Aastast 1892",
+  "home.story.heading": "Lossi lugu",
+  "home.story.p1": "Laitse mõisa juured ulatuvad 1637. aastasse, mil see eraldati iseseisva mõisana Ruila mõisast. Sajandite jooksul on mõis kuulunud mitmetele aadliperekondadele, nende seas von Ullrichidele ja von Mohrenschildtidele.",
+  "home.story.p2": "Woldemar von Uexkülli eestvedamisel kerkis vana mõisasüdame kõrvale uus, neogooti stiilis peahoone – romantiline loss, mis valmis 1892. aastal.",
+  "home.story.cta": "Loe edasi →",
+  "home.story.imageAlt": "Laitse lossi torn",
+
+  "history.meta.title": "Laitse lossi ajalugu — Neogooti loss aastast 1892",
+  "history.meta.description": "Laitse lossi ajalugu alates 1637. aastast kuni neogooti lossihoone valmimiseni 1892. aastal. Sajandite lood ühes kohas.",
+
+  "history.hero.heading": "Laitse loss – ajalugu, mis elab edasi",
+  "history.hero.imageAlt": "Laitse lossi torn",
+
+  "history.p1": "Laitse mõisa juured ulatuvad 1637. aastasse, mil see eraldati iseseisva mõisana Ruila mõisast. Sajandite jooksul on mõis kuulunud mitmetele aadliperekondadele, nende seas von Ullrichidele ja von Mohrenschildtidele, kelle käe all kujunes välja paiga väärikas ja mitmekihiline ajalugu.",
+  "history.p2": "Mõisa tänase ilme kujunemisel oli määrav roll Woldemar von Uexküllil, kes omandas mõisa 1883. aastal. Tema eestvedamisel kerkis vana mõisasüdame kõrvale uus, neogooti stiilis peahoone – romantiline loss, mis valmis 1892. aastal ning annab paigale selle tänaseni äratuntava iseloomu.",
+  "history.p3": "Viimane mõisnik enne ajaloolisi pöördeid oli Ullrich von Bremen, kelle omandusse kuulus mõis kuni 1919. aasta võõrandamiseni. Tänapäeval kannab Laitse loss endas sajandite lugusid, pakkudes külastajatele ainulaadset võimalust kogeda ajalugu elava ja inspireeriva keskkonnana.",
+
+  "events.meta.title": "Peod ja seminarid — Laitse loss",
+  "events.meta.description": "Pulmad, sünnipäevad, firmapeod ja seminarid ajaloolises Laitse lossis. Elegantne keskkond Harjumaal, ~40 min Tallinnast.",
+
+  "events.hero.heading": "Peod ja seminarid",
+  "events.hero.subtitle": "Ajalooline atmosfäär, mis annab igale sündmusele sügavuse ja väärikuse.",
+  "events.hero.imageAlt": "Laitse loss aia poolt",
+
+  "events.services.heading": "Teie sündmus lossis",
+  "events.services.card1.title": "Sünnipäevad ja tähtpäevad",
+  "events.services.card1.desc": "Intiimsetest koosviibimistest suuremate pidustusteni.",
+  "events.services.card1.imageAlt": "Laitse loss öösel",
+  "events.services.card2.title": "Pulmad",
+  "events.services.card2.desc": "Unustamatu päev lossiromantikas.",
+  "events.services.card2.imageAlt": "Laitse lossi droonivaade",
+  "events.services.card3.title": "Firmaüritused ja seminarid",
+  "events.services.card3.desc": "Inspireeriv keskkond tähenduslikeks kohtumisteks.",
+  "events.services.card3.imageAlt": "Seminariruum Laitse lossis",
+
+  "events.rooms.eyebrow": "Ruumid ja alad",
+  "events.rooms.heading": "Meie ruumid",
+
+  "events.rooms.klaverisalong.name": "Klaverisalong",
+  "events.rooms.klaverisalong.floor": "I korrus",
+  "events.rooms.klaverisalong.desc": "Klassikalise interjööriga salong lossi esimesel korrusel. Loomulik valgus, klaver ja hubane õhkkond sobivad ideaalselt nii väiksematele tähistamistele kui ka töötubadele.",
+  "events.rooms.klaverisalong.imageAlt": "Klaverisalong Laitse lossis",
+
+  "events.rooms.peasaal.name": "Peasaal",
+  "events.rooms.peasaal.floor": "I korrus",
+  "events.rooms.peasaal.desc": "Lossi peasaal – elegantne ruum banketipidudeks ja vastuvõttudeks. Ajaloolised detailid ja soe atmosfäär loovad meeldejääva keskkonna.",
+  "events.rooms.peasaal.imageAlt": "Peasaal Laitse lossis",
+
+  "events.rooms.terrass.name": "Terrass ja aed",
+  "events.rooms.terrass.floor": "Välialad",
+  "events.rooms.terrass.desc": "Terrass pakub ideaalset kohta vabaõhu kokteilideks ja einestamiseks. Suur aed sobib suveüritusteks ja tseremooniateks – looduse ja ajaloo kooskõla.",
+  "events.rooms.terrass.imageAlt": "Laitse lossi terrass ja aed",
+
+  "events.rooms.suursaal.name": "Suur saal",
+  "events.rooms.suursaal.floor": "Sisehoov",
+  "events.rooms.suursaal.desc": "Lossi suurim ruum. Sobib suuremateks pidudeks, seminarideks ja üritusteks, kus vajate avarust.",
+  "events.rooms.suursaal.imageAlt": "Suur saal Laitse lossis",
+
+  "events.table.layout": "Paigutus",
+  "events.table.capacity": "Mahutavus",
+  "events.table.uLaud": "U-laud",
+  "events.table.koosolek": "Koosolek",
+  "events.table.klassiruum": "Klassiruum",
+  "events.table.teater": "Teatristiilis",
+  "events.table.pikkLaud": "Pikk laud",
+  "events.table.bankett": "Bankett",
+  "events.table.2pikkalauda": "2 pikka lauda",
+
+  "events.offer.heading": "Mida pakume",
+  "events.offer.subtitle": "Ajatu keskkond koos hoolikalt valitud lisavõimalustega",
+  "events.offer.item1.title": "Ruumide rent",
+  "events.offer.item1.desc": "Paindlikud ruumilahendused vastavalt teie ürituse formaadile ja suurusele.",
+  "events.offer.item2.title": "Kaunistused ja dekoreerimine",
+  "events.offer.item2.desc": "Aitame luua teie nägemuse kohase kaunistuse, mis sobib lossi ajaloolise interjööriga.",
+  "events.offer.item3.title": "Toitlustus",
+  "events.offer.item3.desc": "Aitame leida teie sündmusele sobiva toitlustuslahenduse – kohvipausidest piduliku õhtusöögini."
+}

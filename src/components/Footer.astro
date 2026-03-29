@@ -1,4 +1,12 @@
 ---
+import { t } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'et' } = Astro.props;
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -16,8 +24,7 @@ const currentYear = new Date().getFullYear();
 
         <!-- Brand + contact -->
         <div class="md:col-span-4">
-          <h3 class="font-display text-2xl text-warm-white mb-1">Laitse loss</h3>
-          <p class="font-subtitle italic text-sm text-gold-light/70 mb-6">Ajalooline sündmuste paik</p>
+          <h3 class="font-display text-2xl text-warm-white mb-6">{t(locale, 'footer.brand')}</h3>
 
           <ul class="space-y-1 font-body text-sm text-warm-white/75">
             <li>
@@ -31,7 +38,7 @@ const currentYear = new Date().getFullYear();
               </a>
             </li>
             <li class="pt-1 text-warm-white/50">
-              Lossi tee 9, 76302 Laitse, Harjumaa
+              {t(locale, 'footer.address')}
             </li>
           </ul>
         </div>
@@ -47,7 +54,7 @@ const currentYear = new Date().getFullYear();
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Laitse Loss kaardil"
+              title={t(locale, 'footer.mapTitle')}
               class="h-[200px] md:h-[260px] w-full"
             ></iframe>
           </div>
@@ -58,16 +65,8 @@ const currentYear = new Date().getFullYear();
       <!-- Bottom bar -->
       <div class="mt-12 pt-6 border-t border-warm-white/10 flex flex-wrap items-center justify-between gap-4">
         <p class="font-ui text-xs text-warm-white/40">
-          &copy; {currentYear} Laitse Loss O&Uuml;
+          &copy; {currentYear} Nevaliste O&Uuml;
         </p>
-        <div class="flex gap-4">
-          <a href="/privaatsuspoliitika" class="font-ui text-xs text-warm-white/40 hover:text-gold-light transition-colors">
-            Privaatsuspoliitika
-          </a>
-          <a href="/tingimused" class="font-ui text-xs text-warm-white/40 hover:text-gold-light transition-colors">
-            Üld- ja tellimistingimused
-          </a>
-        </div>
       </div>
     </div>
   </div>

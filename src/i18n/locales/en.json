@@ -1,0 +1,116 @@
+{
+  "nav.home": "Home",
+  "nav.events": "Parties and seminars",
+  "nav.history": "History",
+
+  "header.announcement": "The banquet halls at Laitse Castle have a new owner. The official website is <strong>laitsecastle.ee</strong>, and you can find the correct contact information here. The website laitseloss.ee contains false information and encourages people to book rooms at the castle.",
+  "header.menu": "Menu",
+  "header.logoAlt": "Laitse Castle",
+
+  "footer.brand": "Laitse Castle",
+  "footer.address": "Lossi tee 9, 76302 Laitse, Harju County",
+  "footer.mapTitle": "Laitse Castle on the map",
+
+  "contact.tel": "Tel:",
+  "contact.email": "Email:",
+
+  "cta.contact": "Get in touch",
+  "cta.readMore": "Read more →",
+  "cta.bookEvent": "Book an event",
+  "cta.bookEventDesc": "Share your vision – we will help you bring it to life in the best possible way.",
+
+  "home.meta.title": "Laitse Castle — Historic event venue in Harju County",
+  "home.meta.description": "A neo-Gothic castle in Harju County — an elegant venue for weddings, celebrations, and seminars. Just 40 minutes from Tallinn.",
+
+  "home.hero.title": "Laitse Castle",
+  "home.hero.subtitle": "Your event deserves a castle!",
+  "home.hero.body": "A neo-Gothic castle nestled in the heart of Harju County's natural landscape – perfect for weddings, celebrations, and seminars. Just 40 minutes from Tallinn.",
+  "home.hero.imageAlt": "Laitse Castle",
+
+  "home.services.heading": "What kind of event do you want to organize?",
+  "home.services.card1.title": "Birthdays, celebrations and weddings",
+  "home.services.card1.imageAlt": "Laitse Castle at night",
+  "home.services.card2.title": "Corporate events and seminars",
+  "home.services.card2.imageAlt": "Seminar room at Laitse Castle",
+
+  "home.location.label": "Location",
+  "home.location.address": "Lossi tee 9, Laitse, Harju County",
+  "home.location.details": "~40 min from Tallinn · up to 100 guests",
+
+  "home.story.eyebrow": "From 1892",
+  "home.story.heading": "The story of the castle",
+  "home.story.p1": "The roots of Laitse Manor date back to 1637, when it was established as an independent manor, separated from Ruila Manor. Over the centuries, the manor has belonged to several noble families, including the von Ullrichs and the von Mohrenschildts.",
+  "home.story.p2": "Under the leadership of Woldemar von Uexküll, a new, neo-Gothic-style main building was built – a romantic castle completed in 1892 that gives the site its recognizable character to this day.",
+  "home.story.cta": "Read more →",
+  "home.story.imageAlt": "Laitse Castle tower",
+
+  "history.meta.title": "History of Laitse Castle — Neo-Gothic castle from 1892",
+  "history.meta.description": "The history of Laitse Castle from 1637 to the completion of the neo-Gothic castle in 1892. Centuries of stories in one place.",
+
+  "history.hero.heading": "Laitse Castle – a living history",
+  "history.hero.imageAlt": "Laitse Castle tower",
+
+  "history.p1": "The roots of Laitse Manor date back to 1637, when it was established as an independent manor, separated from Ruila Manor. Over the centuries, the manor has belonged to several noble families, including the von Ullrichs and the von Mohrenschildts, under whose leadership the place's dignified and multilayered history developed.",
+  "history.p2": "Woldemar von Uexküll, who acquired the manor in 1883, played a decisive role in shaping its current appearance. Under his leadership, a new, neo-Gothic-style main building was built next to the old manor heart – a romantic castle completed in 1892 that gives the site its recognizable character to this day.",
+  "history.p3": "The last manor owner before the historical upheavals was Ullrich von Bremen, who owned the manor until its expropriation in 1919. Today, Laitse Castle carries the stories of centuries, offering visitors a unique opportunity to experience history as a living and inspiring environment.",
+
+  "events.meta.title": "Parties and seminars — Laitse Castle",
+  "events.meta.description": "Weddings, birthdays, corporate events and seminars at the historic Laitse Castle. An elegant venue in Harju County, ~40 min from Tallinn.",
+
+  "events.hero.heading": "Parties and seminars",
+  "events.hero.subtitle": "A historic atmosphere that gives depth and dignity to every event.",
+  "events.hero.imageAlt": "Laitse Castle from the garden",
+
+  "events.services.heading": "Your event at the castle",
+  "events.services.card1.title": "Birthdays and anniversaries",
+  "events.services.card1.desc": "From intimate gatherings to larger celebrations.",
+  "events.services.card1.imageAlt": "Laitse Castle at night",
+  "events.services.card2.title": "Weddings",
+  "events.services.card2.desc": "An unforgettable day in a romantic castle setting.",
+  "events.services.card2.imageAlt": "Aerial view of Laitse Castle",
+  "events.services.card3.title": "Corporate events and seminars",
+  "events.services.card3.desc": "An inspiring environment for meaningful meetings.",
+  "events.services.card3.imageAlt": "Seminar room at Laitse Castle",
+
+  "events.rooms.eyebrow": "Rooms and areas",
+  "events.rooms.heading": "Our rooms",
+
+  "events.rooms.klaverisalong.name": "Piano Lounge",
+  "events.rooms.klaverisalong.floor": "1st floor",
+  "events.rooms.klaverisalong.desc": "A lounge with a classic interior on the first floor of the castle. Natural light, a piano and a cozy atmosphere are ideal for both smaller celebrations and workshops.",
+  "events.rooms.klaverisalong.imageAlt": "Piano Lounge at Laitse Castle",
+
+  "events.rooms.peasaal.name": "Main Hall",
+  "events.rooms.peasaal.floor": "1st floor",
+  "events.rooms.peasaal.desc": "The main hall of the castle – an elegant venue for banquets and receptions. Historical details and a warm atmosphere create a memorable environment.",
+  "events.rooms.peasaal.imageAlt": "Main Hall at Laitse Castle",
+
+  "events.rooms.terrass.name": "Terrace and garden",
+  "events.rooms.terrass.floor": "Outdoor areas",
+  "events.rooms.terrass.desc": "The terrace offers the perfect setting for outdoor cocktails and dining. The large garden is ideal for summer events and ceremonies – a harmonious blend of nature and history.",
+  "events.rooms.terrass.imageAlt": "Terrace and garden at Laitse Castle",
+
+  "events.rooms.suursaal.name": "Grand Hall",
+  "events.rooms.suursaal.floor": "Inner courtyard",
+  "events.rooms.suursaal.desc": "The largest room in the castle. Suitable for larger parties, seminars, and events where you need space.",
+  "events.rooms.suursaal.imageAlt": "Grand Hall at Laitse Castle",
+
+  "events.table.layout": "Layout",
+  "events.table.capacity": "Capacity",
+  "events.table.uLaud": "U-table",
+  "events.table.koosolek": "Meeting",
+  "events.table.klassiruum": "Classroom",
+  "events.table.teater": "Theatre style",
+  "events.table.pikkLaud": "Long table",
+  "events.table.bankett": "Banquet",
+  "events.table.2pikkalauda": "2 long tables",
+
+  "events.offer.heading": "What we offer",
+  "events.offer.subtitle": "A timeless environment with carefully selected additional features",
+  "events.offer.item1.title": "Room rental",
+  "events.offer.item1.desc": "Flexible space solutions tailored to the format and size of your event.",
+  "events.offer.item2.title": "Decorations and decorating",
+  "events.offer.item2.desc": "We'll help you create decorations that reflect your vision and complement the castle's historic interior.",
+  "events.offer.item3.title": "Catering",
+  "events.offer.item3.desc": "We can help you find the perfect catering solution for your event – from coffee breaks to a festive dinner."
+}

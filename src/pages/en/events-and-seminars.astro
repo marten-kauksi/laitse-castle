@@ -1,20 +1,20 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Flourish from '../components/Flourish.astro';
-import GoldRule from '../components/GoldRule.astro';
-import TopStripe from '../components/TopStripe.astro';
-import Button from '../components/Button.astro';
-import { t } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
 
-const locale = 'et' as const;
+const locale = 'en' as const;
 
 const pageSchema = [
   {
     "@context": "https://schema.org",
     "@type": "EventVenue",
     "@id": "https://laitsecastle.ee/#venue",
-    "name": "Laitse loss",
-    "url": "https://laitsecastle.ee/peod-ja-seminarid",
+    "name": "Laitse Castle",
+    "url": "https://laitsecastle.ee/en/events-and-seminars",
     "telephone": "+37253300206",
     "email": "info@laitsecastle.ee",
     "image": "https://laitsecastle.ee/signed-images/loss-oosel.webp",
@@ -36,9 +36,9 @@ const pageSchema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://laitsecastle.ee/peod-ja-seminarid#pulmad",
-    "name": "Pulmad Laitse lossis",
-    "description": "Ajaloolise lossi romantiline õhkkond loob unustamatu tausta teie kõige olulisemale päevale.",
+    "@id": "https://laitsecastle.ee/en/events-and-seminars#weddings",
+    "name": "Weddings at Laitse Castle",
+    "description": "The romantic atmosphere of the historic castle creates an unforgettable backdrop for your most important day.",
     "serviceType": "Wedding Venue",
     "provider": { "@id": "https://laitsecastle.ee/#organization" },
     "areaServed": { "@type": "Country", "name": "Estonia" }
@@ -46,9 +46,9 @@ const pageSchema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://laitsecastle.ee/peod-ja-seminarid#seminarid",
-    "name": "Seminarid ja konverentsid Laitse lossis",
-    "description": "Inspireeriv ajalooline keskkond seminaridele, konverentsidele ja meeskonnaüritustele.",
+    "@id": "https://laitsecastle.ee/en/events-and-seminars#seminars",
+    "name": "Seminars and conferences at Laitse Castle",
+    "description": "An inspiring historic environment for seminars, conferences and team events.",
     "serviceType": "Conference and Seminar Venue",
     "provider": { "@id": "https://laitsecastle.ee/#organization" }
   }
@@ -56,9 +56,9 @@ const pageSchema = [
 ---
 
 <BaseLayout
+  locale="en"
   title={t(locale, 'events.meta.title')}
   description={t(locale, 'events.meta.description')}
-  locale="et"
   ogImage="/signed-images/loss-oosel.webp"
   pageSchema={pageSchema}
 >
@@ -82,13 +82,13 @@ const pageSchema = [
         <Flourish type="vintage" size="md" fill="gold" />
       </div>
       <div class="hero-enter mt-6" style="--delay: 450ms">
-        <Button variant="filled" href="#kontakt" label={t(locale, 'cta.contact')} />
+        <Button variant="filled" href="#contact" label={t(locale, 'cta.contact')} />
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════
-       TEIE SÜNDMUS LOSSIS — service types
+       YOUR EVENT AT THE CASTLE — service types
        ═══════════════════════════════════════════ -->
   <section class="section-fade-from-dark pt-12 md:pt-16 pb-20 md:pb-28 px-6">
     <div class="max-w-6xl mx-auto">
@@ -98,7 +98,7 @@ const pageSchema = [
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 md:gap-8">
-        <!-- Sünnipäevad ja tähtpäevad -->
+        <!-- Birthdays and anniversaries -->
         <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="100">
           <img
             src="/signed-images/loss-oosel.webp"
@@ -113,7 +113,7 @@ const pageSchema = [
           </div>
         </div>
 
-        <!-- Pulmad -->
+        <!-- Weddings -->
         <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="250">
           <img
             src="/signed-images/drooni-vaade.webp"
@@ -128,7 +128,7 @@ const pageSchema = [
           </div>
         </div>
 
-        <!-- Firmaüritused ja seminarid -->
+        <!-- Corporate events and seminars -->
         <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="400">
           <img
             src="/images/seminarid-firmayritused.webp"
@@ -147,7 +147,7 @@ const pageSchema = [
   </section>
 
   <!-- ═══════════════════════════════════════════
-       MEIE RUUMID
+       OUR ROOMS
        ═══════════════════════════════════════════ -->
   <section class="bg-warm-light px-6 py-20 md:py-28">
     <div class="max-w-6xl mx-auto">
@@ -157,7 +157,7 @@ const pageSchema = [
         <Flourish type="vintage" size="sm" fill="burgundy" />
       </div>
 
-      <!-- Klaverisalong -->
+      <!-- Piano Lounge -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
         <div class="group overflow-hidden rounded">
           <img
@@ -204,7 +204,7 @@ const pageSchema = [
         </div>
       </div>
 
-      <!-- Peasaal (reversed) -->
+      <!-- Main Hall (reversed) -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
         <div class="md:order-2 group overflow-hidden rounded">
           <img
@@ -243,7 +243,7 @@ const pageSchema = [
         </div>
       </div>
 
-      <!-- Terrass ja aed -->
+      <!-- Terrace and garden -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
         <div class="group overflow-hidden rounded">
           <img
@@ -263,7 +263,7 @@ const pageSchema = [
         </div>
       </div>
 
-      <!-- Suur saal (reversed) -->
+      <!-- Grand Hall (reversed) -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center" data-animate>
         <div class="md:order-2 group overflow-hidden rounded">
           <img
@@ -309,7 +309,7 @@ const pageSchema = [
   </section>
 
   <!-- ═══════════════════════════════════════════
-       MIDA PAKUME
+       WHAT WE OFFER
        ═══════════════════════════════════════════ -->
   <section class="px-6 py-20 md:py-28">
     <div class="max-w-3xl mx-auto">
@@ -350,7 +350,7 @@ const pageSchema = [
   <!-- ═══════════════════════════════════════════
        CTA
        ═══════════════════════════════════════════ -->
-  <section id="kontakt" class="px-6 py-20 md:py-28 bg-warm-light">
+  <section id="contact" class="px-6 py-20 md:py-28 bg-warm-light">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">{t(locale, 'cta.bookEvent')}</h2>

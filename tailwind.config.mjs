@@ -20,14 +20,14 @@ export default {
         stone: '#7A6F64',
       },
       fontFamily: {
-        display: ['"Fraunces"', 'serif'],
+        display: ['"Bodoni Moda"', 'serif'],
         subtitle: ['"Cormorant Infant"', 'serif'],
         body: ['"Libre Baskerville"', 'serif'],
         ui: ['"Lato"', 'sans-serif'],
       },
       fontSize: {
-        'hero': ['clamp(38px, 5.5vw, 68px)', { lineHeight: '1.05', letterSpacing: '0.04em', fontWeight: '200' }],
-        'section': ['clamp(28px, 3.5vw, 44px)', { lineHeight: '1.15', letterSpacing: '0.03em', fontWeight: '300' }],
+        'hero': ['clamp(38px, 5.5vw, 68px)', { lineHeight: '1.05', letterSpacing: '0.04em', fontWeight: '400' }],
+        'section': ['clamp(28px, 3.5vw, 44px)', { lineHeight: '1.15', letterSpacing: '0.03em', fontWeight: '400' }],
         'subtitle': ['clamp(17px, 1.8vw, 22px)', { lineHeight: '1.4', fontWeight: '300' }],
         'body-lg': ['17px', { lineHeight: '1.8', fontWeight: '300' }],
         'body': ['16px', { lineHeight: '1.7', fontWeight: '400' }],

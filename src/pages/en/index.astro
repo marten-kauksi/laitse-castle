@@ -1,25 +1,25 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Flourish from '../components/Flourish.astro';
-import GoldRule from '../components/GoldRule.astro';
-import TopStripe from '../components/TopStripe.astro';
-import Button from '../components/Button.astro';
-import { t } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
 
-const locale = 'et' as const;
+const locale = 'en' as const;
 
 const eventVenueSchema = {
   "@context": "https://schema.org",
   "@type": ["EventVenue", "LocalBusiness"],
   "@id": "https://laitsecastle.ee/#venue",
-  "name": "Laitse loss",
-  "alternateName": "Laitse Castle",
-  "description": "Ajalooline neogooti loss Harjumaal — ideaalne koht pulmadeks, pidudeks, seminarideks ja konverentsideks. ~40 minutit Tallinnast.",
-  "url": "https://laitsecastle.ee",
+  "name": "Laitse Castle",
+  "alternateName": "Laitse loss",
+  "description": "Historic neo-Gothic castle in Harju County — ideal for weddings, celebrations, seminars and conferences. ~40 minutes from Tallinn.",
+  "url": "https://laitsecastle.ee/en",
   "telephone": "+37253300206",
   "email": "info@laitsecastle.ee",
   "image": [
-    "https://laitsecastle.ee/images/hero-main-image.jpg",
+    "https://laitsecastle.ee/signed-images/drooni-vaade.webp",
     "https://laitsecastle.ee/signed-images/loss-oosel.webp",
     "https://laitsecastle.ee/images/saal.jpg"
   ],
@@ -39,29 +39,29 @@ const eventVenueSchema = {
   "hasMap": "https://maps.google.com/?q=59.1966,24.3846",
   "maximumAttendeeCapacity": 100,
   "amenityFeature": [
-    { "@type": "LocationFeatureSpecification", "name": "Tasuta parkimine", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Free parking", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "WiFi", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Projektor ja ekraan", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Terrass", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Aed", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "Projector and screen", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Terrace", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Garden", "value": true }
   ],
   "containsPlace": [
     {
       "@type": "MeetingRoom",
       "@id": "https://laitsecastle.ee/#peasaal",
-      "name": "Peasaal",
+      "name": "Main Hall",
       "maximumAttendeeCapacity": 100
     },
     {
       "@type": "MeetingRoom",
       "@id": "https://laitsecastle.ee/#klaverisalong",
-      "name": "Klaverisalong",
+      "name": "Piano Lounge",
       "maximumAttendeeCapacity": 64
     },
     {
       "@type": "MeetingRoom",
       "@id": "https://laitsecastle.ee/#suur-saal",
-      "name": "Suur saal"
+      "name": "Grand Hall"
     }
   ],
   "parentOrganization": {
@@ -71,9 +71,9 @@ const eventVenueSchema = {
 ---
 
 <BaseLayout
+  locale="en"
   title={t(locale, 'home.meta.title')}
   description={t(locale, 'home.meta.description')}
-  locale="et"
   pageSchema={eventVenueSchema}
 >
 
@@ -108,13 +108,13 @@ const eventVenueSchema = {
       </p>
 
       <div class="hero-enter mt-6" style="--delay: 750ms">
-        <Button variant="filled" href="#kontakt" label={t(locale, 'cta.contact')} />
+        <Button variant="filled" href="#contact" label={t(locale, 'cta.contact')} />
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════
-       2. TEENUSED — Two equal cards
+       2. SERVICES — Two equal cards
        ═══════════════════════════════════════════ -->
   <section class="section-fade-from-dark pt-12 md:pt-16 pb-20 md:pb-28 px-6">
     <div class="max-w-2xl mx-auto text-center mb-12" data-animate>
@@ -124,8 +124,8 @@ const eventVenueSchema = {
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
 
-        <!-- Sünnipäevad, pidustused ja pulmad — large featured card -->
-        <a href="/peod-ja-seminarid" class="service-card md:col-span-7 group relative overflow-hidden rounded block" data-animate data-animate-delay="100">
+        <!-- Birthdays, celebrations and weddings — large featured card -->
+        <a href="/en/events-and-seminars" class="service-card md:col-span-7 group relative overflow-hidden rounded block" data-animate data-animate-delay="100">
           <img
             src="/signed-images/loss-oosel.webp"
             alt={t(locale, 'home.services.card1.imageAlt')}
@@ -141,11 +141,11 @@ const eventVenueSchema = {
           </div>
         </a>
 
-        <!-- Right column: Firmaüritused + Asukoht stacked -->
+        <!-- Right column: Corporate events + Location stacked -->
         <div class="md:col-span-5 flex flex-col gap-6 md:gap-8">
 
-          <!-- Firmaüritused ja seminarid card -->
-          <a href="/peod-ja-seminarid" class="service-card group relative overflow-hidden rounded flex-1 block" data-animate data-animate-delay="250">
+          <!-- Corporate events and seminars card -->
+          <a href="/en/events-and-seminars" class="service-card group relative overflow-hidden rounded flex-1 block" data-animate data-animate-delay="250">
             <img
               src="/images/seminarid-firmayritused.webp"
               alt={t(locale, 'home.services.card2.imageAlt')}
@@ -178,7 +178,7 @@ const eventVenueSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════
-       4. LOSSI LUGU — Full-bleed immersive
+       4. CASTLE STORY — Full-bleed immersive
        ═══════════════════════════════════════════ -->
   <section class="section-into-dark relative min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden py-12 md:py-20">
     <img
@@ -201,7 +201,7 @@ const eventVenueSchema = {
       <p class="font-body text-body-lg text-warm-white/80 mb-10 leading-relaxed">
         {t(locale, 'home.story.p2')}
       </p>
-      <a href="/ajalugu" class="font-ui text-[15px] uppercase tracking-wider text-warm-white border-b border-warm-white/40 pb-1 hover:border-warm-white transition-colors">
+      <a href="/en/history" class="font-ui text-[15px] uppercase tracking-wider text-warm-white border-b border-warm-white/40 pb-1 hover:border-warm-white transition-colors">
         {t(locale, 'home.story.cta')}
       </a>
     </div>
@@ -210,7 +210,7 @@ const eventVenueSchema = {
   <!-- ═══════════════════════════════════════════
        5. CTA
        ═══════════════════════════════════════════ -->
-  <section id="kontakt" class="section-fade-from-dark py-20 md:py-28 px-6">
+  <section id="contact" class="section-fade-from-dark py-20 md:py-28 px-6">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">{t(locale, 'cta.bookEvent')}</h2>
