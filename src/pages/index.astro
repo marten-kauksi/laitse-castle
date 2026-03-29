@@ -80,7 +80,7 @@ const eventVenueSchema = {
   <!-- ═══════════════════════════════════════════
        1. HERO
        ═══════════════════════════════════════════ -->
-  <section class="relative min-h-[85vh] md:min-h-[88vh] flex flex-col items-center justify-center overflow-hidden">
+  <section class="relative min-h-[92vh] md:min-h-[88vh] flex flex-col items-center justify-center overflow-hidden">
     <TopStripe />
 
     <img
@@ -92,7 +92,7 @@ const eventVenueSchema = {
     />
     <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/70 via-warm-dark/45 to-warm-dark/30"></div>
 
-    <div class="relative z-10 flex flex-col items-center text-center gap-5 max-w-2xl px-6 py-24">
+    <div class="relative z-10 flex flex-col items-center text-center gap-5 max-w-2xl px-6 pt-32 pb-24 md:py-24">
       <h1 class="hero-enter font-display text-[clamp(44px,7vw,80px)] text-warm-white drop-shadow-lg leading-[1.05]" style="--delay: 0ms">{t(locale, 'home.hero.title')}</h1>
 
       <div class="hero-enter" style="--delay: 300ms">
@@ -103,7 +103,7 @@ const eventVenueSchema = {
         {t(locale, 'home.hero.subtitle')}
       </p>
 
-      <p class="hero-enter font-body text-body-lg text-warm-white/90 max-w-lg mt-2 text-overlay leading-relaxed" style="--delay: 600ms">
+      <p class="hero-enter font-body text-body-lg text-warm-white/90 max-w-xl mt-2 text-overlay leading-relaxed" style="--delay: 600ms">
         {t(locale, 'home.hero.body')}
       </p>
 
