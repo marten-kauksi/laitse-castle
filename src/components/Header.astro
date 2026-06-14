@@ -18,12 +18,12 @@ const navLinks = [
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 header-transparent transition-all duration-500" id="site-header">
-  <div class="announcement-banner bg-burgundy text-warm-white text-center px-4 py-2 font-body text-[12px] leading-relaxed" id="announcement-banner">
+  <div class="announcement-banner bg-green-700 text-warm-white text-center px-4 py-2 font-body text-[12px] leading-relaxed" id="announcement-banner">
     <p class="max-w-[800px] mx-auto"><Fragment set:html={t(locale, 'header.announcement')} /></p>
   </div>
-  <nav class="pl-0 pr-4 py-2 md:pr-6 md:py-2.5 flex items-center justify-between max-w-7xl mx-auto">
+  <nav class="pl-0 pr-4 py-1 md:pr-6 md:py-1 flex items-center justify-between max-w-7xl mx-auto">
     <a href="/" class="shrink-0">
-      <img src="/images/laitse-castle-logo.webp" alt="Laitse loss" class="h-[40px] md:h-[56px] w-auto transition-all duration-500" />
+      <img src="/images/laitse-castle-logo.webp" alt="Laitse loss" class="h-[32px] md:h-[44px] w-auto transition-all duration-500" />
     </a>
 
     <!-- Desktop nav -->
@@ -90,8 +90,6 @@ const navLinks = [
   /* Transparent state — over hero */
   .header-transparent {
     background: rgba(44, 40, 36, 0.25);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
   }
   .header-transparent .nav-link.text-burgundy {
     color: #FAF7F2;
@@ -121,8 +119,6 @@ const navLinks = [
   /* Solid state — after scrolling past hero */
   .header-solid {
     background: rgba(250, 247, 242, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
   }
   .header-solid .nav-link:not(.text-burgundy),

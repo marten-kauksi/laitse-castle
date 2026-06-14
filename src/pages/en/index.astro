@@ -80,7 +80,7 @@ const eventVenueSchema = {
   <!-- ═══════════════════════════════════════════
        1. HERO
        ═══════════════════════════════════════════ -->
-  <section class="relative min-h-[92vh] md:min-h-[88vh] flex flex-col items-center justify-center overflow-hidden">
+  <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
     <TopStripe />
 
     <img
@@ -90,16 +90,18 @@ const eventVenueSchema = {
       fetchpriority="high"
       decoding="async"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/70 via-warm-dark/45 to-warm-dark/30"></div>
+    <!-- Radiaalne vinjett: servad õrnalt tumedamad, kesk jääb selge -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 45%, rgba(44,40,36,0.45) 100%)"></div>
 
-    <div class="relative z-10 flex flex-col items-center text-center gap-5 max-w-2xl px-6 pt-40 pb-24 md:pt-32 md:pb-24">
-      <h1 class="hero-enter font-display text-[clamp(44px,7vw,80px)] text-warm-white drop-shadow-lg leading-[1.05]" style="--delay: 0ms">{t(locale, 'home.hero.title')}</h1>
+    <div class="relative z-10 flex flex-col items-center text-center gap-5 max-w-2xl px-6">
+      <div class="hero-enter w-14 h-[2px] bg-gold-gradient-h" style="--delay: 0ms"></div>
+      <h1 class="hero-enter font-display text-[clamp(44px,7vw,80px)] text-warm-white leading-[1.05]" style="--delay: 100ms; text-shadow: 0 2px 24px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.7)">{t(locale, 'home.hero.title')}</h1>
 
-      <p class="hero-enter font-subtitle italic text-subtitle text-warm-white text-overlay" style="--delay: 200ms">
+      <p class="hero-enter font-subtitle italic text-subtitle text-warm-white" style="--delay: 300ms; text-shadow: 0 1px 12px rgba(0,0,0,0.85)">
         {t(locale, 'home.hero.subtitle')}
       </p>
 
-      <p class="hero-enter font-body text-body-lg text-warm-white/90 max-w-xl mt-2 text-overlay leading-relaxed" style="--delay: 600ms">
+      <p class="hero-enter font-body text-body-lg text-warm-white max-w-xl mt-1 leading-relaxed" style="--delay: 600ms; text-shadow: 0 1px 10px rgba(0,0,0,0.85)">
         {t(locale, 'home.hero.body')}
       </p>
 
@@ -128,7 +130,7 @@ const eventVenueSchema = {
             class="w-full h-[400px] md:h-[520px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/80 via-warm-dark/20 to-transparent group-hover:via-warm-dark/15 transition-all duration-700"></div>
           <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-overlay">
             <div class="w-12 group-hover:w-14 h-[2px] bg-gold-gradient-h mb-5 transition-all duration-500"></div>
             <h2 class="font-display text-[clamp(26px,3vw,36px)] text-warm-white leading-tight">
@@ -148,7 +150,7 @@ const eventVenueSchema = {
               class="w-full h-[240px] md:h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/95 via-warm-dark/50 to-transparent group-hover:via-warm-dark/40 transition-all duration-700"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/80 via-warm-dark/20 to-transparent group-hover:via-warm-dark/15 transition-all duration-700"></div>
             <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
               <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
               <h2 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white leading-tight">
@@ -184,7 +186,7 @@ const eventVenueSchema = {
       loading="lazy"
       data-parallax
     />
-    <div class="absolute inset-0 bg-warm-dark/75"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/70 via-warm-dark/45 to-warm-dark/40"></div>
 
     <div class="relative z-10 max-w-2xl mx-auto px-6 py-20 md:py-28 text-center text-overlay" data-animate>
       <p class="font-ui text-label-sm uppercase tracking-[0.2em] text-gold-light mb-5">{t(locale, 'home.story.eyebrow')}</p>
