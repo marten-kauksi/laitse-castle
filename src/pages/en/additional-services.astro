@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'en' as const;
+
+const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
+---
+
+<BaseLayout
+  title={t(locale, 'addons.meta.title')}
+  description={t(locale, 'addons.meta.description')}
+  locale="en"
+  ogImage="/signed-images/terrass.jpg"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] md:min-h-[78vh] flex items-center justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/signed-images/terrass.jpg"
+      alt={t(locale, 'addons.hero.imageAlt')}
+      class="absolute inset-0 w-full h-full object-cover object-bottom"
+    />
+    <div class="relative z-10 text-center px-6 py-24 max-w-2xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white mb-6 text-overlay hero-enter" style="--delay: 0ms">
+        {t(locale, 'addons.hero.heading')}
+      </h1>
+      <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 text-overlay hero-enter" style="--delay: 150ms">
+        {t(locale, 'addons.hero.subtitle')}
+      </p>
+      <div class="hero-enter mt-6" style="--delay: 300ms">
+        <Button variant="filled" href="#contact" label={t(locale, 'cta.contact')} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section-fade-from-dark px-6 py-20 md:py-24">
+    <div class="max-w-3xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <h2 class="font-display text-section text-warm-dark mt-6 mb-5">{t(locale, 'addons.intro.heading')}</h2>
+      <p class="font-body text-body-lg text-stone leading-relaxed">{t(locale, 'addons.intro.body')}</p>
+    </div>
+  </section>
+
+  <!-- Services grid -->
+  <section class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid sm:grid-cols-2 gap-8 md:gap-10">
+        {items.map((key, i) => (
+          <div class="flex items-start gap-4" data-animate data-animate-delay={(i + 1) * 80}>
+            <span class="text-gold text-xl mt-1" aria-hidden="true">&#9830;</span>
+            <div>
+              <h3 class="font-subtitle text-[clamp(20px,2.2vw,24px)] text-warm-dark mb-2">{t(locale, `addons.${key}.title`)}</h3>
+              <p class="font-body text-body text-stone leading-relaxed">{t(locale, `addons.${key}.desc`)}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">{t(locale, 'cta.bookEvent')}</h2>
+      <p class="font-body text-body-lg text-stone mb-8 leading-relaxed">{t(locale, 'cta.bookEventDesc')}</p>
+      <div class="mb-10">
+        <a href="tel:+37253300206" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors inline-flex items-center gap-2 min-h-[44px]">
+          <span class="text-stone">{t(locale, 'contact.tel')}</span> +372 5330 0206
+        </a>
+        <a href="mailto:info@laitsecastle.ee" class="font-body text-body-lg text-warm-dark hover:text-burgundy transition-colors flex items-center justify-center gap-2 min-h-[44px]">
+          <span class="text-stone">{t(locale, 'contact.email')}</span> info@laitsecastle.ee
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -70,15 +70,11 @@ const pageSchema = [
       alt={t(locale, 'events.hero.imageAlt')}
       class="absolute inset-0 w-full h-full object-cover"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/50 via-warm-dark/25 to-warm-dark/25"></div>
     <div class="relative z-10 text-center px-6 py-24 max-w-2xl mx-auto">
-      <h1 class="font-display text-hero text-warm-white mb-6 text-overlay hero-enter" style="--delay: 0ms">
+      <h1 class="font-display text-hero text-warm-white mb-8 text-overlay hero-enter" style="--delay: 0ms">
         {t(locale, 'events.hero.heading')}
       </h1>
-      <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 text-overlay hero-enter" style="--delay: 150ms">
-        {t(locale, 'events.hero.subtitle')}
-      </p>
-      <div class="hero-enter mt-6" style="--delay: 300ms">
+      <div class="hero-enter mt-2" style="--delay: 150ms">
         <Button variant="filled" href="#contact" label={t(locale, 'cta.contact')} />
       </div>
     </div>
@@ -92,9 +88,10 @@ const pageSchema = [
       <div class="text-center mb-12" data-animate>
         <h2 class="font-display text-section text-warm-dark mb-5">{t(locale, 'events.services.heading')}</h2>
         <Flourish type="vintage" size="sm" fill="burgundy" />
+        <p class="font-subtitle text-subtitle italic text-stone mt-6 max-w-2xl mx-auto">{t(locale, 'events.services.subtitle')}</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
         <!-- Birthdays and anniversaries -->
         <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="100">
           <img
@@ -102,7 +99,6 @@ const pageSchema = [
             alt={t(locale, 'events.services.card1.imageAlt')}
             class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/80 via-warm-dark/20 to-transparent group-hover:via-warm-dark/15 transition-all duration-700"></div>
           <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
             <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
             <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-2 leading-tight">{t(locale, 'events.services.card1.title')}</h3>
@@ -117,7 +113,6 @@ const pageSchema = [
             alt={t(locale, 'events.services.card2.imageAlt')}
             class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/80 via-warm-dark/20 to-transparent group-hover:via-warm-dark/15 transition-all duration-700"></div>
           <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
             <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
             <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-2 leading-tight">{t(locale, 'events.services.card2.title')}</h3>
@@ -125,20 +120,6 @@ const pageSchema = [
           </div>
         </div>
 
-        <!-- Corporate events and seminars -->
-        <div class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="400">
-          <img
-            src="/images/seminarid-firmayritused.webp"
-            alt={t(locale, 'events.services.card3.imageAlt')}
-            class="w-full h-[340px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-warm-dark/80 via-warm-dark/20 to-transparent group-hover:via-warm-dark/15 transition-all duration-700"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-overlay">
-            <div class="w-10 group-hover:w-12 h-[2px] bg-gold-gradient-h mb-4 transition-all duration-500"></div>
-            <h3 class="font-display text-[clamp(22px,2.5vw,28px)] text-warm-white mb-2 leading-tight">{t(locale, 'events.services.card3.title')}</h3>
-            <p class="font-body text-body text-warm-white/80 leading-relaxed">{t(locale, 'events.services.card3.desc')}</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -240,29 +221,9 @@ const pageSchema = [
         </div>
       </div>
 
-      <!-- Terrace and garden -->
+      <!-- Grand Ballroom -->
       <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 md:mb-28" data-animate>
         <div class="group overflow-hidden rounded">
-          <img
-            src="/signed-images/terrass.jpg"
-            alt={t(locale, 'events.rooms.terrass.imageAlt')}
-            class="w-full h-80 lg:h-96 object-cover object-bottom group-hover:scale-[1.03] transition-transform duration-700"
-            loading="lazy"
-          />
-        </div>
-        <div>
-          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">{t(locale, 'events.rooms.terrass.name')}</h3>
-          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">{t(locale, 'events.rooms.terrass.floor')}</p>
-          <GoldRule width="50px" />
-          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
-            {t(locale, 'events.rooms.terrass.desc')}
-          </p>
-        </div>
-      </div>
-
-      <!-- Grand Hall (reversed) -->
-      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center" data-animate>
-        <div class="md:order-2 group overflow-hidden rounded">
           <img
             src="/images/Suur saal1.jpg"
             alt={t(locale, 'events.rooms.suursaal.imageAlt')}
@@ -270,7 +231,7 @@ const pageSchema = [
             loading="lazy"
           />
         </div>
-        <div class="md:order-1">
+        <div>
           <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">{t(locale, 'events.rooms.suursaal.name')}</h3>
           <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">{t(locale, 'events.rooms.suursaal.floor')}</p>
           <GoldRule width="50px" />
@@ -296,10 +257,30 @@ const pageSchema = [
               </tr>
               <tr>
                 <td class="py-2.5">{t(locale, 'events.table.teater')}</td>
-                <td class="text-right py-2.5">120</td>
+                <td class="text-right py-2.5">100</td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- Terrace and garden (reversed) -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center" data-animate>
+        <div class="md:order-2 group overflow-hidden rounded">
+          <img
+            src="/signed-images/terrass.jpg"
+            alt={t(locale, 'events.rooms.terrass.imageAlt')}
+            class="w-full h-80 lg:h-96 object-cover object-bottom group-hover:scale-[1.03] transition-transform duration-700"
+            loading="lazy"
+          />
+        </div>
+        <div class="md:order-1">
+          <h3 class="font-subtitle text-[clamp(24px,2.5vw,32px)] text-warm-dark mb-2">{t(locale, 'events.rooms.terrass.name')}</h3>
+          <p class="font-ui text-label-sm uppercase tracking-wider text-gold mb-4">{t(locale, 'events.rooms.terrass.floor')}</p>
+          <GoldRule width="50px" />
+          <p class="font-body text-body-lg text-stone mt-5 leading-relaxed">
+            {t(locale, 'events.rooms.terrass.desc')}
+          </p>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Flourish from '../components/Flourish.astro';
-import TopStripe from '../components/TopStripe.astro';
-import Button from '../components/Button.astro';
-import { t } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
 
-const locale = 'et' as const;
+const locale = 'en' as const;
 
 const features = ['item1', 'item2', 'item3'];
 ---
@@ -13,7 +13,7 @@ const features = ['item1', 'item2', 'item3'];
 <BaseLayout
   title={t(locale, 'seminars.meta.title')}
   description={t(locale, 'seminars.meta.description')}
-  locale="et"
+  locale="en"
   ogImage="/images/seminarid-firmayritused.webp"
 >
   <!-- Hero -->
@@ -29,7 +29,7 @@ const features = ['item1', 'item2', 'item3'];
         {t(locale, 'seminars.hero.heading')}
       </h1>
       <div class="hero-enter mt-2" style="--delay: 150ms">
-        <Button variant="filled" href="#kontakt" label={t(locale, 'cta.contact')} />
+        <Button variant="filled" href="#contact" label={t(locale, 'cta.contact')} />
       </div>
     </div>
   </section>
@@ -63,7 +63,7 @@ const features = ['item1', 'item2', 'item3'];
   </section>
 
   <!-- CTA -->
-  <section id="kontakt" class="px-6 py-20 md:py-28">
+  <section id="contact" class="px-6 py-20 md:py-28">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">{t(locale, 'cta.bookEvent')}</h2>

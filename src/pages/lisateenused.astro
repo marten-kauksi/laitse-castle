@@ -7,55 +7,56 @@ import { t } from '../i18n/utils';
 
 const locale = 'et' as const;
 
-const features = ['item1', 'item2', 'item3'];
+const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
 ---
 
 <BaseLayout
-  title={t(locale, 'seminars.meta.title')}
-  description={t(locale, 'seminars.meta.description')}
+  title={t(locale, 'addons.meta.title')}
+  description={t(locale, 'addons.meta.description')}
   locale="et"
-  ogImage="/images/seminarid-firmayritused.webp"
+  ogImage="/signed-images/terrass.jpg"
 >
   <!-- Hero -->
   <section class="relative min-h-[70vh] md:min-h-[78vh] flex items-center justify-center overflow-hidden">
     <TopStripe />
     <img
-      src="/images/seminarid-firmayritused.webp"
-      alt={t(locale, 'seminars.hero.imageAlt')}
-      class="absolute inset-0 w-full h-full object-cover"
+      src="/signed-images/terrass.jpg"
+      alt={t(locale, 'addons.hero.imageAlt')}
+      class="absolute inset-0 w-full h-full object-cover object-bottom"
     />
     <div class="relative z-10 text-center px-6 py-24 max-w-2xl mx-auto">
-      <h1 class="font-display text-hero text-warm-white mb-8 text-overlay hero-enter" style="--delay: 0ms">
-        {t(locale, 'seminars.hero.heading')}
+      <h1 class="font-display text-hero text-warm-white mb-6 text-overlay hero-enter" style="--delay: 0ms">
+        {t(locale, 'addons.hero.heading')}
       </h1>
-      <div class="hero-enter mt-2" style="--delay: 150ms">
+      <p class="font-subtitle text-subtitle italic text-warm-white/90 mb-8 text-overlay hero-enter" style="--delay: 150ms">
+        {t(locale, 'addons.hero.subtitle')}
+      </p>
+      <div class="hero-enter mt-6" style="--delay: 300ms">
         <Button variant="filled" href="#kontakt" label={t(locale, 'cta.contact')} />
       </div>
     </div>
   </section>
 
   <!-- Intro -->
-  <section class="section-fade-from-dark px-6 py-20 md:py-28">
+  <section class="section-fade-from-dark px-6 py-20 md:py-24">
     <div class="max-w-3xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
-      <h2 class="font-display text-section text-warm-dark mt-6 mb-5">{t(locale, 'seminars.intro.heading')}</h2>
-      <p class="font-body text-body-lg text-stone leading-relaxed">{t(locale, 'seminars.intro.body')}</p>
+      <h2 class="font-display text-section text-warm-dark mt-6 mb-5">{t(locale, 'addons.intro.heading')}</h2>
+      <p class="font-body text-body-lg text-stone leading-relaxed">{t(locale, 'addons.intro.body')}</p>
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- Services grid -->
   <section class="bg-warm-light px-6 py-20 md:py-28">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12" data-animate>
-        <h2 class="font-display text-section text-warm-dark mb-5">{t(locale, 'seminars.features.heading')}</h2>
-        <Flourish type="vintage" size="sm" fill="burgundy" />
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        {features.map((key, i) => (
-          <div class="text-center" data-animate data-animate-delay={(i + 1) * 120}>
-            <span class="text-gold text-2xl" aria-hidden="true">&#9830;</span>
-            <h3 class="font-subtitle text-[clamp(20px,2.2vw,26px)] text-warm-dark mt-3 mb-3">{t(locale, `seminars.features.${key}.title`)}</h3>
-            <p class="font-body text-body text-stone leading-relaxed">{t(locale, `seminars.features.${key}.desc`)}</p>
+    <div class="max-w-5xl mx-auto">
+      <div class="grid sm:grid-cols-2 gap-8 md:gap-10">
+        {items.map((key, i) => (
+          <div class="flex items-start gap-4" data-animate data-animate-delay={(i + 1) * 80}>
+            <span class="text-gold text-xl mt-1" aria-hidden="true">&#9830;</span>
+            <div>
+              <h3 class="font-subtitle text-[clamp(20px,2.2vw,24px)] text-warm-dark mb-2">{t(locale, `addons.${key}.title`)}</h3>
+              <p class="font-body text-body text-stone leading-relaxed">{t(locale, `addons.${key}.desc`)}</p>
+            </div>
           </div>
         ))}
       </div>

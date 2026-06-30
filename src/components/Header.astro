@@ -13,6 +13,9 @@ const currentPath = Astro.url.pathname;
 const navLinks = [
   { label: t(locale, 'nav.home'), href: getLocalizedPath('/', locale) },
   { label: t(locale, 'nav.events'), href: getLocalizedPath('/peod-ja-seminarid', locale) },
+  { label: t(locale, 'nav.seminars'), href: getLocalizedPath('/seminarid', locale) },
+  { label: t(locale, 'nav.addons'), href: getLocalizedPath('/lisateenused', locale) },
+  { label: t(locale, 'nav.gallery'), href: getLocalizedPath('/galerii', locale) },
   { label: t(locale, 'nav.history'), href: getLocalizedPath('/ajalugu', locale) },
 ];
 ---
@@ -27,7 +30,7 @@ const navLinks = [
     </a>
 
     <!-- Desktop nav -->
-    <ul class="hidden md:flex items-center gap-8">
+    <ul class="hidden lg:flex items-center gap-5 xl:gap-7">
       {navLinks.map(({ label, href }) => (
         <li>
           <a
@@ -47,7 +50,7 @@ const navLinks = [
     <LanguageSwitcher locale={locale} currentPath={Astro.url.pathname} />
 
     <!-- Mobile hamburger -->
-    <details class="md:hidden relative" id="mobile-nav">
+    <details class="lg:hidden relative" id="mobile-nav">
       <summary class="list-none cursor-pointer p-3 -mr-3 min-w-[44px] min-h-[44px] flex items-center justify-center">
         <span class="sr-only">{t(locale, 'header.menu')}</span>
         <svg class="hamburger-icon w-6 h-6 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

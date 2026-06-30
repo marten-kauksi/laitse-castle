@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'en' as const;
+
+const images = [
+  { src: '/signed-images/drooni-vaade.webp', alt: 'gallery.image1.alt' },
+  { src: '/signed-images/loss-oosel.webp', alt: 'gallery.image2.alt' },
+  { src: '/signed-images/aia-poolt-vaade.webp', alt: 'gallery.image3.alt' },
+  { src: '/images/Klaverisalong2.jpg', alt: 'gallery.image4.alt' },
+  { src: '/images/Peasaal2.jpg', alt: 'gallery.image5.alt' },
+  { src: '/images/Suur%20saal1.jpg', alt: 'gallery.image6.alt' },
+  { src: '/signed-images/terrass.jpg', alt: 'gallery.image7.alt' },
+  { src: '/images/salong-klaveriga.jpg', alt: 'gallery.image8.alt' },
+  { src: '/signed-images/lossi-torn-ajalugu.webp', alt: 'gallery.image9.alt' },
+];
+---
+
+<BaseLayout
+  title={t(locale, 'gallery.meta.title')}
+  description={t(locale, 'gallery.meta.description')}
+  locale="en"
+  ogImage="/signed-images/drooni-vaade.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-center justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/signed-images/drooni-vaade.webp"
+      alt={t(locale, 'gallery.hero.imageAlt')}
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="relative z-10 text-center px-6 py-20 max-w-2xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white mb-5 text-overlay hero-enter" style="--delay: 0ms">
+        {t(locale, 'gallery.hero.heading')}
+      </h1>
+      <p class="font-subtitle text-subtitle italic text-warm-white/90 text-overlay hero-enter" style="--delay: 150ms">
+        {t(locale, 'gallery.hero.subtitle')}
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery grid -->
+  <section class="section-fade-from-dark px-6 py-16 md:py-24">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {images.map((img, i) => (
+          <div class="group overflow-hidden rounded" data-animate data-animate-delay={(i % 3) * 100}>
+            <img
+              src={img.src}
+              alt={t(locale, img.alt)}
+              class="w-full h-64 md:h-72 object-cover group-hover:scale-[1.05] transition-transform duration-700"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-body-lg text-stone mt-6 mb-8 leading-relaxed">{t(locale, 'gallery.intro.body')}</p>
+      <Button variant="filled" href="/en/events-and-seminars" label={t(locale, 'cta.contact')} />
+    </div>
+  </section>
+</BaseLayout>
