@@ -8,15 +8,35 @@ import { t } from '../i18n/utils';
 const locale = 'et' as const;
 
 const images = [
-  { src: '/fotopank/loss.webp', alt: 'gallery.image1.alt' },
-  { src: '/fotopank/loss-oosel.webp', alt: 'gallery.image2.alt' },
-  { src: '/fotopank/aiast.webp', alt: 'gallery.image3.alt' },
-  { src: '/fotopank/klaverisalong.webp', alt: 'gallery.image4.alt' },
-  { src: '/fotopank/soogisaal.webp', alt: 'gallery.image5.alt' },
-  { src: '/fotopank/peosaal.webp', alt: 'gallery.image6.alt' },
-  { src: '/fotopank/terrass.webp', alt: 'gallery.image7.alt' },
-  { src: '/fotopank/aed.webp', alt: 'gallery.image8.alt' },
-  { src: '/fotopank/seminarid.webp', alt: 'gallery.image9.alt' },
+  { src: '/fotopank/loss-oosel.webp', alt: 'Laitse loss öösel' },
+  { src: '/fotopank/aiast.webp', alt: 'Loss aia poolt' },
+  { src: '/fotopank/aed.webp', alt: 'Lossi aed' },
+  { src: '/fotopank/park.webp', alt: 'Lossipark' },
+  { src: '/fotopank/myyr.webp', alt: 'Lossimüür' },
+  { src: '/fotopank/terrass.webp', alt: 'Terrass' },
+  { src: '/fotopank/terrass1.webp', alt: 'Terrass' },
+  { src: '/fotopank/terrass2.webp', alt: 'Terrass' },
+  { src: '/fotopank/fuajee.webp', alt: 'Fuajee' },
+  { src: '/fotopank/trepikoda.webp', alt: 'Trepikoda' },
+  { src: '/fotopank/salong1.webp', alt: 'Salong' },
+  { src: '/fotopank/salong2.webp', alt: 'Salong' },
+  { src: '/fotopank/salong3.webp', alt: 'Salong' },
+  { src: '/fotopank/klaverisalong.webp', alt: 'Klaverisalong' },
+  { src: '/fotopank/soogisaal1.webp', alt: 'Pidulik söögisaal' },
+  { src: '/fotopank/soogisaal2.webp', alt: 'Pidulik söögisaal' },
+  { src: '/fotopank/soogisaal3.webp', alt: 'Pidulik söögisaal' },
+  { src: '/fotopank/peosaal.webp', alt: 'Suur peosaal' },
+  { src: '/fotopank/seminar1.webp', alt: 'Seminariruum' },
+  { src: '/fotopank/seminar2.webp', alt: 'Seminariruum' },
+  { src: '/fotopank/seminarid.webp', alt: 'Seminarid ja firmaüritused' },
+  { src: '/fotopank/kohvik1.webp', alt: 'Kohvik' },
+  { src: '/fotopank/kohvik2.webp', alt: 'Kohvik' },
+  { src: '/fotopank/stuudiokook.webp', alt: 'Stuudioköök' },
+  { src: '/fotopank/stuudiokook2.webp', alt: 'Stuudioköök' },
+  { src: '/fotopank/labyrint1.webp', alt: 'Labürint' },
+  { src: '/fotopank/labyrint2.webp', alt: 'Labürint' },
+  { src: '/fotopank/labyrint3.webp', alt: 'Labürint' },
+  { src: '/fotopank/motikad.webp', alt: 'Mootorrattad lossi juures' },
 ];
 ---
 
@@ -52,7 +72,7 @@ const images = [
           <div class="group overflow-hidden rounded" data-animate data-animate-delay={(i % 3) * 100}>
             <img
               src={img.src}
-              alt={t(locale, img.alt)}
+              alt={img.alt}
               class="w-full h-64 md:h-72 object-cover group-hover:scale-[1.05] transition-transform duration-700"
               loading="lazy"
             />

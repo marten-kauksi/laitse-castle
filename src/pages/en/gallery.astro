@@ -8,15 +8,35 @@ import { t } from '../../i18n/utils';
 const locale = 'en' as const;
 
 const images = [
-  { src: '/fotopank/loss.webp', alt: 'gallery.image1.alt' },
-  { src: '/fotopank/loss-oosel.webp', alt: 'gallery.image2.alt' },
-  { src: '/fotopank/aiast.webp', alt: 'gallery.image3.alt' },
-  { src: '/fotopank/klaverisalong.webp', alt: 'gallery.image4.alt' },
-  { src: '/fotopank/soogisaal.webp', alt: 'gallery.image5.alt' },
-  { src: '/fotopank/peosaal.webp', alt: 'gallery.image6.alt' },
-  { src: '/fotopank/terrass.webp', alt: 'gallery.image7.alt' },
-  { src: '/fotopank/aed.webp', alt: 'gallery.image8.alt' },
-  { src: '/fotopank/seminarid.webp', alt: 'gallery.image9.alt' },
+  { src: '/fotopank/loss-oosel.webp', alt: 'Laitse Castle at night' },
+  { src: '/fotopank/aiast.webp', alt: 'Castle from the garden' },
+  { src: '/fotopank/aed.webp', alt: 'Castle garden' },
+  { src: '/fotopank/park.webp', alt: 'Castle park' },
+  { src: '/fotopank/myyr.webp', alt: 'Castle wall' },
+  { src: '/fotopank/terrass.webp', alt: 'Terrace' },
+  { src: '/fotopank/terrass1.webp', alt: 'Terrace' },
+  { src: '/fotopank/terrass2.webp', alt: 'Terrace' },
+  { src: '/fotopank/fuajee.webp', alt: 'Foyer' },
+  { src: '/fotopank/trepikoda.webp', alt: 'Staircase' },
+  { src: '/fotopank/salong1.webp', alt: 'Salon' },
+  { src: '/fotopank/salong2.webp', alt: 'Salon' },
+  { src: '/fotopank/salong3.webp', alt: 'Salon' },
+  { src: '/fotopank/klaverisalong.webp', alt: 'Piano salon' },
+  { src: '/fotopank/soogisaal1.webp', alt: 'Formal dining hall' },
+  { src: '/fotopank/soogisaal2.webp', alt: 'Formal dining hall' },
+  { src: '/fotopank/soogisaal3.webp', alt: 'Formal dining hall' },
+  { src: '/fotopank/peosaal.webp', alt: 'Grand ballroom' },
+  { src: '/fotopank/seminar1.webp', alt: 'Seminar room' },
+  { src: '/fotopank/seminar2.webp', alt: 'Seminar room' },
+  { src: '/fotopank/seminarid.webp', alt: 'Seminars and corporate events' },
+  { src: '/fotopank/kohvik1.webp', alt: 'Café' },
+  { src: '/fotopank/kohvik2.webp', alt: 'Café' },
+  { src: '/fotopank/stuudiokook.webp', alt: 'Studio kitchen' },
+  { src: '/fotopank/stuudiokook2.webp', alt: 'Studio kitchen' },
+  { src: '/fotopank/labyrint1.webp', alt: 'Labyrinth' },
+  { src: '/fotopank/labyrint2.webp', alt: 'Labyrinth' },
+  { src: '/fotopank/labyrint3.webp', alt: 'Labyrinth' },
+  { src: '/fotopank/motikad.webp', alt: 'Motorcycles at the castle' },
 ];
 ---
 
@@ -52,7 +72,7 @@ const images = [
           <div class="group overflow-hidden rounded" data-animate data-animate-delay={(i % 3) * 100}>
             <img
               src={img.src}
-              alt={t(locale, img.alt)}
+              alt={img.alt}
               class="w-full h-64 md:h-72 object-cover group-hover:scale-[1.05] transition-transform duration-700"
               loading="lazy"
             />
