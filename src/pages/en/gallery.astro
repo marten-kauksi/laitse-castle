@@ -8,35 +8,35 @@ import { t } from '../../i18n/utils';
 const locale = 'en' as const;
 
 const images = [
-  { src: '/fotopank/loss-oosel.webp', alt: 'Laitse Castle at night' },
-  { src: '/fotopank/aiast.webp', alt: 'Castle from the garden' },
-  { src: '/fotopank/aed.webp', alt: 'Castle garden' },
-  { src: '/fotopank/park.webp', alt: 'Castle park' },
-  { src: '/fotopank/myyr.webp', alt: 'Castle wall' },
-  { src: '/fotopank/terrass.webp', alt: 'Terrace' },
-  { src: '/fotopank/terrass1.webp', alt: 'Terrace' },
-  { src: '/fotopank/terrass2.webp', alt: 'Terrace' },
-  { src: '/fotopank/fuajee.webp', alt: 'Foyer' },
-  { src: '/fotopank/trepikoda.webp', alt: 'Staircase' },
-  { src: '/fotopank/salong1.webp', alt: 'Salon' },
-  { src: '/fotopank/salong2.webp', alt: 'Salon' },
-  { src: '/fotopank/salong3.webp', alt: 'Salon' },
-  { src: '/fotopank/klaverisalong.webp', alt: 'Piano salon' },
-  { src: '/fotopank/soogisaal1.webp', alt: 'Formal dining hall' },
-  { src: '/fotopank/soogisaal2.webp', alt: 'Formal dining hall' },
-  { src: '/fotopank/soogisaal3.webp', alt: 'Formal dining hall' },
-  { src: '/fotopank/peosaal.webp', alt: 'Grand ballroom' },
-  { src: '/fotopank/seminar1.webp', alt: 'Seminar room' },
-  { src: '/fotopank/seminar2.webp', alt: 'Seminar room' },
-  { src: '/fotopank/seminarid.webp', alt: 'Seminars and corporate events' },
-  { src: '/fotopank/kohvik1.webp', alt: 'Café' },
-  { src: '/fotopank/kohvik2.webp', alt: 'Café' },
-  { src: '/fotopank/stuudiokook.webp', alt: 'Studio kitchen' },
-  { src: '/fotopank/stuudiokook2.webp', alt: 'Studio kitchen' },
-  { src: '/fotopank/labyrint1.webp', alt: 'Labyrinth' },
-  { src: '/fotopank/labyrint2.webp', alt: 'Labyrinth' },
-  { src: '/fotopank/labyrint3.webp', alt: 'Labyrinth' },
-  { src: '/fotopank/motikad.webp', alt: 'Motorcycles at the castle' },
+  { src: '/fotopank/LaitseCastle_night_Toomas-Tuul.webp', alt: 'Laitse Castle at night' },
+  { src: '/fotopank/LaitseLoss_Aiast_Toomas-Tuul.webp', alt: 'Castle from the garden' },
+  { src: '/fotopank/LaitseLoss_aed_Toomas-Tuul.webp', alt: 'Castle garden' },
+  { src: '/fotopank/LaitseLoss_park1.webp', alt: 'Castle park' },
+  { src: '/fotopank/LaitseLoss_myyr.webp', alt: 'Castle wall' },
+  { src: '/fotopank/LaitseLoss_terrass_Toomas-Tuul.webp', alt: 'Terrace' },
+  { src: '/fotopank/LaitseLoss_Terrass1.webp', alt: 'Terrace' },
+  { src: '/fotopank/LaitseLoss_Terrass2a.webp', alt: 'Terrace' },
+  { src: '/fotopank/LaitseLoss_Fuajee1.webp', alt: 'Foyer' },
+  { src: '/fotopank/LaitseLoss_Trepikoda1.webp', alt: 'Staircase' },
+  { src: '/fotopank/LaitseLoss_Salong1.webp', alt: 'Salon' },
+  { src: '/fotopank/LaitseLoss_Salong2.webp', alt: 'Salon' },
+  { src: '/fotopank/LaitseLoss_Salong3.webp', alt: 'Salon' },
+  { src: '/fotopank/LaitseLoss_klaverisalong_Toomas-Tuul.webp', alt: 'Piano salon' },
+  { src: '/fotopank/LaitseLoss_Soogisaal1a.webp', alt: 'Formal dining hall' },
+  { src: '/fotopank/LaitseLoss_Soogisaal2.webp', alt: 'Formal dining hall' },
+  { src: '/fotopank/LaitseLoss_Soogisaal3.webp', alt: 'Formal dining hall' },
+  { src: '/fotopank/LaitseLoss_Peosaal1.webp', alt: 'Grand ballroom' },
+  { src: '/fotopank/LaitseLoss_Seminar1.webp', alt: 'Seminar room' },
+  { src: '/fotopank/LaitseLoss_Seminar2a.webp', alt: 'Seminar room' },
+  { src: '/fotopank/LaitseLoss_seminarid-firmayritused.webp', alt: 'Seminars and corporate events' },
+  { src: '/fotopank/LaitseLoss_Kohvik1.webp', alt: 'Café' },
+  { src: '/fotopank/LaitseLoss_Kohvik2.webp', alt: 'Café' },
+  { src: '/fotopank/LaitseLoss_Stuudiokook_Toomas-Tuul.webp', alt: 'Studio kitchen' },
+  { src: '/fotopank/LaitseLoss_Stuudiokook2.webp', alt: 'Studio kitchen' },
+  { src: '/fotopank/LaitseLoss_Labyrint1.webp', alt: 'Labyrinth' },
+  { src: '/fotopank/LaitseLoss_Labyrint2.webp', alt: 'Labyrinth' },
+  { src: '/fotopank/LaitseLoss_Labyrint3.webp', alt: 'Labyrinth' },
+  { src: '/fotopank/LaitseLoss_motikad.webp', alt: 'Motorcycles at the castle' },
 ];
 ---
 
@@ -44,13 +44,13 @@ const images = [
   title={t(locale, 'gallery.meta.title')}
   description={t(locale, 'gallery.meta.description')}
   locale="en"
-  ogImage="/fotopank/loss.webp"
+  ogImage="/fotopank/LaitseCastle_Toomas-Tuul.webp"
 >
   <!-- Hero -->
   <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-start justify-center overflow-hidden">
     <TopStripe />
     <img
-      src="/fotopank/loss.webp"
+      src="/fotopank/LaitseCastle_Toomas-Tuul.webp"
       alt={t(locale, 'gallery.hero.imageAlt')}
       class="absolute inset-0 w-full h-full object-cover"
     />
