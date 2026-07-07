@@ -49,18 +49,26 @@ Vertical: same stops, 180deg
 
 | Role | Font | Weight | Usage |
 |------|------|--------|-------|
-| Display / H1 | Fraunces | 200 | Page titles, hero headings. Optical sizing enabled. |
-| Subtitle / H2-H3 | Cormorant Infant | 300 italic, 400, 500 | Section headings, subtitles, pull-quotes |
+| Display / H1 | Bodoni Moda | 400, 500 | Page titles, hero headings |
+| Subtitle / H2-H3 | Cormorant Infant | 300 italic, 400, 600 | Section headings, subtitles, pull-quotes |
 | Body | Libre Baskerville | 400, 400 italic, 700 | Paragraph text, long-form content |
 | UI / Small | Lato | 300, 400, 700 | Navigation, buttons, labels, meta text |
 
+All four are Google Fonts, loaded in `BaseLayout.astro`.
+
 ### Typography Rules
 
-- Headings use generous letter-spacing (`0.04em` for Fraunces)
+- Headings use generous letter-spacing (`0.04em` for Bodoni Moda)
 - Subtitles in Cormorant Infant italic carry the "bookish" feel
 - Body text in Libre Baskerville at comfortable reading size (16-17px)
 - UI elements in Lato for clarity and contrast with serif content
 - All-caps sparingly — only for small labels and navigation (use Lato or Cormorant Infant weight 500 with wide tracking)
+
+## Logo
+
+- File: `public/images/laitse-castle-logo.webp` (raster image)
+- Uses the brand burgundy + gold palette, matching the site
+- **The logo's typeface is not defined anywhere in the codebase.** It is a raster asset, so its font cannot be reliably extracted. For print or vector needs, obtain the original source file (SVG/AI) or ask the logo's designer.
 
 ## Decorative Elements
 
@@ -94,7 +102,7 @@ Two SVG flourishes used as section decorators:
 
 - Background: burgundy `#8B1A1A`
 - Text: warm-white `#FAF7F2`
-- Font: varies (Outfit or Lato, weight 400-500)
+- Font: Lato, weight 400-500
 - Letter-spacing: `0.18em`, uppercase
 - Padding: `16px 40px`
 - Hover: darker burgundy `#6B1414`

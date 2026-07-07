@@ -8,15 +8,15 @@ import { t } from '../i18n/utils';
 const locale = 'et' as const;
 
 const images = [
-  { src: '/signed-images/drooni-vaade.webp', alt: 'gallery.image1.alt' },
-  { src: '/signed-images/loss-oosel.webp', alt: 'gallery.image2.alt' },
-  { src: '/signed-images/aia-poolt-vaade.webp', alt: 'gallery.image3.alt' },
-  { src: '/images/Klaverisalong2.jpg', alt: 'gallery.image4.alt' },
-  { src: '/images/Peasaal2.jpg', alt: 'gallery.image5.alt' },
-  { src: '/images/Suur%20saal1.jpg', alt: 'gallery.image6.alt' },
-  { src: '/signed-images/terrass.jpg', alt: 'gallery.image7.alt' },
-  { src: '/images/salong-klaveriga.jpg', alt: 'gallery.image8.alt' },
-  { src: '/signed-images/lossi-torn-ajalugu.webp', alt: 'gallery.image9.alt' },
+  { src: '/fotopank/loss.webp', alt: 'gallery.image1.alt' },
+  { src: '/fotopank/loss-oosel.webp', alt: 'gallery.image2.alt' },
+  { src: '/fotopank/aiast.webp', alt: 'gallery.image3.alt' },
+  { src: '/fotopank/klaverisalong.webp', alt: 'gallery.image4.alt' },
+  { src: '/fotopank/soogisaal.webp', alt: 'gallery.image5.alt' },
+  { src: '/fotopank/peosaal.webp', alt: 'gallery.image6.alt' },
+  { src: '/fotopank/terrass.webp', alt: 'gallery.image7.alt' },
+  { src: '/fotopank/aed.webp', alt: 'gallery.image8.alt' },
+  { src: '/fotopank/seminarid.webp', alt: 'gallery.image9.alt' },
 ];
 ---
 
@@ -24,13 +24,13 @@ const images = [
   title={t(locale, 'gallery.meta.title')}
   description={t(locale, 'gallery.meta.description')}
   locale="et"
-  ogImage="/signed-images/drooni-vaade.webp"
+  ogImage="/fotopank/loss.webp"
 >
   <!-- Hero -->
   <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-center justify-center overflow-hidden">
     <TopStripe />
     <img
-      src="/signed-images/drooni-vaade.webp"
+      src="/fotopank/loss.webp"
       alt={t(locale, 'gallery.hero.imageAlt')}
       class="absolute inset-0 w-full h-full object-cover"
     />
