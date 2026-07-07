@@ -47,14 +47,14 @@ const images = [
   ogImage="/fotopank/loss.webp"
 >
   <!-- Hero -->
-  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-center justify-center overflow-hidden">
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-start justify-center overflow-hidden">
     <TopStripe />
     <img
       src="/fotopank/loss.webp"
       alt={t(locale, 'gallery.hero.imageAlt')}
       class="absolute inset-0 w-full h-full object-cover"
     />
-    <div class="relative z-10 text-center px-6 py-20 max-w-2xl mx-auto">
+    <div class="relative z-10 text-center px-6 pt-28 md:pt-32 pb-10 max-w-2xl mx-auto">
       <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">
         {t(locale, 'gallery.hero.heading')}
       </h1>
