@@ -16,6 +16,8 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/peod': '/en/events-and-seminars',
     '/seminarid': '/en/seminars',
     '/lisateenused': '/en/additional-services',
+    '/lisateenused/morvamysteerium': '/en/additional-services/murder-mystery',
+    '/lisateenused/sokolaadikoolitus': '/en/additional-services/chocolate-workshop',
     '/galerii': '/en/gallery',
   },
 };
@@ -35,5 +37,7 @@ export const reverseRouteMap: Record<string, string> = {
   '/en/events-and-seminars': '/peod',
   '/en/seminars': '/seminarid',
   '/en/additional-services': '/lisateenused',
+  '/en/additional-services/murder-mystery': '/lisateenused/morvamysteerium',
+  '/en/additional-services/chocolate-workshop': '/lisateenused/sokolaadikoolitus',
   '/en/gallery': '/galerii',
 };

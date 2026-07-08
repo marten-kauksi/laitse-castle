@@ -17,10 +17,10 @@ const navLinks = [
   {
     label: t(locale, 'nav.addons'),
     href: getLocalizedPath('/lisateenused', locale),
-    children: locale === 'et' ? [
-      { label: t(locale, 'nav.addon.murder'), href: '/lisateenused/morvamysteerium' },
-      { label: t(locale, 'nav.addon.chocolate'), href: '/lisateenused/sokolaadikoolitus' },
-    ] : [],
+    children: [
+      { label: t(locale, 'nav.addon.murder'), href: getLocalizedPath('/lisateenused/morvamysteerium', locale) },
+      { label: t(locale, 'nav.addon.chocolate'), href: getLocalizedPath('/lisateenused/sokolaadikoolitus', locale) },
+    ],
   },
   { label: t(locale, 'nav.gallery'), href: getLocalizedPath('/galerii', locale) },
   { label: t(locale, 'nav.history'), href: getLocalizedPath('/ajalugu', locale) },

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Flourish from '../../../components/Flourish.astro';
+import GoldRule from '../../../components/GoldRule.astro';
+import TopStripe from '../../../components/TopStripe.astro';
+import Button from '../../../components/Button.astro';
+import { t } from '../../../i18n/utils';
+
+const locale = 'en' as const;
+
+const kristaParas = [
+  'In my recipes I follow the principle that ingredients must be of high quality and contain the maximum amount of useful and necessary substances for our body. A chocolate truffle made from carefully and consciously chosen ingredients can be very healthy when consumed in reasonable amounts.',
+  'How do you make the right choice when standing in the shop in front of shelves loaded with different chocolate bars and other sweets? Which chocolate is high-quality and healthy and which is not? The answer is very simple – mainly you should look at the cocoa content: the higher the cocoa content, the higher the quality and the healthier the chocolate. Quality chocolates also contain no food additives. It’s that simple!',
+  'For glazing it is good to use couverture (chocolate buttons), which contain more cocoa butter than dark chocolate and therefore melt more evenly and easily. Couverture can be found on the shelves of well-stocked shops, where baking ingredients are located.',
+  'The recipes chosen use mainly dark chocolate whose solid cocoa mass reaches up to 75%. Dark chocolate contains 380 chemical substances – iron, potassium, calcium, magnesium, copper and vitamins A, B1, C, D, E. Dark chocolate is rich in fibre and contains a large amount of caffeine. The abundant fatty acids of its main ingredient, cocoa butter, do not raise blood cholesterol or increase the risk of heart disease. The fat content of dark chocolate is not high, on average 25%. At the same time, 100 g of chocolate provides 450 kcal of energy. Dark chocolate contains flavonoids with antioxidant properties, which play an important biochemical role in the development of cardiovascular diseases (they slow the calcification of blood vessels and the tendency to form clots), protect the cardiovascular system, and help reduce the risk of several health disorders, e.g. Alzheimer’s and Parkinson’s disease.',
+  'Eating dark chocolate has a mood-lifting effect, as it contains serotonin and theobromine, which act as antidepressants and stimulants. Dark chocolate can safely be considered a natural antidepressant. Under the influence of chocolate, the metabolism produces substances that create a feeling of pleasure – endorphins. Tyrosine, the “brain vitamin” or mood-lifter, is also one of the precursors for the formation of serotonin in the body. Serotonin regulates sleep, curbs hunger, prevents mood swings, and controls the timely onset of satiety during eating. Tyrosine itself lowers blood pressure, stabilises blood sugar levels and activates the thyroid gland, thus speeding up metabolism and lowering body weight. You can safely eat 200–300 g of chocolate per week without gaining weight.',
+  'Researchers in the United Kingdom published a study which found that dark chocolate helps relieve the symptoms of chronic fatigue. Fatigue lasting six months, accompanied by muscle pain, headaches and impaired memory, subsided after regular consumption of dark chocolate. All this thanks to the chemicals abundantly present in dark chocolate, which facilitate the transmission of signals in the brain.',
+  'The butter used in making the truffles is of high quality (at least 80%). The saturated fats in quality butter strengthen bones, protect the liver from toxins, and strengthen the immune system.',
+  'Nuts and seeds are good sources of unsaturated fats, which lower the risk of developing various diseases. Before use, nuts and seeds should definitely be roasted in the oven at 150–180 degrees for 5–10 minutes; this helps revive the flavour qualities lost during transport and also destroys unfavourable microorganisms.',
+];
+
+const wizards = [
+  ['Dopamine', 'affects mood, motivation and the ability to move.'],
+  ['Tryptophan', 'helps suppress food cravings and creates a stress-free feeling.'],
+  ['Serotonin', 'a mood-lifter.'],
+];
+---
+
+<BaseLayout
+  title="Chocolate truffle workshop — Laitse Castle"
+  description="An enjoyable chocolate workshop at Laitse Castle led by experienced instructor Krista Ruben. Three truffles, recipes to take home, ~2.5–3 h, €65 per participant."
+  locale="en"
+  ogImage="/fotopank/LaitseLoss_Stuudiokook_Toomas-Tuul.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-start justify-center overflow-hidden">
+    <TopStripe />
+    <img src="/fotopank/LaitseLoss_Stuudiokook_Toomas-Tuul.webp" alt="Studio kitchen at Laitse Castle" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="relative z-10 text-center px-6 pt-28 md:pt-32 pb-10 max-w-2xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Chocolate truffle workshop</h1>
+    </div>
+  </section>
+
+  <!-- Intro + details -->
+  <section class="section-fade-from-dark px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto" data-animate>
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed">
+        Making truffles is a lovely undertaking that can be enjoyed alone or together with others. It is nice to do with colleagues or simply with friends, as this activity can also be excellent teamwork.
+      </p>
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-4">
+        So that truffle-making goes smoothly, we offer an educational and enjoyable chocolate workshop where, under the guidance of an experienced instructor, you can make chocolate truffles that only appear complicated. You also gain knowledge about the healthiness and history of chocolate, and information on how to choose quality ingredients from which the truffles are both a delight and healthy.
+      </p>
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-4">
+        Together you make three different chocolate truffles. Each participant takes home the truffles they made along with the recipes. The workshop lasts approximately 2.5 to 3 hours. The price is <strong>€65</strong> per participant.
+      </p>
+      <div class="mt-8 text-center">
+        <p class="font-body text-body-lg text-warm-dark">The instructor is <strong>Krista Ruben</strong></p>
+        <div class="mt-4"><Button variant="filled" href="mailto:info@laitsecastle.ee" label="Book" /></div>
+        <p class="font-body text-body text-stone mt-3">info@laitsecastle.ee</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Krista introduces -->
+  <section class="bg-warm-light px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10" data-animate>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+        <h2 class="font-display text-section text-warm-dark mt-6">Krista introduces her workshop</h2>
+      </div>
+      <div class="space-y-4" data-animate>
+        {kristaParas.map((p) => (
+          <p class="font-body text-body-lg text-warm-dark leading-relaxed">{p}</p>
+        ))}
+      </div>
+
+      <div class="mt-12" data-animate>
+        <h3 class="font-subtitle text-[clamp(24px,3vw,34px)] text-burgundy mb-3">Wizards in chocolate</h3>
+        <GoldRule width="50px" />
+        <ul class="mt-5 space-y-3">
+          {wizards.map(([name, desc]) => (
+            <li class="flex items-start gap-3 font-body text-body-lg text-warm-dark">
+              <span class="text-gold text-xl leading-none mt-1" aria-hidden="true">&#9830;</span>
+              <span><strong>{name}</strong> – {desc}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-5">
+          Dark chocolate has a relaxing effect on the cells of the blood vessel walls. It keeps blood sugar levels stable and prevents degenerative changes in the brain.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

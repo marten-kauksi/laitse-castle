@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Flourish from '../../../components/Flourish.astro';
+import GoldRule from '../../../components/GoldRule.astro';
+import TopStripe from '../../../components/TopStripe.astro';
+import Button from '../../../components/Button.astro';
+import { t } from '../../../i18n/utils';
+
+const locale = 'en' as const;
+
+const styles = [
+  {
+    title: 'Murder Mystery — Laitse Castle 1927',
+    paras: [
+      'Laitse, some tens of kilometres southwest of Tallinn, is mentioned already in Henry’s Chronicle of Livonia. In April 1883, Natalie von Uexküll bought the estate for her son Woldemar.',
+      'Woldemar von Uexküll built Laitse’s imposing neo-Gothic manor house around 1890. In the 1919 land reform, large estates were nationalised. Part of the manor centre nevertheless remained with the Uexkülls. The estate is managed, as commissioner, by Heinrich von Uexküll, son of Woldemar von Uexküll. Heinrich is planning to sell the manor.',
+      'Woldemar von Uexküll has arrived from Switzerland. He came home to realise the last remaining assets here. After all, a son cannot be trusted in everything!',
+      'Heinrich arranges a festive dinner in his father’s honour. Among the guests are dashing officers, wealthy businessmen, venerable clergymen, beautiful ladies… Are all the proud lords and ladies really who they claim to be? Might one of the honourable guests be harbouring evil thoughts?',
+      'You guessed right! This is, of course, a murder mystery — perfect for various events and party evenings. It is an experience that lets you travel to another time and place, a world of fantasy where you can enjoy emotions and adventures that everyday life does not offer.',
+    ],
+  },
+  {
+    title: 'Murder Mystery — Republic of Estonia 1931',
+    paras: [
+      'The global economic crisis has reached Estonia, yet high society still lives a lavish and merry life.',
+      'In a cosy and elegant restaurant, guests are received by the honourable General Otto Taalberg, whose priorities are the security of the Republic of Estonia and the well-being of his own family. Today the wealthiest and most influential gentlemen and ladies have gathered here. Unfortunately, the company also includes a few persons whose presence the honourable general is not pleased about.',
+      'As the evening progresses, it turns out that several seemingly distinguished guests carry a dirty secret. All of this ultimately leads to murder! It is up to you to find out who the murderer is and what the motive was. The murder investigation begins…',
+    ],
+  },
+  {
+    title: 'Medieval murder mystery',
+    paras: [
+      'Reval. Anno Domini 1432. You have the chance to face unsolved mysteries and get on the trail of Reval’s darkest secrets. Your companions are the knights of the Order, town councillors, city ladies, merchants and clergymen. And some of them may be rather murderous…',
+    ],
+  },
+  {
+    title: 'Renaissance murder mystery',
+    paras: [
+      'Florence. Anno Domini 1493. The action takes place in one of the most turbulent periods of Italy and Europe, when Italy had become a battleground of great wars. In difficult circumstances, people use one another in their games of power. For political ends, those in power marry off their daughters many times, murder their rivals and spread slander.',
+      'How things will turn out in our game, no one yet knows…',
+    ],
+  },
+  {
+    title: 'Mafia murder mystery',
+    paras: [
+      'The Mafia, a sworn secret society, a shadow realm within the United States. It is more violent and darker than you would ever dare to imagine! The especially daring have the chance to belong, in spirit, among the members of one of Chicago’s most notorious mafia families. The year is 1922…',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Murder mystery — Laitse Castle"
+  description="A murder mystery dinner at Laitse Castle: a three-course dinner, an experienced game master and a thrilling investigation. In five languages, ~2.5 h."
+  locale="en"
+  ogImage="/fotopank/LaitseLoss_Soogisaal2.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-start justify-center overflow-hidden">
+    <TopStripe />
+    <img src="/fotopank/LaitseLoss_Soogisaal2.webp" alt="Formal dining hall at Laitse Castle" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="relative z-10 text-center px-6 pt-28 md:pt-32 pb-10 max-w-2xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Murder mystery</h1>
+    </div>
+  </section>
+
+  <!-- What it includes -->
+  <section class="section-fade-from-dark px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto" data-animate>
+      <div class="text-center mb-10">
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+        <h2 class="font-display text-section text-warm-dark mt-6">A murder mystery dinner includes</h2>
+      </div>
+      <ul class="space-y-3 max-w-2xl mx-auto">
+        {[
+          'a three-course dinner in the castle halls',
+          'a glass of sparkling wine on arrival',
+          'a glass of wine',
+          'the mystery hosted by an experienced game master',
+          'prop rental on request',
+        ].map((item) => (
+          <li class="flex items-start gap-3 font-body text-body-lg text-warm-dark">
+            <span class="text-gold text-xl leading-none mt-1" aria-hidden="true">&#9830;</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-8 space-y-2 text-center font-body text-body-lg text-warm-dark">
+        <p>We run murder mysteries in five languages: Estonian, English, Spanish, Finnish and Russian.</p>
+        <p>The mystery together with the dinner lasts about 2.5 hours.</p>
+      </div>
+      <div class="mt-8 text-center">
+        <Button variant="filled" href="mailto:info@laitsecastle.ee" label="Request a quote" />
+        <p class="font-body text-body text-stone mt-3">info@laitsecastle.ee</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mystery styles -->
+  <section class="bg-warm-light px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-4">Mystery styles</h2>
+        <p class="font-subtitle text-[clamp(20px,2.6vw,30px)] italic text-stone">Choose the era and mood that suits you</p>
+      </div>
+      <div class="space-y-12">
+        {styles.map((s) => (
+          <article data-animate>
+            <h3 class="font-subtitle text-[clamp(24px,3vw,34px)] text-burgundy mb-3">{s.title}</h3>
+            <GoldRule width="50px" />
+            <div class="mt-5 space-y-4">
+              {s.paras.map((p) => (
+                <p class="font-body text-body-lg text-warm-dark leading-relaxed">{p}</p>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

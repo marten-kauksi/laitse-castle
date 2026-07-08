@@ -7,7 +7,8 @@ import { t } from '../../i18n/utils';
 
 const locale = 'en' as const;
 
-const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
+// item3 (Entertainment) is expanded into its own section with sub-pages below
+const items = ['item1', 'item2', 'item4', 'item5'];
 ---
 
 <BaseLayout
@@ -63,8 +64,47 @@ const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
     </div>
   </section>
 
+  <!-- Entertainment — sub-pages -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14" data-animate>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+        <h2 class="font-display text-section text-warm-dark mt-6">Entertainment</h2>
+      </div>
+
+      <!-- Murder mystery -->
+      <a href="/en/additional-services/murder-mystery" class="group block border-t border-stone/15 pt-10 mb-10" data-animate>
+        <h3 class="font-subtitle text-[clamp(26px,3.2vw,36px)] text-burgundy group-hover:text-burgundy-hover transition-colors mb-4">Murder mystery</h3>
+        <p class="font-body text-body-lg text-warm-dark mb-3">A murder mystery dinner includes:</p>
+        <ul class="space-y-2 mb-4">
+          {[
+            'a three-course dinner in the castle halls',
+            'a glass of sparkling wine on arrival',
+            'a glass of wine',
+            'the mystery hosted by an experienced game master',
+            'prop rental on request',
+          ].map((item) => (
+            <li class="flex items-start gap-3 font-body text-body text-warm-dark">
+              <span class="text-gold mt-1" aria-hidden="true">&#9830;</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="font-body text-body text-stone">We run murder mysteries in five languages: Estonian, English, Spanish, Finnish and Russian. The mystery together with the dinner lasts about 2.5 hours.</p>
+        <span class="inline-block mt-5 font-ui text-[15px] uppercase tracking-wider text-burgundy border-b border-burgundy/40 pb-1 group-hover:border-burgundy transition-colors">Read more →</span>
+      </a>
+
+      <!-- Chocolate truffle workshop -->
+      <a href="/en/additional-services/chocolate-workshop" class="group block border-t border-stone/15 pt-10" data-animate>
+        <h3 class="font-subtitle text-[clamp(26px,3.2vw,36px)] text-burgundy group-hover:text-burgundy-hover transition-colors mb-4">Chocolate truffle workshop</h3>
+        <p class="font-body text-body-lg text-warm-dark">Making truffles is a lovely undertaking that can be enjoyed alone or together with others. It is nice to do with colleagues or simply with friends, as this activity can also be excellent teamwork.</p>
+        <span class="inline-block mt-5 font-ui text-[15px] uppercase tracking-wider text-burgundy border-b border-burgundy/40 pb-1 group-hover:border-burgundy transition-colors">Read more →</span>
+      </a>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section id="contact" class="px-6 py-20 md:py-28">
+  <section id="contact" class="bg-warm-light px-6 py-20 md:py-28">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">{t(locale, 'cta.bookEvent')}</h2>
