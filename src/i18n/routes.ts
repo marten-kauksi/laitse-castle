@@ -6,6 +6,8 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/peod': '/peod',
     '/seminarid': '/seminarid',
     '/lisateenused': '/lisateenused',
+    '/lisateenused/morvamysteerium': '/lisateenused/morvamysteerium',
+    '/lisateenused/sokolaadikoolitus': '/lisateenused/sokolaadikoolitus',
     '/galerii': '/galerii',
   },
   en: {
@@ -25,6 +27,8 @@ export const reverseRouteMap: Record<string, string> = {
   '/peod': '/peod',
   '/seminarid': '/seminarid',
   '/lisateenused': '/lisateenused',
+  '/lisateenused/morvamysteerium': '/lisateenused/morvamysteerium',
+  '/lisateenused/sokolaadikoolitus': '/lisateenused/sokolaadikoolitus',
   '/galerii': '/galerii',
   '/en/': '/',
   '/en/history': '/ajalugu',

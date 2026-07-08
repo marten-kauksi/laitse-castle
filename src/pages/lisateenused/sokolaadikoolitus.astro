@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'et' as const;
+
+const kristaParas = [
+  'Oma retseptides jälgin põhimõtet, et tooraine peab olema kvaliteetne ja sisaldama meie organismile maksimaalsel hulgal kasulikke ja vajalikke aineid. Hoolikalt ja teadlikult valitud toorainest valmistatud šokolaaditrühvel võib olla väga tervislik, kui seda tarbida mõistlikus koguses.',
+  'Kuidas teha õiget valikut, kui seisad poes riiulite ees, mis on lookas erinevatest šokolaaditahvlitest ja muudest maiustustest? Milline on kvaliteetne ja tervislik šokolaad ja milline mitte? Vastus on väga lihtne – põhiliselt tuleks uurida šokolaadi kakaosisaldust – mida kõrgem kakaosisaldus, seda kvaliteetsem ja tervislikum on šokolaad. Kvaliteetsed šokolaadid ei sisalda ka toidu lisaaineid. Nii lihtne see ongi!',
+  'Glasuurimiseks on hea kasutada kuvetüüre (šokolaadinööbid), mis sisaldavad tumeda šokolaadiga võrreldes rohkem kakaovõid ja sulavad seetõttu ühtlasemalt ja hõlpsamini. Kuvetüüre võib leida hästi varustatud poeriiulitelt sealt, kus asuvad küpsetamiseks mõeldud toiduained.',
+  'Põhiliseks tooraineks valitud retseptide puhul on tume šokolaad, mille tahke kakaomass ulatub kuni 75%-ni. Tume šokolaad sisaldab 380 keemilist ainet – rauda, kaaliumi, kaltsiumi, magneesiumi, vaske ning vitamiine A; B1; C; D; E. Tume šokolaad on kiudaineterikas ja sisaldab suurel määral kofeiini. Peamise koostisosa kakaovõi rohked rasvhapped ei tõsta vere kolesteroolitaset ega suurenda südamehaiguste riski. Tumeda šokolaadi rasvasisaldus ei ole suur, keskmiselt 25%. Samas energiat annab 100 g kaaluv šokolaad 450 kcal. Tumedas šokolaadis on leitud antioksüdantsete omadustega flavonoide, mis mängivad olulist biokeemilist osa südame-veresoonkonna haiguste arengus (pidurdavad veresoonte lupjumist ja trombivalmidust), kaitsevad südame veresoonkonda, aitavad vähendada mitmete tervisehäirete tekkimise ohtu, nt Alzheimeri-Parkinsoni tõve.',
+  'Tumeda šokolaadi söömine mõjub meeleolu tõstvalt, sest sisaldab serotoniini ja teobromiidi, mis mõjuvad depressioonivastaselt ja stimuleerivalt. Tumedat šokolaadi võib julgelt pidada looduslikuks antidepressandiks. Šokolaadi mõjul tekib ainevahetuse käigus mõnutunnet tekitavaid aineid – endorfiine. Ajuvitamiini ehk meeleolutõstja türosiin on ka üheks lähteaineks serotoniini tekkimisele organismis. Serotoniin reguleerib und, pärsib näljatunnet, väldib meeleolu kõikumisi, kontrollib söömisel õigeaegselt küllustunde tekkimist. Türosiin ise aga alandab vererõhku, stabiliseerib veresuhkru taset ning aktiviseerib kilpnääret, kiirendades nõnda ainevahetust ja alandades kehakaalu. Nädalas võib julgelt süüa 200–300 g šokolaadi tekitamata kehakaalu tõusu.',
+  'Suurbritannia uurijad avaldasid uurimustöö, kust selgus, et tume šokolaad aitab leevendada kroonilise väsimuse sümptomeid. 6 kuud kestnud väsimus, millele kaasnesid lihasvalud, peavalud ja halvenenud mälu, taandusid pärast regulaarset tumeda šokolaadi tarbimist. Seda kõike tänu tumedas šokolaadis rikkalikult peituvatele kemikaalidele, mis hõlbustavad signaalide ülekannet ajus.',
+  'Šokolaaditrühvlite valmistamisel kasutatav või on kvaliteetne (vähemalt 80%). Kvaliteetses võis sisalduvad küllastunud rasvad tugevdavad luid, kaitsevad maksa mürkide eest, tugevdavad immuunsüsteemi.',
+  'Pähklid ja seemned on head küllastamata rasvade allikad, mis langetavad riski haigestumiseks mitmesugustesse haigustesse. Pähklid ja seemned tuleks enne kasutamist kindlasti röstida ahjus 150–180 kraadi juures 5–10 minutit, see aitab turgutada vahepeal transpordi käigus kaduma läinud maitseomadusi ja hävitab ka ebasoodsaid mikroorganisme.',
+];
+
+const volurid = [
+  ['Dopamiin', 'mõjutab meeleolu, motivatsiooni, liikumisvõimet.'],
+  ['Trüptofaan', 'aitab alla suruda iha toidu järele, tekitab stressivaba tunde.'],
+  ['Serotoniin', 'meeleolutõstja.'],
+];
+---
+
+<BaseLayout
+  title="Šokolaaditrühvlite valmistamise koolitus — Laitse loss"
+  description="Meeleolukas šokolaadikoolitus Laitse lossis kogenud juhendaja Krista Rubeni käe all. Kolm trühvlit, retseptid kaasa, ~2,5–3 h, 65 € osaleja."
+  locale="et"
+  ogImage="/fotopank/LaitseLoss_Stuudiokook_Toomas-Tuul.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-start justify-center overflow-hidden">
+    <TopStripe />
+    <img src="/fotopank/LaitseLoss_Stuudiokook_Toomas-Tuul.webp" alt="Stuudioköök Laitse lossis" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="relative z-10 text-center px-6 pt-28 md:pt-32 pb-10 max-w-2xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Šokolaaditrühvlite valmistamise koolitus</h1>
+    </div>
+  </section>
+
+  <!-- Sissejuhatus + detailid -->
+  <section class="section-fade-from-dark px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto" data-animate>
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed">
+        Trühvlitegu on tore ettevõtmine, mida saab nautida nii üksinda kui ka mitmekesi koos. Tore on seda teha koos töökaaslaste või lihtsalt sõpradega, sest see tegevus võib olla ka suurepärane meeskonnatöö.
+      </p>
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-4">
+        Selleks, et trühvlitegu sujuks kergelt, on välja pakkuda hariv ja meeleolukas šokolaadikoolitus, kus saab kogemustega juhendaja käe all valmistada lihtsalt ka keeruliselt näivaid šokolaaditrühvleid. Samas saab ka teadmisi šokolaadi tervislikkusest, ajaloost ja informatsiooni selle kohta, kuidas valida toorainet, mis oleks kvaliteetne ja millest valmistatud šokolaaditrühvlid pakuksid naudingut ja oleks samas ka tervislikud.
+      </p>
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-4">
+        Koos valmistatakse kolme erinevat šokolaaditrühvlit. Iga koolitusel osaleja saab kaasa enda valmistatud šokolaaditrühvlid ja nende retseptid. Koolitus kestab orienteeruvalt 2,5 kuni 3 tundi. Koolituse maksumus on <strong>65 eurot</strong> iga koolitatava kohta.
+      </p>
+      <div class="mt-8 text-center">
+        <p class="font-body text-body-lg text-warm-dark">Juhendajaks on <strong>Krista Ruben</strong></p>
+        <div class="mt-4"><Button variant="filled" href="mailto:info@laitsecastle.ee" label="Broneeri" /></div>
+        <p class="font-body text-body text-stone mt-3">info@laitsecastle.ee</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Krista tutvustab -->
+  <section class="bg-warm-light px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10" data-animate>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+        <h2 class="font-display text-section text-warm-dark mt-6">Krista tutvustab oma koolitust</h2>
+      </div>
+      <div class="space-y-4" data-animate>
+        {kristaParas.map((p) => (
+          <p class="font-body text-body-lg text-warm-dark leading-relaxed" set:html={p} />
+        ))}
+      </div>
+
+      <div class="mt-12" data-animate>
+        <h3 class="font-subtitle text-[clamp(24px,3vw,34px)] text-burgundy mb-3">Võlurid šokolaadis</h3>
+        <GoldRule width="50px" />
+        <ul class="mt-5 space-y-3">
+          {volurid.map(([name, desc]) => (
+            <li class="flex items-start gap-3 font-body text-body-lg text-warm-dark">
+              <span class="text-gold text-xl leading-none mt-1" aria-hidden="true">&#9830;</span>
+              <span><strong>{name}</strong> – {desc}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-5">
+          Tume šokolaad mõjub veresoonte seinte rakkudele lõõgastavalt. Hoiab veresuhkru taseme stabiilsena ja hoiab ära aju degeneratiivseid muutusi.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

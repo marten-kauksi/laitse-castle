@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'et' as const;
+
+const styles = [
+  {
+    title: 'Mõrvamüsteerium Laitse Loss 1927',
+    paras: [
+      'Tallinnast mõnikümmend kilomeetrit edelasse jäävat Laitset on mainitud juba Henriku Liivimaa kroonikas. 1883. aasta aprillis ostis Natalie von Uexküll valdused oma pojale Woldemarile.',
+      'Laitse imposantse neogooti stiilis mõisahoone ehitaski Woldemar von Uexküll 1890. aasta paiku. 1919. aasta maareformi riigistati suurmaaomandused. Üks osa mõisa keskusest jäi siiski Uexküllidele. Mõisat majandab voliniku õigustes Heinrich von Uexküll, Woldemar von Uexkülli poeg. Heinrich plaanib mõisa müümist.',
+      'Šveitsist on kohale saabunud Woldemar von Uexküll. Ta tuli koju selleks, et realiseerida veel viimased siinsed varad. Poega ei saa ju kõiges usaldada!',
+      'Heinrich korraldab isa auks piduliku õhtusöögi. Kutsutute hulgas on uljaid sõjaväelasi, rikkaid ärimehi, auväärseid vaimulikke, kauneid daame... Kas kõik uhked isandad ja emandad on ikka need, kellena end esitlevad? Kas mitte mõne kõrgeaulise külalise peas ei ole äkki kurje mõtteid?',
+      'Arvasite õigesti! Tegu on loomulikult mõrvamüsteeriumiga, mis sobib suurepäraselt erinevatele üritustele ja peoõhtutele. See on elamus, mis laseb Teil rännata hoopis teise aega ja kohta, fantaasiamaailma, kus saate nautida emotsioone ja seiklusi, mida argielu ei paku.',
+    ],
+  },
+  {
+    title: 'Mõrvamüsteerium Eesti Vabariik 1931',
+    paras: [
+      'Ülemaailmne majanduskriis on jõudnud Eestisse, kuid kõrgseltskond elab endiselt külluslikku ja lõbusat elu.',
+      'Õdusas ja nooblis restoranis võtab külalisi vastu auväärne kindral Otto Taalberg, kelle südameasjaks on Eesti Vabariigi julgeolek ning tema enda perekonna heaolu. Täna on siia kogunenud kõige jõukamad ja mõjukamad härrad ja prouad. Kahjuks on seltskonnas ka nii mõnigi persoon, kelle osavõtu üle kõrgeauline kindral heameelt ei tunne.',
+      'Õhtu edenedes ilmneb, et mitmel pealtnäha suursugusel külalisel on hingel räpane saladus. Kõik see viib lõpuks mõrvani! Just teil tuleb välja selgitada, kes on mõrvar ja mis on mõrva motiiv. Algab mõrvajuurdlus…',
+    ],
+  },
+  {
+    title: 'Keskaegne mõrvamüsteerium',
+    paras: [
+      'Reval. Anno Domini 1432. Teil on võimalus seista silmitsi lahendamata müsteeriumidega ja jõuda Revali kõige süngemate saladuste jälile. Teie kaaslasteks on ordurüütlid, raehärrad, linnadaamid, kaupmehed ja vaimulikud. Ja mõni neist võib olla üsnagi mõrvahimuline…',
+    ],
+  },
+  {
+    title: 'Renessansi mõrvamüsteerium',
+    paras: [
+      'Firenze. Anno Domini 1493. Tegevus toimub Itaalia ja Euroopa ühel kõige tormilisemal ajajärgul, kui Itaaliast oli kujunenud suurte sõdade tallermaa. Keerulistes oludes kasutatakse üksteist oma võimumängudes ära. Poliitiliste eesmärkide nimel panevad võimukandjad oma tütreid mitu korda mehele, mõrvavad oma konkurente ja levitavad laimu.',
+      'Seda, kuidas asjad meie mängus olema saavad, ei tea veel keegi…',
+    ],
+  },
+  {
+    title: 'Maffia mõrvamüsteerium',
+    paras: [
+      'Maffia, vannutatud salaühing, varjuderiik Ameerika Ühendriikide sees. See on vägivaldsem ja süngem, kui te iial mõelda julgete! Eriti uljastel on võimalus kuuluda vaimus Chicago ühe kõige kurikuulsama maffiaperekonna liikmete hulka. On aasta 1922…',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Mõrvamüsteerium — Laitse loss"
+  description="Mõrvamüsteeriumiga pidusöök Laitse lossis: kolmekäiguline õhtusöök, kogenud mängujuht ja põnev juurdlus. Viies keeles, ~2,5 h."
+  locale="et"
+  ogImage="/fotopank/LaitseLoss_Soogisaal2.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-start justify-center overflow-hidden">
+    <TopStripe />
+    <img src="/fotopank/LaitseLoss_Soogisaal2.webp" alt="Pidulik söögisaal Laitse lossis" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="relative z-10 text-center px-6 pt-28 md:pt-32 pb-10 max-w-2xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Mõrvamüsteerium</h1>
+    </div>
+  </section>
+
+  <!-- Mida sisaldab -->
+  <section class="section-fade-from-dark px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto" data-animate>
+      <div class="text-center mb-10">
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+        <h2 class="font-display text-section text-warm-dark mt-6">Mõrvamüsteeriumiga pidusöök sisaldab</h2>
+      </div>
+      <ul class="space-y-3 max-w-2xl mx-auto">
+        {[
+          'kolmekäigulist pidusööki lossi saalides',
+          'pokaal vahulist saabumisel',
+          'pokaal veini',
+          'müsteeriumi läbiviimist kogenud mängujuhiga',
+          'soovi korral aksessuaaride laenutust',
+        ].map((item) => (
+          <li class="flex items-start gap-3 font-body text-body-lg text-warm-dark">
+            <span class="text-gold text-xl leading-none mt-1" aria-hidden="true">&#9830;</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-8 space-y-2 text-center font-body text-body-lg text-warm-dark">
+        <p>Mõrvamüsteeriume viime läbi viies keeles: eesti-, inglise-, hispaania-, soome- ja venekeelsena.</p>
+        <p>Müsteerium koos pidusöögiga kestab umbes 2,5 h.</p>
+      </div>
+      <div class="mt-8 text-center">
+        <Button variant="filled" href="mailto:info@laitsecastle.ee" label="Küsi pakkumist" />
+        <p class="font-body text-body text-stone mt-3">info@laitsecastle.ee</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Müsteeriumite stiilid -->
+  <section class="bg-warm-light px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-4">Müsteeriumite stiilid</h2>
+        <p class="font-subtitle text-[clamp(20px,2.6vw,30px)] italic text-stone">Vali endale sobiv ajastu ja meeleolu</p>
+      </div>
+      <div class="space-y-12">
+        {styles.map((s) => (
+          <article data-animate>
+            <h3 class="font-subtitle text-[clamp(24px,3vw,34px)] text-burgundy mb-3">{s.title}</h3>
+            <GoldRule width="50px" />
+            <div class="mt-5 space-y-4">
+              {s.paras.map((p) => (
+                <p class="font-body text-body-lg text-warm-dark leading-relaxed">{p}</p>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -14,7 +14,14 @@ const navLinks = [
   { label: t(locale, 'nav.home'), href: getLocalizedPath('/', locale) },
   { label: t(locale, 'nav.events'), href: getLocalizedPath('/peod', locale) },
   { label: t(locale, 'nav.seminars'), href: getLocalizedPath('/seminarid', locale) },
-  { label: t(locale, 'nav.addons'), href: getLocalizedPath('/lisateenused', locale) },
+  {
+    label: t(locale, 'nav.addons'),
+    href: getLocalizedPath('/lisateenused', locale),
+    children: locale === 'et' ? [
+      { label: t(locale, 'nav.addon.murder'), href: '/lisateenused/morvamysteerium' },
+      { label: t(locale, 'nav.addon.chocolate'), href: '/lisateenused/sokolaadikoolitus' },
+    ] : [],
+  },
   { label: t(locale, 'nav.gallery'), href: getLocalizedPath('/galerii', locale) },
   { label: t(locale, 'nav.history'), href: getLocalizedPath('/ajalugu', locale) },
 ];
@@ -31,8 +38,8 @@ const navLinks = [
 
     <!-- Desktop nav -->
     <ul class="hidden lg:flex items-center gap-5 xl:gap-7">
-      {navLinks.map(({ label, href }) => (
-        <li>
+      {navLinks.map(({ label, href, children }) => (
+        <li class="relative group">
           <a
             href={href}
             class:list={[
@@ -44,6 +51,25 @@ const navLinks = [
           >
             {label}
           </a>
+          {children && children.length > 0 && (
+            <ul class="absolute left-1/2 -translate-x-1/2 top-full pt-4 hidden group-hover:block group-focus-within:block">
+              <div class="bg-warm-white border border-black/10 rounded shadow-lg py-2 min-w-[240px]">
+                {children.map((c) => (
+                  <li>
+                    <a
+                      href={c.href}
+                      class:list={[
+                        'block px-5 py-2.5 font-ui uppercase tracking-wide text-[13px] transition-colors duration-200',
+                        currentPath === c.href ? 'text-burgundy' : 'text-warm-dark hover:text-burgundy hover:bg-black/5',
+                      ]}
+                    >
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </div>
+            </ul>
+          )}
         </li>
       ))}
     </ul>
@@ -57,8 +83,8 @@ const navLinks = [
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </summary>
-      <ul class="absolute right-0 top-full mt-2 bg-warm-white border border-black/10 rounded shadow-lg py-2 min-w-[180px]">
-        {navLinks.map(({ label, href }) => (
+      <ul class="absolute right-0 top-full mt-2 bg-warm-white border border-black/10 rounded shadow-lg py-2 min-w-[220px]">
+        {navLinks.map(({ label, href, children }) => (
           <li>
             <a
               href={href}
@@ -71,6 +97,23 @@ const navLinks = [
             >
               {label}
             </a>
+            {children && children.length > 0 && (
+              <ul>
+                {children.map((c) => (
+                  <li>
+                    <a
+                      href={c.href}
+                      class:list={[
+                        'block pl-9 pr-5 py-2.5 font-ui uppercase tracking-wide text-[12px] transition-colors duration-200 flex items-center',
+                        currentPath === c.href ? 'text-burgundy' : 'text-stone hover:text-burgundy hover:bg-black/5',
+                      ]}
+                    >
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
         <li class="px-5 py-3">

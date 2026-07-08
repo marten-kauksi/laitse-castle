@@ -7,7 +7,8 @@ import { t } from '../i18n/utils';
 
 const locale = 'et' as const;
 
-const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
+// item3 (Meelelahutus) is expanded into its own section with sub-pages below
+const items = ['item1', 'item2', 'item4', 'item5'];
 ---
 
 <BaseLayout
@@ -63,8 +64,47 @@ const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
     </div>
   </section>
 
+  <!-- Meelelahutus — sub-pages -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14" data-animate>
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+        <h2 class="font-display text-section text-warm-dark mt-6">Meelelahutus</h2>
+      </div>
+
+      <!-- Mõrvamüsteerium -->
+      <a href="/lisateenused/morvamysteerium" class="group block border-t border-stone/15 pt-10 mb-10" data-animate>
+        <h3 class="font-subtitle text-[clamp(26px,3.2vw,36px)] text-burgundy group-hover:text-burgundy-hover transition-colors mb-4">Mõrvamüsteerium</h3>
+        <p class="font-body text-body-lg text-warm-dark mb-3">Mõrvamüsteeriumiga pidusöök sisaldab:</p>
+        <ul class="space-y-2 mb-4">
+          {[
+            'kolmekäigulist pidusööki lossi saalides',
+            'pokaal vahulist saabumisel',
+            'pokaal veini',
+            'müsteeriumi läbiviimist kogenud mängujuhiga',
+            'soovi korral aksessuaaride laenutust',
+          ].map((item) => (
+            <li class="flex items-start gap-3 font-body text-body text-warm-dark">
+              <span class="text-gold mt-1" aria-hidden="true">&#9830;</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="font-body text-body text-stone">Mõrvamüsteeriume viime läbi viies keeles: eesti-, inglise-, hispaania-, soome- ja venekeelsena. Müsteerium koos pidusöögiga kestab umbes 2,5 h.</p>
+        <span class="inline-block mt-5 font-ui text-[15px] uppercase tracking-wider text-burgundy border-b border-burgundy/40 pb-1 group-hover:border-burgundy transition-colors">Loe lähemalt →</span>
+      </a>
+
+      <!-- Šokolaaditrühvlite koolitus -->
+      <a href="/lisateenused/sokolaadikoolitus" class="group block border-t border-stone/15 pt-10" data-animate>
+        <h3 class="font-subtitle text-[clamp(26px,3.2vw,36px)] text-burgundy group-hover:text-burgundy-hover transition-colors mb-4">Šokolaaditrühvlite valmistamise koolitus</h3>
+        <p class="font-body text-body-lg text-warm-dark">Trühvlitegu on tore ettevõtmine, mida saab nautida nii üksinda kui ka mitmekesi koos. Tore on seda teha koos töökaaslaste või lihtsalt sõpradega, sest see tegevus võib olla ka suurepärane meeskonnatöö.</p>
+        <span class="inline-block mt-5 font-ui text-[15px] uppercase tracking-wider text-burgundy border-b border-burgundy/40 pb-1 group-hover:border-burgundy transition-colors">Loe lähemalt →</span>
+      </a>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section id="kontakt" class="px-6 py-20 md:py-28">
+  <section id="kontakt" class="bg-warm-light px-6 py-20 md:py-28">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">{t(locale, 'cta.bookEvent')}</h2>
