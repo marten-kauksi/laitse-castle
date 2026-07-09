@@ -11,6 +11,7 @@ const locale = 'en' as const;
 const styles = [
   {
     title: 'Murder Mystery — Laitse Castle 1927',
+    img: '/fotopank/LaitseLoss_mysteerium-loss_Katrin-Luts.webp',
     paras: [
       'Laitse, some tens of kilometres southwest of Tallinn, is mentioned already in Henry’s Chronicle of Livonia. In April 1883, Natalie von Uexküll bought the estate for her son Woldemar.',
       'Woldemar von Uexküll built Laitse’s imposing neo-Gothic manor house around 1890. In the 1919 land reform, large estates were nationalised. Part of the manor centre nevertheless remained with the Uexkülls. The estate is managed, as commissioner, by Heinrich von Uexküll, son of Woldemar von Uexküll. Heinrich is planning to sell the manor.',
@@ -21,6 +22,7 @@ const styles = [
   },
   {
     title: 'Murder Mystery — Republic of Estonia 1931',
+    img: '/fotopank/LaitseLoss_mysteerium-EV_Katrin-Luts.webp',
     paras: [
       'The global economic crisis has reached Estonia, yet high society still lives a lavish and merry life.',
       'In a cosy and elegant restaurant, guests are received by the honourable General Otto Taalberg, whose priorities are the security of the Republic of Estonia and the well-being of his own family. Today the wealthiest and most influential gentlemen and ladies have gathered here. Unfortunately, the company also includes a few persons whose presence the honourable general is not pleased about.',
@@ -29,12 +31,14 @@ const styles = [
   },
   {
     title: 'Medieval murder mystery',
+    img: '/fotopank/LaitseLoss_mysteerium-keskaeg_Katrin-Luts.webp',
     paras: [
       'Reval. Anno Domini 1432. You have the chance to face unsolved mysteries and get on the trail of Reval’s darkest secrets. Your companions are the knights of the Order, town councillors, city ladies, merchants and clergymen. And some of them may be rather murderous…',
     ],
   },
   {
     title: 'Renaissance murder mystery',
+    img: '/fotopank/LaitseLoss_mysteerium-renessanss_Katrin-Luts.webp',
     paras: [
       'Florence. Anno Domini 1493. The action takes place in one of the most turbulent periods of Italy and Europe, when Italy had become a battleground of great wars. In difficult circumstances, people use one another in their games of power. For political ends, those in power marry off their daughters many times, murder their rivals and spread slander.',
       'How things will turn out in our game, no one yet knows…',
@@ -42,6 +46,7 @@ const styles = [
   },
   {
     title: 'Mafia murder mystery',
+    img: '/fotopank/LaitseLoss_mysteerium-maffia_Katrin-Luts.webp',
     paras: [
       'The Mafia, a sworn secret society, a shadow realm within the United States. It is more violent and darker than you would ever dare to imagine! The especially daring have the chance to belong, in spirit, among the members of one of Chicago’s most notorious mafia families. The year is 1922…',
     ],
@@ -106,6 +111,9 @@ const styles = [
       <div class="space-y-12">
         {styles.map((s) => (
           <article data-animate>
+            <div class="overflow-hidden rounded mb-6">
+              <img src={s.img} alt={s.title} class="w-full h-72 md:h-96 object-cover" loading="lazy" />
+            </div>
             <h3 class="font-subtitle text-[clamp(24px,3vw,34px)] text-burgundy mb-3">{s.title}</h3>
             <GoldRule width="50px" />
             <div class="mt-5 space-y-4">
