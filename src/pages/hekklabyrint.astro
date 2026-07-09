@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Flourish from '../components/Flourish.astro';
+import TopStripe from '../components/TopStripe.astro';
+import Button from '../components/Button.astro';
+import { t } from '../i18n/utils';
+
+const locale = 'et' as const;
+
+const paras = [
+  'Labürindid on inimkonda köitnud aastatuhandeid. Nende võlu peitub milleski väga inimlikus – soovis end kaotada ja uuesti üles leida. Iga pööre toob kaasa väikese ebakindluse: kas see tee viib eesmärgini või tupikusse? See segu põnevusest ja kergest eksitusest tekitab lapsemeelset elevust ka täiskasvanutes ning finišisse jõudmine annab ehedat võiduelamust. Hästi kavandatud labürint on väike seiklus omaette: sisenemine, kohanemine uue ruumiga, uurimine, otsuste langetamine ja lõpuks võidukas väljapääs.',
+  'Hekklabürindid on selle vanamoodsa mängu üks kaunimaid vorme. Neid saab rajada peaaegu igast puu- või põõsaliigist – kiirekasvulised nõuavad tihedamat pügamist, aeglasemad ja igihaljad liigid pakuvad põnevust ka talvel, kuid vajavad täieliku kuju saavutamiseks aastaid kasvamist. Enamik Euroopa hekklabürinte on lahendatavad poole tunniga: umbes 40 minutit peetakse juba paras pingutuseks ning kauem kestev ekslemine hakkab külastajate kannatust ja isegi enesetunnet proovile panema.',
+  'Laitse lossi kõrvale on rajatud omanäoline, madalatest elupuudest koosnev kuplikujuline hekklabürint, kuhu on istutatud veidi üle tuhande puu. Sellest sai labürint ka oma nime – "Tuhande tuti mägi". Läbimiseks kulub tavaliselt 10–15 minutit, mistõttu sobib see hästi nii peredele kui ka neile, kes soovivad lühikest, kuid meeldejäävat seiklust lossipargis.',
+];
+---
+
+<BaseLayout
+  title="Tuhande tuti mägi — Laitse lossi hekklabürint"
+  description="Laitse lossi kõrvale rajatud kuplikujuline hekklabürint, kuhu on istutatud veidi üle tuhande elupuu. Läbimiseks kulub 10–15 minutit — meeldejääv seiklus lossipargis."
+  locale="et"
+  ogImage="/fotopank/LaitseLoss_Labyrint3.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-start justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/fotopank/LaitseLoss_Labyrint3.webp"
+      alt="Laitse lossi hekklabürint — Tuhande tuti mägi"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="relative z-10 text-center px-6 pt-20 md:pt-24 pb-10 max-w-3xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Tuhande tuti mägi</h1>
+      <p class="font-subtitle font-bold italic text-[clamp(24px,3vw,34px)] text-warm-white text-overlay hero-enter mt-3" style="--delay: 150ms">
+        Laitse lossi hekklabürint
+      </p>
+    </div>
+  </section>
+
+  <!-- Kirjeldus -->
+  <section class="section-fade-from-dark px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto" data-animate>
+      <div class="text-center mb-10">
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+      </div>
+      <div class="space-y-5">
+        {paras.map((p) => (
+          <p class="font-body text-body-lg text-warm-dark leading-relaxed">{p}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pildid -->
+  <section class="px-6 pb-16 md:pb-24">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+      <div class="overflow-hidden rounded" data-animate>
+        <img src="/fotopank/LaitseLoss_Labyrint1.webp" alt="Laitse lossi hekklabürint" class="w-full h-72 md:h-96 object-cover" loading="lazy" />
+      </div>
+      <div class="overflow-hidden rounded" data-animate data-animate-delay="100">
+        <img src="/fotopank/LaitseLoss_Labyrint2.webp" alt="Laitse lossi hekklabürint" class="w-full h-72 md:h-96 object-cover" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="kontakt" class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-body-lg text-stone mt-6 mb-8 leading-relaxed">Soovite lossiga rohkem tutvuda? Võtke meiega ühendust.</p>
+      <Button variant="filled" href="/#kontakt" label={t(locale, 'cta.contact')} />
+    </div>
+  </section>
+</BaseLayout>

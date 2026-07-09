@@ -9,6 +9,7 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/lisateenused/morvamysteerium': '/lisateenused/morvamysteerium',
     '/lisateenused/sokolaadikoolitus': '/lisateenused/sokolaadikoolitus',
     '/galerii': '/galerii',
+    '/hekklabyrint': '/hekklabyrint',
   },
   en: {
     '/': '/en/',
@@ -19,6 +20,7 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/lisateenused/morvamysteerium': '/en/additional-services/murder-mystery',
     '/lisateenused/sokolaadikoolitus': '/en/additional-services/chocolate-workshop',
     '/galerii': '/en/gallery',
+    '/hekklabyrint': '/en/hedge-maze',
   },
 };
 
@@ -32,6 +34,7 @@ export const reverseRouteMap: Record<string, string> = {
   '/lisateenused/morvamysteerium': '/lisateenused/morvamysteerium',
   '/lisateenused/sokolaadikoolitus': '/lisateenused/sokolaadikoolitus',
   '/galerii': '/galerii',
+  '/hekklabyrint': '/hekklabyrint',
   '/en/': '/',
   '/en/history': '/ajalugu',
   '/en/events-and-seminars': '/peod',
@@ -40,4 +43,5 @@ export const reverseRouteMap: Record<string, string> = {
   '/en/additional-services/murder-mystery': '/lisateenused/morvamysteerium',
   '/en/additional-services/chocolate-workshop': '/lisateenused/sokolaadikoolitus',
   '/en/gallery': '/galerii',
+  '/en/hedge-maze': '/hekklabyrint',
 };

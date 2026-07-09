@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'en' as const;
+
+const paras = [
+  'Labyrinths have captivated humankind for thousands of years. Their charm lies in something deeply human — the wish to lose oneself and find one\'s way again. Every turn brings a small uncertainty: does this path lead to the goal, or to a dead end? This blend of excitement and gentle disorientation stirs a childlike thrill even in adults, and reaching the finish gives a genuine sense of triumph. A well-designed maze is a little adventure in itself: entering, adjusting to a new space, exploring, making decisions, and finally a victorious way out.',
+  'Hedge mazes are one of the most beautiful forms of this old-fashioned game. They can be grown from almost any tree or shrub species — fast-growing ones demand more frequent trimming, while slower, evergreen species stay intriguing even in winter but need years of growth to reach their full shape. Most European hedge mazes can be solved within half an hour: around 40 minutes is already considered a fair effort, and wandering any longer begins to test visitors\' patience and even their spirits.',
+  'Beside Laitse Castle stands a distinctive dome-shaped hedge maze of low arborvitae, planted with just over a thousand trees. That is how the maze earned its name — "Mount of a Thousand Tufts". It usually takes 10–15 minutes to find your way through, making it a great fit for families as well as anyone looking for a short but memorable adventure in the castle park.',
+];
+---
+
+<BaseLayout
+  title="Mount of a Thousand Tufts — the hedge maze of Laitse Castle"
+  description="A dome-shaped hedge maze beside Laitse Castle, planted with just over a thousand arborvitae. It takes 10–15 minutes to find your way through — a memorable adventure in the castle park."
+  locale="en"
+  ogImage="/fotopank/LaitseLoss_Labyrint3.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-start justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/fotopank/LaitseLoss_Labyrint3.webp"
+      alt="The hedge maze of Laitse Castle — Mount of a Thousand Tufts"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="relative z-10 text-center px-6 pt-20 md:pt-24 pb-10 max-w-3xl mx-auto">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Mount of a Thousand Tufts</h1>
+      <p class="font-subtitle font-bold italic text-[clamp(24px,3vw,34px)] text-warm-white text-overlay hero-enter mt-3" style="--delay: 150ms">
+        The hedge maze of Laitse Castle
+      </p>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="section-fade-from-dark px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto" data-animate>
+      <div class="text-center mb-10">
+        <Flourish type="vintage" size="sm" fill="burgundy" />
+      </div>
+      <div class="space-y-5">
+        {paras.map((p) => (
+          <p class="font-body text-body-lg text-warm-dark leading-relaxed">{p}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section class="px-6 pb-16 md:pb-24">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+      <div class="overflow-hidden rounded" data-animate>
+        <img src="/fotopank/LaitseLoss_Labyrint1.webp" alt="The hedge maze of Laitse Castle" class="w-full h-72 md:h-96 object-cover" loading="lazy" />
+      </div>
+      <div class="overflow-hidden rounded" data-animate data-animate-delay="100">
+        <img src="/fotopank/LaitseLoss_Labyrint2.webp" alt="The hedge maze of Laitse Castle" class="w-full h-72 md:h-96 object-cover" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-body-lg text-stone mt-6 mb-8 leading-relaxed">Would you like to explore the castle further? Get in touch with us.</p>
+      <Button variant="filled" href="/en/#contact" label={t(locale, 'cta.contact')} />
+    </div>
+  </section>
+</BaseLayout>
