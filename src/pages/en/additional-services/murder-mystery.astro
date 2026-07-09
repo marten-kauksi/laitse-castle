@@ -113,8 +113,8 @@ const styles = [
       <div class="space-y-12">
         {styles.map((s) => (
           <article data-animate>
-            <div class="overflow-hidden rounded mb-6 bg-warm-white">
-              <img src={s.img} alt={s.title} class:list={["w-full h-72 md:h-96", s.fit === 'contain' ? 'object-contain' : 'object-cover', s.pos === 'top' ? 'object-top' : '']} loading="lazy" />
+            <div class="overflow-hidden rounded mb-6">
+              <img src={s.img} alt={s.title} class:list={s.fit === 'contain' ? 'w-full h-auto' : ['w-full h-72 md:h-96 object-cover', s.pos === 'top' ? 'object-top' : '']} loading="lazy" />
             </div>
             <h3 class="font-subtitle text-[clamp(24px,3vw,34px)] text-burgundy mb-3">{s.title}</h3>
             <GoldRule width="50px" />
