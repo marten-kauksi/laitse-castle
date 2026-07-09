@@ -241,31 +241,35 @@ const eventVenueSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════
-       4. LOSSI LUGU — Full-bleed immersive
+       4. LOSSI LUGU — Image left, text right
        ═══════════════════════════════════════════ -->
-  <section class="section-into-dark relative min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden py-12 md:py-20">
-    <img
-      src="/signed-images/lossi-torn-ajalugu.webp"
-      alt={t(locale, 'home.story.imageAlt')}
-      class="absolute inset-0 w-full h-[120%] object-cover will-change-transform"
-      loading="lazy"
-      data-parallax
-    />
+  <section class="bg-warm-white px-6 pb-20 md:pb-28">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
-    <div class="relative z-10 max-w-2xl mx-auto px-6 py-20 md:py-28 text-center text-overlay" data-animate>
-      <p class="font-ui text-label-sm uppercase tracking-[0.2em] text-gold-light mb-5">{t(locale, 'home.story.eyebrow')}</p>
-      <h2 class="font-display text-[clamp(28px,4vw,44px)] text-warm-white mb-8 leading-tight">
-        {t(locale, 'home.story.heading')}
-      </h2>
-      <p class="font-body text-body-lg text-warm-white/90 mb-6 leading-relaxed">
-        {t(locale, 'home.story.p1')}
-      </p>
-      <p class="font-body text-body-lg text-warm-white/80 mb-10 leading-relaxed">
-        {t(locale, 'home.story.p2')}
-      </p>
-      <a href="/ajalugu" class="font-ui text-[15px] uppercase tracking-wider text-warm-white border-b border-warm-white/40 pb-1 hover:border-warm-white transition-colors">
-        {t(locale, 'home.story.cta')}
-      </a>
+      <div class="overflow-hidden rounded" data-animate>
+        <img
+          src="/signed-images/lossi-torn-ajalugu.webp"
+          alt={t(locale, 'home.story.imageAlt')}
+          class="w-full h-72 md:h-[460px] object-cover"
+          loading="lazy"
+        />
+      </div>
+
+      <div data-animate data-animate-delay="150">
+        <p class="font-ui text-label-sm uppercase tracking-[0.2em] text-burgundy mb-4">{t(locale, 'home.story.eyebrow')}</p>
+        <h2 class="font-display text-section text-warm-dark leading-tight mb-5">
+          {t(locale, 'home.story.heading')}
+        </h2>
+        <GoldRule width="60px" />
+        <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-6 mb-4">
+          {t(locale, 'home.story.p1')}
+        </p>
+        <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">
+          {t(locale, 'home.story.p2')}
+        </p>
+        <Button variant="outline" href="/ajalugu" label={t(locale, 'home.story.cta')} />
+      </div>
+
     </div>
   </section>
 
