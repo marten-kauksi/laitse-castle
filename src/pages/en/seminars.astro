@@ -62,8 +62,54 @@ const features = ['item1', 'item2', 'item3'];
     </div>
   </section>
 
+  <!-- Social activities -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-3xl mx-auto text-center mb-12" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <h2 class="font-display text-section text-warm-dark mt-6 mb-5">More than just a seminar</h2>
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed">
+        A good seminar needs more than a substantial agenda — it needs something that gets colleagues smiling together and getting to know one another better. You can book social activities from us that make an ideal addition to a corporate seminar or training day, bringing variety and shared excitement for the whole team.
+      </p>
+    </div>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+      <!-- Murder mystery -->
+      <a href="/en/additional-services/murder-mystery" class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="100">
+        <img
+          src="/fotopank/LaitseLoss_mysteerium1a_Katrin-Luts.webp"
+          alt="Murder mystery at Laitse Castle"
+          class="w-full h-[300px] md:h-[400px] object-cover object-[center_60%] group-hover:scale-[1.03] transition-transform duration-700"
+          loading="lazy"
+        />
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-overlay">
+          <div class="w-12 group-hover:w-14 h-[2px] bg-gold-gradient-h mb-5 transition-all duration-500"></div>
+          <h3 class="font-display text-[clamp(24px,2.8vw,32px)] text-warm-white leading-tight" style="text-shadow: 0 2px 18px rgba(0,0,0,0.9), 0 1px 5px rgba(0,0,0,0.95), 0 0 2px rgba(0,0,0,0.85)">
+            Murder mystery
+          </h3>
+        </div>
+      </a>
+
+      <!-- Chocolate truffle workshop -->
+      <a href="/en/additional-services/chocolate-workshop" class="service-card group relative overflow-hidden rounded block" data-animate data-animate-delay="250">
+        <img
+          src="/fotopank/LaitseLoss_tryhvlid2_Krista-Ruben.webp"
+          alt="Chocolate truffle workshop at Laitse Castle"
+          class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          loading="lazy"
+        />
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-overlay">
+          <div class="w-12 group-hover:w-14 h-[2px] bg-gold-gradient-h mb-5 transition-all duration-500"></div>
+          <h3 class="font-display text-[clamp(24px,2.8vw,32px)] text-warm-white leading-tight" style="text-shadow: 0 2px 18px rgba(0,0,0,0.9), 0 1px 5px rgba(0,0,0,0.95), 0 0 2px rgba(0,0,0,0.85)">
+            Chocolate truffle workshop
+          </h3>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section id="contact" class="px-6 py-20 md:py-28">
+  <section id="contact" class="px-6 py-20 md:py-28 bg-warm-light">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
       <h2 class="font-subtitle text-section text-burgundy mt-6 mb-4">{t(locale, 'cta.bookEvent')}</h2>
