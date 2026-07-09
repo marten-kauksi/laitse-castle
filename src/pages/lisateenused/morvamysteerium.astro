@@ -23,6 +23,7 @@ const styles = [
   {
     title: 'Mõrvamüsteerium Eesti Vabariik 1931',
     img: '/fotopank/LaitseLoss_mysteerium-EV_Katrin-Luts.webp',
+    fit: 'contain',
     paras: [
       'Ülemaailmne majanduskriis on jõudnud Eestisse, kuid kõrgseltskond elab endiselt külluslikku ja lõbusat elu.',
       'Õdusas ja nooblis restoranis võtab külalisi vastu auväärne kindral Otto Taalberg, kelle südameasjaks on Eesti Vabariigi julgeolek ning tema enda perekonna heaolu. Täna on siia kogunenud kõige jõukamad ja mõjukamad härrad ja prouad. Kahjuks on seltskonnas ka nii mõnigi persoon, kelle osavõtu üle kõrgeauline kindral heameelt ei tunne.',
@@ -47,6 +48,7 @@ const styles = [
   {
     title: 'Maffia mõrvamüsteerium',
     img: '/fotopank/LaitseLoss_mysteerium-maffia_Katrin-Luts.webp',
+    pos: 'top',
     paras: [
       'Maffia, vannutatud salaühing, varjuderiik Ameerika Ühendriikide sees. See on vägivaldsem ja süngem, kui te iial mõelda julgete! Eriti uljastel on võimalus kuuluda vaimus Chicago ühe kõige kurikuulsama maffiaperekonna liikmete hulka. On aasta 1922…',
     ],
@@ -111,8 +113,8 @@ const styles = [
       <div class="space-y-12">
         {styles.map((s) => (
           <article data-animate>
-            <div class="overflow-hidden rounded mb-6">
-              <img src={s.img} alt={s.title} class="w-full h-72 md:h-96 object-cover" loading="lazy" />
+            <div class="overflow-hidden rounded mb-6 bg-warm-white">
+              <img src={s.img} alt={s.title} class:list={["w-full h-72 md:h-96", s.fit === 'contain' ? 'object-contain' : 'object-cover', s.pos === 'top' ? 'object-top' : '']} loading="lazy" />
             </div>
             <h3 class="font-subtitle text-[clamp(24px,3vw,34px)] text-burgundy mb-3">{s.title}</h3>
             <GoldRule width="50px" />
