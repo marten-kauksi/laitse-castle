@@ -53,6 +53,7 @@ _research/            # Cloned reference repos (not part of site)
 
 Default to **comfortably large, high-contrast text** — the user has repeatedly asked to enlarge and darken text, so err on the bigger/bolder side.
 
+- **NEVER use tiny text.** Section subtitles / taglines / intro lines must be **at least ~24px on desktop** — use `text-[clamp(24px,3vw,34px)]` (or larger), never the `text-subtitle` token (it shrinks to 17px) and never a clamp whose minimum is 17–20px. The user has repeatedly flagged such text as unreadable. Body copy should be `text-body-lg` (17px) or larger; only genuinely secondary captions (e.g. an email line under a button) may be smaller.
 - Avoid small font sizes for anything meant to be read (section subtitles, eyebrows, labels, captions). Prefer a `clamp()` that scales up nicely on desktop rather than tiny fixed sizes.
 - Avoid low-contrast light/grey text on light backgrounds. `text-stone` (grey) on white/warm-light is often too faint for longer or important text — prefer `text-warm-dark` or `text-burgundy`, or bump the weight, when legibility matters.
 - Make labels/eyebrows bold enough to read (they were too thin/faint by default).
