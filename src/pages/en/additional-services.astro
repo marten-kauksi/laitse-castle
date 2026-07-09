@@ -74,24 +74,31 @@ const items = ['item1', 'item2', 'item4', 'item5'];
 
       <!-- Murder mystery -->
       <a href="/en/additional-services/murder-mystery" class="group block border-t border-stone/15 pt-10 mb-10" data-animate>
-        <h3 class="font-subtitle text-[clamp(26px,3.2vw,36px)] text-burgundy group-hover:text-burgundy-hover transition-colors mb-4">Murder mystery</h3>
-        <p class="font-body text-body-lg text-warm-dark mb-3">A murder mystery dinner includes:</p>
-        <ul class="space-y-2 mb-4">
-          {[
-            'a three-course dinner in the castle halls',
-            'a glass of sparkling wine on arrival',
-            'a glass of wine',
-            'the mystery hosted by an experienced game master',
-            'prop rental on request',
-          ].map((item) => (
-            <li class="flex items-start gap-3 font-body text-body text-warm-dark">
-              <span class="text-gold mt-1" aria-hidden="true">&#9830;</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-        <p class="font-body text-body text-stone">We run murder mysteries in five languages: Estonian, English, Spanish, Finnish and Russian. The mystery together with the dinner lasts about 2.5 hours.</p>
-        <span class="inline-block mt-5 font-ui text-[15px] uppercase tracking-wider text-burgundy border-b border-burgundy/40 pb-1 group-hover:border-burgundy transition-colors">Read more →</span>
+        <div class="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+          <div class="overflow-hidden rounded">
+            <img src="/fotopank/LaitseLoss_mysteerium1a_Katrin-Luts.webp" alt="Murder mystery at Laitse Castle" class="w-full h-64 md:h-80 object-cover group-hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+          </div>
+          <div>
+            <h3 class="font-subtitle text-[clamp(26px,3.2vw,36px)] text-burgundy group-hover:text-burgundy-hover transition-colors mb-4">Murder mystery</h3>
+            <p class="font-body text-body-lg text-warm-dark mb-3">A murder mystery dinner includes:</p>
+            <ul class="space-y-2 mb-4">
+              {[
+                'a three-course dinner in the castle halls',
+                'a glass of sparkling wine on arrival',
+                'a glass of wine',
+                'the mystery hosted by an experienced game master',
+                'prop rental on request',
+              ].map((item) => (
+                <li class="flex items-start gap-3 font-body text-body text-warm-dark">
+                  <span class="text-gold mt-1" aria-hidden="true">&#9830;</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="font-body text-body text-stone">We run murder mysteries in five languages: Estonian, English, Spanish, Finnish and Russian. The mystery together with the dinner lasts about 2.5 hours.</p>
+            <span class="inline-block mt-5 font-ui text-[15px] uppercase tracking-wider text-burgundy border-b border-burgundy/40 pb-1 group-hover:border-burgundy transition-colors">Read more →</span>
+          </div>
+        </div>
       </a>
 
       <!-- Chocolate truffle workshop -->

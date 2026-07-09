@@ -74,24 +74,31 @@ const items = ['item1', 'item2', 'item4', 'item5'];
 
       <!-- Mõrvamüsteerium -->
       <a href="/lisateenused/morvamysteerium" class="group block border-t border-stone/15 pt-10 mb-10" data-animate>
-        <h3 class="font-subtitle text-[clamp(26px,3.2vw,36px)] text-burgundy group-hover:text-burgundy-hover transition-colors mb-4">Mõrvamüsteerium</h3>
-        <p class="font-body text-body-lg text-warm-dark mb-3">Mõrvamüsteeriumiga pidusöök sisaldab:</p>
-        <ul class="space-y-2 mb-4">
-          {[
-            'kolmekäigulist pidusööki lossi saalides',
-            'pokaal vahulist saabumisel',
-            'pokaal veini',
-            'müsteeriumi läbiviimist kogenud mängujuhiga',
-            'soovi korral aksessuaaride laenutust',
-          ].map((item) => (
-            <li class="flex items-start gap-3 font-body text-body text-warm-dark">
-              <span class="text-gold mt-1" aria-hidden="true">&#9830;</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-        <p class="font-body text-body text-stone">Mõrvamüsteeriume viime läbi viies keeles: eesti-, inglise-, hispaania-, soome- ja venekeelsena. Müsteerium koos pidusöögiga kestab umbes 2,5 h.</p>
-        <span class="inline-block mt-5 font-ui text-[15px] uppercase tracking-wider text-burgundy border-b border-burgundy/40 pb-1 group-hover:border-burgundy transition-colors">Loe lähemalt →</span>
+        <div class="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+          <div class="overflow-hidden rounded">
+            <img src="/fotopank/LaitseLoss_mysteerium1a_Katrin-Luts.webp" alt="Mõrvamüsteerium Laitse lossis" class="w-full h-64 md:h-80 object-cover group-hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+          </div>
+          <div>
+            <h3 class="font-subtitle text-[clamp(26px,3.2vw,36px)] text-burgundy group-hover:text-burgundy-hover transition-colors mb-4">Mõrvamüsteerium</h3>
+            <p class="font-body text-body-lg text-warm-dark mb-3">Mõrvamüsteeriumiga pidusöök sisaldab:</p>
+            <ul class="space-y-2 mb-4">
+              {[
+                'kolmekäigulist pidusööki lossi saalides',
+                'pokaal vahulist saabumisel',
+                'pokaal veini',
+                'müsteeriumi läbiviimist kogenud mängujuhiga',
+                'soovi korral aksessuaaride laenutust',
+              ].map((item) => (
+                <li class="flex items-start gap-3 font-body text-body text-warm-dark">
+                  <span class="text-gold mt-1" aria-hidden="true">&#9830;</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="font-body text-body text-stone">Mõrvamüsteeriume viime läbi viies keeles: eesti-, inglise-, hispaania-, soome- ja venekeelsena. Müsteerium koos pidusöögiga kestab umbes 2,5 h.</p>
+            <span class="inline-block mt-5 font-ui text-[15px] uppercase tracking-wider text-burgundy border-b border-burgundy/40 pb-1 group-hover:border-burgundy transition-colors">Loe lähemalt →</span>
+          </div>
+        </div>
       </a>
 
       <!-- Šokolaaditrühvlite koolitus -->
