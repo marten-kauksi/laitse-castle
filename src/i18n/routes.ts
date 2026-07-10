@@ -10,6 +10,7 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/lisateenused/sokolaadikoolitus': '/lisateenused/sokolaadikoolitus',
     '/galerii': '/galerii',
     '/hekklabyrint': '/hekklabyrint',
+    '/saalide-plaanid': '/saalide-plaanid',
   },
   en: {
     '/': '/en/',
@@ -21,6 +22,7 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/lisateenused/sokolaadikoolitus': '/en/additional-services/chocolate-workshop',
     '/galerii': '/en/gallery',
     '/hekklabyrint': '/en/hedge-maze',
+    '/saalide-plaanid': '/en/hall-plans',
   },
 };
 
@@ -35,6 +37,7 @@ export const reverseRouteMap: Record<string, string> = {
   '/lisateenused/sokolaadikoolitus': '/lisateenused/sokolaadikoolitus',
   '/galerii': '/galerii',
   '/hekklabyrint': '/hekklabyrint',
+  '/saalide-plaanid': '/saalide-plaanid',
   '/en/': '/',
   '/en/history': '/ajalugu',
   '/en/events-and-seminars': '/peod',
@@ -44,4 +47,5 @@ export const reverseRouteMap: Record<string, string> = {
   '/en/additional-services/chocolate-workshop': '/lisateenused/sokolaadikoolitus',
   '/en/gallery': '/galerii',
   '/en/hedge-maze': '/hekklabyrint',
+  '/en/hall-plans': '/saalide-plaanid',
 };

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Flourish from '../components/Flourish.astro';
+import GoldRule from '../components/GoldRule.astro';
+import TopStripe from '../components/TopStripe.astro';
+import Button from '../components/Button.astro';
+import { t } from '../i18n/utils';
+
+const locale = 'et' as const;
+
+const salong = [
+  { src: '/fotopank/LaitseLoss_Salong_kujundused_ulaud.webp', alt: 'Salongi plaan — U-laud, 24 kohta' },
+  { src: '/fotopank/LaitseLoss_Salong_kujundused_koosolek.webp', alt: 'Salongi plaan — koosolek, 32 kohta' },
+  { src: '/fotopank/LaitseLoss_Salong_kujundused_teater.webp', alt: 'Salongi plaan — teater, 64 kohta' },
+  { src: '/fotopank/LaitseLoss_Salong_kujundused_klass.webp', alt: 'Salongi plaan — klass, 40 kohta' },
+];
+const peosaal = [
+  { src: '/fotopank/LaitseLoss_Peosaal_kujundused.webp', alt: 'Peosaali plaan istekohtadega — bankett, kaks pikka lauda ja teatristiil' },
+];
+---
+
+<BaseLayout
+  title="Saalide plaanid — Laitse loss"
+  description="Laitse lossi salongi ja peosaali plaanid istekohtadega — banketist teatristiili ja klassini."
+  locale="et"
+  ogImage="/fotopank/LaitseLoss_Fuajee.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-center justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/fotopank/LaitseLoss_Fuajee.webp"
+      alt="Laitse lossi fuajee"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="relative z-10 text-center px-6 py-16 max-w-3xl mx-auto translate-y-16 md:translate-y-24">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Saalide plaanid</h1>
+    </div>
+  </section>
+
+  <!-- Sissejuhatus -->
+  <section class="section-fade-from-dark px-6 pt-16 md:pt-24 pb-8 md:pb-12">
+    <div class="max-w-3xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-6">
+        Laitse lossi salong ja peosaal sobivad koosolekuteks, seminarideks ja pidudeks. Allolevad plaanid näitavad ruumide erinevaid istumislahendusi koos kohtade arvuga.
+      </p>
+    </div>
+  </section>
+
+  <!-- Salong -->
+  <section class="px-6 pb-12 md:pb-16">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-4">Salong</h2>
+        <div class="flex justify-center"><GoldRule width="60px" /></div>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-8 md:space-y-10">
+        {salong.map((p) => (
+          <div class="bg-white rounded-lg shadow-sm p-4 md:p-8" data-animate>
+            <img src={p.src} alt={p.alt} class="w-full h-auto" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Peosaal -->
+  <section class="px-6 pb-16 md:pb-24">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-4">Peosaal</h2>
+        <div class="flex justify-center"><GoldRule width="60px" /></div>
+      </div>
+      <div class="space-y-8 md:space-y-10">
+        {peosaal.map((p) => (
+          <div class="bg-white rounded-lg shadow-sm p-4 md:p-8" data-animate>
+            <img src={p.src} alt={p.alt} class="w-full h-auto" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="kontakt" class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-body-lg text-stone mt-6 mb-8 leading-relaxed">Soovite salongi või peosaali oma ürituseks broneerida? Võtke meiega ühendust.</p>
+      <Button variant="filled" href="/#kontakt" label={t(locale, 'cta.contact')} />
+    </div>
+  </section>
+</BaseLayout>

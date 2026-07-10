@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import GoldRule from '../../components/GoldRule.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'en' as const;
+
+const salon = [
+  { src: '/fotopank/LaitseLoss_Salong_kujundused_ulaud.webp', alt: 'Salon plan — U-shape, 24 seats' },
+  { src: '/fotopank/LaitseLoss_Salong_kujundused_koosolek.webp', alt: 'Salon plan — meeting, 32 seats' },
+  { src: '/fotopank/LaitseLoss_Salong_kujundused_teater.webp', alt: 'Salon plan — theatre, 64 seats' },
+  { src: '/fotopank/LaitseLoss_Salong_kujundused_klass.webp', alt: 'Salon plan — classroom, 40 seats' },
+];
+const ballroom = [
+  { src: '/fotopank/LaitseLoss_Peosaal_kujundused.webp', alt: 'Ballroom plan with seating — banquet, two long tables and theatre style' },
+];
+---
+
+<BaseLayout
+  title="Hall plans — Laitse Castle"
+  description="Floor plans of Laitse Castle's salon and ballroom with seating — from banquet to theatre and classroom layouts."
+  locale="en"
+  ogImage="/fotopank/LaitseLoss_Fuajee.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] md:min-h-[68vh] flex items-center justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/fotopank/LaitseLoss_Fuajee.webp"
+      alt="The foyer at Laitse Castle"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="relative z-10 text-center px-6 py-16 max-w-3xl mx-auto translate-y-16 md:translate-y-24">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Hall plans</h1>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section-fade-from-dark px-6 pt-16 md:pt-24 pb-8 md:pb-12">
+    <div class="max-w-3xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-body-lg text-warm-dark leading-relaxed mt-6">
+        The salon and ballroom at Laitse Castle are well suited for meetings, seminars and celebrations. The plans below show the rooms' different seating arrangements together with the number of seats.
+      </p>
+    </div>
+  </section>
+
+  <!-- Salon -->
+  <section class="px-6 pb-12 md:pb-16">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-4">Salon</h2>
+        <div class="flex justify-center"><GoldRule width="60px" /></div>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-8 md:space-y-10">
+        {salon.map((p) => (
+          <div class="bg-white rounded-lg shadow-sm p-4 md:p-8" data-animate>
+            <img src={p.src} alt={p.alt} class="w-full h-auto" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ballroom -->
+  <section class="px-6 pb-16 md:pb-24">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8" data-animate>
+        <h2 class="font-display text-section text-warm-dark mb-4">Ballroom</h2>
+        <div class="flex justify-center"><GoldRule width="60px" /></div>
+      </div>
+      <div class="space-y-8 md:space-y-10">
+        {ballroom.map((p) => (
+          <div class="bg-white rounded-lg shadow-sm p-4 md:p-8" data-animate>
+            <img src={p.src} alt={p.alt} class="w-full h-auto" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-body-lg text-stone mt-6 mb-8 leading-relaxed">Would you like to book the salon or ballroom for your event? Get in touch with us.</p>
+      <Button variant="filled" href="/en/#contact" label={t(locale, 'cta.contact')} />
+    </div>
+  </section>
+</BaseLayout>
