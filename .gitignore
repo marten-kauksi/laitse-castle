@@ -19,3 +19,6 @@ _research/
 scraped/
 .playwright-cli/
 qa-screenshots/
+
+# Master photo originals (served as WebP from public/fotopank/, not deployed)
+Fotopank/
