@@ -24,7 +24,7 @@ firmaüritused ja seminarid: (some stock image or something)
 8. Mida pakume: (teenuste loetelu) ruumide rent, kaunistus ja dekoreerimine, toitlustus
 9. CTA: Broneeri oma sündmus
     Rääkige meile oma soovidest ja leiame koos parima lahenduse.
-    +372 5330 0206, info@laitsecastle.ee
+    +372 5421 0881, info@laitsecastle.ee
 10. Make privacy policy and terms of service
     Privaatsuspoliitika, Üld- ja tellimistingimused
 

@@ -128,7 +128,7 @@ Broneerige sündmus, Jagage oma visiooni – aitame selle parimal kujul ellu vii
 Book an event, Share your vision – we will help you bring it to life in the best possible way
 
 
-Kontakt: +372 5330 0206, info@laitsecastle.ee
+Kontakt: +372 5421 0881, info@laitsecastle.ee
 Contact
 
 
