@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import TopStripe from '../../components/TopStripe.astro';
+import Button from '../../components/Button.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'en' as const;
+
+const menus = [
+  { src: '/fotopank/LaitseLoss_Menu1-ENG.webp', alt: 'Laitse Castle summer terrace café menu' },
+  { src: '/fotopank/LaitseLoss_Menu2-ENG.webp', alt: 'Laitse Castle summer terrace café menu' },
+];
+---
+
+<BaseLayout
+  title="Menu — Laitse Castle"
+  description="Laitse Castle summer terrace café menu — delicious food and refreshing drinks."
+  locale="en"
+  ogImage="/fotopank/LaitseLoss_Terrass1.webp"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[50vh] md:min-h-[56vh] flex items-center justify-center overflow-hidden">
+    <TopStripe />
+    <img
+      src="/fotopank/LaitseLoss_Terrass1.webp"
+      alt="Laitse Castle summer terrace"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="relative z-10 text-center px-6 py-16 max-w-3xl mx-auto -translate-y-10 md:-translate-y-16">
+      <h1 class="font-display text-hero text-warm-white text-overlay hero-enter" style="--delay: 0ms">Menu</h1>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section-fade-from-dark px-6 pt-16 md:pt-24 pb-8 md:pb-12">
+    <div class="max-w-3xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-subtitle text-[clamp(24px,3vw,34px)] italic text-burgundy mt-6">Laitse Castle summer terrace café</p>
+    </div>
+  </section>
+
+  <!-- Menu files -->
+  <section class="px-6 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto space-y-8 md:space-y-12">
+      {menus.map((m) => (
+        <div class="bg-white rounded-lg shadow-sm p-4 md:p-8" data-animate>
+          <img src={m.src} alt={m.alt} class="w-full h-auto" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center" data-animate>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-body-lg text-warm-dark mt-6 mb-8 leading-relaxed">Open Thursday to Sunday, 12–20. Come and enjoy delicious food and refreshing drinks!</p>
+      <Button variant="filled" href="/en/#contact" label={t(locale, 'cta.contact')} />
+    </div>
+  </section>
+</BaseLayout>

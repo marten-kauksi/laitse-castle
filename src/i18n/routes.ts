@@ -11,6 +11,7 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/galerii': '/galerii',
     '/hekklabyrint': '/hekklabyrint',
     '/saalide-plaanid': '/saalide-plaanid',
+    '/menuu': '/menuu',
   },
   en: {
     '/': '/en/',
@@ -23,6 +24,7 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/galerii': '/en/gallery',
     '/hekklabyrint': '/en/hedge-maze',
     '/saalide-plaanid': '/en/hall-plans',
+    '/menuu': '/en/menu',
   },
 };
 
@@ -38,6 +40,7 @@ export const reverseRouteMap: Record<string, string> = {
   '/galerii': '/galerii',
   '/hekklabyrint': '/hekklabyrint',
   '/saalide-plaanid': '/saalide-plaanid',
+  '/menuu': '/menuu',
   '/en/': '/',
   '/en/history': '/ajalugu',
   '/en/events-and-seminars': '/peod',
@@ -48,4 +51,5 @@ export const reverseRouteMap: Record<string, string> = {
   '/en/gallery': '/galerii',
   '/en/hedge-maze': '/hekklabyrint',
   '/en/hall-plans': '/saalide-plaanid',
+  '/en/menu': '/menuu',
 };
