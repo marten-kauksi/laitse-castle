@@ -21,4 +21,6 @@ scraped/
 qa-screenshots/
 
 # Master photo originals (served as WebP from public/fotopank/, not deployed)
-Fotopank/
+# Leading slash anchors to repo root so it does NOT also match public/fotopank/
+# (the filesystem is case-insensitive, so an unanchored "Fotopank/" caught both)
+/Fotopank/
