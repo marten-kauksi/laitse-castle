@@ -4,6 +4,9 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://laitsecastle.ee',
+  redirects: {
+    '/en/events-and-seminars': '/en/events',
+  },
   i18n: {
     defaultLocale: 'et',
     locales: ['et', 'en'],
