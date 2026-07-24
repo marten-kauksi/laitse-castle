@@ -2,7 +2,11 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
+import PostHog from '../components/PostHog.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { getAlternatePath, type Locale } from '../i18n/utils';
+
+const posthogEnabled = Boolean(import.meta.env.PUBLIC_POSTHOG_KEY);
 
 interface Props {
   title?: string;
@@ -124,6 +128,7 @@ const websiteSchema = {
     <SchemaOrg schema={organizationSchema} />
     <SchemaOrg schema={websiteSchema} />
     {pageSchema && <SchemaOrg schema={pageSchema} />}
+    <PostHog />
   </head>
   <body class="bg-warm-white text-warm-dark font-body antialiased">
     <Header locale={locale} />
@@ -131,6 +136,7 @@ const websiteSchema = {
       <slot />
     </main>
     <Footer locale={locale} />
+    {posthogEnabled && <CookieConsent locale={locale} />}
   </body>
 </html>
 

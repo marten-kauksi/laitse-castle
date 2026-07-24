@@ -1,0 +1,91 @@
+---
+import { t } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'et' } = Astro.props;
+const privacyHref = locale === 'en' ? '/en/privacy-policy' : '/privaatsuspoliitika';
+---
+
+<div
+  id="cookie-consent"
+  class="fixed inset-x-0 bottom-0 z-[100] p-4 md:p-6 pointer-events-none hidden"
+  role="dialog"
+  aria-labelledby="cookie-consent-title"
+  aria-describedby="cookie-consent-desc"
+  data-locale={locale}
+>
+  <div class="pointer-events-auto max-w-3xl mx-auto bg-warm-dark text-warm-white shadow-xl border border-gold/20 px-5 py-5 md:px-7 md:py-6">
+    <h2 id="cookie-consent-title" class="font-ui text-sm uppercase tracking-wider text-gold-light mb-2">
+      {t(locale, 'consent.title')}
+    </h2>
+    <p id="cookie-consent-desc" class="font-body text-sm text-warm-white/80 leading-relaxed mb-5">
+      {t(locale, 'consent.body')}
+      {' '}
+      <a href={privacyHref} class="underline decoration-gold/50 hover:decoration-gold text-warm-white">
+        {t(locale, 'consent.privacyLink')}
+      </a>
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <button
+        type="button"
+        id="cookie-consent-accept"
+        class="font-ui uppercase tracking-wider text-[13px] px-5 py-3 min-h-[44px] bg-burgundy text-warm-white hover:bg-burgundy/90 transition-colors"
+      >
+        {t(locale, 'consent.accept')}
+      </button>
+      <button
+        type="button"
+        id="cookie-consent-decline"
+        class="font-ui uppercase tracking-wider text-[13px] px-5 py-3 min-h-[44px] border border-warm-white/30 text-warm-white hover:border-warm-white/60 transition-colors"
+      >
+        {t(locale, 'consent.decline')}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const CONSENT_KEY = 'laitse_recording_consent';
+  const banner = document.getElementById('cookie-consent');
+  const acceptBtn = document.getElementById('cookie-consent-accept');
+  const declineBtn = document.getElementById('cookie-consent-decline');
+
+  function hideBanner() {
+    banner?.classList.add('hidden');
+  }
+
+  function showBanner() {
+    banner?.classList.remove('hidden');
+  }
+
+  function decide(accepted: boolean) {
+    const setter = (window as Window & {
+      __laitseSetRecordingConsent?: (accepted: boolean) => void;
+    }).__laitseSetRecordingConsent;
+
+    if (typeof setter === 'function') {
+      setter(accepted);
+    } else {
+      try {
+        localStorage.setItem(CONSENT_KEY, accepted ? 'granted' : 'denied');
+      } catch {
+        /* ignore */
+      }
+    }
+    hideBanner();
+  }
+
+  try {
+    const existing = localStorage.getItem(CONSENT_KEY);
+    if (!existing) showBanner();
+  } catch {
+    showBanner();
+  }
+
+  acceptBtn?.addEventListener('click', () => decide(true));
+  declineBtn?.addEventListener('click', () => decide(false));
+</script>

@@ -67,6 +67,12 @@ const currentYear = new Date().getFullYear();
         <p class="font-ui text-xs text-warm-white/40">
           &copy; {currentYear} Nevaliste O&Uuml;
         </p>
+        <a
+          href={locale === 'en' ? '/en/privacy-policy' : '/privaatsuspoliitika'}
+          class="font-ui text-xs uppercase tracking-wider text-warm-white/40 hover:text-gold-light transition-colors min-h-[44px] inline-flex items-center"
+        >
+          {t(locale, 'footer.privacy')}
+        </a>
       </div>
     </div>
   </div>

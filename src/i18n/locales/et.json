@@ -15,6 +15,13 @@
   "footer.brand": "Laitse loss",
   "footer.address": "Lossi tee 9, 76302 Laitse, Harjumaa",
   "footer.mapTitle": "Laitse Loss kaardil",
+  "footer.privacy": "Privaatsuspoliitika",
+
+  "consent.title": "Küpsised sessiooni salvestuseks",
+  "consent.body": "Kasutame PostHogi analüütikat lehekülastuste mõõtmiseks (ilma küpsisteta). Sessioonisalvestuseks vajame teie nõusolekut küpsiste kasutamiseks.",
+  "consent.privacyLink": "Loe privaatsuspoliitikat",
+  "consent.accept": "Nõustun",
+  "consent.decline": "Keeldun",
 
   "contact.tel": "Tel:",
   "contact.email": "E-post:",
