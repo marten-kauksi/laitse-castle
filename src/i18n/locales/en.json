@@ -15,6 +15,13 @@
   "footer.brand": "Laitse Castle",
   "footer.address": "Lossi tee 9, 76302 Laitse, Harju County",
   "footer.mapTitle": "Laitse Castle on the map",
+  "footer.privacy": "Privacy policy",
+
+  "consent.title": "Cookies for session recording",
+  "consent.body": "We use PostHog analytics to measure page visits (without cookies). Session recording needs your consent to use cookies.",
+  "consent.privacyLink": "Read the privacy policy",
+  "consent.accept": "Accept",
+  "consent.decline": "Decline",
 
   "contact.tel": "Tel:",
   "contact.email": "Email:",

@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privaatsuspoliitika — Laitse loss"
+  description="Kuidas Nevaliste OÜ töötleb isikuandmeid laitsecastle.ee veebilehel, sh PostHog analüütika ja sessioonisalvestus."
+  locale="et"
+>
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-prose mx-auto">
+      <h1 class="font-display text-hero text-warm-dark mb-8">Privaatsuspoliitika</h1>
+
+      <div class="font-body text-body-lg text-stone leading-relaxed space-y-6">
+        <p>
+          Käesolev privaatsuspoliitika selgitab, kuidas Nevaliste OÜ (Laitse loss)
+          kogub, kasutab ja kaitseb teie isikuandmeid veebilehe
+          <strong class="font-medium text-warm-dark">laitsecastle.ee</strong> kasutamisel.
+        </p>
+
+        <h2 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mt-10 mb-4">Vastutav töötleja</h2>
+        <p>
+          Andmete vastutav töötleja on Nevaliste OÜ.
+          Kontakt: <a href="mailto:info@laitsecastle.ee" class="text-burgundy hover:underline">info@laitsecastle.ee</a>,
+          tel <a href="tel:+37254210881" class="text-burgundy hover:underline">+372 5421 0881</a>.
+          Aadress: Lossi tee 9, 76302 Laitse, Harjumaa, Eesti.
+        </p>
+
+        <h2 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mt-10 mb-4">Milliseid andmeid me töötleme</h2>
+        <p>
+          <strong class="font-medium text-warm-dark">Teie esitatud andmed.</strong>
+          Kui võtate meiega ühendust e-posti või telefoni teel, töötleme teie kontaktandmeid
+          ja päringu sisu, et vastata ja broneeringut korraldada.
+        </p>
+        <p>
+          <strong class="font-medium text-warm-dark">Veebianalüütika (PostHog, EL).</strong>
+          Kasutame PostHogi Euroopa Liidu pilveteenust (eu.i.posthog.com), et mõista,
+          kuidas veebilehte kasutatakse — näiteks külastatud lehed, viiteallikas, seade
+          ja ligikaudne asukoht. Vaikimisi toimub see <em>küpsisteta</em> režiimis
+          (andmed hoitakse brauseri mälus sessiooni jooksul).
+        </p>
+        <p>
+          <strong class="font-medium text-warm-dark">Sessioonisalvestus (ainult nõusolekul).</strong>
+          Kui nõustute küpsistega, võib PostHog salvestada teie sessiooni (lehel liikumine,
+          klikid), et aidata meil veebilehte parandada. Selleks kasutatakse küpsiseid /
+          kohalikku salvestust külastaja eristamiseks. Salvestus on välja lülitatud,
+          kuni annate nõusoleku.
+        </p>
+
+        <h2 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mt-10 mb-4">Õiguslik alus</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Kontaktipäringud — lepingu sõlmimisele eelnevad sammud / õigustatud huvi teenindada teie päringut.</li>
+          <li>Küpsisteta analüütika — õigustatud huvi mõista veebilehe kasutust ja seda parandada.</li>
+          <li>Sessioonisalvestus ja seotud küpsised — teie nõusolek (saate sellest keelduda või hiljem muuta).</li>
+        </ul>
+
+        <h2 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mt-10 mb-4">Andmete jagamine</h2>
+        <p>
+          Analüütikaandmeid töötleb meie nimel PostHog Inc. Euroopa Liidu teenuskeskkonnas.
+          Me ei müü teie isikuandmeid. Kontaktipäringute andmeid ei jaga me kolmandate
+          osapooltega peale teenuse osutamiseks vajalike töötlejate.
+        </p>
+
+        <h2 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mt-10 mb-4">Säilitamine</h2>
+        <p>
+          Kontaktipäringuid säilitame nii kaua, kui on vaja päringule vastamiseks ja
+          broneeringu korraldamiseks. PostHogi analüütikaandmete säilitamine järgib
+          meie PostHogi projekti seadistust (vabaplaanil tavaliselt kuni 1 aasta).
+        </p>
+
+        <h2 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mt-10 mb-4">Teie õigused</h2>
+        <p>
+          GDPR kohaselt on teil õigus tutvuda oma andmetega, nõuda parandamist või
+          kustutamist, piirata töötlemist, esitada vastuväide ning nõusoleku korral
+          nõusolek tagasi võtta. Küsimuste või taotluste korral kirjutage
+          <a href="mailto:info@laitsecastle.ee" class="text-burgundy hover:underline">info@laitsecastle.ee</a>.
+          Samuti on teil õigus esitada kaebus Andmekaitse Inspektsioonile.
+        </p>
+
+        <h2 class="font-subtitle text-[clamp(22px,2vw,28px)] text-warm-dark mt-10 mb-4">Muudatused</h2>
+        <p>
+          Võime seda poliitikat uuendada. Kehtiv versioon on alati avaldatud sellel lehel.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
