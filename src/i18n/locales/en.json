@@ -17,8 +17,8 @@
   "footer.mapTitle": "Laitse Castle on the map",
   "footer.privacy": "Privacy policy",
 
-  "consent.title": "Cookies for session recording",
-  "consent.body": "We use PostHog analytics to measure page visits (without cookies). Session recording needs your consent to use cookies.",
+  "consent.title": "Cookies",
+  "consent.body": "We use cookies to understand how the site is used and to improve it.",
   "consent.privacyLink": "Read the privacy policy",
   "consent.accept": "Accept",
   "consent.decline": "Decline",
