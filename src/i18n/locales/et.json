@@ -17,8 +17,8 @@
   "footer.mapTitle": "Laitse Loss kaardil",
   "footer.privacy": "Privaatsuspoliitika",
 
-  "consent.title": "Küpsised sessiooni salvestuseks",
-  "consent.body": "Kasutame PostHogi analüütikat lehekülastuste mõõtmiseks (ilma küpsisteta). Sessioonisalvestuseks vajame teie nõusolekut küpsiste kasutamiseks.",
+  "consent.title": "Küpsised",
+  "consent.body": "Kasutame küpsiseid, et mõista, kuidas veebilehte kasutatakse, ja seda paremaks muuta.",
   "consent.privacyLink": "Loe privaatsuspoliitikat",
   "consent.accept": "Nõustun",
   "consent.decline": "Keeldun",
