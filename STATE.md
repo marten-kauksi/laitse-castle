@@ -1,6 +1,6 @@
 # Laitse Loss — Project State
 
-**Last updated:** 2026-03-12
+**Last updated:** 2026-07-27
 
 ## Overall Roadmap
 
@@ -12,6 +12,35 @@
 | 4. Astro Build | **Done** |
 | 5. SEO & Assets | Not started |
 | 6. Launch | Not started |
+| 7. Guest check-in (Turismiseadus § 24) | **Code done — migration not yet applied** |
+
+## Phase 7: Guest Check-In
+
+Statutory guest register under [Turismiseadus § 24](https://www.riigiteataja.ee/akt/113032014069?leiaKehtiv).
+Design: `docs/superpowers/specs/2026-07-27-guest-check-in-design.md`
+
+| Item | Status |
+|------|--------|
+| SQL migration (table, RLS, 2 cron jobs) | Written — **not yet run** |
+| Email notification via Resend + `pg_net` trigger | Written — **not yet run**, needs Resend domain + Vault secrets |
+| ET `/registreerimine` + EN `/en/check-in` | Done, verified in browser |
+| ISO country list (198, ET/EN, locale-sorted) | Done |
+| PostHog + cookie banner suppressed on these routes | Done, verified in build output |
+| Privacy policy sections (ET + EN) | Done |
+| `scripts/verify-rls.mjs` | Written — **not yet run** |
+
+**Blocking go-live:**
+
+1. Run `supabase/migrations/20260727000000_guest_registrations.sql` in the Supabase SQL editor.
+2. Enable the `pg_cron` extension (Dashboard → Database → Extensions) — without it the
+   two-year deletion required by § 24(7) never happens.
+3. Run `node --env-file=.env scripts/verify-rls.mjs` and confirm all 7 checks pass.
+3b. *(Optional)* For email alerts: verify laitsecastle.ee in Resend, store
+    `resend_api_key` + `checkin_notify_to` in Vault, then run migration `…0001`.
+4. Set `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_PUBLISHABLE_KEY` in Vercel (build-time
+   inlined — needs a redeploy).
+5. Confirm Nevaliste OÜ is registered as a *majutusettevõte* in MTR.
+6. Restrict Supabase dashboard access + enable 2FA — it reads the full guest register.
 
 ## Phase 4: Build Progress
 

@@ -1,0 +1,446 @@
+---
+/**
+ * Guest check-in form — Turismiseadus § 24.
+ *
+ * Posts straight to PostgREST with fetch(). No Supabase SDK: this is a single
+ * INSERT and the site is otherwise dependency-free.
+ *
+ * Security lives entirely in Postgres. The publishable key below is public by
+ * design and grants INSERT only — see supabase/migrations/*_guest_registrations.sql.
+ */
+import CheckInGuestBlock from './CheckInGuestBlock.astro';
+import { t, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL ?? '';
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? '';
+const configured = Boolean(supabaseUrl && supabaseKey);
+
+const labelClass = 'block font-ui text-[16px] font-bold text-warm-dark mb-2';
+const inputClass =
+  'w-full font-body text-[17px] text-warm-dark bg-white border border-stone/40 rounded-sm px-4 py-3 min-h-[52px] ' +
+  'transition-colors focus:outline-none focus:border-burgundy focus:ring-2 focus:ring-burgundy/25';
+const errorClass = 'mt-2 font-ui text-[15px] text-burgundy font-bold empty:hidden';
+
+// Runtime strings for the bundled client script, which cannot call t().
+const strings = {
+  submit: t(locale, 'checkin.submit'),
+  submitting: t(locale, 'checkin.submitting'),
+  summary: t(locale, 'checkin.error.summary'),
+  required: t(locale, 'checkin.error.required'),
+  dates: t(locale, 'checkin.error.dates'),
+  dobFuture: t(locale, 'checkin.error.dobFuture'),
+  phone: t(locale, 'checkin.error.phone'),
+  email: t(locale, 'checkin.error.email'),
+  generic: t(locale, 'checkin.error.generic'),
+  network: t(locale, 'checkin.error.network'),
+};
+---
+
+<div class="max-w-3xl mx-auto">
+  {!configured && (
+    <p class="mb-8 p-5 border border-burgundy bg-burgundy/5 rounded-sm font-body text-[17px] text-burgundy">
+      {t(locale, 'checkin.notConfigured')}
+    </p>
+  )}
+
+  <noscript>
+    <p class="mb-8 p-5 border border-burgundy bg-burgundy/5 rounded-sm font-body text-[17px] text-burgundy">
+      {t(locale, 'checkin.noscript')}
+    </p>
+  </noscript>
+
+  <!-- Success -->
+  <div id="checkin-success" class="hidden text-center py-12" role="status" aria-live="polite">
+    <h2 class="font-display text-section text-burgundy mb-5">{t(locale, 'checkin.success.title')}</h2>
+    <p class="font-body text-body-lg text-warm-dark leading-relaxed mb-8">{t(locale, 'checkin.success.body')}</p>
+    <button
+      type="button" id="checkin-reset"
+      class="font-ui uppercase tracking-wider text-[14px] inline-flex items-center justify-center px-10 py-4 min-h-[44px] rounded-sm border border-burgundy text-burgundy transition-all duration-300 hover:bg-burgundy hover:text-warm-white"
+    >
+      {t(locale, 'checkin.success.again')}
+    </button>
+  </div>
+
+  <form id="checkin-form" novalidate data-locale={locale} data-supabase-url={supabaseUrl} data-supabase-key={supabaseKey}>
+    <!-- Error summary -->
+    <div
+      id="checkin-error" role="alert"
+      class="hidden mb-8 p-5 border border-burgundy bg-burgundy/5 rounded-sm font-body text-[17px] text-burgundy leading-relaxed"
+    ></div>
+
+    <!-- ═══ Stay ═══ -->
+    <fieldset class="border border-stone/25 rounded-sm p-5 md:p-7 mb-8">
+      <legend class="px-3 font-subtitle text-[clamp(24px,2.6vw,32px)] text-burgundy">
+        {t(locale, 'checkin.stay.heading')}
+      </legend>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        <div>
+          <label class={labelClass} for="arrival-date">{t(locale, 'checkin.field.arrival')}</label>
+          <input type="date" id="arrival-date" required class={inputClass} aria-describedby="arrival-date-err" />
+          <p class={errorClass} id="arrival-date-err" data-error role="alert"></p>
+        </div>
+
+        <div>
+          <label class={labelClass} for="departure-date">{t(locale, 'checkin.field.departure')}</label>
+          <input type="date" id="departure-date" required class={inputClass} aria-describedby="departure-date-err" />
+          <p class={errorClass} id="departure-date-err" data-error role="alert"></p>
+        </div>
+
+        <div>
+          <label class={labelClass} for="purpose">{t(locale, 'checkin.field.purpose')}</label>
+          <select id="purpose" required class={inputClass} aria-describedby="purpose-err">
+            <option value="">{t(locale, 'checkin.purpose.placeholder')}</option>
+            <option value="leisure">{t(locale, 'checkin.purpose.leisure')}</option>
+            <option value="business">{t(locale, 'checkin.purpose.business')}</option>
+            <option value="other">{t(locale, 'checkin.purpose.other')}</option>
+          </select>
+          <p class={errorClass} id="purpose-err" data-error role="alert"></p>
+        </div>
+
+        <div>
+          <label class={labelClass} for="minors">
+            {t(locale, 'checkin.field.minors')}
+            <span class="block font-ui text-[15px] font-normal text-stone mt-1">
+              {t(locale, 'checkin.field.minors.help')}
+            </span>
+          </label>
+          <input type="number" id="minors" value="0" min="0" max="20" inputmode="numeric"
+                 class={inputClass} aria-describedby="minors-err" />
+          <p class={errorClass} id="minors-err" data-error role="alert"></p>
+        </div>
+
+        <div>
+          <label class={labelClass} for="phone">{t(locale, 'checkin.field.phone')}</label>
+          <input type="tel" id="phone" autocomplete="tel" maxlength="25" required
+                 class={`${inputClass} ph-no-capture`} aria-describedby="phone-err" />
+          <p class={errorClass} id="phone-err" data-error role="alert"></p>
+        </div>
+
+        <div>
+          <label class={labelClass} for="email">
+            {t(locale, 'checkin.field.email')}
+            <span class="font-normal text-stone lowercase"> — {t(locale, 'checkin.optional')}</span>
+          </label>
+          <input type="email" id="email" autocomplete="email" maxlength="254"
+                 class={`${inputClass} ph-no-capture`} aria-describedby="email-err" />
+          <p class={errorClass} id="email-err" data-error role="alert"></p>
+        </div>
+      </div>
+
+      <p class="mt-5 font-body text-[16px] text-stone leading-relaxed">
+        {t(locale, 'checkin.contact.help')}
+      </p>
+    </fieldset>
+
+    <!-- ═══ Guests ═══ -->
+    <div id="checkin-guests" class="space-y-8">
+      <CheckInGuestBlock locale={locale} index={0} />
+    </div>
+
+    <div class="mt-6">
+      <button
+        type="button" id="checkin-add-guest"
+        class="font-ui text-[16px] font-bold text-burgundy underline underline-offset-4 min-h-[44px] px-2 hover:text-burgundy-hover"
+      >
+        + {t(locale, 'checkin.addGuest')}
+      </button>
+    </div>
+
+    <!-- Honeypot. Only stops bots that render the page; a script posting straight
+         to PostgREST is stopped by RLS and CHECK constraints instead. -->
+    <div aria-hidden="true" class="absolute w-px h-px -left-[9999px] overflow-hidden">
+      <label for="checkin-website">Website</label>
+      <input type="text" id="checkin-website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="mt-10 text-center">
+      <button
+        type="submit" id="checkin-submit" disabled={!configured}
+        class="btn-filled font-ui uppercase tracking-wider text-[14px] inline-flex items-center justify-center px-12 py-4 min-h-[52px] rounded-sm bg-burgundy text-warm-white shadow-md transition-all duration-300 hover:shadow-lg hover:brightness-110 hover:-translate-y-[1px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+      >
+        {t(locale, 'checkin.submit')}
+      </button>
+    </div>
+
+    <!-- GDPR Art. 13 notice, kept with the submit button so it sits at the
+         moment of collection. Links to the guest-specific notice, NOT the
+         website privacy policy — different purpose, basis and retention. -->
+    <p class="mt-8 font-body text-[16px] text-stone leading-relaxed text-center max-w-xl mx-auto">
+      {t(locale, 'checkin.legal.note')}{' '}
+      <a
+        href={locale === 'en' ? '/en/check-in/privacy' : '/registreerimine/privaatsus'}
+        class="text-burgundy font-bold underline underline-offset-4 hover:text-burgundy-hover"
+      >
+        {t(locale, 'checkin.privacy.link')}
+      </a>
+    </p>
+  </form>
+
+  <!-- Cloned by the client script; __I__ is replaced with the guest index. -->
+  <template id="checkin-guest-template">
+    <CheckInGuestBlock locale={locale} index="__I__" removable={true} />
+  </template>
+
+  <script is:inline type="application/json" id="checkin-strings" set:html={JSON.stringify(strings)} />
+</div>
+
+<style>
+  .btn-filled {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent 50%, rgba(0,0,0,0.1));
+  }
+</style>
+
+<script>
+  import { needsTravelDocument } from '../lib/countries';
+
+  const form = document.getElementById('checkin-form') as HTMLFormElement | null;
+  if (form) {
+    const S = JSON.parse(document.getElementById('checkin-strings')!.textContent || '{}');
+    const guestsEl = document.getElementById('checkin-guests')!;
+    const template = document.getElementById('checkin-guest-template') as HTMLTemplateElement;
+    const errorBox = document.getElementById('checkin-error')!;
+    const successBox = document.getElementById('checkin-success')!;
+    const submitBtn = document.getElementById('checkin-submit') as HTMLButtonElement;
+    const honeypot = document.getElementById('checkin-website') as HTMLInputElement;
+
+    const SUPABASE_URL = form.dataset.supabaseUrl || '';
+    const SUPABASE_KEY = form.dataset.supabaseKey || '';
+    const LOCALE = form.dataset.locale || 'et';
+
+    const today = new Date().toISOString().slice(0, 10);
+    document.querySelectorAll<HTMLInputElement>('input[data-field="date_of_birth"]')
+      .forEach((el) => el.setAttribute('max', today));
+
+    // ── Conditional § 24(3) document fields ────────────────────────────────
+    /**
+     * Reveal the § 24(3) document fields only for guests the clause covers.
+     * § 24(2) exempts EEA/Swiss citizens AND third-country nationals resident in
+     * Estonia — the latter inferred from country of residence, which the guest
+     * has already answered. `data-doc-required` is the single source of truth,
+     * read again during validation and when building the payload, and mirrored
+     * by the turs_24_3_document_required CHECK constraint in Postgres.
+     */
+    function syncGuest(block: HTMLElement) {
+      const citizenship = block.querySelector<HTMLSelectElement>('[data-field="citizenship"]')!.value;
+      const residence = block.querySelector<HTMLSelectElement>('[data-field="country_of_residence"]')!.value;
+
+      const docsRequired = needsTravelDocument(citizenship, residence);
+      block.dataset.docRequired = String(docsRequired);
+      block.querySelector<HTMLElement>('[data-document-group]')!.classList.toggle('hidden', !docsRequired);
+
+      // Clear anything typed before the guest switched to an exempt citizenship,
+      // so a hidden field can never smuggle a value into the payload.
+      if (!docsRequired) {
+        for (const name of ['document_type', 'document_number', 'document_country']) {
+          (block.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLSelectElement).value = '';
+        }
+      }
+    }
+
+    function wireGuest(block: HTMLElement) {
+      block.querySelector('[data-field="citizenship"]')!
+        .addEventListener('change', () => syncGuest(block));
+      block.querySelector('[data-field="country_of_residence"]')!
+        .addEventListener('change', () => syncGuest(block));
+      block.querySelector('[data-remove-guest]')
+        ?.addEventListener('click', () => { block.remove(); renumber(); });
+      syncGuest(block);
+    }
+
+    function renumber() {
+      guestsEl.querySelectorAll<HTMLElement>('[data-guest]').forEach((b, n) => {
+        const label = b.querySelector('[data-guest-number]');
+        if (label) label.textContent = String(n + 1);
+      });
+    }
+
+    document.getElementById('checkin-add-guest')!.addEventListener('click', () => {
+      const index = guestsEl.querySelectorAll('[data-guest]').length;
+      const holder = document.createElement('div');
+      holder.innerHTML = template.innerHTML.replaceAll('__I__', String(index));
+      const block = holder.firstElementChild as HTMLElement;
+      guestsEl.appendChild(block);
+      block.querySelector<HTMLInputElement>('input[data-field="date_of_birth"]')!.setAttribute('max', today);
+      wireGuest(block);
+      renumber();
+      block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      block.querySelector<HTMLInputElement>('[data-field="given_names"]')!.focus();
+    });
+
+    guestsEl.querySelectorAll<HTMLElement>('[data-guest]').forEach(wireGuest);
+
+    // ── Validation ─────────────────────────────────────────────────────────
+    function setError(el: HTMLElement, message: string) {
+      const holder = el.parentElement!.querySelector('[data-error]');
+      if (holder) holder.textContent = message;
+      el.setAttribute('aria-invalid', message ? 'true' : 'false');
+      return !message;
+    }
+
+    function clearErrors() {
+      form!.querySelectorAll('[data-error]').forEach((e) => (e.textContent = ''));
+      form!.querySelectorAll('[aria-invalid]').forEach((e) => e.setAttribute('aria-invalid', 'false'));
+      errorBox.classList.add('hidden');
+      errorBox.textContent = '';
+    }
+
+    const val = (id: string) => (document.getElementById(id) as HTMLInputElement).value.trim();
+    const req = (el: HTMLInputElement | HTMLSelectElement) =>
+      setError(el, el.value.trim() ? '' : S.required);
+
+    function validate() {
+      clearErrors();
+      let ok = true;
+      const bad: HTMLElement[] = [];
+
+      const mark = (el: HTMLElement, good: boolean) => {
+        if (!good) { ok = false; bad.push(el); }
+      };
+
+      const arrival = document.getElementById('arrival-date') as HTMLInputElement;
+      const departure = document.getElementById('departure-date') as HTMLInputElement;
+      const purpose = document.getElementById('purpose') as HTMLSelectElement;
+      const phone = document.getElementById('phone') as HTMLInputElement;
+      const email = document.getElementById('email') as HTMLInputElement;
+
+      mark(arrival, req(arrival));
+      mark(departure, req(departure));
+      mark(purpose, req(purpose));
+
+      if (arrival.value && departure.value && departure.value < arrival.value) {
+        mark(departure, setError(departure, S.dates));
+      }
+
+      mark(phone, req(phone));
+      if (phone.value.trim() && !/^[+0-9][0-9 ()\-]{4,24}$/.test(phone.value.trim())) {
+        mark(phone, setError(phone, S.phone));
+      }
+      if (email.value.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())) {
+        mark(email, setError(email, S.email));
+      }
+
+      guestsEl.querySelectorAll<HTMLElement>('[data-guest]').forEach((block) => {
+        const f = (name: string) =>
+          block.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLSelectElement;
+
+        for (const name of ['given_names', 'surname', 'date_of_birth', 'citizenship', 'country_of_residence']) {
+          mark(f(name), req(f(name)));
+        }
+
+        const dob = f('date_of_birth') as HTMLInputElement;
+        if (dob.value && dob.value > today) mark(dob, setError(dob, S.dobFuture));
+
+        // § 24(3): non-EEA without Estonian residence must supply document details.
+        // Everyone else may leave them blank.
+        if (block.dataset.docRequired === 'true') {
+          for (const name of ['document_type', 'document_number', 'document_country']) {
+            mark(f(name), req(f(name)));
+          }
+        }
+      });
+
+      if (!ok) {
+        errorBox.textContent = S.summary;
+        errorBox.classList.remove('hidden');
+        bad[0]?.focus();
+        bad[0]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return ok;
+    }
+
+    // ── Submit ─────────────────────────────────────────────────────────────
+    function buildRows() {
+      const stay = {
+        arrival_date: val('arrival-date'),
+        departure_date: val('departure-date'),
+        purpose_of_travel: val('purpose'),
+        accompanying_minors: Number(val('minors') || 0),
+        phone: val('phone'),
+        email: val('email') || null,
+        locale: LOCALE,
+      };
+
+      return Array.from(guestsEl.querySelectorAll<HTMLElement>('[data-guest]')).map((block) => {
+        const f = (name: string) =>
+          (block.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLSelectElement).value.trim();
+        // Document fields are optional for most guests. Blanks MUST go as null:
+        // '' fails the char(2) and enum CHECK constraints and the row is rejected.
+        const orNull = (name: string) => f(name) || null;
+
+        return {
+          ...stay,
+          given_names: f('given_names'),
+          surname: f('surname'),
+          date_of_birth: f('date_of_birth'),
+          citizenship: f('citizenship'),
+          country_of_residence: f('country_of_residence'),
+          // Column retained so the § 24(2) exemption can be reinstated without a
+          // migration; the form no longer asks, so it is always false.
+          has_estonian_residence: false,
+          document_type: orNull('document_type'),
+          document_number: orNull('document_number'),
+          document_country: orNull('document_country'),
+        };
+      });
+    }
+
+    function showSuccess() {
+      form!.classList.add('hidden');
+      successBox.classList.remove('hidden');
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // Bot filled the hidden field — report success, insert nothing.
+      if (honeypot.value) { showSuccess(); return; }
+
+      if (!validate()) return;
+      if (!SUPABASE_URL || !SUPABASE_KEY) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = S.submitting;
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/guest_registrations`, {
+          method: 'POST',
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json',
+            Prefer: 'return=minimal',
+          },
+          body: JSON.stringify(buildRows()),
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        showSuccess();
+      } catch (error) {
+        errorBox.textContent = error instanceof TypeError ? S.network : S.generic;
+        errorBox.classList.remove('hidden');
+        errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = S.submit;
+      }
+    });
+
+    document.getElementById('checkin-reset')!.addEventListener('click', () => {
+      form!.reset();
+      guestsEl.querySelectorAll<HTMLElement>('[data-guest]').forEach((b, n) => { if (n > 0) b.remove(); });
+      guestsEl.querySelectorAll<HTMLElement>('[data-guest]').forEach(syncGuest);
+      clearErrors();
+      successBox.classList.add('hidden');
+      form!.classList.remove('hidden');
+      form!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+</script>

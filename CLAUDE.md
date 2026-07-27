@@ -17,6 +17,10 @@ Laitse Lossi (Laitse Castle) — event venue website for a castle in Estonia. Ne
 
 Claude MAY run git operations (add, commit, push), but **always ask for confirmation before running any git command** — never do it unprompted. "Pane live" / "make it live" means `git push` to `origin` (auto-deploy publishes the site).
 
+## IMPORTANT: Duplicated Page Files (ET/EN)
+
+Pages are duplicated between `src/pages/` (Estonian) and `src/pages/en/` (English). They are NOT shared templates — each is a separate file with hardcoded content. **Every layout, spacing, or styling change must be applied to BOTH the ET and EN version of the page.** Always check and update both files when making any visual tweak.
+
 ## Key Constraint
 
 The previous owner's website (laitseloss.ee) is still live. We must NOT copy its fonts, colors, design, or layout. We CAN leverage inherent castle brand familiarity. See spec for details.

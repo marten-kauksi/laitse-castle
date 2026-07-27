@@ -1,0 +1,18 @@
+# Copy to `.env` in the project root (`.env` is gitignored).
+
+# Supabase — guest check-in register (Turismiseadus § 24)
+# Dashboard → Project Settings → API keys
+#
+# The project MUST be in an EU region (Frankfurt or Stockholm).
+#
+# Astro only exposes PUBLIC_-prefixed variables to client code. NEXT_PUBLIC_ is
+# Next.js convention and yields `undefined` here with no build error.
+PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
+
+# Set the same two variables in Vercel. The site is static, so these are inlined
+# at BUILD time — changing them in Vercel needs a redeploy, not just a save.
+#
+# NEVER add the secret key (sb_secret_... / service_role) here. With a PUBLIC_
+# prefix Astro would inline it into a public JS bundle, handing anyone the entire
+# guest register. Nothing in this project needs it.

@@ -16,6 +16,13 @@ export default defineConfig({
   },
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      // Guest check-in and its privacy notice are private utility pages, not
+      // site content — the accommodation activity is deliberately not advertised
+      // publicly. Matches sub-paths too, so /registreerimine/privaatsus and
+      // /en/check-in/privacy are excluded as well.
+      // (Security comes from RLS, not from being unlisted — see the design doc.)
+      filter: (page) => !/\/(registreerimine|check-in)(\/|$)/.test(page),
+    }),
   ],
 });

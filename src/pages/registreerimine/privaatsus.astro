@@ -1,0 +1,151 @@
+---
+/**
+ * Art. 13 privacy notice for accommodation guests.
+ *
+ * Deliberately unlisted: noindex, absent from nav, footer and sitemap, linked
+ * only from the check-in form. Art. 13 requires the information to reach the
+ * data subject at the point of collection — it does not require the page to be
+ * publicly discoverable, and the website privacy policy covers a different
+ * audience, purpose and legal basis entirely.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'et' as const;
+const h2 = 'font-subtitle text-[clamp(24px,2.4vw,32px)] text-warm-dark mt-12 mb-4';
+---
+
+<BaseLayout
+  title="Privaatsusteade majutuskülalistele — Laitse loss"
+  description="Kuidas Nevaliste OÜ töötleb majutuskülaliste andmeid turismiseaduse § 24 alusel."
+  locale="et"
+  noAnalytics={true}
+  noindex={true}
+>
+  <section class="px-6 py-16 md:py-24">
+    <div class="max-w-prose mx-auto">
+      <p class="font-ui uppercase tracking-wider text-[15px] font-bold text-burgundy mb-5">Majutus</p>
+      <h1 class="font-display text-[clamp(30px,6vw,58px)] leading-[1.05] tracking-display text-warm-dark mb-8">
+        Privaatsusteade majutuskülalistele
+      </h1>
+
+      <div class="font-body text-body-lg text-warm-dark leading-relaxed space-y-6">
+        <p>
+          See teade selgitab, kuidas töötleme teie andmeid, kui ööbite Laitse lossis.
+          Veebilehe külastamist, küpsiseid ja analüütikat käsitleb eraldi
+          <a href="/privaatsuspoliitika" class="text-burgundy font-bold underline underline-offset-4">veebilehe privaatsuspoliitika</a> —
+          tegemist on erineva andmetöötlusega, millel on erinev õiguslik alus.
+        </p>
+
+        <h2 class={h2}>Vastutav töötleja</h2>
+        <p>
+          Nevaliste OÜ, Lossi tee 9, 76302 Laitse, Harjumaa, Eesti.
+          <a href="mailto:info@laitsecastle.ee" class="text-burgundy font-bold underline underline-offset-4">info@laitsecastle.ee</a>,
+          tel <a href="tel:+37254210881" class="text-burgundy font-bold underline underline-offset-4">+372 5421 0881</a>.
+        </p>
+
+        <h2 class={h2}>Miks me neid andmeid kogume</h2>
+        <p>
+          Majutusettevõtjana oleme kohustatud registreerima iga majutusteenuse kasutaja
+          enne majutuse algust. Kohustus tuleneb
+          <strong class="font-bold"> turismiseaduse §-st 24</strong>.
+        </p>
+        <p>
+          Õiguslik alus on <strong class="font-bold">juriidilise kohustuse täitmine</strong> —
+          isikuandmete kaitse üldmääruse artikkel 6 lõige 1 punkt c. See ei põhine
+          nõusolekul, mistõttu ei saa te seda tagasi võtta.
+        </p>
+
+        <h2 class={h2}>Milliseid andmeid me kogume</h2>
+        <p>Igalt täisealiselt külaliselt (§ 24 lõige 2):</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>ees- ja perekonnanimi või -nimed;</li>
+          <li>sünniaeg;</li>
+          <li>kodakondsus;</li>
+          <li>elukohariik — <em>ainult riik, mitte täpne aadress</em>;</li>
+          <li>majutuse aeg;</li>
+          <li>külastuse eesmärk;</li>
+          <li>kaasas olevate alaealiste laste arv.</li>
+        </ul>
+        <p>
+          Reisidokumendi liiki, numbrit ja väljaandjariiki küsime ainult siis, kui te
+          <strong class="font-bold">ei ole Euroopa Majanduspiirkonna ega Šveitsi kodanik
+          ja teie elukohariik ei ole Eesti</strong> (§ 24 lõige 3). Kõigilt teistelt
+          külalistelt neid andmeid ei küsita ega salvestata — sealhulgas Eestis elavatelt
+          kolmandate riikide kodanikelt, keda seadus nendest andmetest vabastab
+          (§ 24 lõige 2).
+        </p>
+        <p>
+          <strong class="font-bold">Alaealiste laste kohta andmeid ei koguta</strong> —
+          registreerime üksnes nende arvu (§ 24 lõige 4).
+        </p>
+        <p>
+          <strong class="font-bold">Me ei säilita teie isikut tõendava dokumendi pilti
+          ega koopiat.</strong> Seadus näeb ette registreerimise dokumendi <em>alusel</em>,
+          mitte selle jäädvustamist.
+        </p>
+        <p>
+          <strong class="font-bold">Telefon ja e-post.</strong> Neid seadus ei nõua —
+          küsime neid ainult selleks, et saaksime teie majutusega seoses ühendust võtta.
+          Nende alus on majutuslepingu täitmine ja need kustutame kuue kuu möödumisel.
+        </p>
+
+        <h2 class={h2}>Kas andmete esitamine on kohustuslik?</h2>
+        <p>
+          Jah. Ülalnimetatud andmete esitamine on <strong class="font-bold">seadusest
+          tulenev nõue</strong>. Ilma nendeta ei saa me teile majutusteenust osutada.
+          Telefoni ja e-posti esitamine ei ole seadusest tulenev nõue.
+        </p>
+
+        <h2 class={h2}>Kellele me andmeid edastame</h2>
+        <p>
+          Turismiseaduse § 24 lõike 8 kohaselt oleme kohustatud andmed nende nõudmisel
+          edastama <strong class="font-bold">Politsei- ja Piirivalveametile</strong> ning
+          julgeolekuasutustele. Muudel juhtudel me neid ei jaga ega müü.
+        </p>
+        <p>
+          Andmeid hoitakse Supabase’i andmebaasis Euroopa Liidus asuvas serveris.
+          Supabase tegutseb meie volitatud töötlejana. Andmeid ei edastata väljapoole
+          Euroopa Majanduspiirkonda.
+        </p>
+
+        <h2 class={h2}>Kui kaua me andmeid säilitame</h2>
+        <p>
+          <strong class="font-bold">Kaks aastat</strong> registreerimise päevast arvates —
+          nii näeb ette turismiseaduse § 24 lõige 7. See ei ole meie valik: seadus kohustab
+          meid andmeid selle aja jooksul säilitama. Pärast kahe aasta möödumist
+          kustutatakse need automaatselt.
+        </p>
+        <p>Telefoni ja e-posti kustutame juba kuue kuu möödumisel.</p>
+
+        <h2 class={h2}>Teie õigused</h2>
+        <p>
+          Teil on õigus tutvuda oma andmetega, nõuda ebatäpsete andmete parandamist,
+          piirata töötlemist ja esitada vastuväiteid.
+        </p>
+        <p>
+          <strong class="font-bold">Erisus kustutamisõiguse osas.</strong> Kuna töötleme
+          neid andmeid juriidilise kohustuse alusel, ei saa me neid kahe aasta jooksul
+          teie nõudmisel kustutada — üldmääruse artikli 17 lõike 3 punkt b välistab
+          kustutamisõiguse seadusest tuleneva kohustuse täitmisel. Kõik ülejäänud õigused
+          kehtivad täies ulatuses. Telefoni ja e-posti, mis ei ole seadusega nõutud,
+          kustutame teie soovil igal ajal.
+        </p>
+        <p>
+          Teie andmete alusel ei tehta automatiseeritud otsuseid ega profiilianalüüsi.
+        </p>
+
+        <h2 class={h2}>Küsimused ja kaebused</h2>
+        <p>
+          Kirjutage
+          <a href="mailto:info@laitsecastle.ee" class="text-burgundy font-bold underline underline-offset-4">info@laitsecastle.ee</a>.
+          Samuti on teil õigus esitada kaebus Andmekaitse Inspektsioonile
+          (<a href="https://www.aki.ee" class="text-burgundy font-bold underline underline-offset-4" rel="noopener">aki.ee</a>).
+        </p>
+
+        <p class="pt-6">
+          <a href="/registreerimine" class="text-burgundy font-bold underline underline-offset-4">← Tagasi sisseregistreerimise vormile</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
