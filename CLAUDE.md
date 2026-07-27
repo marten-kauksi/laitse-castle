@@ -17,6 +17,12 @@ Laitse Lossi (Laitse Castle) — event venue website for a castle in Estonia. Ne
 
 Claude MAY run git operations (add, commit, push), but **always ask for confirmation before running any git command** — never do it unprompted. "Pane live" / "make it live" means `git push` to `origin` (auto-deploy publishes the site).
 
+**Commit and push go together.** Never leave unpushed commits sitting on `main`. When you ask to commit, ask to commit *and push* as one step — that's the default. This keeps local and `origin` from diverging, so history never needs untangling.
+
+The one exception: **genuinely half-finished work**. Since push auto-deploys, a commit that would publish a broken or incomplete page stays local until it's done. Say so explicitly when you leave one — an unpushed commit must always be a deliberate, stated choice, never an oversight.
+
+Never use `git rebase` — too fiddly for this project. If local and `origin` ever do diverge, merge (`git pull --no-rebase`) and push. A merge commit is fine; rewritten history is not.
+
 ## Key Constraint
 
 The previous owner's website (laitseloss.ee) is still live. We must NOT copy its fonts, colors, design, or layout. We CAN leverage inherent castle brand familiarity. See spec for details.
