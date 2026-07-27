@@ -3,14 +3,14 @@
   "configurations": [
     {
       "name": "astro-dev",
-      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
-      "runtimeArgs": ["node_modules/astro/astro.js", "dev"],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 4321,
       "autoPort": true
     },
     {
       "name": "astro-preview",
-      "runtimeExecutable": "C:\\Program Files\\nodejs\\npm.cmd",
+      "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "preview"],
       "port": 4321
     }

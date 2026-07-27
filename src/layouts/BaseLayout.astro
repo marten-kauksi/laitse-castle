@@ -15,6 +15,15 @@ interface Props {
   canonicalUrl?: string;
   pageSchema?: Record<string, unknown> | Record<string, unknown>[];
   locale?: 'et' | 'en';
+  /**
+   * Skip PostHog and the cookie banner entirely — the components are never
+   * rendered, so no analytics code reaches the page. Required on the check-in
+   * pages: session recording would otherwise capture guests typing dates of
+   * birth and passport numbers.
+   */
+  noAnalytics?: boolean;
+  /** Emit <meta name="robots" content="noindex, nofollow">. */
+  noindex?: boolean;
 }
 
 const {
@@ -24,6 +33,8 @@ const {
   canonicalUrl,
   pageSchema,
   locale = 'et',
+  noAnalytics = false,
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = 'https://laitsecastle.ee';
@@ -87,6 +98,7 @@ const websiteSchema = {
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Hreflang alternates -->
     <link rel="alternate" hreflang="et" href={`${siteUrl}${getAlternatePath(Astro.url.pathname, 'et')}`} />
@@ -128,7 +140,7 @@ const websiteSchema = {
     <SchemaOrg schema={organizationSchema} />
     <SchemaOrg schema={websiteSchema} />
     {pageSchema && <SchemaOrg schema={pageSchema} />}
-    <PostHog />
+    {!noAnalytics && <PostHog />}
   </head>
   <body class="bg-warm-white text-warm-dark font-body antialiased">
     <Header locale={locale} />
@@ -136,7 +148,7 @@ const websiteSchema = {
       <slot />
     </main>
     <Footer locale={locale} />
-    {posthogEnabled && <CookieConsent locale={locale} />}
+    {posthogEnabled && !noAnalytics && <CookieConsent locale={locale} />}
   </body>
 </html>
 
