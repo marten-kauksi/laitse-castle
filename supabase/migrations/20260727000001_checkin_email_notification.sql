@@ -53,6 +53,7 @@ as $$
 declare
   v_api_key   text;
   v_recipient text;
+  v_sender    text;
   v_count     int;
   v_arrival   date;
   v_departure date;
@@ -64,6 +65,14 @@ begin
     from vault.decrypted_secrets where name = 'resend_api_key';
   select decrypted_secret into v_recipient
     from vault.decrypted_secrets where name = 'checkin_notify_to';
+
+  -- Optional. Until laitsecastle.ee is verified in Resend, set this to
+  -- 'onboarding@resend.dev' (deliverable only to the Resend account owner).
+  -- Delete the secret once DNS is done and it reverts to the castle address —
+  -- no code change needed.
+  select decrypted_secret into v_sender
+    from vault.decrypted_secrets where name = 'checkin_notify_from';
+  v_sender := coalesce(v_sender, 'Laitse loss <sisseregistreerimine@laitsecastle.ee>');
 
   if v_api_key is null or v_recipient is null then
     raise warning 'notify_checkin: Vault secrets not configured, skipping email';
@@ -81,7 +90,7 @@ begin
       'Content-Type',  'application/json'
     ),
     body := jsonb_build_object(
-      'from',    'Laitse loss <sisseregistreerimine@laitsecastle.ee>',
+      'from',    v_sender,
       'to',      jsonb_build_array(v_recipient),
       'subject', format('Uus sisseregistreerimine — %s külalist, saabumine %s',
                         v_count, to_char(v_arrival, 'DD.MM.YYYY')),
