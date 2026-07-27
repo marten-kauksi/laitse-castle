@@ -39,6 +39,11 @@ const strings = {
   email: t(locale, 'checkin.error.email'),
   generic: t(locale, 'checkin.error.generic'),
   network: t(locale, 'checkin.error.network'),
+  stayTooLong: t(locale, 'checkin.error.stayTooLong'),
+  minorsRange: t(locale, 'checkin.error.minorsRange'),
+  dobRange: t(locale, 'checkin.error.dobRange'),
+  arrivalRange: t(locale, 'checkin.error.arrivalRange'),
+  rejected: t(locale, 'checkin.error.rejected'),
 };
 ---
 
@@ -314,8 +319,23 @@ const strings = {
       mark(departure, req(departure));
       mark(purpose, req(purpose));
 
+      // These four mirror CHECK constraints in Postgres. Without them the server
+      // rejects the row and the guest sees only the generic "could not send",
+      // with no idea which field is at fault.
       if (arrival.value && departure.value && departure.value < arrival.value) {
         mark(departure, setError(departure, S.dates));
+      } else if (arrival.value && departure.value) {
+        const days = (Date.parse(departure.value) - Date.parse(arrival.value)) / 86400000;
+        if (days > 90) mark(departure, setError(departure, S.stayTooLong));   // stay_length_sane
+      }
+      if (arrival.value && (arrival.value < '2020-01-01' || arrival.value > '2099-12-31')) {
+        mark(arrival, setError(arrival, S.arrivalRange));                     // arrival_date_check
+      }
+
+      const minors = document.getElementById('minors') as HTMLInputElement;
+      const minorsNum = Number(minors.value || 0);
+      if (!Number.isInteger(minorsNum) || minorsNum < 0 || minorsNum > 20) {
+        mark(minors, setError(minors, S.minorsRange));                        // accompanying_minors_check
       }
 
       mark(phone, req(phone));
@@ -336,6 +356,7 @@ const strings = {
 
         const dob = f('date_of_birth') as HTMLInputElement;
         if (dob.value && dob.value > today) mark(dob, setError(dob, S.dobFuture));
+        else if (dob.value && dob.value < '1900-01-01') mark(dob, setError(dob, S.dobRange)); // date_of_birth_check
 
         // § 24(3): non-EEA without Estonian residence must supply document details.
         // Everyone else may leave them blank.
@@ -421,9 +442,32 @@ const strings = {
           body: JSON.stringify(buildRows()),
         });
 
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) {
+          // Read the real reason instead of discarding it. A CHECK constraint
+          // rejection is a specific fixable field, not an unexplained failure.
+          let detail = '';
+          try { detail = await response.text(); } catch {}
+          console.error('[check-in] submit failed', response.status, detail);
+
+          const constraint = /violates check constraint "([^"]+)"/.exec(detail)?.[1] ?? '';
+          const byConstraint: Record<string, string> = {
+            stay_length_sane: S.stayTooLong,
+            stay_dates_ordered: S.dates,
+            guest_registrations_accompanying_minors_check: S.minorsRange,
+            guest_registrations_arrival_date_check: S.arrivalRange,
+            guest_registrations_departure_date_check: S.arrivalRange,
+            guest_registrations_date_of_birth_check: S.dobRange,
+            guest_registrations_phone_check: S.phone,
+            guest_registrations_email_check: S.email,
+          };
+          errorBox.textContent = byConstraint[constraint] ?? (constraint ? S.rejected : S.generic);
+          errorBox.classList.remove('hidden');
+          errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
         showSuccess();
       } catch (error) {
+        console.error('[check-in] submit error', error);
         errorBox.textContent = error instanceof TypeError ? S.network : S.generic;
         errorBox.classList.remove('hidden');
         errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });

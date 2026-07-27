@@ -12,35 +12,46 @@
 | 4. Astro Build | **Done** |
 | 5. SEO & Assets | Not started |
 | 6. Launch | Not started |
-| 7. Guest check-in (Turismiseadus § 24) | **Code done — migration not yet applied** |
+| 7. Guest check-in (Turismiseadus § 24) | **Live in Supabase — RLS verified 7/7** |
 
 ## Phase 7: Guest Check-In
 
 Statutory guest register under [Turismiseadus § 24](https://www.riigiteataja.ee/akt/113032014069?leiaKehtiv).
 Design: `docs/superpowers/specs/2026-07-27-guest-check-in-design.md`
 
+Supabase project `tfaqtcpijyttwzfhdztw`, region **eu-north-1 (Stockholm)**.
+
 | Item | Status |
 |------|--------|
-| SQL migration (table, RLS, 2 cron jobs) | Written — **not yet run** |
-| Email notification via Resend + `pg_net` trigger | Written — **not yet run**, needs Resend domain + Vault secrets |
+| SQL migration (table, RLS, 2 cron jobs) | **Applied 2026-07-28** |
+| `pg_cron` jobs 1 + 2 (2y prune, 6mo contact clear) | **Scheduled and confirmed** |
+| RLS verification (`scripts/verify-rls.mjs`) | **7/7 pass** — anon INSERT only; SELECT/UPDATE/DELETE all 401 |
+| End-to-end submit through the real form | **Verified**, rows written and inspected, test data removed |
 | ET `/registreerimine` + EN `/en/check-in` | Done, verified in browser |
+| Guest privacy notices (ET + EN, unlisted) | Done |
 | ISO country list (198, ET/EN, locale-sorted) | Done |
 | PostHog + cookie banner suppressed on these routes | Done, verified in build output |
-| Privacy policy sections (ET + EN) | Done |
-| `scripts/verify-rls.mjs` | Written — **not yet run** |
+| Email notification via Resend + `pg_net` trigger | **Applied and delivering** (HTTP 200) |
 
-**Blocking go-live:**
+Vercel env vars are set and the form is confirmed working end to end on the live site.
 
-1. Run `supabase/migrations/20260727000000_guest_registrations.sql` in the Supabase SQL editor.
-2. Enable the `pg_cron` extension (Dashboard → Database → Extensions) — without it the
-   two-year deletion required by § 24(7) never happens.
-3. Run `node --env-file=.env scripts/verify-rls.mjs` and confirm all 7 checks pass.
-3b. *(Optional)* For email alerts: verify laitsecastle.ee in Resend, store
-    `resend_api_key` + `checkin_notify_to` in Vault, then run migration `…0001`.
-4. Set `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_PUBLISHABLE_KEY` in Vercel (build-time
-   inlined — needs a redeploy).
-5. Confirm Nevaliste OÜ is registered as a *majutusettevõte* in MTR.
-6. Restrict Supabase dashboard access + enable 2FA — it reads the full guest register.
+**Email sender — temporary.** `laitsecastle.ee` is not yet verified in Resend, so the
+Vault secret `checkin_notify_from` is set to `onboarding@resend.dev`, which only delivers
+to the Resend account owner (nevalis.ou). Once the DKIM/SPF records are added at
+resend.com/domains, **delete that secret** and the sender reverts to
+`sisseregistreerimine@laitsecastle.ee` automatically — no code change:
+
+```sql
+select vault.delete_secret((select id from vault.secrets where name = 'checkin_notify_from'));
+```
+
+**Remaining:**
+
+1. Verify `laitsecastle.ee` in Resend, then drop `checkin_notify_from` as above.
+2. Confirm Nevaliste OÜ is registered as a *majutusettevõte* in MTR.
+3. Restrict Supabase dashboard access + enable 2FA — it reads the full guest register.
+4. Write the internal Art. 30 record of processing (not published; produced if AKI asks).
+5. Three test rows from 00:24/00:37 are still in `guest_registrations` — delete when done.
 
 ## Phase 4: Build Progress
 

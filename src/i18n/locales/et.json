@@ -205,5 +205,10 @@
   "checkin.error.phone": "Palun sisestage kehtiv telefoninumber.",
   "checkin.error.email": "Palun sisestage kehtiv e-posti aadress.",
   "checkin.notConfigured": "Vorm ei ole hetkel seadistatud. Palun pöörduge administraatori poole.",
-  "checkin.noscript": "Selle vormi täitmiseks on vaja JavaScripti. Palun pöörduge administraatori poole."
+  "checkin.noscript": "Selle vormi täitmiseks on vaja JavaScripti. Palun pöörduge administraatori poole.",
+  "checkin.error.stayTooLong": "Majutus ei saa olla pikem kui 90 päeva. Pikema peatumise korral võtke palun ühendust administraatoriga.",
+  "checkin.error.minorsRange": "Laste arv peab olema vahemikus 0–20.",
+  "checkin.error.dobRange": "Palun kontrollige sünniaega.",
+  "checkin.error.arrivalRange": "Palun kontrollige saabumise kuupäeva.",
+  "checkin.error.rejected": "Mõned andmed ei olnud sobivas vormingus. Palun kontrollige allpool märgitud välju."
 }

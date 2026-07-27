@@ -205,5 +205,10 @@
   "checkin.error.phone": "Please enter a valid phone number.",
   "checkin.error.email": "Please enter a valid email address.",
   "checkin.notConfigured": "This form is not configured yet. Please speak to reception.",
-  "checkin.noscript": "This form requires JavaScript. Please speak to reception."
+  "checkin.noscript": "This form requires JavaScript. Please speak to reception.",
+  "checkin.error.stayTooLong": "A stay cannot be longer than 90 days. For longer stays, please contact reception.",
+  "checkin.error.minorsRange": "The number of children must be between 0 and 20.",
+  "checkin.error.dobRange": "Please check the date of birth.",
+  "checkin.error.arrivalRange": "Please check the arrival date.",
+  "checkin.error.rejected": "Some details were not in an acceptable format. Please check the fields marked below."
 }
