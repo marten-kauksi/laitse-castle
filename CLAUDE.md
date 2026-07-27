@@ -20,6 +20,11 @@ Claude MAY run git operations (add, commit, push), but **always ask for confirma
 ## IMPORTANT: Duplicated Page Files (ET/EN)
 
 Pages are duplicated between `src/pages/` (Estonian) and `src/pages/en/` (English). They are NOT shared templates — each is a separate file with hardcoded content. **Every layout, spacing, or styling change must be applied to BOTH the ET and EN version of the page.** Always check and update both files when making any visual tweak.
+**Commit and push go together.** Never leave unpushed commits sitting on `main`. When you ask to commit, ask to commit *and push* as one step — that's the default. This keeps local and `origin` from diverging, so history never needs untangling.
+
+The one exception: **genuinely half-finished work**. Since push auto-deploys, a commit that would publish a broken or incomplete page stays local until it's done. Say so explicitly when you leave one — an unpushed commit must always be a deliberate, stated choice, never an oversight.
+
+Never use `git rebase` — too fiddly for this project. If local and `origin` ever do diverge, merge (`git pull --no-rebase`) and push. A merge commit is fine; rewritten history is not.
 
 ## Key Constraint
 
