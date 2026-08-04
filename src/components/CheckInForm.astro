@@ -34,6 +34,7 @@ const strings = {
   summary: t(locale, 'checkin.error.summary'),
   required: t(locale, 'checkin.error.required'),
   dates: t(locale, 'checkin.error.dates'),
+  dateFormat: t(locale, 'checkin.error.dateFormat'),
   dobFuture: t(locale, 'checkin.error.dobFuture'),
   phone: t(locale, 'checkin.error.phone'),
   email: t(locale, 'checkin.error.email'),
@@ -45,6 +46,7 @@ const strings = {
   arrivalRange: t(locale, 'checkin.error.arrivalRange'),
   rejected: t(locale, 'checkin.error.rejected'),
 };
+const datePlaceholder = t(locale, 'checkin.date.placeholder');
 ---
 
 <div class="max-w-3xl mx-auto">
@@ -86,15 +88,24 @@ const strings = {
       </legend>
 
       <div class="grid gap-5 md:grid-cols-2">
+        <!-- Text inputs so iOS can type; native type=date is wheels-only there. -->
         <div>
           <label class={labelClass} for="arrival-date">{t(locale, 'checkin.field.arrival')}</label>
-          <input type="date" id="arrival-date" required class={inputClass} aria-describedby="arrival-date-err" />
+          <input
+            type="text" id="arrival-date" data-date-input required
+            inputmode="numeric" autocomplete="off" placeholder={datePlaceholder}
+            maxlength="10" class={inputClass} aria-describedby="arrival-date-err"
+          />
           <p class={errorClass} id="arrival-date-err" data-error role="alert"></p>
         </div>
 
         <div>
           <label class={labelClass} for="departure-date">{t(locale, 'checkin.field.departure')}</label>
-          <input type="date" id="departure-date" required class={inputClass} aria-describedby="departure-date-err" />
+          <input
+            type="text" id="departure-date" data-date-input required
+            inputmode="numeric" autocomplete="off" placeholder={datePlaceholder}
+            maxlength="10" class={inputClass} aria-describedby="departure-date-err"
+          />
           <p class={errorClass} id="departure-date-err" data-error role="alert"></p>
         </div>
 
@@ -214,14 +225,75 @@ const strings = {
     const successBox = document.getElementById('checkin-success')!;
     const submitBtn = document.getElementById('checkin-submit') as HTMLButtonElement;
     const honeypot = document.getElementById('checkin-website') as HTMLInputElement;
+    const arrivalEl = document.getElementById('arrival-date') as HTMLInputElement;
+    const departureEl = document.getElementById('departure-date') as HTMLInputElement;
 
     const SUPABASE_URL = form.dataset.supabaseUrl || '';
     const SUPABASE_KEY = form.dataset.supabaseKey || '';
     const LOCALE = form.dataset.locale || 'et';
 
-    const today = new Date().toISOString().slice(0, 10);
-    document.querySelectorAll<HTMLInputElement>('input[data-field="date_of_birth"]')
-      .forEach((el) => el.setAttribute('max', today));
+    // Local calendar date — toISOString() is UTC and can be "yesterday" in Estonia after ~22:00.
+    function localISODate(d = new Date()) {
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    function addDaysISO(iso: string, days: number) {
+      const [y, m, d] = iso.split('-').map(Number);
+      const dt = new Date(y, m - 1, d + days);
+      return localISODate(dt);
+    }
+
+    function isoToDisplay(iso: string) {
+      const [y, m, d] = iso.split('-');
+      return `${d}.${m}.${y}`;
+    }
+
+    /** Accept DD.MM.YYYY, DD/MM/YYYY, or YYYY-MM-DD. Returns ISO or null. */
+    function parseDateInput(raw: string): string | null {
+      const s = raw.trim();
+      if (!s) return null;
+
+      let y: number, m: number, d: number;
+      const iso = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+      const dmy = /^(\d{1,2})[./](\d{1,2})[./](\d{4})$/.exec(s);
+      if (iso) {
+        y = Number(iso[1]); m = Number(iso[2]); d = Number(iso[3]);
+      } else if (dmy) {
+        d = Number(dmy[1]); m = Number(dmy[2]); y = Number(dmy[3]);
+      } else {
+        return null;
+      }
+
+      if (m < 1 || m > 12 || d < 1 || d > 31) return null;
+      const dt = new Date(y, m - 1, d);
+      if (dt.getFullYear() !== y || dt.getMonth() !== m - 1 || dt.getDate() !== d) return null;
+      return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    }
+
+    function dateValue(el: HTMLInputElement): string | null {
+      return parseDateInput(el.value);
+    }
+
+    function wireDateInput(el: HTMLInputElement) {
+      el.addEventListener('blur', () => {
+        const iso = parseDateInput(el.value);
+        if (iso) el.value = isoToDisplay(iso);
+      });
+    }
+
+    function setStayDefaults() {
+      const arrival = localISODate();
+      arrivalEl.value = isoToDisplay(arrival);
+      departureEl.value = isoToDisplay(addDaysISO(arrival, 1));
+    }
+
+    const today = localISODate();
+    setStayDefaults();
+    wireDateInput(arrivalEl);
+    wireDateInput(departureEl);
 
     // ── Conditional § 24(3) document fields ────────────────────────────────
     /**
@@ -256,6 +328,8 @@ const strings = {
         .addEventListener('change', () => syncGuest(block));
       block.querySelector('[data-remove-guest]')
         ?.addEventListener('click', () => { block.remove(); renumber(); });
+      const dob = block.querySelector<HTMLInputElement>('input[data-field="date_of_birth"]');
+      if (dob) wireDateInput(dob);
       syncGuest(block);
     }
 
@@ -272,7 +346,6 @@ const strings = {
       holder.innerHTML = template.innerHTML.replaceAll('__I__', String(index));
       const block = holder.firstElementChild as HTMLElement;
       guestsEl.appendChild(block);
-      block.querySelector<HTMLInputElement>('input[data-field="date_of_birth"]')!.setAttribute('max', today);
       wireGuest(block);
       renumber();
       block.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -300,6 +373,22 @@ const strings = {
     const req = (el: HTMLInputElement | HTMLSelectElement) =>
       setError(el, el.value.trim() ? '' : S.required);
 
+    /** Required date field: empty → required; unparseable → format; else ISO. */
+    function reqDate(el: HTMLInputElement): string | null {
+      if (!el.value.trim()) {
+        setError(el, S.required);
+        return null;
+      }
+      const iso = dateValue(el);
+      if (!iso) {
+        setError(el, S.dateFormat);
+        return null;
+      }
+      setError(el, '');
+      el.value = isoToDisplay(iso);
+      return iso;
+    }
+
     function validate() {
       clearErrors();
       let ok = true;
@@ -309,27 +398,27 @@ const strings = {
         if (!good) { ok = false; bad.push(el); }
       };
 
-      const arrival = document.getElementById('arrival-date') as HTMLInputElement;
-      const departure = document.getElementById('departure-date') as HTMLInputElement;
       const purpose = document.getElementById('purpose') as HTMLSelectElement;
       const phone = document.getElementById('phone') as HTMLInputElement;
       const email = document.getElementById('email') as HTMLInputElement;
 
-      mark(arrival, req(arrival));
-      mark(departure, req(departure));
+      const arrivalISO = reqDate(arrivalEl);
+      mark(arrivalEl, Boolean(arrivalISO));
+      const departureISO = reqDate(departureEl);
+      mark(departureEl, Boolean(departureISO));
       mark(purpose, req(purpose));
 
       // These four mirror CHECK constraints in Postgres. Without them the server
       // rejects the row and the guest sees only the generic "could not send",
       // with no idea which field is at fault.
-      if (arrival.value && departure.value && departure.value < arrival.value) {
-        mark(departure, setError(departure, S.dates));
-      } else if (arrival.value && departure.value) {
-        const days = (Date.parse(departure.value) - Date.parse(arrival.value)) / 86400000;
-        if (days > 90) mark(departure, setError(departure, S.stayTooLong));   // stay_length_sane
+      if (arrivalISO && departureISO && departureISO < arrivalISO) {
+        mark(departureEl, setError(departureEl, S.dates));
+      } else if (arrivalISO && departureISO) {
+        const days = (Date.parse(departureISO) - Date.parse(arrivalISO)) / 86400000;
+        if (days > 90) mark(departureEl, setError(departureEl, S.stayTooLong));   // stay_length_sane
       }
-      if (arrival.value && (arrival.value < '2020-01-01' || arrival.value > '2099-12-31')) {
-        mark(arrival, setError(arrival, S.arrivalRange));                     // arrival_date_check
+      if (arrivalISO && (arrivalISO < '2020-01-01' || arrivalISO > '2099-12-31')) {
+        mark(arrivalEl, setError(arrivalEl, S.arrivalRange));                     // arrival_date_check
       }
 
       const minors = document.getElementById('minors') as HTMLInputElement;
@@ -350,13 +439,15 @@ const strings = {
         const f = (name: string) =>
           block.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLSelectElement;
 
-        for (const name of ['given_names', 'surname', 'date_of_birth', 'citizenship', 'country_of_residence']) {
+        for (const name of ['given_names', 'surname', 'citizenship', 'country_of_residence']) {
           mark(f(name), req(f(name)));
         }
 
         const dob = f('date_of_birth') as HTMLInputElement;
-        if (dob.value && dob.value > today) mark(dob, setError(dob, S.dobFuture));
-        else if (dob.value && dob.value < '1900-01-01') mark(dob, setError(dob, S.dobRange)); // date_of_birth_check
+        const dobISO = reqDate(dob);
+        mark(dob, Boolean(dobISO));
+        if (dobISO && dobISO > today) mark(dob, setError(dob, S.dobFuture));
+        else if (dobISO && dobISO < '1900-01-01') mark(dob, setError(dob, S.dobRange)); // date_of_birth_check
 
         // § 24(3): non-EEA without Estonian residence must supply document details.
         // Everyone else may leave them blank.
@@ -379,8 +470,8 @@ const strings = {
     // ── Submit ─────────────────────────────────────────────────────────────
     function buildRows() {
       const stay = {
-        arrival_date: val('arrival-date'),
-        departure_date: val('departure-date'),
+        arrival_date: dateValue(arrivalEl)!,
+        departure_date: dateValue(departureEl)!,
         purpose_of_travel: val('purpose'),
         accompanying_minors: Number(val('minors') || 0),
         phone: val('phone'),
@@ -394,12 +485,13 @@ const strings = {
         // Document fields are optional for most guests. Blanks MUST go as null:
         // '' fails the char(2) and enum CHECK constraints and the row is rejected.
         const orNull = (name: string) => f(name) || null;
+        const dobEl = block.querySelector('[data-field="date_of_birth"]') as HTMLInputElement;
 
         return {
           ...stay,
           given_names: f('given_names'),
           surname: f('surname'),
-          date_of_birth: f('date_of_birth'),
+          date_of_birth: dateValue(dobEl)!,
           citizenship: f('citizenship'),
           country_of_residence: f('country_of_residence'),
           // Column retained so the § 24(2) exemption can be reinstated without a
@@ -481,6 +573,7 @@ const strings = {
       form!.reset();
       guestsEl.querySelectorAll<HTMLElement>('[data-guest]').forEach((b, n) => { if (n > 0) b.remove(); });
       guestsEl.querySelectorAll<HTMLElement>('[data-guest]').forEach(syncGuest);
+      setStayDefaults();
       clearErrors();
       successBox.classList.add('hidden');
       form!.classList.remove('hidden');

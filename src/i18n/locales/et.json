@@ -162,6 +162,8 @@
   "checkin.stay.heading": "Majutuse andmed",
   "checkin.field.arrival": "Saabumise kuupäev",
   "checkin.field.departure": "Lahkumise kuupäev",
+  "checkin.date.placeholder": "pp.kk.aaaa",
+  "checkin.error.dateFormat": "Kasutage formaati pp.kk.aaaa (nt 04.08.2026).",
   "checkin.field.purpose": "Külastuse eesmärk",
   "checkin.purpose.placeholder": "Valige…",
   "checkin.purpose.leisure": "Puhkus",

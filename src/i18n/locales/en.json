@@ -162,6 +162,8 @@
   "checkin.stay.heading": "Your stay",
   "checkin.field.arrival": "Arrival date",
   "checkin.field.departure": "Departure date",
+  "checkin.date.placeholder": "dd.mm.yyyy",
+  "checkin.error.dateFormat": "Use the format dd.mm.yyyy (e.g. 04.08.2026).",
   "checkin.field.purpose": "Reason for your stay",
   "checkin.purpose.placeholder": "Select…",
   "checkin.purpose.leisure": "Leisure",
