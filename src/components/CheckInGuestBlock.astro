@@ -77,12 +77,13 @@ const errorClass = 'mt-2 font-ui text-[15px] text-burgundy font-bold empty:hidde
       <p class={errorClass} id={`surname-err-${i}`} data-error role="alert"></p>
     </div>
 
-    <!-- Date of birth -->
+    <!-- Date of birth — text so iOS can type (native type=date is wheels-only) -->
     <div>
       <label class={labelClass} for={`dob-${i}`}>{t(locale, 'checkin.field.dob')}</label>
       <input
-        type="date" id={`dob-${i}`} data-field="date_of_birth"
-        autocomplete="bday" min="1900-01-01" required
+        type="text" id={`dob-${i}`} data-field="date_of_birth" data-date-input
+        inputmode="numeric" autocomplete="bday" placeholder={t(locale, 'checkin.date.placeholder')}
+        maxlength="10" required
         class={`${inputClass} ph-no-capture`}
         aria-describedby={`dob-err-${i}`}
       />
