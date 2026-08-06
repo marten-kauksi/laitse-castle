@@ -9,6 +9,7 @@
  * design and grants INSERT only — see supabase/migrations/*_guest_registrations.sql.
  */
 import CheckInGuestBlock from './CheckInGuestBlock.astro';
+import DateField from './DateField.astro';
 import { t, type Locale } from '../i18n/utils';
 
 interface Props {
@@ -46,7 +47,6 @@ const strings = {
   arrivalRange: t(locale, 'checkin.error.arrivalRange'),
   rejected: t(locale, 'checkin.error.rejected'),
 };
-const datePlaceholder = t(locale, 'checkin.date.placeholder');
 ---
 
 <div class="max-w-3xl mx-auto">
@@ -88,26 +88,9 @@ const datePlaceholder = t(locale, 'checkin.date.placeholder');
       </legend>
 
       <div class="grid gap-5 md:grid-cols-2">
-        <!-- Text inputs so iOS can type; native type=date is wheels-only there. -->
-        <div>
-          <label class={labelClass} for="arrival-date">{t(locale, 'checkin.field.arrival')}</label>
-          <input
-            type="text" id="arrival-date" data-date-input required
-            inputmode="numeric" autocomplete="off" placeholder={datePlaceholder}
-            maxlength="10" class={inputClass} aria-describedby="arrival-date-err"
-          />
-          <p class={errorClass} id="arrival-date-err" data-error role="alert"></p>
-        </div>
-
-        <div>
-          <label class={labelClass} for="departure-date">{t(locale, 'checkin.field.departure')}</label>
-          <input
-            type="text" id="departure-date" data-date-input required
-            inputmode="numeric" autocomplete="off" placeholder={datePlaceholder}
-            maxlength="10" class={inputClass} aria-describedby="departure-date-err"
-          />
-          <p class={errorClass} id="departure-date-err" data-error role="alert"></p>
-        </div>
+        <!-- Three typed segments; native type=date is wheels-only on iOS. -->
+        <DateField locale={locale} id="arrival-date" label={t(locale, 'checkin.field.arrival')} />
+        <DateField locale={locale} id="departure-date" label={t(locale, 'checkin.field.departure')} />
 
         <div>
           <label class={labelClass} for="purpose">{t(locale, 'checkin.field.purpose')}</label>
@@ -225,8 +208,9 @@ const datePlaceholder = t(locale, 'checkin.date.placeholder');
     const successBox = document.getElementById('checkin-success')!;
     const submitBtn = document.getElementById('checkin-submit') as HTMLButtonElement;
     const honeypot = document.getElementById('checkin-website') as HTMLInputElement;
-    const arrivalEl = document.getElementById('arrival-date') as HTMLInputElement;
-    const departureEl = document.getElementById('departure-date') as HTMLInputElement;
+    // Date fields are three-part groups (dd / mm / yyyy), not single inputs.
+    const arrivalEl = document.querySelector<HTMLElement>('#arrival-date-day')!.closest<HTMLElement>('[data-date-group]')!;
+    const departureEl = document.querySelector<HTMLElement>('#departure-date-day')!.closest<HTMLElement>('[data-date-group]')!;
 
     const SUPABASE_URL = form.dataset.supabaseUrl || '';
     const SUPABASE_KEY = form.dataset.supabaseKey || '';
@@ -246,54 +230,118 @@ const datePlaceholder = t(locale, 'checkin.date.placeholder');
       return localISODate(dt);
     }
 
-    function isoToDisplay(iso: string) {
+    // ── Three-part date fields (dd / mm / yyyy) ────────────────────────────
+    /** The day/month/year inputs of a [data-date-group], in tab order. */
+    function dateParts(group: HTMLElement) {
+      return ['day', 'month', 'year'].map(
+        (p) => group.querySelector<HTMLInputElement>(`[data-date-part="${p}"]`)!,
+      );
+    }
+
+    /** Real calendar date only — 31/02 and 00/00 are rejected, not rolled over. */
+    function partsToISO(d: string, m: string, y: string): string | null {
+      if (!/^\d{1,2}$/.test(d) || !/^\d{1,2}$/.test(m) || !/^\d{4}$/.test(y)) return null;
+      const dn = Number(d), mn = Number(m), yn = Number(y);
+      const dt = new Date(yn, mn - 1, dn);
+      if (dt.getFullYear() !== yn || dt.getMonth() !== mn - 1 || dt.getDate() !== dn) return null;
+      return `${yn}-${String(mn).padStart(2, '0')}-${String(dn).padStart(2, '0')}`;
+    }
+
+    /** ISO date held by a group, or null when incomplete or impossible. */
+    function dateValue(group: HTMLElement): string | null {
+      const [day, month, year] = dateParts(group);
+      return partsToISO(day.value.trim(), month.value.trim(), year.value.trim());
+    }
+
+    function dateIsEmpty(group: HTMLElement) {
+      return dateParts(group).every((el) => !el.value.trim());
+    }
+
+    function setDateValue(group: HTMLElement, iso: string) {
       const [y, m, d] = iso.split('-');
-      return `${d}.${m}.${y}`;
+      const [day, month, year] = dateParts(group);
+      day.value = d; month.value = m; year.value = y;
     }
 
-    /** Accept DD.MM.YYYY, DD/MM/YYYY, or YYYY-MM-DD. Returns ISO or null. */
-    function parseDateInput(raw: string): string | null {
-      const s = raw.trim();
-      if (!s) return null;
-
-      let y: number, m: number, d: number;
-      const iso = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
-      const dmy = /^(\d{1,2})[./](\d{1,2})[./](\d{4})$/.exec(s);
-      if (iso) {
-        y = Number(iso[1]); m = Number(iso[2]); d = Number(iso[3]);
-      } else if (dmy) {
-        d = Number(dmy[1]); m = Number(dmy[2]); y = Number(dmy[3]);
-      } else {
-        return null;
-      }
-
-      if (m < 1 || m > 12 || d < 1 || d > 31) return null;
-      const dt = new Date(y, m - 1, d);
-      if (dt.getFullYear() !== y || dt.getMonth() !== m - 1 || dt.getDate() !== d) return null;
-      return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    /** Pasted "04.08.2026", "4/8/2026", "2026-08-04" or "04082026" → ISO. */
+    function parsePasted(text: string): string | null {
+      const s = text.trim();
+      const iso = /^(\d{4})\D(\d{1,2})\D(\d{1,2})$/.exec(s);
+      if (iso) return partsToISO(iso[3], iso[2], iso[1]);
+      const dmy = /^(\d{1,2})\D(\d{1,2})\D(\d{4})$/.exec(s);
+      if (dmy) return partsToISO(dmy[1], dmy[2], dmy[3]);
+      const digits = /^(\d{2})(\d{2})(\d{4})$/.exec(s);
+      if (digits) return partsToISO(digits[1], digits[2], digits[3]);
+      return null;
     }
 
-    function dateValue(el: HTMLInputElement): string | null {
-      return parseDateInput(el.value);
+    function caretToEnd(el: HTMLInputElement) {
+      el.focus();
+      el.setSelectionRange(el.value.length, el.value.length);
     }
 
-    function wireDateInput(el: HTMLInputElement) {
-      el.addEventListener('blur', () => {
-        const iso = parseDateInput(el.value);
-        if (iso) el.value = isoToDisplay(iso);
+    /**
+     * Make three boxes feel like one field: digits only, jump forward when a
+     * box fills, jump back on backspace/arrow at the edge, and accept a whole
+     * date pasted into any box.
+     */
+    function wireDateGroup(group: HTMLElement) {
+      const parts = dateParts(group);
+
+      parts.forEach((el, i) => {
+        const prev = parts[i - 1];
+        const next = parts[i + 1];
+
+        el.addEventListener('input', () => {
+          const digits = el.value.replace(/\D/g, '').slice(0, el.maxLength);
+          if (digits !== el.value) el.value = digits;
+          if (next && digits.length >= el.maxLength) { next.focus(); next.select(); }
+        });
+
+        el.addEventListener('keydown', (event) => {
+          const atStart = el.selectionStart === 0 && el.selectionEnd === 0;
+          if (event.key === 'Backspace' && !el.value && prev) {
+            event.preventDefault();
+            caretToEnd(prev);
+          } else if (event.key === 'ArrowLeft' && atStart && prev) {
+            event.preventDefault();
+            caretToEnd(prev);
+          } else if (event.key === 'ArrowRight' && next && el.selectionStart === el.value.length) {
+            event.preventDefault();
+            next.focus();
+            next.setSelectionRange(0, 0);
+          }
+        });
+
+        // Typing in a filled box should replace it, not append and be truncated.
+        el.addEventListener('focus', () => el.select());
+
+        // Single digit typed → pad, so "4" reads back as "04".
+        el.addEventListener('blur', () => {
+          if (el.maxLength === 2 && el.value.length === 1) el.value = `0${el.value}`;
+        });
+
+        el.addEventListener('paste', (event) => {
+          const text = event.clipboardData?.getData('text') ?? '';
+          const iso = parsePasted(text);
+          if (!iso) return;
+          event.preventDefault();
+          setDateValue(group, iso);
+          caretToEnd(parts[2]);
+        });
       });
     }
 
     function setStayDefaults() {
       const arrival = localISODate();
-      arrivalEl.value = isoToDisplay(arrival);
-      departureEl.value = isoToDisplay(addDaysISO(arrival, 1));
+      setDateValue(arrivalEl, arrival);
+      setDateValue(departureEl, addDaysISO(arrival, 1));
     }
 
     const today = localISODate();
     setStayDefaults();
-    wireDateInput(arrivalEl);
-    wireDateInput(departureEl);
+    wireDateGroup(arrivalEl);
+    wireDateGroup(departureEl);
 
     // ── Conditional § 24(3) document fields ────────────────────────────────
     /**
@@ -328,8 +376,8 @@ const datePlaceholder = t(locale, 'checkin.date.placeholder');
         .addEventListener('change', () => syncGuest(block));
       block.querySelector('[data-remove-guest]')
         ?.addEventListener('click', () => { block.remove(); renumber(); });
-      const dob = block.querySelector<HTMLInputElement>('input[data-field="date_of_birth"]');
-      if (dob) wireDateInput(dob);
+      const dob = block.querySelector<HTMLElement>('[data-field="date_of_birth"]');
+      if (dob) wireDateGroup(dob);
       syncGuest(block);
     }
 
@@ -373,21 +421,25 @@ const datePlaceholder = t(locale, 'checkin.date.placeholder');
     const req = (el: HTMLInputElement | HTMLSelectElement) =>
       setError(el, el.value.trim() ? '' : S.required);
 
-    /** Required date field: empty → required; unparseable → format; else ISO. */
-    function reqDate(el: HTMLInputElement): string | null {
-      if (!el.value.trim()) {
-        setError(el, S.required);
+    /** Required date group: empty → required; impossible date → format; else ISO. */
+    function reqDate(group: HTMLElement): string | null {
+      if (dateIsEmpty(group)) {
+        setError(group, S.required);
         return null;
       }
-      const iso = dateValue(el);
+      const iso = dateValue(group);
       if (!iso) {
-        setError(el, S.dateFormat);
+        setError(group, S.dateFormat);
         return null;
       }
-      setError(el, '');
-      el.value = isoToDisplay(iso);
+      setError(group, '');
+      setDateValue(group, iso);
       return iso;
     }
+
+    /** Error focus target — a date group is a div, so focus its first part. */
+    const focusTarget = (el: HTMLElement) =>
+      el.matches('[data-date-group]') ? el.querySelector<HTMLInputElement>('input')! : el;
 
     function validate() {
       clearErrors();
@@ -443,7 +495,7 @@ const datePlaceholder = t(locale, 'checkin.date.placeholder');
           mark(f(name), req(f(name)));
         }
 
-        const dob = f('date_of_birth') as HTMLInputElement;
+        const dob = block.querySelector<HTMLElement>('[data-field="date_of_birth"]')!;
         const dobISO = reqDate(dob);
         mark(dob, Boolean(dobISO));
         if (dobISO && dobISO > today) mark(dob, setError(dob, S.dobFuture));
@@ -461,8 +513,10 @@ const datePlaceholder = t(locale, 'checkin.date.placeholder');
       if (!ok) {
         errorBox.textContent = S.summary;
         errorBox.classList.remove('hidden');
-        bad[0]?.focus();
-        bad[0]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (bad[0]) {
+          focusTarget(bad[0]).focus();
+          bad[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       }
       return ok;
     }
@@ -485,7 +539,7 @@ const datePlaceholder = t(locale, 'checkin.date.placeholder');
         // Document fields are optional for most guests. Blanks MUST go as null:
         // '' fails the char(2) and enum CHECK constraints and the row is rejected.
         const orNull = (name: string) => f(name) || null;
-        const dobEl = block.querySelector('[data-field="date_of_birth"]') as HTMLInputElement;
+        const dobEl = block.querySelector<HTMLElement>('[data-field="date_of_birth"]')!;
 
         return {
           ...stay,
