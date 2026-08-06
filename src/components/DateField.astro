@@ -1,0 +1,88 @@
+---
+/**
+ * Date field as three segments on one line: dd / mm / yyyy.
+ *
+ * A single text input made guests guess the separator, so each part is now its
+ * own numeric box inside one bordered container that behaves like a single
+ * field (focus ring, error state). The container carries `data-date-group` —
+ * CheckInForm's script reads/writes the parts through it, and never touches
+ * the individual inputs by id.
+ *
+ * Renders the whole grid cell: label, field, error slot.
+ */
+import { t, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  /**
+   * Base id. Parts become `${id}-day|-month|-year`, the error <p> `${id}-err`.
+   * May contain the `__I__` placeholder the guest template string-replaces.
+   */
+  id: string;
+  label: string;
+  /** Mirrored onto the group so the form script can find it by field name. */
+  field?: string;
+  /** Date of birth → autocomplete bday-* on the parts. */
+  birthday?: boolean;
+  /** Extra classes on the outer cell. */
+  class?: string;
+}
+
+const { locale, id, label, field, birthday = false, class: className = '' } = Astro.props;
+
+const labelClass = 'block font-ui text-[16px] font-bold text-warm-dark mb-2';
+const errorClass = 'mt-2 font-ui text-[15px] text-burgundy font-bold empty:hidden';
+
+// Same visual box as `inputClass` elsewhere in the form, but the focus/error
+// styling reacts to the parts inside rather than to the container itself.
+const boxClass =
+  'flex items-center w-full bg-white border border-stone/40 rounded-sm px-4 py-3 min-h-[52px] ' +
+  'transition-colors focus-within:border-burgundy focus-within:ring-2 focus-within:ring-burgundy/25 ' +
+  'aria-[invalid=true]:border-burgundy aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-burgundy/25';
+const partClass =
+  'font-body text-[17px] text-warm-dark bg-transparent border-0 p-0 text-center tabular-nums ' +
+  'focus:outline-none placeholder:text-stone/60';
+const sepClass = 'font-body text-[17px] text-stone/60 select-none px-1';
+---
+
+<div class={className}>
+  <label class={labelClass} for={`${id}-day`} id={`${id}-label`}>{label}</label>
+
+  <div
+    class={boxClass}
+    role="group"
+    data-date-group
+    data-field={field}
+    aria-labelledby={`${id}-label`}
+    aria-describedby={`${id}-err`}
+  >
+    <input
+      type="text" id={`${id}-day`} data-date-part="day"
+      inputmode="numeric" maxlength="2" required
+      placeholder={t(locale, 'checkin.date.day.placeholder')}
+      aria-label={t(locale, 'checkin.date.day')}
+      autocomplete={birthday ? 'bday-day' : 'off'}
+      class={`${partClass} w-[3.2ch] ph-no-capture`}
+    />
+    <span class={sepClass} aria-hidden="true">/</span>
+    <input
+      type="text" id={`${id}-month`} data-date-part="month"
+      inputmode="numeric" maxlength="2" required
+      placeholder={t(locale, 'checkin.date.month.placeholder')}
+      aria-label={t(locale, 'checkin.date.month')}
+      autocomplete={birthday ? 'bday-month' : 'off'}
+      class={`${partClass} w-[3.2ch] ph-no-capture`}
+    />
+    <span class={sepClass} aria-hidden="true">/</span>
+    <input
+      type="text" id={`${id}-year`} data-date-part="year"
+      inputmode="numeric" maxlength="4" required
+      placeholder={t(locale, 'checkin.date.year.placeholder')}
+      aria-label={t(locale, 'checkin.date.year')}
+      autocomplete={birthday ? 'bday-year' : 'off'}
+      class={`${partClass} w-[5.4ch] ph-no-capture`}
+    />
+  </div>
+
+  <p class={errorClass} id={`${id}-err`} data-error role="alert"></p>
+</div>
