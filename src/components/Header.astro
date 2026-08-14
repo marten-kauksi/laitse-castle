@@ -10,6 +10,9 @@ const { locale = 'et' } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 
+// Announcement banner links to the contact section at the bottom of the homepage
+const contactHref = `${getLocalizedPath('/', locale)}#${locale === 'en' ? 'contact' : 'kontakt'}`;
+
 const navLinks = [
   { label: t(locale, 'nav.home'), href: getLocalizedPath('/', locale) },
   { label: t(locale, 'nav.events'), href: getLocalizedPath('/peod', locale) },
@@ -28,8 +31,10 @@ const navLinks = [
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 header-transparent transition-all duration-500" id="site-header">
-  <div class="announcement-banner bg-green-700 text-warm-white text-center px-4 py-2 font-body text-[12px] leading-relaxed" id="announcement-banner">
-    <p class="max-w-[800px] mx-auto"><Fragment set:html={t(locale, 'header.announcement')} /></p>
+  <div class="announcement-banner bg-green-700 text-warm-white text-center font-body text-[12px] leading-relaxed" id="announcement-banner">
+    <a href={contactHref} class="block px-4 py-2 hover:bg-green-800 focus-visible:bg-green-800 transition-colors">
+      <p class="max-w-[800px] mx-auto underline decoration-warm-white/40 underline-offset-2 hover:decoration-warm-white"><Fragment set:html={t(locale, 'header.announcement')} /></p>
+    </a>
   </div>
   <nav class="pl-0 pr-4 py-1 md:pr-6 md:py-1 flex items-center justify-between max-w-7xl mx-auto">
     <a href="/" class="shrink-0">
