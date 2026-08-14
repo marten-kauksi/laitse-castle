@@ -1,0 +1,145 @@
+---
+/**
+ * Art. 13 privacy notice for accommodation guests (English).
+ *
+ * Deliberately unlisted: noindex, absent from nav, footer and sitemap, linked
+ * only from the check-in form. Art. 13 requires the information to reach the
+ * data subject at the point of collection — it does not require the page to be
+ * publicly discoverable, and the website privacy policy covers a different
+ * audience, purpose and legal basis entirely.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const h2 = 'font-subtitle text-[clamp(24px,2.4vw,32px)] text-warm-dark mt-12 mb-4';
+---
+
+<BaseLayout
+  title="Guest Privacy Notice — Laitse Castle"
+  description="How Nevaliste OÜ processes accommodation guests' data under § 24 of the Estonian Tourism Act."
+  locale="en"
+  noAnalytics={true}
+  noindex={true}
+>
+  <section class="px-6 py-16 md:py-24">
+    <div class="max-w-prose mx-auto">
+      <p class="font-ui uppercase tracking-wider text-[15px] font-bold text-burgundy mb-5">Accommodation</p>
+      <h1 class="font-display text-[clamp(30px,6vw,58px)] leading-[1.05] tracking-display text-warm-dark mb-8">
+        Guest privacy notice
+      </h1>
+
+      <div class="font-body text-body-lg text-warm-dark leading-relaxed space-y-6">
+        <p>
+          This notice explains how we handle your data when you stay overnight at Laitse
+          Castle. Website visits, cookies and analytics are covered separately by our
+          <a href="/en/privacy-policy" class="text-burgundy font-bold underline underline-offset-4">website privacy policy</a> —
+          that is a different processing activity resting on a different legal basis.
+        </p>
+
+        <h2 class={h2}>Data controller</h2>
+        <p>
+          Nevaliste OÜ, Lossi tee 9, 76302 Laitse, Harju County, Estonia.
+          <a href="mailto:info@laitsecastle.ee" class="text-burgundy font-bold underline underline-offset-4">info@laitsecastle.ee</a>,
+          tel <a href="tel:+37254210881" class="text-burgundy font-bold underline underline-offset-4">+372 5421 0881</a>.
+        </p>
+
+        <h2 class={h2}>Why we collect this</h2>
+        <p>
+          As an accommodation provider we are required to register every guest before their
+          stay begins. The obligation comes from
+          <strong class="font-bold"> § 24 of the Estonian Tourism Act</strong> (turismiseadus).
+        </p>
+        <p>
+          The legal basis is <strong class="font-bold">compliance with a legal obligation</strong> —
+          GDPR Art. 6(1)(c). It is not based on consent, so it cannot be withdrawn.
+        </p>
+
+        <h2 class={h2}>What we collect</h2>
+        <p>From every adult guest (§ 24(2)):</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>given and family name(s);</li>
+          <li>date of birth;</li>
+          <li>citizenship;</li>
+          <li>country of residence — <em>country only, not a street address</em>;</li>
+          <li>dates of stay;</li>
+          <li>reason for the stay;</li>
+          <li>number of accompanying children under 18.</li>
+        </ul>
+        <p>
+          We ask for travel document type, number and issuing country only if you are
+          <strong class="font-bold">neither an EEA nor a Swiss citizen and your country of
+          residence is not Estonia</strong> (§ 24(3)). No other guest is asked for these
+          details or has them stored — including third-country nationals living in
+          Estonia, whom the law exempts (§ 24(2)).
+        </p>
+        <p>
+          <strong class="font-bold">No data is collected about the children themselves</strong> —
+          only how many are staying with you (§ 24(4)).
+        </p>
+        <p>
+          <strong class="font-bold">We do not store a photo or copy of your identity
+          document.</strong> The law provides for registration <em>on the basis of</em>
+          the document, not for retaining an image of it.
+        </p>
+        <p>
+          <strong class="font-bold">Phone and email.</strong> These are not required by law —
+          we ask only so we can reach you about your stay. They rest on the accommodation
+          contract and are deleted after six months.
+        </p>
+
+        <h2 class={h2}>Do you have to provide it?</h2>
+        <p>
+          Yes. Providing the details above is a <strong class="font-bold">statutory
+          requirement</strong>, and we cannot accommodate you without them. Providing a
+          phone number and email is not a statutory requirement.
+        </p>
+
+        <h2 class={h2}>Who we share it with</h2>
+        <p>
+          Under § 24(8) of the Tourism Act we are obliged to disclose this data on request
+          to the <strong class="font-bold">Police and Border Guard Board</strong> and to
+          security authorities. We do not share or sell it otherwise.
+        </p>
+        <p>
+          The data is held in a Supabase database on servers in the European Union.
+          Supabase acts as our processor. Nothing is transferred outside the EEA.
+        </p>
+
+        <h2 class={h2}>How long we keep it</h2>
+        <p>
+          <strong class="font-bold">Two years</strong> from the date of registration, as
+          required by § 24(7) of the Tourism Act. This is not our choice — the law obliges
+          us to retain it for that period. After two years it is deleted automatically.
+        </p>
+        <p>Phone and email are deleted after six months.</p>
+
+        <h2 class={h2}>Your rights</h2>
+        <p>
+          You may access your data, require inaccurate details to be corrected, restrict
+          processing, and object to processing.
+        </p>
+        <p>
+          <strong class="font-bold">Exception regarding erasure.</strong> Because we process
+          this data to comply with a legal obligation, we cannot erase it on request during
+          the two-year period — GDPR Art. 17(3)(b) removes the right to erasure where
+          processing is required by law. All your other rights apply in full. Phone and
+          email, which the law does not require, we will delete at any time on request.
+        </p>
+        <p>
+          No automated decision-making or profiling is carried out on your data.
+        </p>
+
+        <h2 class={h2}>Questions and complaints</h2>
+        <p>
+          Write to
+          <a href="mailto:info@laitsecastle.ee" class="text-burgundy font-bold underline underline-offset-4">info@laitsecastle.ee</a>.
+          You may also lodge a complaint with the Estonian Data Protection Inspectorate
+          (<a href="https://www.aki.ee" class="text-burgundy font-bold underline underline-offset-4" rel="noopener">aki.ee</a>).
+        </p>
+
+        <p class="pt-6">
+          <a href="/en/check-in" class="text-burgundy font-bold underline underline-offset-4">← Back to the check-in form</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

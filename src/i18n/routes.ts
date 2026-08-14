@@ -13,6 +13,8 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/saalide-plaanid': '/saalide-plaanid',
     '/menuu': '/menuu',
     '/privaatsuspoliitika': '/privaatsuspoliitika',
+    '/registreerimine': '/registreerimine',
+    '/registreerimine/privaatsus': '/registreerimine/privaatsus',
   },
   en: {
     '/': '/en/',
@@ -27,6 +29,8 @@ export const routeMap: Record<string, Record<string, string>> = {
     '/saalide-plaanid': '/en/hall-plans',
     '/menuu': '/en/menu',
     '/privaatsuspoliitika': '/en/privacy-policy',
+    '/registreerimine': '/en/check-in',
+    '/registreerimine/privaatsus': '/en/check-in/privacy',
   },
 };
 
@@ -44,6 +48,8 @@ export const reverseRouteMap: Record<string, string> = {
   '/saalide-plaanid': '/saalide-plaanid',
   '/menuu': '/menuu',
   '/privaatsuspoliitika': '/privaatsuspoliitika',
+  '/registreerimine': '/registreerimine',
+  '/registreerimine/privaatsus': '/registreerimine/privaatsus',
   '/en/': '/',
   '/en/history': '/ajalugu',
   '/en/events': '/peod',
@@ -56,4 +62,6 @@ export const reverseRouteMap: Record<string, string> = {
   '/en/hall-plans': '/saalide-plaanid',
   '/en/menu': '/menuu',
   '/en/privacy-policy': '/privaatsuspoliitika',
+  '/en/check-in': '/registreerimine',
+  '/en/check-in/privacy': '/registreerimine/privaatsus',
 };

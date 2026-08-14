@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Flourish from '../../components/Flourish.astro';
+import CheckInForm from '../../components/CheckInForm.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout
+  title={t(locale, 'checkin.meta.title')}
+  description={t(locale, 'checkin.meta.description')}
+  locale="en"
+  noAnalytics={true}
+  noindex={true}
+>
+  <section class="px-6 pt-16 pb-10 md:pt-24 md:pb-14 text-center">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-ui uppercase tracking-wider text-[15px] font-bold text-burgundy mb-5">
+        {t(locale, 'checkin.eyebrow')}
+      </p>
+      <!-- Matches the ET page, whose long single-word title overflows at text-hero. -->
+      <h1 class="font-display text-[clamp(30px,7vw,68px)] leading-[1.05] tracking-display text-warm-dark mb-6">
+        {t(locale, 'checkin.title')}
+      </h1>
+      <Flourish type="vintage" size="sm" fill="burgundy" />
+      <p class="font-body text-[clamp(18px,2vw,21px)] text-warm-dark leading-relaxed mt-8">
+        {t(locale, 'checkin.intro')}
+      </p>
+    </div>
+  </section>
+
+  <!-- The Art. 13 notice now lives inside CheckInForm, below the submit button. -->
+  <section class="px-6 pt-4 pb-20 md:pb-28">
+    <CheckInForm locale={locale} />
+  </section>
+</BaseLayout>
