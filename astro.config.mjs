@@ -6,6 +6,9 @@ export default defineConfig({
   site: 'https://laitsecastle.ee',
   redirects: {
     '/en/events-and-seminars': '/en/events',
+    // Summer terrace café menu pages were removed; keep old indexed URLs alive.
+    '/menuu': '/',
+    '/en/menu': '/en/',
   },
   i18n: {
     defaultLocale: 'et',
