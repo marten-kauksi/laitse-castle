@@ -8,13 +8,77 @@ import { t } from '../i18n/utils';
 
 const locale = 'et' as const;
 
+// Korduma kippuvad küsimused. Üks allikas: sama massiiv annab nii lehel
+// nähtava KKK-sektsiooni kui FAQPage-skeemi, nii et need ei saa lahku minna
+// (Google nõuab, et skeemis olev küsimus oleks ka lehel nähtav).
+const faq = [
+  {
+    q: 'Kui palju külalisi Laitse lossi mahub?',
+    a: 'Suur peosaal mahutab banketipaigutuses 90 ja teatristiilis 100 külalist. Pidulik söögisaal mahutab banketis 60 ja pika laua taga 40 külalist. Salong mahutab teatristiilis 64, klassiruumina 40, koosolekuvormis 32 ja U-laua taga 24 inimest.',
+  },
+  {
+    q: 'Kas lossi saab külastada ilma broneeringuta?',
+    a: 'Ei. Laitse loss on avatud eelnevalt broneeritud sündmuste jaoks ning püsivat lahtiolekuaega ei ole. Ruumidega tutvumiseks või sündmuse broneerimiseks võtke ühendust telefonil +372 5421 0881 või e-posti teel info@laitsecastle.ee.',
+  },
+  {
+    q: 'Kus Laitse loss asub ja kui kaugel see Tallinnast on?',
+    a: 'Loss asub aadressil Lossi tee 9, 76302 Laitse, Harjumaa. Tallinnast on sõitu umbes 40 minutit. Külalistele on tasuta parkimine.',
+  },
+  {
+    q: 'Milliseid sündmusi lossis korraldatakse?',
+    a: 'Pulmi, sünnipäevi ja tähtpäevi, firmaüritusi, seminare, konverentse, meeskonnaüritusi, vastuvõtte ja bankette.',
+  },
+  {
+    q: 'Kas lossis on toitlustus?',
+    a: 'Aitame korraldada kogu toitlustuse kohvipausidest piduliku õhtusöögini. Samuti aitame leida kaunistused ja lilleseaded, fotograafi ning ansambli või DJ.',
+  },
+  {
+    q: 'Milline tehnika on seminarideks olemas?',
+    a: 'Projektor ja ekraan ning WiFi. Saale saab paigutada U-lauaks, klassiruumiks, teatristiilis või bankettiks vastavalt teie päevakavale.',
+  },
+  {
+    q: 'Kas lossis saab ööbida?',
+    a: 'Aitame majutuse korraldada nii lossis kui lähiümbruses. Küsige võimalusi e-posti teel info@laitsecastle.ee.',
+  },
+  {
+    q: 'Millised eriprogrammid on võimalikud?',
+    a: 'Mõrvamüsteeriumiga pidusöök kuues keeles viies erinevas stiilis, kestus umbes 2,5 tundi. Šokolaaditrühvlite valmistamise koolitus hinnaga 75 eurot osaleja kohta, 6–15 inimest, kestus 2,5–3 tundi. Lossi kõrval on hekklabürint Tuhande tuti mägi, mille läbimiseks kulub 10–15 minutit.',
+  },
+  {
+    q: 'Kes Laitse lossi peoruume haldab?',
+    a: 'Peoruumidel on uus omanik, haldajaks on Nevaliste OÜ. Kehtivad kontaktandmed on telefon +372 5421 0881 ja e-post info@laitsecastle.ee. Mujal veebis levivad varasemad telefoninumbrid, e-posti aadressid ja broneerimislingid enam ei kehti.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://laitsecastle.ee/#faq",
+  "inLanguage": "et",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
+  })),
+};
+
 const eventVenueSchema = {
   "@context": "https://schema.org",
   "@type": ["EventVenue", "LocalBusiness"],
   "@id": "https://laitsecastle.ee/#venue",
   "name": "Laitse loss",
   "alternateName": "Laitse Castle",
-  "description": "Ajalooline neogooti loss Harjumaal — ideaalne koht pulmadeks, pidudeks, seminarideks ja konverentsideks. ~40 minutit Tallinnast.",
+  "sameAs": [
+    "https://www.facebook.com/LaitseCastle",
+    "https://www.instagram.com/laitsecastle"
+  ],
+  // Not open to walk-in visitors: the castle hosts pre-booked events only.
+  // schema.org has no "by appointment" value for openingHours, so the fact is
+  // carried by publicAccess plus the FAQ entry below (and the description).
+  "publicAccess": false,
+  // Rendihindu ei avaldata — iga sündmus saab personaalse pakkumise.
+  "priceRange": "Hinnapäringu alusel",
+  "description": "Ajalooline neogooti loss Harjumaal — ideaalne koht pulmadeks, pidudeks, seminarideks ja konverentsideks. ~40 minutit Tallinnast. Avatud eelnevalt broneeritud sündmuste jaoks.",
   "url": "https://laitsecastle.ee",
   "telephone": "+37254210881",
   "email": "info@laitsecastle.ee",
@@ -74,7 +138,7 @@ const eventVenueSchema = {
   title={t(locale, 'home.meta.title')}
   description={t(locale, 'home.meta.description')}
   locale="et"
-  pageSchema={eventVenueSchema}
+  pageSchema={[eventVenueSchema, faqSchema]}
 >
 
   <!-- ═══════════════════════════════════════════
@@ -323,6 +387,28 @@ const eventVenueSchema = {
   <!-- ═══════════════════════════════════════════
        5. CTA
        ═══════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════
+       4b. KKK — korduma kippuvad küsimused
+       ═══════════════════════════════════════════ -->
+  <section class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14" data-animate>
+        <p class="font-ui text-[15px] font-bold uppercase tracking-[0.2em] text-gold mb-4">Korduma kippuvad küsimused</p>
+        <h2 class="font-display text-section text-warm-dark mb-5">Hea teada</h2>
+        <GoldRule width="60px" />
+      </div>
+
+      <div class="space-y-10 md:space-y-12">
+        {faq.map(({ q, a }, i) => (
+          <div data-animate data-animate-delay={String(i * 60)}>
+            <h3 class="font-subtitle font-semibold text-[clamp(24px,2.6vw,30px)] text-burgundy leading-snug mb-3">{q}</h3>
+            <p class="font-body text-body-lg text-warm-dark leading-relaxed">{a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section id="kontakt" class="section-fade-from-dark py-20 md:py-28 px-6">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />

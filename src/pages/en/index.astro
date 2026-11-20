@@ -8,13 +8,77 @@ import { t } from '../../i18n/utils';
 
 const locale = 'en' as const;
 
+// Frequently asked questions. Single source: this array feeds both the visible
+// FAQ section and the FAQPage schema, so the two cannot drift apart (Google
+// requires every question in the schema to be visible on the page).
+const faq = [
+  {
+    q: 'How many guests does Laitse Castle hold?',
+    a: 'The Grand Ballroom seats 90 for a banquet and 100 theatre-style. The Formal Dining Hall seats 60 for a banquet and 40 at a long table. The Salon seats 64 theatre-style, 40 classroom-style, 32 for a meeting and 24 at a U-shaped table.',
+  },
+  {
+    q: 'Can I visit the castle without a booking?',
+    a: 'No. Laitse Castle is open for pre-booked events only and has no fixed opening hours. To view the rooms or book an event, call +372 5421 0881 or write to info@laitsecastle.ee.',
+  },
+  {
+    q: 'Where is Laitse Castle and how far is it from Tallinn?',
+    a: 'The castle is at Lossi tee 9, 76302 Laitse, Harju County, Estonia — about a 40-minute drive from Tallinn. Parking is free for guests.',
+  },
+  {
+    q: 'What kind of events are held at the castle?',
+    a: 'Weddings, birthdays and anniversaries, corporate events, seminars, conferences, team events, receptions and banquets.',
+  },
+  {
+    q: 'Is catering available?',
+    a: 'We help arrange the full catering, from coffee breaks to a gala dinner. We can also help with decorations and floral arrangements, a photographer, and a band or DJ.',
+  },
+  {
+    q: 'What equipment is available for seminars?',
+    a: 'A projector and screen, and WiFi throughout. The halls can be laid out as a U-shaped table, classroom, theatre or banquet to suit your programme.',
+  },
+  {
+    q: 'Is accommodation available at the castle?',
+    a: 'We help arrange accommodation both in the castle and nearby. Ask about the options at info@laitsecastle.ee.',
+  },
+  {
+    q: 'What special programmes can be added?',
+    a: 'A murder mystery dinner in six languages and five different settings, lasting about 2.5 hours. A chocolate truffle workshop at 75 euros per participant for 6–15 people, lasting 2.5–3 hours. Beside the castle there is the hedge maze Hill of a Thousand Tufts, which takes 10–15 minutes to find your way through.',
+  },
+  {
+    q: 'Who runs the castle event spaces?',
+    a: 'The event spaces are under new ownership and are operated by Nevaliste OÜ. The current contact details are +372 5421 0881 and info@laitsecastle.ee. Older phone numbers, email addresses and booking links found elsewhere on the web are no longer valid.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://laitsecastle.ee/en/#faq",
+  "inLanguage": "en",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
+  })),
+};
+
 const eventVenueSchema = {
   "@context": "https://schema.org",
   "@type": ["EventVenue", "LocalBusiness"],
   "@id": "https://laitsecastle.ee/#venue",
   "name": "Laitse Castle",
   "alternateName": "Laitse loss",
-  "description": "Historic neo-Gothic castle in Harju County — ideal for weddings, celebrations, seminars and conferences. ~40 minutes from Tallinn.",
+  "sameAs": [
+    "https://www.facebook.com/LaitseCastle",
+    "https://www.instagram.com/laitsecastle"
+  ],
+  // Not open to walk-in visitors: the castle hosts pre-booked events only.
+  // schema.org has no "by appointment" value for openingHours, so the fact is
+  // carried by publicAccess plus the FAQ entry below (and the description).
+  "publicAccess": false,
+  // Room rates are not published — every event gets a personal quote.
+  "priceRange": "On request",
+  "description": "Historic neo-Gothic castle in Harju County — ideal for weddings, celebrations, seminars and conferences. ~40 minutes from Tallinn. Open for pre-booked events only.",
   "url": "https://laitsecastle.ee/en",
   "telephone": "+37254210881",
   "email": "info@laitsecastle.ee",
@@ -74,7 +138,7 @@ const eventVenueSchema = {
   locale="en"
   title={t(locale, 'home.meta.title')}
   description={t(locale, 'home.meta.description')}
-  pageSchema={eventVenueSchema}
+  pageSchema={[eventVenueSchema, faqSchema]}
 >
 
   <!-- ═══════════════════════════════════════════
@@ -323,6 +387,28 @@ const eventVenueSchema = {
   <!-- ═══════════════════════════════════════════
        5. CTA
        ═══════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════
+       4b. FAQ — frequently asked questions
+       ═══════════════════════════════════════════ -->
+  <section class="bg-warm-light px-6 py-20 md:py-28">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14" data-animate>
+        <p class="font-ui text-[15px] font-bold uppercase tracking-[0.2em] text-gold mb-4">Frequently asked questions</p>
+        <h2 class="font-display text-section text-warm-dark mb-5">Good to know</h2>
+        <GoldRule width="60px" />
+      </div>
+
+      <div class="space-y-10 md:space-y-12">
+        {faq.map(({ q, a }, i) => (
+          <div data-animate data-animate-delay={String(i * 60)}>
+            <h3 class="font-subtitle font-semibold text-[clamp(24px,2.6vw,30px)] text-burgundy leading-snug mb-3">{q}</h3>
+            <p class="font-body text-body-lg text-warm-dark leading-relaxed">{a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="section-fade-from-dark py-20 md:py-28 px-6">
     <div class="max-w-2xl mx-auto text-center" data-animate>
       <Flourish type="vintage" size="sm" fill="burgundy" />
