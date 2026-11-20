@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://laitsecastle.ee/sitemap.xml
+# Astro's sitemap integration emits sitemap-index.xml (+ sitemap-0.xml);
+# there is no /sitemap.xml, so pointing at that name returns 404.
+Sitemap: https://laitsecastle.ee/sitemap-index.xml
